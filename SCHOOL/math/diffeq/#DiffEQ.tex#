@@ -1,0 +1,290 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{multicol}
+
+\title{A Tiny Bit of Fluid Dynamics}
+\author{Sean Richardson}
+\date{\today}
+\newcommand{\myvec}[1]{\langle#1\rangle}
+\newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\derof}[2]{\frac{d}{d#1}\Big(#2\Big)}
+\newcommand{\sderof}[2]{\frac{d}{d#1}(#2)}
+\newcommand{\der}[2]{\frac{d#1}{d#2}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+abstract.
+\end{abstract}
+
+\section{Problem 1}
+$\vec{U}(\mathbf{y}(t))$ is a well-defined, differentiable vector field that represents the velocity of an arbitrary water molecule at point $\textbf{y}=(x,y,z)$. Specifically,
+$\vec{U}(\mathbf{y}(t)) = -2x\hat{\imath} + (-2y+z)\hat{\jmath} + (y-2z)\hat{k}$. The starting location of the molecule is at an arbitrary point $\mathbf{x}=(a,b,c)$. This information is formally represented with the following equation.
+\begin{align*}
+	\begin{cases}
+	\frac{d\mathbf{y}}{dt} = \vec{U}(\mathbf{y}(t)) \\ %Define U and y
+	\mathbf{y}(0) = \textbf{x}
+	\end{cases}
+\end{align*}
+We can solve the differential system of equations, which will provide the path a water molecule starting at point $\textbf{x}$ will take. First, we rewrite the differential equation in its matrix form.
+\begin{align*}
+    \frac{d\mathbf{y}}{dt} =& M\mathbf{y} \\
+    \text{Where, } M =& \begin{pmatrix}
+    -2 & 0 & 0 \\
+    0 & -2 & 1 \\
+    0 & 1 & -2 \\
+    \end{pmatrix}
+\end{align*}
+The solution vectors will be scalar multiples of themselves when multiplied by $M$. This motivates finding each eigenvalue, $\lambda$, of $M$ using $\det{(M-\lambda I)}=0$, $I$ being the identity matrix. This can be broken down into the following.
+\begin{equation*}
+	(-2-\lambda)((-2-\lambda)^2-1) = 0
+\end{equation*}
+The above equation has solutions $\lambda_1=-1, \lambda_2=-2, \lambda_3=-3$. Next, we locate the vectors that are scaled by these eigenvalues when multiplied by $M$. Or, for what $\vec{v}$ satisfies $\lambda \vec{v} = M\vec{v}$ for each case of $\lambda$?
+With $\vec{v_1}, \vec{v_2}, \vec{v_3}$ corresponding to $\lambda_1, \lambda_2, \lambda_3$ respectively, the below vectors satisfy the requirements.
+\begin{align*}
+	\vec{v_1} = \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix},\ 
+	\vec{v_2} = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix},\ 
+	\vec{v_3} = \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}
+\end{align*}
+Using each eigenvalue-eigenvector pair, a solution will take the form of $\mathbf{y} = Ce^{\lambda t}\vec{v}$. So, by the superposition principle, the general solution of the system is:
+\begin{equation}
+	\mathbf{y} = C_1e^{-t} \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}
+	+ C_2e^{-2t} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+	+ C_3e^{-3t} \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}
+	\label{gen_solution1}
+\end{equation}
+The initial condition of $\mathbf{y}(0)=(a,b,c)$ provides sufficient information to solve for each constant, $C$. In applying this specific case of $t=0$, we arrive at the below.
+\begin{equation}
+	\begin{pmatrix} a \\ b \\ c \end{pmatrix} = C_1\begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}
+	+ C_2\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+	+ C_3\begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}
+	\label{solution1_t0}
+\end{equation}
+We can rewrite this equation in matrix form.
+\begin{equation*}
+	\begin{pmatrix} a \\ b \\ c \end{pmatrix} = \begin{pmatrix}
+	0 & 1 & 0 \\
+	1 & 0 & 1 \\
+	1 & 0 & -1 \\ \end{pmatrix}
+	\begin{pmatrix} C_1 \\ C_2 \\ C_3 \end{pmatrix}
+\end{equation*}
+In finding the inverse of the matrix we arrive at the following.
+\begin{equation*}
+	\begin{pmatrix}
+		0 & \frac{1}{2} & \frac{1}{2} \\
+		1 & 0 & 0 \\
+		1 & \frac{1}{2} & -\frac{1}{2} \end{pmatrix}
+		\begin{pmatrix} a \\ b \\ c \end{pmatrix} 
+	= \begin{pmatrix} C_1 \\ C_2 \\ C_3 \end{pmatrix}
+\end{equation*}
+Multiplying $\myvec{a,b,c}$ into the matrix gives us the solution to the vector containing each $C$.
+\begin{equation}
+	\begin{pmatrix} C_1 \\ C_2 \\ C_3 \end{pmatrix} =
+	\begin{pmatrix} \frac{b}{2}+\frac{c}{2} \\ a \\ \frac{b}{2}-\frac{c}{2} \end{pmatrix}
+	\label{C_solutions}
+\end{equation}
+We can now substitute each $C$ value in equation \ref{gen_solution1} with the corresponding function of $a$, $b$, and $c$. This equation provides the exact $(x,y,z)$ position of the particle when given the starting location and how much time has passed.
+\begin{equation}
+	\mathbf{y} = \bigg(\frac{b}{2}+\frac{c}{2}\bigg)e^{-t} \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}
+	+ (a)e^{-2t} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+	+ \bigg(\frac{b}{2}-\frac{c}{2}\bigg)e^{-3t} \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}
+	\label{init_cond_solution}
+\end{equation}
+We now have an equation that describes every solution curve, but how can we visualize these solution curves in $x,y,z$ space? In looking at equation \ref{gen_solution1}, we see that the phase diagram takes the form of a three dimensional sink. The sink nature of the phase diagram is due to each each $e$ being raised to a negative power. As time progresses, each $e^{f(t)}$ term will decrease, bringing the curves closer to the origin. The solution vectors that define this sink are centered at the origin. These vectors point in the $\myvec{0,1,1}$ direction, the $\myvec{1,0,0}$ direction, and the $\myvec{0,1,-1}$ direction. Close to the origin, when $t$ is large, the negative exponents of the weakest magnitude will have the greatest influence. Very close to the origin, the solution curves hug the $\myvec{0,1,1}$ vector. Then, they begin to move into the direction of the $\myvec{1,0,0}$ vector. This results in the solutions living mostly in the plane spanned by $\myvec{0,1,1}$ and $\myvec{1,0,0}$. Farther from the origin however, when $t$ becomes largely negative, the $\myvec{0,1,-1}$ vector will dominate, so the solution curves will parallel this third vector. The graph below is a plot of many solution curves. Note the clear plane of solution curves close to the origin.
+
+\begin{center}
+	\includegraphics[width=.6\textwidth]{preview.png}
+\end{center}
+ 
+\section{Problem 2}
+We can rewrite the information within equation \ref{init_cond_solution} as a transformation. $F_t: \mathbf{x} \mapsto \mathbf{y}(t)$ represents the mapping of a water molecule from starting position $(a,b,c)$ to its  $(x,y,z)$ position after $t$ seconds. We can add the $x$, $y$, and $z$ components of each vector in equation \ref{init_cond_solution} to represent $\mathbf{y}$ as a single vector. Using the vector $\mathbf{y}$, we craft the following transformation.
+\begin{equation}
+	F_t(a,b,c) = (ae^{-2t}, \bigg(\frac{b}{2}+\frac{c}{2}\bigg)e^{-t}+\bigg(\frac{b}{2}-\frac{c}{2}\bigg)e^{-3t}, 
+	\bigg(\frac{b}{2}+\frac{c}{2}\bigg)e^{-t}-\bigg(\frac{b}{2}-\frac{c}{2}\bigg)e^{-3t})
+	\label{transformation1}
+\end{equation}
+Now that we have the information in transformation form, we can proceed to find properties of the transformation such as the Jacobi matrix, $DF_t$ and the stretch factor, $\det(DF_t)$. The first step to finding the Jacobi matrix is constructing the partial vectors with respect to $a$, $b$, and $c$. These vectors are as follows:
+\begin{align*}
+	\partial_a =&\ \myvec{e^{-2t}, 0, 0} \\
+	\partial_b =&\ \myvec{0, \frac{1}{2}(e^{-t}+e^{-3t}), \frac{1}{2}(e^{-t}-e^{-3t})} \\
+	\partial_c =&\ \myvec{0, \frac{1}{2}(e^{-t}-e^{-3t}), \frac{1}{2}(e^{-t}+e^{-3t})}
+\end{align*}
+We assemble these partial vectors vertically to create the Jacobi matrix, $DF_t$.
+\begin{equation*}
+	DF_t = \begin{pmatrix} e^{-2t} & 0 & 0	\\
+	0 & \frac{1}{2}(e^{-t}+e^{-3t}) & \frac{1}{2}(e^{-t}-e^{-3t}) \\[1ex]
+	0 & \frac{1}{2}(e^{-t}-e^{-3t}) & \frac{1}{2}(e^{-t}+e^{-3t}) \end{pmatrix}
+\end{equation*}
+The stretch factor of the transformation $F_t$ is given by $\det(DF_t)$. Visually, this is the communicates the change the volume after $t$ seconds in the neighborhood of the water molecule beginning at location $(a,b,c)$.
+\begin{align}
+	\det(DF_t) &= e^{-2t}\bigg(\Big(\frac{e^{-t}+e^{-3t}}{2}\Big)^2-\Big(\frac{e^{-t}-e^{-3t}}{2}\Big)^2\bigg) \nonumber\\
+\det(DF_t) &= e^{-6t}
+\label{stretch_Ft}
+\end{align}
+So, the change in volume of the fluid is given by the equation $e^{-6t}$. This equation means that after $t$ seconds, a portion of the fluid will take up a fraction of its original volume and continue to get denser. This result aligns with the phase diagram described /**/. The phase diagram describes a sink, so the molecules approach the center. If all the molecules approach the center, the fluid must become more dense, so the volume of a neighborhood in the fluid must decrease.
+\section{Problem $e$}
+Next, we generalize the problem to an arbitrary $\vec{U}(\mathbf{y})$. For a general vector field, we must represent the Jacobi matrix as arbitrary partial derivatives. We will now explore the stretch factor $S(t) = \det(DF_t)$ of the general vector field. For simplicity, we will reduce the vector field down to $2$ dimensions. We will now evaluate the stretch factor as given by the following equation.
+\begin{equation*}
+	S(t) = \det(DF_t) = \det \begin{pmatrix}
+	\pder{x}{a}\rvert_{(x(t),y(t))} & \pder{x}{b}\rvert_{(x(t),y(t))} \\[1ex]
+	\pder{y}{a}\rvert_{(x(t),y(t))} & \pder{y}{b}\rvert_{(x(t),y(t))}
+	\end{pmatrix}
+\end{equation*}
+Taking the determinant results in the following formula for $S(t)$.
+\begin{equation*}
+	S(t) = \pder{x}{a}\pder{y}{b} - \pder{x}{b}\pder{y}{a}
+\end{equation*}
+Now we will take the derivative with respect to time of the stretch factor $S(t)$ and simplify it.
+\begin{align*}
+	\der{S}{t} &= \derof{t}{\pder{x}{a}\pder{y}{b} - \pder{x}{b}\pder{y}{a}}
+\end{align*}
+The application of product rule expands this derivative.
+\begin{align*}
+	\der{S}{t} &= \Big[\derof{t}{\pder{x}{a}}\pder{y}{b}
+	+\pder{x}{a}\derof{t}{\pder{y}{b}}\Big]
+	-\Big[\derof{t}{\pder{x}{b}}\pder{y}{a}
+	+ \pder{x}{b}\derof{t}{\pder{y}{a}}\Big] \\
+	&= \Big[\derof{a}{\pder{x}{t}}\pder{y}{b}
+	+\pder{x}{a}\derof{b}{\pder{y}{t}}\Big]
+	-\Big[\derof{b}{\pder{x}{t}}\pder{y}{a}
+	+ \pder{x}{b}\derof{a}{\pder{y}{t}}\Big]
+\end{align*}
+To further simplify this expression, we call upon the relation between the partial derivatives and the original vector field $\vec{U}$.
+\begin{equation*}
+\vec{U} 
+= \begin{pmatrix}\der{x}{t} \\[1ex] \der{y}{t}\end{pmatrix}
+= \begin{pmatrix}P(x,y) \\ Q(x,y)\end{pmatrix}
+\end{equation*}
+So, anywhere we have a $\der{x}{t}$, we can substitute in $P(x,y)$ and $\der{y}{t}$ can be replaced with $Q(x,y)$. This results in the following simplification.
+\begin{equation*}
+\der{S}{t}  = \Big[\pder{P}{a}\pder{y}{b}
+		    +\pder{x}{a}\pder{Q}{b}\Big]
+	    	-\Big[\pder{p}{b}\pder{y}{a}
+        	+ \pder{x}{b}\pder{Q}{a}\Big]
+\end{equation*}
+Of course, $P$ and $Q$ are not directly functions of $a$ and $b$. Rather, $P$ and $Q$ are functions of $x$ and $y$ which in themselves are functions of $a$ and $b$, so we apply chain rule.
+\begin{align*}
+\der{S}{t}  
+= \Big[\Big(\pder{P}{x}\pder{x}{a}&+\pder{P}{y}\pder{y}{a}\Big)\pder{y}{b}
++\pder{x}{a}\Big(\pder{Q}{x}\pder{x}{b}+\pder{Q}{y}\pder{y}{b}\Big)\Big]\\
+-\Big[\Big(\pder{P}{x}\pder{x}{b}&+\pder{P}{y}\pder{y}{b}\Big)\pder{y}{a}
++ \pder{x}{b}\Big(\pder{Q}{x}\pder{x}{a}+\pder{Q}{y}\pder{y}{a}\Big)\Big]
+\end{align*}
+Next we can factor out the /**/
+\begin{align*}
+\der{S}{t}
+&=\Big[\Big(\pder{x}{a}\pder{y}{b}\Big)\Big(\pder{P}{x}+\pder{Q}{y}\Big)
++\Big(\pder{y}{a}\pder{y}{b}\Big)\Big(\pder{P}{y}\Big)
++\Big(\pder{x}{a}\pder{x}{b}\Big)\Big(\pder{Q}{x}\Big)\Big]\\
+&-\Big[\Big(\pder{x}{b}\pder{y}{a}\Big)\Big(\pder{P}{x}+\pder{Q}{y}\Big)
++\Big(\pder{y}{a}\pder{y}{b}\Big)\Big(\pder{P}{y}\Big)
++\Big(\pder{x}{a}\pder{x}{b}\Big)\Big(\pder{Q}{x}\Big)\Big]
+\end{align*}
+The $\pder{P}{y}$ and the $\pder{Q}{x}$ terms cancel. The $\pder{P}{x}+\pder{Q}{y}$ term from the result, which gives us the following.
+\begin{equation*}
+\der{S}{t} = \Big(\pder{P}{x}+\pder{Q}{y}\Big)\Big(\pder{x}{a}\pder{y}{b}-\pder{x}{b}\pder{y}{a}\Big)
+\end{equation*}
+Recall that $\pder{x}{a}\pder{y}{b} - \pder{x}{b}\pder{y}{a}$ is the expression for $S(t)$ itself. Furthermore, $\pder{P}{x}+\pder{Q}{y}$ has the alternate name of divergence. With this in mind, we can reduce the formula for $\pder{S}{t}$ to the following 
+\begin{equation}
+\der{S}{t} = \text{div}({\vec{U}})\cdot S \label{div}
+\end{equation}
+/*Why?*/
+\section{Problem 3}
+The divergence of the specific vector field $\vec{U}$, is $(-2)+(-2)+(-2) = -6$. /*More work here?*/ In pairing this fact with equation \ref{div}, we get the following differential equation.
+\begin{equation*}
+	\der{S}{t} = -6\cdot S
+\end{equation*}
+Which has solution
+\begin{equation*}
+S = Ce^{-6t}
+\end{equation*}
+A sensible initial condition is $S(0) = 1$, which says at $t=0$, the fluid has not stretched or changed in volume. After all, at $t=0$ the fluid hasn't had any time to change. We now implement this initial condition to solve for $C$.
+\begin{equation*}
+1 = S(0) = Ce^{-6(0)} = C
+\end{equation*}
+So, $C=1$, which gives us the same stretch factor of $S=e^{-6t}$ that we  arrived at in equation \ref{stretch_Ft} with $\det({DF_t})$.
+\section{Problem $\pi$}
+We redefine the vector field to be $\vec{U}(y)=\alpha x\hat{\imath}+(-2y+z)\hat{\jmath}+(y-2z)\hat{k}$. For what value of $\alpha$ would make this a \textit{incompressible fluid}? An \textit{incompressible fluid} is a fluid for which the volume goes unchanged.
+Unchanging volume means that $\der{S}{t}=0$ for all $t$.
+\begin{align*}
+	0 = \der{S}{t} = \text{div}(\vec{U})\cdot S
+\end{align*}
+An unchanging volume means an $S$ value of $1$. But importantly, $S$ is non-zero, for the molecules will always take up some space. After all, the fluid is meant to be \textit{incompressible}.
+If $\text{div}(\vec{U})\cdot S = 0$ and $S\ne 0$, then $\text{div}(\vec{U}) = 0$.
+\begin{align*}
+\text{div}(\vec{U}) &= 0 \\
+\sderof{x}{\alpha x} + \sderof{y}{-2y+z} + \sderof{z}{y-2z} &= 0 \\
+\alpha -2 -2 &= 0
+\end{align*}
+So, $\alpha = 4$. In plugging $\alpha$ into $\vec{U}$, we get a new vector field. $\vec{U}(\mathbf{y}(t)) = 4x\hat{\imath} + (-2y+z)\hat{\jmath} + (y-2z)\hat{k}$. We will now continue to solve this new differential equation for an arbitrary starting point, express a change over time as a transformation, and determine the stretch value as we did previously. The first step is to find the matrix, $M$, that satisfies the differential equation $\der{\mathbf{y}}{t}=M\mathbf{y}$.
+\begin{align*}
+\text{In this case, } M = 
+\begin{pmatrix}
+4 & 0 & 0 \\
+0 & -2 & 1 \\
+0 & 1 & -2
+\end{pmatrix}
+\end{align*}
+The eigenvalues of $M$ are the solutions to the equation $\det(M-\lambda I)=0$. Also known as $(4-\lambda)((-2-\lambda)^2-1)=0$. So, the eigenvalues are $\lambda_1=-1$, $\lambda_2=4$, $\lambda_3=-3$. Each $\lambda$ corresponds to an eigenvector $\vec{v}$ satisfying $\lambda\vec{v}=M\vec{v}$. The corresponding solution vectors, $\vec{v}$, are:
+\begin{align*}
+	\vec{v_1} = \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix},\ 
+	\vec{v_2} = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix},\ 
+	\vec{v_3} = \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}
+\end{align*}
+By /*some superposition principle*/, the general solution to the differential equation is given by
+\begin{equation}
+		\mathbf{y} = C_1e^{-t} \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}
+	+ C_2e^{4t} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+	+ C_3e^{-3t} \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}
+\end{equation}
+We know that at $\textbf{y}(0) = \textbf{x} = \myvec{a,b,c}$. So, in exploring the specific case of $t=0$, we arrive at:
+\begin{equation}
+\begin{pmatrix} a \\ b \\ c \end{pmatrix} = C_1\begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}
++ C_2\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
++ C_3\begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}
+\label{solution2_t0}
+\end{equation}
+Note that equation \ref{solution2_t0} is identical to equation \ref{solution1_t0}, meaning that the solution of each $C$ in terms of $a$, $b$, and $c$ are the same. So, the solution to each $C$ in the current differential equation is the same as described in equation \ref{C_solutions}. With this information, we can craft the following general solution in terms of $a$, $b$, and $c$.
+\begin{equation}
+\mathbf{y} = \bigg(\frac{b}{2}+\frac{c}{2}\bigg)e^{-t} \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}
++ (a)e^{4t} \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
++ \bigg(\frac{b}{2}-\frac{c}{2}\bigg)e^{-3t} \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}
+\label{init_cond_solution2}
+\end{equation}
+/*Transformation*/
+\begin{equation}
+F_t(a,b,c) = (ae^{4t}, \bigg(\frac{b}{2}+\frac{c}{2}\bigg)e^{-t}+\bigg(\frac{b}{2}-\frac{c}{2}\bigg)e^{-3t}, 
+\bigg(\frac{b}{2}+\frac{c}{2}\bigg)e^{-t}-\bigg(\frac{b}{2}-\frac{c}{2}\bigg)e^{-3t})
+\label{transformation2}
+\end{equation}
+We can break down this transformation into the Jacobi matrix, $DF_t$.
+\begin{equation*}
+DF_t = \begin{pmatrix} e^{4t} & 0 & 0	\\
+0 & \frac{1}{2}(e^{-t}+e^{-3t}) & \frac{1}{2}(e^{-t}-e^{-3t}) \\[1ex]
+0 & \frac{1}{2}(e^{-t}-e^{-3t}) & \frac{1}{2}(e^{-t}+e^{-3t}) \end{pmatrix}
+\end{equation*}
+The value of $\det(DF_t)$ of this transformation represents the stretch factor after $t$ seconds.
+\begin{equation*}
+\det(DF_t) = e^{4t}\bigg(\Big(\frac{e^{-t}+e^{-3t}}{2}\Big)^2-\Big(\frac{e^{-t}-e^{-3t}}{2}\Big)^2\bigg)
+\end{equation*}
+Which all simplifies to 
+\begin{equation*}
+\det(DF_t) = e^{4t}\cdot(e^{-4t})=1
+\label{stretch2_Ft}
+\end{equation*}
+The meaning of this result is that /**/
+\end{document}

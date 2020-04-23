@@ -1,0 +1,128 @@
+%THE DOCUMENT
+\documentclass[leqno]{amsart}
+
+%MATH PACKAGES:
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%ORGANIZATION PACKAGES:
+\usepackage{subfiles}
+\usepackage{import}
+\usepackage{nameref,zref-xr}
+\zxrsetup{toltxlabel}
+
+%MISCELLANEOUS PACKAGES:
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{adjustbox}
+\usepackage{subcaption}
+%\usepackage[shortlabels]{enumitem}
+
+%TIKZ:
+\usepackage{tikz}
+\usetikzlibrary{cd}
+
+%NUMBERS:
+\newcommand{\cdscale}{1.5}
+\newcommand{\varparskip}{1em}
+
+%THEOREM SETTINGS
+\theoremstyle{definition}
+
+%SETTINGS
+\setlength{\parindent}{0em}
+\setlength{\parskip}{\varparskip}
+%\setlist[itemize]{noitemsep, topsep=0pt}
+
+%NOTE COMMANDS
+\newcommand{\sean}[1]{\textcolor{purple}{#1}}
+\newcommand{\iva}[1]{\textcolor{purple}{#1}}
+\newcommand{\toadd}[1]{/*#1*/}
+
+%MATH SHORTCUT COMMANDS
+%justified shortcuts
+\DeclareMathOperator{\vect}{Vect}
+\DeclareMathOperator{\id}{Id}
+\newcommand{\iso}{\cong} %isomorphic symbol
+\newcommand{\siso}{\approx_s} %stably isomorphic
+\newcommand{\tiso}{\approx} 
+\newcommand{\pset}[1]{\mathcal{P} (#1)} %power set
+\newcommand{\KR}{\widetilde{K}} 
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\eset}{\emptyset}
+\newcommand{\rest}[2]{{#1} \vert_{#2}}
+\newcommand{\vecxx}[2]{#1 \choose #2}
+%shortcuts for my extreme laziness
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\F}{\mathcal{F}} 
+\newcommand{\tbund}[1]{\varepsilon^{#1}}
+\newcommand{\op}{\oplus} 
+\newcommand{\ot}{\otimes} 
+\newcommand{\RK}[1]{\widetilde{K}(#1)}
+
+\begin{document}
+	\title{Thesis Talk Outline}
+	\author{Sean Richardson}
+	\maketitle
+	\begin{enumerate}
+		\item Give intuitive introduction to vector bundles with lots of examples.
+			\begin{enumerate}
+				\item Tangent bundle to sphere
+				\item Mobius Strip
+				\item Trivial bundle definition
+			\end{enumerate}
+		\item Give necessary background to understand definition of V.B.
+			\begin{enumerate}
+				\item Topology motivation: Motivate the definition of open sets and continuous functions with visual $\R \to \R$ example.
+				\item Give intuition for generalization with visual examples on sphere.
+				\item Briefly address formal definition of topology and continuous functions.
+			\end{enumerate}
+		\item Give formal definition of a vector bundle, but emphasize a vector bundle as a bunch of fibers.
+		\item Go over goal of the talk: given a topological space, want to translate the vector bundles over the topological space into a ring.
+		\item Necessary algebra: 
+			\begin{enumerate}
+				\item \toadd{ring completion now? maybe later when there is better motivation for it}
+				\item Motivation: need addition and multiplication due to V.B's being a union of fibers, turn to V.S's.
+				\item Direct sum and tensor product on vector spaces with relevant properties.
+			\end{enumerate}
+		\item Extending direct sum and tensor product to V.B's by applying V.S. operations to each fiber.
+			\begin{enumerate}
+				\item Intuition for extending direct sum and tensor product
+				\item Address identity elements for each operation
+				\item Talk about $E \op E'$ trivial result. \toadd{but maybe later when there is more motivation}
+			\end{enumerate}
+		\item Go through operations of a ring and point out everything works except for additive inverses
+		\item Another Algebra tangent:
+			\begin{enumerate}
+				\item What we have is a semiring \dots give definition of a semi ring.
+				\item Example of a semiring: $\N \cup \set{0}$. Adding in the additive inverses gives $\Z$.
+				\item This idea can be formalized so that every semiring has a unique ring extension so long as ... multiplication is commutative and ... there is the additive cancellation law
+				\item Commutativity is good, but note that we have no tools that would promise an additive cancellation law
+			\end{enumerate}
+		\item Quest for getting cancellation property
+			\begin{enumerate}
+				\item However, here is a tool that could be of some use: ($E \op E'$ trivial theorem)
+				\item Show some work trying to use this cancellation property:
+				\begin{align*}
+					&E \op F \iso E' \op F\\
+					&E \op (F \op F') \iso E' \op (F \op F')\\
+					&E \op \tbund{n} \iso E' \op \tbund{n}
+				\end{align*}
+				\item However all we get is (above). BUT now introduce very convenient equivalence relation: $E \siso E'$ if we have what is given above. Using this, we do have cancellation property! Adding in equivalence relation brings some complications with it (well-defined, etc.) but it all works out.
+			\end{enumerate}
+		\item Summary slide for the definition of K-Theory
+	\end{enumerate}
+\end{document}
+
+
+
+
+
+

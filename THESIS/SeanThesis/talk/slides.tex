@@ -1,0 +1,198 @@
+\documentclass[12pt]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+\usepackage{subcaption}
+\usepackage{siunitx}
+
+\title{Complex Topological K-Theory}
+\date{\today}
+\author{Sean Richardson '20}
+\institute{Department of Mathematical Sciences, Lewis \& Clark College}
+
+%NOTE COMMANDS
+\newcommand{\sean}[1]{\textcolor{purple}{#1}}
+\newcommand{\iva}[1]{\textcolor{purple}{#1}}
+\newcommand{\toadd}[1]{/*#1*/}
+
+%MATH SHORTCUT COMMANDS
+%justified shortcuts
+\DeclareMathOperator{\vect}{Vect}
+\DeclareMathOperator{\id}{Id}
+\newcommand{\iso}{\cong} %isomorphic symbol
+\newcommand{\siso}{\approx_s} %stably isomorphic
+\newcommand{\tiso}{\approx} 
+\newcommand{\pset}[1]{\mathcal{P} (#1)} %power set
+\newcommand{\KR}{\widetilde{K}} 
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\eset}{\emptyset}
+\newcommand{\rest}[2]{{#1} \vert_{#2}}
+\newcommand{\vecxx}[2]{#1 \choose #2}
+%shortcuts for my extreme laziness
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\F}{\mathcal{F}} 
+\newcommand{\tbund}[1]{\varepsilon^{#1}}
+\newcommand{\op}{\oplus} 
+\newcommand{\ot}{\otimes} 
+\newcommand{\RK}[1]{\widetilde{K}(#1)}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction to Vector Bundles}
+
+\begin{frame}{Vector Fields}
+	\toadd{use vector fields in $\R^2$ and question of what do these vector fields live as motivation}
+\end{frame}
+
+\begin{frame}{Vector Fields on Sphere}
+	\toadd{extend to tangent vector fields on a sphere. Break away from the vector fields and emphasize the object itself}
+\end{frame}
+
+\begin{frame}{The Cylinder}
+	\toadd{Show construction of cylinder}
+\end{frame}
+
+\begin{frame}{The Mobius Band}
+	\toadd{Show construction of Mobius Band}
+\end{frame}
+
+\begin{frame}{Trivial Bundle}
+	\toadd{Emphasize cylinder as an example of a trivial bundle. Necessary for giving definition of vector bundle}
+\end{frame}
+
+\section{Topology Interlude}
+
+\begin{frame}{Continuous Functions and Open Sets}
+	\toadd{Give picture of a continuous and noncontinuous function $\R \to \R$ and emphasize the connection between continuity and open sets}
+\end{frame}
+
+\begin{frame}{Continuous Functions between Objects}
+	\toadd{Generalize to a visual example of looking at the open sets and continuous functions between two topological spaces}
+\end{frame}
+
+\begin{frame}{Some Formal Topology}
+	\toadd{Briefly give the formal definitions of a topological space and continuous functions in topology}
+\end{frame}
+
+
+\section{Back to Vector Bundles}
+
+\begin{frame}{The Definition of a Vector Bundle}
+	\toadd{Now ready to give a formal definition of V.B. Do this with some visual example as an aid}
+\end{frame}
+
+\begin{frame}{How to Think About Vector Bundles}
+	\toadd{Emphasize what vector bundles are: topological objects but also a bunch of vector spaces shoved together. Introduce the vocabulary of fiber here}
+\end{frame}
+
+\begin{frame}{Homomorphisms on Vector Bundles}
+	\toadd{Give definition of a homomorphism between vector bundles with an example as a visual aid}
+\end{frame}
+
+\begin{frame}{The Objective}
+	\toadd{Formulate an objective for the talk: Take a topological object and use the vector bundles over that object to create a ring}
+\end{frame}
+
+\section{Algebra Interlude}
+
+\begin{frame}{Definition of a Ring}
+	\toadd{Give very brief definition of a ring for those unfamiliar}
+\end{frame}
+
+%MOTIVATION: Need operations on vector bundles. Because of the V.S. structure of V.B's, turn to V.S's.
+
+\begin{frame}{The Direct Sum Operation on Vector Spaces}
+	\toadd{Give some kind of definition of direct sum... will probably end up using the cartesian product}
+\end{frame}
+
+\begin{frame}{The Tensor Product Operation on Vector Spaces}
+	\toadd{Give some kind of definition of tensor product. Honestly not sure how to do this so that it is accessible. I could say ``tensor product is a thing that gives distribution over direct sum'' and leave it there...?}
+\end{frame}
+
+\begin{frame}{Properties of Direct Sum and Tensor Product}
+	\toadd{Give list of nice properties of tensor product an direct sum (associativity, commutativity, distributativity...)}
+\end{frame}
+
+\section{Extending Vector Space Operations to Vector Bundles}
+
+\begin{frame}{Extending Direct Sum to Vector Bundles}
+	\toadd{Emphasize that a V.B. is a simply a bunch of fibers, so can simply apply the direct sum operation to each fiber}
+	\toadd{Mention that there is more to do (give a topology and check local triviality, but it all works out)}
+\end{frame}
+
+\begin{frame}{Example of Direct Sum of Vector Bundles}
+	\toadd{Some sort of example of direct sum... not sure what a good choice here would be}
+\end{frame}
+
+\begin{frame}{Extending Tensor Product to Vector Bundles}
+	\toadd{Say that tensor product is basically the same thing as direct sum ... apply the T.P. operation to each fiber}
+\end{frame}
+
+\begin{frame}{The Ring Properties of Vector Bundles}
+	\toadd{side by side comparison of properties of vector bundles and properties of a ring. Emphasize lack of additive identity}
+\end{frame}
+
+\section{Another Algebra Interlude}
+
+\begin{frame}{Semirings}
+	\toadd{def of semiring, example of $\N \cup \set{0}$}
+\end{frame}
+
+\begin{frame}{Ring Extension}
+	\toadd{$\N \cup \set{0}$ extends to $\Z$. This generalizes given ... commutativity of multiplication and additive cancellation law}
+\end{frame}
+
+\begin{frame}{The Semiring Properties of Vector Bundles}
+	\toadd{side by side comparison of properties of vector bundles and properties of ring. Emphasize lack of cancellation law}
+\end{frame}
+
+\section{Quest for the Additive Cancellation Property}
+
+\begin{frame}{Useful Tool}
+	\toadd{Mention that given certain constraints, for any bundle $E$ there exists a bundle $E'$ such that $E \op E'$ is trivial}
+	\toadd{Include visual example of this... the best visual example might be the normal and tangent bundles on a sphere}
+\end{frame}
+
+\begin{frame}{An Attempt at Using the Tool}
+	\toadd{
+		Show some work trying to use this as a cancellation property:
+		\begin{align*}
+			E \op F &\iso E' \op F\\
+			E \op (F \op F') &\iso E' \op (F \op F')\\
+			E \op \tbund{n} &\iso E' \op \tbund{n}
+		\end{align*}
+	}
+\end{frame}
+
+\begin{frame}{A Convenient Equivalence Relation}
+	\toadd{
+	the work on the previous slide motivates the equivalence relation $E \siso E'$ if $E \op \tbund{n} \iso E' \op \tbund{n}$ for some $n$.
+	}
+	\toadd{mention the complications of introducing an equivalence relation (well-defined) but it all works out}
+
+\end{frame}
+
+\section{The Definition of K-Theory}
+
+\begin{frame}{K-Theory}
+	\toadd{A summary slide that gives the definition of K-Theory}
+\end{frame}
+
+\begin{frame}{???}
+	\toadd{ideas on how to expand:
+		\begin{itemize}
+			\item Incorporate category theory and talk about K-Theory as a functor. Would require introducing pullback bundles and putting more emphasis on homomorphisms.
+			\item Introduce cohomology theory and explain how K-Theory extends to a cohomology theory (would probably require the above)
+			\item Work towards the division algebra  application. A semi-manageable goal would be the proof showing odd dimensions are impossible (would probably require the above)
+		\end{itemize}
+	}
+\end{frame}
+
+\end{document}

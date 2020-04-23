@@ -1,0 +1,46 @@
+\contentsline {section}{\tocsection {}{1}{General Advice}}{1}
+\contentsline {subsection}{\tocsubsection {}{1.1}{General Approaches}}{2}
+\contentsline {subsection}{\tocsubsection {}{1.2}{General Tools}}{2}
+\contentsline {section}{\tocsection {}{2}{Number Theory}}{2}
+\contentsline {subsection}{\tocsubsection {}{2.1}{Approaches}}{2}
+\contentsline {subsection}{\tocsubsection {}{2.2}{Useful Results}}{2}
+\contentsline {section}{\tocsection {}{3}{Algebra}}{2}
+\contentsline {subsection}{\tocsubsection {}{3.1}{Approaches}}{2}
+\contentsline {subsection}{\tocsubsection {}{3.2}{Useful Results}}{3}
+\contentsline {section}{\tocsection {}{4}{Geometry}}{3}
+\contentsline {subsection}{\tocsubsection {}{4.1}{Approaches}}{3}
+\contentsline {subsection}{\tocsubsection {}{4.2}{Useful Results}}{3}
+\contentsline {section}{\tocsection {}{5}{Linear Algebra}}{3}
+\contentsline {subsection}{\tocsubsection {}{5.1}{Approaches}}{3}
+\contentsline {subsection}{\tocsubsection {}{5.2}{Useful Results}}{4}
+\contentsline {section}{\tocsection {}{6}{Combinatorics}}{4}
+\contentsline {subsection}{\tocsubsection {}{6.1}{Approaches}}{4}
+\contentsline {subsubsection}{\tocsubsubsection {}{6.1.1}{Advanced Combinatorics}}{4}
+\contentsline {subsection}{\tocsubsection {}{6.2}{Useful Results}}{4}
+\contentsline {section}{\tocsection {}{7}{Graph Theory}}{4}
+\contentsline {subsection}{\tocsubsection {}{7.1}{Approaches}}{4}
+\contentsline {subsection}{\tocsubsection {}{7.2}{Useful Results}}{4}
+\contentsline {section}{\tocsection {}{8}{Analysis}}{4}
+\contentsline {subsection}{\tocsubsection {}{8.1}{Approaches}}{4}
+\contentsline {subsection}{\tocsubsection {}{8.2}{Useful Results}}{5}
+\contentsline {section}{\tocsection {}{9}{Calculus}}{5}
+\contentsline {subsection}{\tocsubsection {}{9.1}{Approaches}}{5}
+\contentsline {subsection}{\tocsubsection {}{9.2}{Useful Results}}{5}
+\contentsline {section}{\tocsection {}{10}{Differential Equations}}{5}
+\contentsline {subsection}{\tocsubsection {}{10.1}{Approaches}}{5}
+\contentsline {subsection}{\tocsubsection {}{10.2}{Useful Results}}{5}
+\contentsline {section}{\tocsection {}{11}{Abstract Algebra}}{5}
+\contentsline {subsection}{\tocsubsection {}{11.1}{Approaches}}{5}
+\contentsline {subsection}{\tocsubsection {}{11.2}{Useful Results}}{5}
+\contentsline {section}{\tocsection {}{12}{Set Theory}}{5}
+\contentsline {subsection}{\tocsubsection {}{12.1}{Approaches}}{5}
+\contentsline {subsection}{\tocsubsection {}{12.2}{Useful Results}}{5}
+\contentsline {section}{\tocsection {}{13}{General}}{6}
+\contentsline {section}{\tocsection {}{14}{Useful Results}}{6}
+\contentsline {section}{\tocsection {}{15}{Problems}}{6}
+\contentsline {subsection}{\tocsubsection {}{15.1}{Putnam}}{6}
+\contentsline {subsection}{\tocsubsection {}{15.2}{Olympiads}}{6}
+\contentsline {subsection}{\tocsubsection {}{15.3}{Books}}{6}
+\contentsline {subsection}{\tocsubsection {}{15.4}{BSM}}{7}
+\contentsline {subsection}{\tocsubsection {}{15.5}{School}}{7}
+\contentsline {subsection}{\tocsubsection {}{15.6}{Other}}{8}

@@ -1,0 +1,223 @@
+\documentclass[../sean_thesis.tex]{subfiles}
+
+\begin{document}
+
+\chapter{The Definition of K-Theory}
+
+K-Theory is a functor from the category of topological spaces to the category of rings. Topological spaces are messy, making it difficult to understand properties about topological spaces and homomorphisms between topological spaces. However, groups and rings are simple algebraic objects with much structure --- an easier object to analyze. 
+
+The K-Theory functor first considers all possible vector bundles over a topological space. Looking at every possible bundle is too much information, but it turns out that after simplifying the set to equivalence classes of vector bundles, a ring structure emerges.
+
+There are two veins of K-Theory; the difference is in the equivalence classes used to reduce the set of vector bundles. First, there is the \emph{K-Theory} of a topological space $X$, denoted $K(X)$. In this case, the equivalence classes have a natural semiring structure and the ring is defined through the ring extension. Secondly, there is the \emph{reduced K-Theory} of a topological space $X$, denoted $\KR(X)$, which has bigger equivalence classes. In reduced K-Theory, the equivalence classes themselves can be made directly into a ring. In both K-Theory and reduced K-Theory, the functor is contravariant.
+    
+\section{The K-Theory Functor $\mathbf{K}$}
+
+\toadd{give motivation of this equivalence relation --- it is what gives us the cancellation property}
+
+%DEFINITION OF K-THEORY ON OBJECTS
+
+The equivalence relation used in K-Theory to simplify the set of  vector bundles is as follows.
+
+\begin{definition}[Stably Isomorphic]
+	Define the equivalence relation $\siso$ on vector bundles over the same base space such that for bundles $E_1$ and $E_2$, $E_1 \siso E_2$ if $E_1 \op \tbund{n} \tiso E_2 \op \tbund{n}$ for some $n$ where $\tbund{n}$ denotes the $n$ dimensional trivial bundle. Here, $E_1$ and $E_2$ are said to be \emph{stably isomorphic}.
+\end{definition}
+
+This equivalence relation gives a natural semiring structure on the equivalence classes.
+
+\begin{claim}
+\label{thm:k_theory_semiring}
+	Take compact Hausdorff base space $X$. The set of all stably isomorphic equivalence classes over the vector bundles on $X$ forms a commutative semiring with cancellation when taking the direct sum $\op$ as the additive operation and the tensor product $\ot$ as the multiplicative operation. This semiring is denoted $J(X)$.
+\end{claim}
+
+%NOTE TO READER ON VERIFICATION OF ABOVE:
+Proving the above claim takes some work, but the full proof is given in section~\ref{sec:semiring_verification} of this chapter. Most of the proof is routine verification, but getting the cancellation property and verifying that multiplication is well-defined appeals to \toadd{ref}, which is where the compact Hausdorff condition is used. Because this semiring is commutative with the cancellation property, it is most convenient to consider the unique commutative ring promised through ring completion.
+
+\begin{definition}[K-Theory of a Topological Object]
+	Take compact Hausdorff base space $X$ and let $J(X)$ denote the commutative semiring with cancellation as described in claim. Then, the ring completion of $J(X)$ is the \emph{K-Theory of $X$} and is denoted $K(X)$.
+\end{definition}
+
+%EXAMPLES:
+Next, consider the following computations of K-Theory on simple topological spaces.
+
+\begin{example}[K-Theory of a point]
+	Consider as a topological space a single point $\set{x_0}$. The only choice of vector bundles on $\set{x_0}$ are the trivial bundles of each dimension. That is, the set $\set{\tbund{0}, \tbund{1}, \tbund{2}, \dots}$. No two trivial bundles will be in the same stable isomorphism class, giving the set of equivalence classes $\set{[\tbund{0}], [\tbund{1}], [\tbund{2}], \dots}$, which is isomorphic to the semiring $\N$. So, the ring $K(\set{x_0})$ is the ring completion of $\N$. That is, $K(\set{x_0}) \iso \Z$.
+\end{example}
+
+\begin{example}[K-Theory of $n$ points]
+	Consider the topological space of $n$ disconnected points $\set{x_0, x_2, \dots, x_{n-1}}$. Then, each point can have a fiber of any dimension, and the choice of fibers is independent of one another. This gives that the set of all vector bundles is isomorphic to the set $\N^n$. Then, any arbitrary vector bundle over the space can be denoted $(\tbund{k_0}, \tbund{k_1}, \dots, \tbund{k_{n-1}})$ where the first element in the tuple represents the bundle over the first disconnected point, the second element represents the bundle over the second, and so on. The equivalence classes can then be represented $[(\tbund{k_0}, \tbund{k_1}, \dots, \tbund{k_{n-1}})]$, and in this case every vector bundle is its own equivalence class, and so this is isomorphic to the semiring $\N^n$, which has ring completion $\Z^n$. Thus, $K(\set{x_0, x_1, \dots, x_{n-1}}) \iso \Z^n$.
+\end{example}
+
+%NOTE TO READER ON BELOW DEFINITION:
+However, defining the K-theory on topological objects only brings the operation half way to being a functor. Functors map objects to objects but also morphisms to morphism. Just as K-Theory brings topological spaces to rings, K-Theory must bring continuous functions between topological spaces to homomorphisms of rings. In this case, K-Theory is a contravariant functor and so reverses the direction of the mapping.
+
+%DEFINITION OF K FUNCTOR ON MORPHISMS
+\begin{claim}
+\label{thm:hm_of_semirings}
+	Take topological spaces $X$ and $Y$ with a continuous function $f: X \to Y$. Let $J(X)$ denote the semiring as described in claim~\ref{thm:k_theory_semiring} and let $K(Y)$ be the K-Theory of $Y$. Further, define the function $J(f): J(X) \to K(Y)$ defined on an equivalence class $[E] \in J(X)$ by
+	\begin{equation*}
+		J(f): [E] \mapsto [f^{*}(E)]
+	\end{equation*}
+where $f^{*}$ denotes the pullback as defined in \toadd{ref}. Then, $J(f)$ is a well-defined homomorphisms of semirings.
+\end{claim}
+
+Verifying the above follows easily from the properties of pullback given in \toadd{ref}. The full proof is given in section~\ref{sec:hm_of_semirings_verification}. Note that this is the point where the contravariant property emerges. Because the elements of the semiring is equivalence classes of vector bundles, a homomorphism consists of mappings from one vector bundle to another vector bundle. This is best done through the induced vector bundle by the pullback which, as discussed previously, must be done in the reverse direction.
+
+\begin{definition}[K-Theory of a Topological Morphism]
+\label{def:k_theory_obj}
+	For compact Hausdorff spaces $X$ and $Y$ with a continuous function $f: X \to Y$, let $J(f): J(X) \to J(Y)$ denote the homomorphism of semirings as described in claim~\ref{thm:hm_of_semirings}. Further, let $i_X: J(X) \to K(X)$ and $i_Y: J(Y) \to K(Y)$ denote ring completions. Then, the \emph{K-Theory of $f$} is the unique homomorphism of rings $K(f): K(X) \to K(Y)$ such that the following diagram commutes as promised by the universal property. That is, that $K(f) \circ i_X = i_Y \circ J(f)$.
+	
+\begin{figure}[ht!]
+	\input{figures/ktheory_def/ktheory_univ_property}
+	\caption{Definition of $K(f)$ through Universal Property}
+	\label{fig:ktheory_univ_property}
+\end{figure}
+\end{definition}
+
+%NOTE TO READER:
+And that is the definition of K-Theory! Figure~\ref{fig:ktheory_functor} denotes a diagram of the K-Theory functor. Next, observe how the K-Theory functor on the following examples of concrete topological spaces.
+
+%DIAGRAM:
+\begin{figure}
+\input{figures/ktheory_def/ktheory_functor}
+\caption{The K-Theory Functor}
+\label{fig:ktheory_functor}
+\end{figure}
+
+\begin{example}
+	This example examines the K-Theory of the inclusion from the space with one point to the space with $n$ points.
+	So, Take the topological space of $n$ points $\set{x_0, x_1, \dots, x_{n-1}}$ and consider the subspace $\set{x_0} \subset \set{x_0, \dots, x_{n-1}}$. Then, let $i: \set{x_0} \to \set{x_0, \dots, x_{n-1}}$ be the inclusion map.
+	
+	Recall that the equivalence classes of vector bundles over $x_0$ can be represented $[\tbund{n}]$ and the equivalence classes over $\set{x_0, x_1, \dots, x_{n-1}}$ can be represented $[(\tbund{k_0}, \tbund{k_1}, \dots, \tbund{k_{n-1}})]$. Then, by definition the function $J(i): J(\set{x_0, \dots, x_{n-1}}) \to J(\set{x_0})$ is given by
+	\begin{equation*}
+		J(i): [(\tbund{k_0}, \tbund{k_1}, \dots, \tbund{k_{n-1}})] \mapsto [i^{*}(\tbund{k_0}, \tbund{k_1}, \dots, \tbund{k_{n-1}})]
+	\end{equation*}
+	Recall that the pullback of the inclusion is simply the restriction to the space in the domain. In this case, that is the restriction to the point $x_0$ and so function $J(i)$ is
+	\begin{equation*}
+		J(i): [(\tbund{k_0}, \tbund{k_1}, \dots, \tbund{k_{n-1}})] \mapsto [\tbund{k_0}]
+	\end{equation*}
+	Now step away from the vector bundles themselves and let $J(i)$ denote the semiring homomorphism $J(i): \N^n \to \N$ given by $J(i): (k_0, k_1, \dots, k_{n-1}) \mapsto k_0$. Finally, consider the ring completions $\Z^n$ and $\Z$. The universal property then promises a unique ring homomorphism $K(i): \Z^n \to \Z$. In this case, the ring homomorphism is given by $K(i): (k_0, k_1, \dots, k_{n-1}) \mapsto k_0$, but this time, each $k_i$ can take on the value of any integer. See figure~\ref{fig:k_morphism_ex} for a visual of this construction.
+\begin{figure}
+	\include{figures/ktheory_def/k_morphism_ex}
+	\caption{K-Theory of a Morphism Example}
+	\label{fig:k_morphism_ex}
+\end{figure}
+\end{example}
+
+\section{The Reduced K-Theory Functor $\mathbf{\KR}$}
+There is another closely related vein of K-Theory called \emph{reduced K-Theory}. Reduced K-Theory is a is a functor from the category of topological spaces to the category of abelian groups. However, with as assumption discussed later, this functor can be extended to the category of commutative rings (but not necessarily with identity). Reduced K-Theory uses a stronger equivalence relation, which gives fewer equivalence classes.
+
+%GROUP STRUCTURE
+\begin{definition}
+	\label{def:eq_rel_rk}
+	Define the equivalence relation $\sim$ on vector bundles $E_1$ and $E_2$ over the same base space such that $E_1 \sim E_2$ if $E_1 \op \tbund{n} \biso E_2 \op \tbund{m}$ for some $n$ and $m$. 
+\end{definition}
+
+Then, this equivalence class immediately gives rise to the desired group.
+
+\begin{definition}
+	Take a compact Hausdorff topological space $X$ and let $\KR(X)$ denote the set of all equivalence classes under the relation $\sim$ as described in definition~\ref{def:eq_rel_rk}. Then, define the group operation by the direct sum $\op$ operation on the elements. This forms a well-defined abelian group and is called the \emph{reduded K-Theory} of $X$.
+\end{definition}
+
+The verification that $\KR(X)$ indeed forms a well-defined group is straight-forward, but it is worth noting that the existence of inverses uses \toadd{ref}, which requires the compact Hausdorff condition.
+
+Consider some simple computation of reduced K-Theory.
+
+\begin{example}[Reduced K-Theory of a Point]
+	Again as a topological space a single point $\set{x_0}$. The only choice of vector bundles on $\set{x_0}$ is the set trivial bundles $\set{\tbund{0}, \tbund{1}, \tbund{2}, \dots}$. In this case, however, each trivial bundle is in the same isomorphism class, so the set of equivalence classes has only the identity element $\tbund{0}$. So, the reduced K-Theory of a point $\KR(\set{x_0})$ is the trivial group.
+\end{example}
+
+It must still be addressed how reduced K-Theory maps continuous topological maps to group morphisms, which again makes use of the pullback.
+
+\begin{definition}[Reduced K-Theory of a Topological Morphism]
+	Let $f: Y \to X$ denote a continuous function between topological spaces. Then the induced mapping $\KR(f): \KR(X) \to \KR(Y)$ is defined by
+	\begin{equation*}
+		\KR(f): [E] \mapsto [f^{*}(E)]
+	\end{equation*}
+	where the equivalence classes are with respect to the relation $\sim$ as in definition~\ref{def:eq_rel_rk}.
+\end{definition}
+
+\toadd{verify well-defined}
+
+It first must be verified that the above mapping of functions is well-defined, which is done in \toadd{ref}. But once well-defined is out of the way, the properties of pullback $\id^{*}(E) \biso E$ and $(f\circ g)^{*}(E) \biso g^{*}(f^{*}(E))$ immediately give that $\KR$ obeys the rules for functors.
+
+Now consider the following example, which demonstrates an important relationship between the functors $K$ and $\KR$.
+\begin{example}[Reduced K-Theory of $n$ points]
+\label{ex:kr_n_points}
+	Consider the topological space of $n$ disconnected points $\set{x_0, x_2, \dots, x_{n-1}}$. Again, each fiber is free to have a vector space of any dimension, so any arbitrary vector bundle over the space can be denoted $(\tbund{k_0}, \tbund{k_1}, \dots, \tbund{k_{n-1}})$. The equivalence classes under $\sim$ are then represented $[(\tbund{k_0}, \tbund{k_1}, \dots, \tbund{k_{n-1}})]_{\sim}$. In this case, every equivalence class has more than one element. In particular, $(\tbund{k_0}, \tbund{k_1}, \dots, \tbund{k_{n-1}}) \sim (\tbund{l_0}, \tbund{l_1}, \dots, \tbund{l_{n-1}})$ if there exists bundles $\tbund{k}$ and $\tbund{l}$ such that 
+	\begin{equation*}
+		(\tbund{k_0} \op \tbund{k}, \tbund{k_1} \op \tbund{k}, \dots, \tbund{k_{n-1}} \op \tbund{k})
+		\biso
+		(\tbund{l_0} \op \tbund{l}, \tbund{l_1} \op \tbund{l}, \dots, \tbund{l_{n-1}} \op \tbund{k})
+	\end{equation*}
+By simply ditching the ``$\varepsilon$'' symbol, there is an isomorphism to equivalence classes of $n$ tuples of integers $[(k_0, k_1, \dots, k_{n-1})]$ where $(k_0, k_1, \dots, k_{n-1}) \sim (l_0, l_1, \dots, l_{n-1})$ if there exists integers $k$ and $l$ such that
+\begin{equation*}
+	(k_0 + k, k_1 + k, \dots, k_{n-1} + k) = (l_0 + l, l_1 + l, \dots, l_{n-1} + l)
+\end{equation*}
+Additionally, the group operation is element wise addition as is taken from the representation with ``$\varepsilon$''. Note that all of the $k$'s and $l$'s are allowed to be any integer but they originally represented the dimension of a trivial bundle, so it seems they should only be nonnegative integers. However, expanding the elements to integers does not change the group, for every new element containing a negative integer will land in a preexisting equivalence class.
+
+And so, elements in reduced K-Theory are of the form of equivalence classes $[(k_0, k_1, \dots, k_{n-1})]$ with the  relation as defined earlier.
+
+However, this does not clear up what this reduced K-Theory is isomorphic to. The bottom line is that the reduced K-Theory of $n$ points is isomorphic to the group $\Z^{n-1}$. There are a few ways to see this, but the most educational is with the following.
+
+Fix the point $x_0 \in \set{x_0, \dots, x_{n-1}}$ and consider the K-Theory groups $K(\set{x_0, \dots, x_{n-1}})$ and $K(\set{x_0})$. The goal will be to construct a homomorphism $\varphi: \KR(\set{x_0, \dots, x_{n-1}}) \to K(\set{x_0, \dots, x_{n-1}})$ and use $\varphi$ with the mapping $K(i): K(\set{x_0, \dots, x_{n-1}})$ as defined previously. Overall, this will give the chain of mappings as shown in figure~\ref{fig:n_points_rk_cd}. Additionally takes note of the isomorphisms $K(\set{x_0, \dots, x_{n-1}}) \iso \Z^n$ and $K(\set{x_0}) \iso \Z$.
+
+Now, define $\varphi$ on the discussed representations on the K-Theory and reduced K-Theory of $n$ points as follows.
+
+\begin{equation*}
+	\varphi: [(k_0, k_1, \dots, k_{n-1})] \to (0, k_1-k_0, \dots, k_{n-1}-k_0)
+\end{equation*}
+
+The verification that $\varphi$ is indeed a group homomorphism follows easily. \toadd{ref}. Now recall that $K(i)$ is given by the following.
+
+\begin{equation*}
+	K(i): (l_0, l_1, \dots, l_{n-1}) \mapsto l_0
+\end{equation*}
+
+Now make a two observations. Firstly, $\im(\varphi) = \ker(K(i))$. Secondly, $\varphi$ is injective. The proofs for both of these are brief and given in \toadd{ref}. $\varphi$ injective gives $\KR(\set{x_0, \dots, x_{n-1}}) \iso \im(\varphi)$ which then gives the relationship
+\begin{equation*}
+	\KR(\set{x_0, \dots, x_{n-1}}) \iso \ker(K(i))
+\end{equation*}
+Lastly note that element of the kernel are of the form $(0,l_1, \dots, l_{n-1})$ for any choice of $l$'s, so the kernel is isomorphic to $\Z^{n-1}$. Overall, this gives
+$\KR(\set{x_0, \dots, x_{n-1}}) \iso \Z^{n-1}$.
+
+%To see this, first note that $K(i) \circ \varphi$ always maps to $0$, which gives $\im(\varphi) \subset \ker(K(i))$. For the reverse direction, note that any element of the kernel $(0, l_1, \dots, l_{n-1})$ has the preimage $[(0, l_1, \dots, l_{n-1})]$.
+%
+%The second observation is that $\varphi$ is injective. To see this, assume $\varphi([k_0, k_1, \dots, k_{n-1}]) = \varphi([l_0, l_1, \dots, l_{n-1}])$. This gives 
+%\begin{equation*}
+%	(k_0-k_0, k_1-k_0, \dots, k_{n-1} - k_0)
+%\end{equation*}
+%
+%Firstly, $\varphi$ is injective, which is verified in \toadd{ref}. 
+
+\end{example}
+
+\begin{figure}[ht!]
+	\include{figures/ktheory_def/n_points_rk_cd}
+	\caption{Chain of Homomorphisms for n-points example}
+	\label{fig:n_points_rk_cd}
+\end{figure}
+
+The above example found the reduced K-Theory by demonstrating that $\KR(\set{x_0, \dots, x_{n-1}})$ is isomorphic to $\ker(K(i)).$ In fact, a relationship like this exists in general. For any topological space $X$ with a fixed point $x_0 \in X$ and inclusion $i: x_0 \to X$, the relationship $\KR(X) \iso \ker(K(i))$ holds. The proof of this uses tools developed in the next chapter, but the above example gives a taste of the proof. A consequence of this, however, is that $K(i)$ is a ring homomorphism, so $\ker(K(i))$ is an ideal. Then $\KR(X)$ is isomorphic to this ideal and thus can be given a multiplication. Thus, we can consider $\KR(X)$ to be a ring, but not necessarily with identity.
+
+The computed examples hint at another relationship between K-Theory and reduced K-Theory. Note that for a point $\set{x_0}$, $K(\set{x_0}) \iso \Z$ and $\KR(\set{x_0}) \iso \set{0}$. The computations for a collection of points $\set{x_0, x_1, \dots, x_{n-1}}$ showed $K(\set{x_0, x_1, \dots, x_{n-1}}) \iso \Z^n$ and $\KR(\set{x_0, x_1, \dots, x_{n-1}}) \iso \Z^{n-1}$. Note that $\Z \iso \set{0} \op Z$ and more generally, $\Z^n \iso \Z^{n-1} \op \Z$. More generally, it is true that $K(X) \iso \KR(X) \op \Z$ for any topological space $X$, but this proof again uses techniques of the following chapter.
+
+\section{Verifications}
+\subsection{Semiring Verification}
+\label{sec:semiring_verification}
+\subfile{Appendix/ktheory_def/semiring_verification}
+
+\subsection{Homomorphism of Semirings Verification}
+\label{sec:hm_of_semirings_verification}
+\subfile{Appendix/ktheory_def/hm_of_semirings_verification}
+
+\subsection{K-Theory Functor Satisfies Contravariant Composition Law}
+\label{sec:contravariant_composistion_k}
+\subfile{Appendix/ktheory_def/contravariant_composistion_k}
+
+\subsection{Reduced K-Theory forms Group}
+\label{sec:reduced_k_group}
+\subfile{Appendix/ktheory_def/reduced_k_group}
+
+
+\end{document}
+

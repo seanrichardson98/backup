@@ -1,0 +1,579 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Jacobs Landscape Poster
+% LaTeX Template
+% Version 1.1 (14/06/14)
+%
+% Created by:
+% Computational Physics and Biophysics Group, Jacobs University
+% https://teamwork.jacobs-university.de:8443/confluence/display/CoPandBiG/LaTeX+Poster
+% 
+% Further modified by:
+% Nathaniel Johnston (nathaniel@njohnston.ca)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[final]{beamer}
+
+\usepackage[scale=1.24]{beamerposter} % Use the beamerposter package for laying out the poster
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{framed}
+\usetikzlibrary{graphs}
+\usepackage{tkz-graph} 
+
+
+\usetheme{confposter} % Use the confposter theme supplied with this template
+
+\setbeamercolor{block title}{fg=ngreen,bg=white} % Colors of the block titles
+\setbeamercolor{block body}{fg=black,bg=white} % Colors of the body of blocks
+\setbeamercolor{block alerted title}{fg=white,bg=dblue!70} % Colors of the highlighted block titles
+\setbeamercolor{block alerted body}{fg=black,bg=dblue!10} % Colors of the body of highlighted blocks
+% Many more colors are available for use in beamerthemeconfposter.sty
+
+%-----------------------------------------------------------
+% Define the column widths and overall poster size
+% To set effective sepwid, onecolwid and twocolwid values, first choose how many columns you want and how much separation you want between columns
+% In this template, the separation width chosen is 0.024 of the paper width and a 4-column layout
+% onecolwid should therefore be (1-(# of columns+1)*sepwid)/# of columns e.g. (1-(4+1)*0.024)/4 = 0.22
+% Set twocolwid to be (2*onecolwid)+sepwid = 0.464
+% Set threecolwid to be (3*onecolwid)+2*sepwid = 0.708
+
+\newlength{\sepwid}
+\newlength{\onecolwid}
+\newlength{\twocolwid}
+\newlength{\threecolwid}
+\setlength{\paperwidth}{48in} % A0 width: 46.8in
+\setlength{\paperheight}{36in} % A0 height: 33.1in
+\setlength{\sepwid}{0.024\paperwidth} % Separation width (white space) between columns
+\setlength{\onecolwid}{0.22\paperwidth} % Width of one column
+\setlength{\twocolwid}{0.464\paperwidth} % Width of two columns
+\setlength{\threecolwid}{0.708\paperwidth} % Width of three columns
+\setlength{\topmargin}{-0.5in} % Reduce the top margin size
+%-----------------------------------------------------------
+
+%\usepackage{graphicx}  % Required for including images
+
+\usepackage{booktabs} % Top and bottom rules for tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION 
+%----------------------------------------------------------------------------------------
+
+\title{Spectral and Covering Properties of a Class of Directed Graphs} % Poster title
+
+\author{Diana Ochoa, Advisor: Liz Stanhope} % Author(s)
+
+\institute{Mathematical Sciences; Lewis \& Clark College} % Institution(s)
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\addtobeamertemplate{block end}{}{\vspace*{2ex}} % White space under blocks
+\addtobeamertemplate{block alerted end}{}{\vspace*{2ex}} % White space under highlighted (alert) blocks
+
+\setlength{\belowcaptionskip}{2ex} % White space under figures
+\setlength\belowdisplayshortskip{2ex} % White space under equations
+
+\begin{frame}[t] % The whole poster is enclosed in one beamer frame
+
+\begin{columns}[t] % The whole poster consists of three major columns, the second of which is split into two columns twice - the [t] option aligns each column's content to the top
+
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\onecolwid} % The first column
+
+%----------------------------------------------------------------------------------------
+%	OBJECTIVES
+%----------------------------------------------------------------------------------------
+
+%\begin{alertblock}{Objectives}
+%
+%hi
+%\end{alertblock}
+
+%----------------------------------------------------------------------------------------
+%   EXAMPLE OF AN ORBIGRAPH
+%----------------------------------------------------------------------------------------
+
+\begin{block}{Example of an orbigraph}
+
+Figure 1 below shows a small orbigraph.  It consists of two \emph{vertices}, $c_1$ and $c_2$, connected by \emph{arrows}.  The loop-shaped arrow connecting vertex $c_1$ to itself is labeled by the number 2.  This number is called the \emph{weight} of the arrow.  Note that the arrow from vertex  $c_2$ to $c_1$ has weight 3.
+      
+%%%%%%%%%%%%%%
+%. DIRECTED GRPAHS
+%.  http://tex.stackexchange.com/questions/162521/tikz-and-directed-graph    (possible solution to the arrow/direction of an arrow in the graph)
+%   https://www.sharelatex.com/learn/TikZ_package    (Package that might help with this issue- TikZ package) 
+%%%%%%%%%%%%%%
+
+\begin{center}
+\begin{tabular}{c c c}
+\begin{tikzpicture}[scale=2]
+\GraphInit[vstyle=Normal]
+\SetGraphUnit{3}
+\Vertex[Math]{c_1}
+\EA[Math](c_1){c_2}
+\Edge[style={->,bend left}](c_1)(c_2)
+\Edge[style={->,bend left},label=3,labelstyle=below](c_2)(c_1)
+\Loop[dist=1.5cm,dir=WE,style={->},labelstyle={left=12pt,fill=white},label=2](c_1)
+\end{tikzpicture} 
+
+ \ \ 
+ &
+  $M=
+  \left[ {\begin{array}{cc}
+   2 & 1 \\
+   3 & 0 \\
+  \end{array} } \right]
+  $
+\end{tabular}
+\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+
+\caption{A small 3-orbigraph \& adjacency matrix M}
+\label{smallexa}
+  \centering
+\end{figure}  
+
+
+\end{block}
+
+%----------------------------------------------------------------------------------------
+% ADJACENCY MATRIX OF AN ORBIGRAPH
+%----------------------------------------------------------------------------------------
+
+\begin{block}{Adjacency matrix of an orbigraph}
+
+An adjacency matrix is a matrix with rows and columns labeled by graph vertices, with a 1 or 0 in each position according to whether the graph vertices are adjacent or not.\emph{Adjacency} in this case means whether or not two graph vertices are joined by an arrow.Although we are dealing with a directed graph, the adjacency matrix needs to be symmetric around the diagonal. 
+% Explain why orbigraphs have this property 
+
+Matrix M (Figure 1) is the adjacency matrix of the orbigraph defined in Figure 1
+
+
+\end{block}
+%----------------------------------------------------------------------------------------
+%SINGULAR POINTS IN AN ORBIGRAPH 
+%----------------------------------------------------------------------------------------
+
+\begin{block}{Singular vertices in an orbigraph}
+%%%%outdegree and entries in adjacency matrix
+
+
+
+
+%%%%%%%%%%%%%
+\begin{figure}
+\centering
+  
+  
+ \begin{tikzpicture}[scale=2]
+\GraphInit[vstyle=Normal]
+\SetGraphUnit{3}
+\begin{scope}[rotate=51.5]
+\Vertices[Math]{circle}{v_1,v_2,v_3,v_4,v_5,v_6,v_7}
+%\Vertex[Math,x=5,y=-2.5]{v_1}
+%\Edge[style={->,bend right},label=2,labelstyle={right,fill=white}](v_1)(v_2)
+%\Loop[dist=1.5cm,dir=EA,style={->}](v_1)
+%\Edge[style={->,bend right}](v_2)(v_1)
+\Edge[style={->,bend right},label=2,labelstyle={fill=white}](v_1)(v_2)
+\Edge[style={->,bend right}](v_1)(v_7)
+\Edge[style={->,bend right}](v_2)(v_1)
+\Edge[style={->,bend right}](v_2)(v_3)
+\Edge[style={->,bend left}](v_2)(v_5)
+\Edge[style={->,bend right}](v_3)(v_4)
+\Edge[style={->,bend right}](v_3)(v_7)
+\Edge[style={->,bend right}](v_3)(v_2)
+\Edge[style={->,bend right}](v_4)(v_5)
+\Edge[style={->,bend right},label=2,labelstyle={fill=white}](v_4)(v_3)
+\Edge[style={->,bend right}](v_5)(v_4)
+\Edge[style={->,bend right}](v_5)(v_6)
+\Edge[style={->}](v_5)(v_2)
+\Edge[style={->,bend right}](v_6)(v_7)
+\Edge[style={->,bend right},label=2,labelstyle={fill=white}](v_6)(v_5)
+\Edge[style={->,bend right}](v_7)(v_6)
+\Edge[style={->}](v_7)(v_3)
+\Edge[style={->,bend right}](v_7)(v_1)
+\end{scope}
+\end{tikzpicture}
+\caption{3-orbigraph with 7 vertices}
+\label{bigexa}
+
+\end{figure}
+
+This orbigraph has 3 singular vertices. \emph{A singular vertex} is a vertex with at least one \emph{outgoing arrow of weight greater than 1}.
+\end{block}
+%===============================
+%------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of the first column
+
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\twocolwid} % Begin a column which is two columns wide (column 2)
+
+\begin{columns}[t,totalwidth=\twocolwid] % Split up the two columns wide column
+
+\begin{column}{\onecolwid}\vspace{-.6in} % The first column within column 2 (column 2.1)
+
+%----------------------------------------------------------------------------------------
+%	THEOREM 1 
+%----------------------------------------------------------------------------------------
+
+%\begin{block}{Theorem 1}
+ %     Let $\Omega$ be an $k$-orbigraph on $n$ vertices. If $s$ is the number of singular points in $\Omega$, then we have
+%      $$
+ %       \frac{\sum_{i} \lambda_i^2 - n k}{k^2 - k} \le s \le \sum_{i} \lambda_i^2 - n k
+  %    $$
+   %   where $\lambda_i$ are the eigenvalues of the adjacency matrix of $\Omega$.
+    %  \end{block}
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of column 2.1
+
+\begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
+
+%----------------------------------------------------------------------------------------
+
+%\begin{block}{Methods}
+
+%Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed laoreet accumsan mattis. Integer sapien tellus, auctor ac blandit eget, sollicitudin vitae lorem. Praesent dictum tempor pulvinar. Suspendisse potenti. Sed tincidunt varius ipsum, et porta nulla suscipit et. Etiam congue bibendum felis, ac dictum augue cursus a. \textbf{Donec} magna eros, iaculis sit amet placerat quis, laoreet id est. In ut orci purus, interdum ornare nibh. Pellentesque pulvinar, nibh ac malesuada accumsan, urna nunc convallis tortor, ac vehicula nulla tellus eget nulla. Nullam lectus tortor, \textit{consequat tempor hendrerit} quis, vestibulum in diam. Maecenas sed diam augue.
+
+%\end{block}
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of column 2.2
+
+\end{columns} % End of the split of column 2 - any content after this will now take up 2 columns width
+
+%----------------------------------------------------------------------------------------
+%    OBJECTIVES 
+%----------------------------------------------------------------------------------------
+
+\begin{alertblock}{Objectives}
+
+This project has had two main foci:
+\begin{itemize}
+\item In a Summer 2013 Rogers Research project Colin Gavin (`15) obtained the following bounds on the number of singular vertices, $s$, in a $k$-orbigraph in terms of the eigenvalues $\lambda_1, \lambda_2, \dots, \lambda_n$ of the orbigraph and the number of vertices, $n$, of the orbigraph.
+ $$
+        \frac{\sum_{i} \lambda_i^2 - n k}{k^2 - k} \le s \le \sum_{i} \lambda_i^2 - n k
+      $$
+ 
+{\bf We showed that the upper and lower bounds provided in this result are \emph{sharp.}  That is, these bounds cannot be improved to give tighter control on the number of singular vertices.}
+\medskip
+\item The second question that we considered is whether or not a connected $k$-orbigraph which admits a \emph{countable} cover by a $k$-regular graph must in fact also have a \emph{finite} cover by a $k$-regular graph.  {\bf We have a `brute-force' argument that this is true for $2$-orbigraphs with two and three vertices.  Current work seeks to find a more elegant approach that might generalize to all orbigraphs.}
+% We tried to find a more formal way of approaching this question in order to apply it to orbigraphs with different n and k values. 
+\end{itemize}
+
+\end{alertblock} 
+
+%----------------------------------------------------------------------------------------
+
+\begin{columns}[t,totalwidth=\twocolwid] % Split up the two columns wide column again
+
+\begin{column}{\onecolwid} % The first column within column 2 (column 2.1)
+
+%----------------------------------------------------------------------------------------
+%	SHARPNESS RESULT 
+%----------------------------------------------------------------------------------------
+
+\begin{block}{Sharpness result}
+Ex. 1: The orbigraph with the adjacency matrix below proves that the upper inequality is sharp.
+\medskip
+
+\begin{tabular}{c c c}
+  $N=
+  \left[ {\begin{array}{cc}
+  0\  2\ 0\ 0\ 0\ 0 & 1\\
+  1\  0\ 1\ 0\ 1\ 0 & 0\\ 
+  0\  1\ 0\ 1\ 0\ 0 & 1\\
+  0\  0\ 2\ 0\ 1\ 0 & 0\\
+  0\  1\ 0\ 1\ 0\ 1 & 0\\
+  0\  0\ 0\ 0\ 2\ 0 & 1\\
+  1\  0\ 1\ 0\ 0\ 1 & 0\\
+  \end{array} } \right]
+$
+&
+\ \ \
+&
+$
+\begin{tabular}{l}
+$ \lambda_1=3$\\
+ $\lambda_2=-1-\sqrt{3}$\\
+ $\lambda_3=-2$\\
+ $\lambda_4=-1$\\
+ $\lambda_5=1$\\
+ $\lambda_6=1$\\
+ $\lambda_7=\sqrt{3} -1$\\
+\end{tabular}
+$
+\end{tabular}
+
+%\medskip
+%$n=7, k=3, s=3$
+\bigskip
+
+ $$
+        \frac{ \sum_{i=1}^7 \lambda_i^2 - (7) (3)}{(3)^2 - (3)} \le (3) \le \sum_{i=1}^7 \lambda_i^2 - (7) (3)
+      $$
+
+
+ $$
+       \frac{1}{2} \le 3 \le 3
+      $$
+      
+Ex. 2:  The orbigraph with the adjacency matrix below proves that the lower inequality is sharp.
+\medskip
+
+\begin{tabular}{c c}
+  $N=
+  \left[ {\begin{array}{cc}
+  0\ 2 & 0\\
+  2\ 0 & 0\\ 
+  0\ 0 & 2\\
+  \end{array} } \right]
+$
+&
+$
+\begin{tabular}{c}
+$ \lambda_1=-2$\\
+ $\lambda_2=2$\\
+ $\lambda_3=2$\\
+\end{tabular}
+$
+\end{tabular}
+
+%\medskip
+%$n=3, k=2,s=3$
+\bigskip
+
+ $$
+        \frac{ \sum_{i=1}^3 \lambda_i^2 - (3) (2)}{(2)^2 - (2)} \le (3) \le \sum_{i=1}^3 \lambda_i^2 - (3) (2)
+      $$
+
+ $$
+        3 \le 3 \le 6
+      $$
+      
+\end{block}
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of column 2.1
+
+\begin{column}{\onecolwid} % The second column within column 2 (column 2.2)
+
+%----------------------------------------------------------------------------------------
+%	COVERINGS BY EQUITABLE PARTITIONS 
+%----------------------------------------------------------------------------------------
+
+\begin{block}{Coverings by equitable partitions}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+Divide the vertices of a graph into a partition.  The graph formed by collapsing all vertices in a partition element to a single vertex, with adjacent partition elements connected by the corresponding number of edges, is a \emph{quotient graph}.  Here we need the partition to be \emph{equitable} as in the example below.
+
+\begin{center}
+\begin{tabular}{c c c}
+ \begin{tikzpicture}[scale=.8]
+\GraphInit[vstyle=Normal]
+\SetGraphUnit{3}
+\begin{scope}[rotate=51.5]
+\Vertices[Math]{circle}{v_1,v_2,v_3,v_4}
+\Edge[style={->,bend right}](v_1)(v_2)
+\Edge[style={->,bend right}](v_2)(v_3)
+\Edge[style={->,bend right}](v_3)(v_4)
+\Edge[style={->,bend right}](v_4)(v_1)
+\end{scope}
+\end{tikzpicture}
+
+
+&
+ \ \ 
+ &
+  $R=
+  \left[ {\begin{array}{cc}
+   0\ 1\ 0 & 1 \\
+   1\ 0\ 1 & 0 \\
+   0\ 1\ 0 & 1 \\
+   1\ 0\ 1 & 0 \\
+  \end{array} } \right]
+  $
+\end{tabular}
+\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Is this R the circulant matrix or P the partition matrix?? 
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+\caption{Equitable partition of a graph \& adjacency matrix }
+\label{smallexa}
+  \centering
+\end{figure}  
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\begin{tabular}{c c c}
+\begin{tikzpicture}[scale=1.6]
+\GraphInit[vstyle=Normal]
+\SetGraphUnit{3}
+\Vertex[Math]{c_1}
+\EA[Math](c_1){c_2}
+\Edge[style={->,bend left},label=2,labelstyle=above](c_1)(c_2)
+\Edge[style={->,bend left},label=2,labelstyle=below](c_2)(c_1)
+\end{tikzpicture} 
+
+
+&
+ \ \ 
+ &
+  $Q=
+  \left[ {\begin{array}{cc}
+   0 & 2 \\
+   2 & 0 \\
+  \end{array} } \right]
+  $
+\end{tabular}
+\end{center}
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+
+
+\caption{Orbigraph quotient of partitioned graph above}
+\label{smallexa}
+  \centering
+\end{figure}  
+
+%%%%%%%%%%%%
+Graph $R$ with quotient graph $Q$ is said to \emph{cover} $Q$. 
+
+
+\end{block}
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of column 2.2
+
+\end{columns} % End of the split of column 2
+
+\end{column} % End of the second column
+
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\onecolwid} % The third column
+
+%----------------------------------------------------------------------------------------
+%	WORK IN PROGRESS
+%----------------------------------------------------------------------------------------
+
+\begin{block}{Work in progress}
+%We started off small...
+We seek to prove that all 2-orbigraphs with 2 vertices have a finite cover using the equation $PQ=RP$, where $Q$ is the $2\times2$ adjacency matrix of a given $2$-orbigraph, $P$ is the $n\times 2$ partition matrix of the cover, and $R$ is the $n\times n$ adjacency matrix of the orbigraph's cover. 
+
+\bigskip
+Example: Show that for any $Q$ we can find the corresponding matrix $P$.
+\begin{center}
+$Q= 
+  \left[ {\begin{array}{cc}
+  q_{11} & q_{12}\\
+  q_{21} & q_{22}\\ 
+
+  \end{array} } \right]
+  $
+  \end{center}
+  $P= 
+  \left[ {\begin{array}{cc}
+  a_1 & (1-a_1)\\
+  a_2 & (1-a_2)\\ 
+  ... & ...\\
+  a_n & (1-a_n)\\
+
+  \end{array} } \right]
+  $
+    $R= 
+  \left[ {\begin{array}{cccc}
+  0\ 1\ 0\ ...\ 0\ 0 & 1\\
+ 1\ 0\ 1\ 0\ ...\ 0 & 0\\ 
+ %0\ 1\ 0\ 1\ 0\ ... & 0\\
+  ...\ ....\ .... & ...\\
+ % 0\ ...\ 0\ 1\ 0\ 1 & 0\\
+ 0\ 0\  ...\ 0\ 1\ 0 & 1\\
+ 1\ 0\  0\ ...\ 0\ 1 & 0\\
+
+  \end{array} } \right]
+  $
+  
+\end{block}
+
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
+
+\setbeamercolor{block title}{fg=ngreen,bg=white} 
+
+\begin{block}{Acknowledgements}
+Thanks to LC's Fairchild Initiative led by Paulette Bierzychudek and Julio de Paula.
+\end{block}
+
+%----------------------------------------------------------------------------------------
+%	FORMAL DEF. OF AN ORBIGRAPH 
+%----------------------------------------------------------------------------------------
+\setbeamercolor{block alerted title}{fg=black,bg=lightgray} % Change the alert block title colors
+\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
+
+\begin{alertblock}{Formal definition of an orbigraph}
+      
+A \textbf{$k$-orbigraph} is a weighted, directed graph $\Gamma$ where the adjacency matrix $A$ satisfies the following:
+    
+    \begin{enumerate}
+      \item All entries in $A$ are non-negative integers.
+      \item All row sums of $A$ equal $k$.
+      \item Letting $A_{ij}$ denote the entry in row $i$ and column $j$ of A, we require the symmetry-like condition: $$A_{ij} > 0  \ \text{if and only if} \  A_{ji} > 0.$$
+    \end{enumerate}
+\end{alertblock}
+
+%----------------------------------------------------------------------------------------
+%	CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+%\setbeamercolor{block alerted title}{fg=black,bg=ngreen} % Change the alert block title colors
+%\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         LARGER CONTEXT OF THIS PROJECT  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{alertblock}{Larger context of this project}
+      
+
+
+
+
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[width=0.4\linewidth]{4pillow.png} & \hfill & \includegraphics[width=0.3\linewidth]{wallpaper_2222.pdf}
+\end{tabular}
+\end{center}
+\end{alertblock}
+%\end{framed}
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of the third column
+
+\end{columns} % End of all the columns in the poster
+
+\end{frame} % End of the enclosing frame
+
+\end{document}

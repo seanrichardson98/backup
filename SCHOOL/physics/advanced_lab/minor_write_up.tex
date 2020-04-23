@@ -1,0 +1,68 @@
+\documentclass{article}[12pt]
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+\newcommand{\deriv}[2]{\frac{d#1}{d#2}}
+\newcommand{\mymag}[1]{\vert\vert#1\vert\vert}
+
+
+\begin{document}
+    \section{Mathematical Model}
+
+    We present a simple and accessible model to demonstrate the twisting
+    phenomenon of the cat.
+
+    Consider two identical rods $A$ and $B$, each with moment of inertia
+    $I$, separated by angle $\theta$, and the whole structure maintains $0$
+    angular momentum. The primary twisting movement of the
+    cat requires $A$ and $B$ to /*twist*/. Assume that both rods $A$ and
+    $B$ have angular velocity $\omega$ in their respective direction
+    $\hat{a}$ and $\hat{b}$ as depicted in /**/. 
+
+    Then the angular momentums $L_A$ and $L_B$ of the respective rods is
+    given by
+    \begin{align}
+        \overrightarrow{L_A} = I\omega \hat{a} \text{\ \ \ and\ \ \ }
+        \overrightarrow{L_B} = I\omega \hat{b} \text{\ \ \ and \ \ \ }
+        \overrightarrow{L_C} = I_C\omega \hat{c}
+        \label{eq:1}
+    \end{align}
+
+    However, we must have a counter rotation of the whole body by
+    $\overrightarrow{L_C}$ such that angular
+    momentum is conserved:
+
+    \begin{equation}
+        \overrightarrow{L_A} + \overrightarrow{L_B} + \overrightarrow{L_C}
+        = \overrightarrow{0}
+        \label{eq:2}
+    \end{equation}
+
+    We let $L_C = I_C \omega_C \hat{c}$ where $I_C$ is the moment of
+    inertia at the center of mass about the $\hat{c}$ axis.
+
+    Take unit vectors $\widehat{A}$ and $\widehat{B}$ as shown in /**/. We
+    define the orientation of the cat as the direction of
+    $\widehat{A}+\widehat{B}$. The orientation can vary by an angle $\phi$
+    through a plane. We proceed to solve for $\deriv{\phi}{t} = \omega -
+    \omega_c$.
+    
+    To solve for $\omega_C$, we simply combine the information listed in
+    $(\ref{eq:1})$ and $(\ref{eq:2})$:
+    \begin{align*}
+        I\omega \hat{a} + I\omega \hat{b} + I_C\omega_C \hat{c} &=
+        \overrightarrow{0}
+    \end{align*}
+    And solving for $\omega_c$,
+    \begin{align*}
+        \omega_C &= -\frac{I}{I_C}\omega \mymag{\hat{a}+\hat{b}} =
+        -2\frac{I}{I_C}\omega \sin{\left(\frac{\theta}{2}\right)}\\
+    \end{align*}
+    Then overall,
+    \begin{equation}
+        \deriv{\phi}{t} =  
+        \omega\left(1-2\frac{I}{I_C}\sin{\left(\frac{\theta}{2}\right)}\right)
+    \end{equation}
+
+\end{document}

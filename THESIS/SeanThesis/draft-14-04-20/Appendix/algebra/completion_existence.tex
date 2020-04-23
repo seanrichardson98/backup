@@ -1,0 +1,118 @@
+\documentclass[../../sean_thesis.tex]{subfiles}
+
+\begin{document}
+\begin{proof}[Proof of Existence of Definition \ref{def:group_completion}]
+
+%DEFINITION OF THE EQUIVALENCE RELATION:
+
+The existence of a ring completion is shown through an explicit construction. Take any commutative semiring with additive cancellation $(S,+,\cdot)$ and consider the equivalence relation $\sim$ on $S \times S$ defined as follows: for $(a_1, b_1)$, $(a_2, b_2)$ in $S \times S$, then let $(a_1,b_1) \sim (a_2,b_2)$ if $a_1 + b_2 = a_2 + b_1$. The aim is to make the set of equivalence classes under $\sim$ into a ring.
+
+%DEFINITION OF +:
+
+First, define the additive operation $+$ by 
+	$$[(a,b)] + [(c,d)] = [(a+c,b+d)]$$	
+	
+%DEFINITION OF OPERATION *:
+
+Next, define the multiplicative operation $\cdot$ by
+	$$[(a,b)]\cdot[(c,d)] = [(ac+bd, ad+bc)]$$
+
+%NOTE TO READER:
+
+This proof aims to verify that the set of equivalence classes $S \times S/\sim$ paired with the operations $(+, \cdot)$ forms a commutative ring that is a ring completion of $S$.
+	
+%OPERATION + IS WELL DEFINED:
+	
+It must be verified that the additive operation is well defined, so consider elements $(a_1, b_1)$, $(a_2, b_2)$, $(c_1, d_1)$, $(c_2, d_2)$ in $S \times S$ such that $(a_1, b_1) \sim (a_2, b_2)$ and $(c_1, d_1) \sim (c_2, d_2)$. Then, I claim that $(a_1+c_1,b_1+d_1) \sim (a_2+c_2,b_2+d_2)$. Indeed, this satisfies the definition of the equivalence relation, for
+	\begin{align*}
+		& (a_1 + c_1) + (b_2 + d_2) = (a_1 + b_2) + (c_1 + d_2) \\
+		& = (a_2 + b_1) + (c_2 + d_1) = (a_2 + c_2) + (b_1 + d_1)
+	\end{align*}
+where the above computation used the substitutions $a_1+b_2 = a_2+b_1$ and $c_1+d_2 = c_2+d_1$ promised by the relations $(m_1, m_2) \sim (m_1', m_2')$ and $(l_1, l_2) \sim (l_1', l_2')$. This confirms that $+$ is well-defined on $(S\times S)/\sim$.
+	
+%OPERATION + IS TRANSITIVE	%OPERATION + IS COMMUTATIVE:
+
+The transitivity and commutativity of $+$ on the equivalence classes follows immediately from the commutativity and transitivity of the operation $+$ on $S$.
+	
+%THERE EXISTS AN ADDITIVE IDENTITY:
+	
+Next, note that the additive identity in $(S\times S)/\sim$ is given by $[(0,0)]$ where $0$ denotes the identity element in $S$. Indeed, we have $[(a,b)] + [(0,0)] = [(a,b)]$ for any element $[(a,b)]$.
+	
+%THERE EXISTS AN INVERSE OPERATION FOR OPERATION +:
+	
+The proposed ring has an inverse mapping for the addition operation. Consider an element $[(a,b)]$. Then, I claim the element $[(b,a)]$ forms the desired inverse. To see this, consider the sum $[(a + b, b + a)]$ and note that $(a + b) + 0 = 0 + (b + a)$, which shows $[(a + b, b + a)] = [(0,0)]$.
+
+%OPERATION * IS WELL-DEFINED:
+
+It must be verified that the multiplicative operation is well-defined before verifying any further properties. Consider the elements $(a_1,b_1) \sim (a_2,b_2)$ and $(c_1,d_1) \sim (c_2,d_2)$ in $S \times S$. It then must be verified that $(a_1c_1+b_1d_1, a_1d_1+b_1c_1)\sim(a_2c_2+b_2d_2, a_2d_2+b_2c_2)$. To accomplish this, consider the following $M_1, M_2 \in S$:
+\begin{align*}
+	M_1 &= c_2(a_1+b_1) + b_2(c_1+d_1) + b_2c_2\\
+	M_2 &= c_1(a_2+b_2) + b_1(c_2+d_2) + b_1c_1
+\end{align*}
+Next, observe that using the relations $a_1+b_2=a_2+b_1$ and $c_1+d_2=c_2+d_1$, it follows that $a_1c_1+b_1d_1 + M_1 = a_2c_2+b_2d_2 + M_2$.
+\begin{align*}
+	&a_1c_1+b_1d_1 + M_1
+	= a_1c_1+b_1d_1 + c_2a_1+c_2b_1+b_2c_1+b_2d_1+b_2c_2\\
+	&= (a_1+b_2)(c_1+c_2) + (d_1+c_2)(b_1+b_2)\\
+	&= (a_2+b_1)(c_1+c_2) + (d_2+c_1)(b_1+b_2)\\
+	&= a_2c_2+b_2d_2 + c_1a_2+c_1b_2+b_1c_2+b_1d_2+b_1c_1
+	= a_2c_2+b_2d_2 + M_2
+\end{align*}
+A similar process shows that $a_1d_1+b_1c_1 + M_1 = a_2d_2+b_2c_2 + M_2$. Then, summing the two results gives
+\begin{equation*}
+ (a_1c_1+b_1d_1) + (a_2d_2+b_2c_2) + (M_1 + M_2)
+=(a_2c_2+b_2d_2) + (a_1d_1+b_1c_1) + (M_1 + M_2)
+\end{equation*}
+Applying the additive cancellation property of $S$ to the term $(M_1+M_2)$ gives the desired relation and provides the conclusion $(a_1c_1+b_1d_1, a_1d_1+b_1c_1)\sim(a_2c_2+b_2d_2, a_2d_2+b_2c_2)$ and so the multiplicative operation is well defined.
+
+%OPERATION * IS TRANSITIVE %OPERATION * IS COMMUTATIVE:
+The transitivity of the multiplicative operation follows directly from $+$ and $\cdot$ transitive in $S$. Similarly, the commutativity of the multiplicative operation follows directly from the commutativity of $+$ and $\cdot$ in $S$.
+
+%THERE IS AN IDENTITY ELEMENT FOR *:
+Next, note that the element $[(1,0)]$ acts as an identity element for the multiplicative operation. Indeed, $[(1,0)]\cdot[(a,b)] = [(a,b)]$ for any element $[(a,b)]$.
+
+% * DISTRIBITES OVER +:
+It only remains to show that $+$ distributes over $\cdot$ to verify that $S\times S/\sim$ forms a ring. Indeed, for elements $[(a,b)]$, $[(c,d)]$, $[(e,f)]$:
+\begin{align*}
+	&[(e,f)] \cdot ([(a,b)]+[(c,d)]) 
+	= [(e,f)] \cdot [(a+c,b+d)]\\
+	&= [(ea+fb+ec+fd, eb+ed+fa+fe)]\\
+	&= [(ea+fb,eb+fa)] + [(ec+fd,ed+fc)] 
+	= [(e,f)]\cdot[(a,b)]+[(e,f)]\cdot[(e,d)]
+\end{align*}
+
+%NOTE TO READER:
+Thus we have that $(S\times S)/\sim$ forms a commutative ring under the proposed operations. However, it remains to show that $(S\times S)/\sim$ is a valid ring completion. The necessary inclusion map $i: S \to (S\times S)/\sim$ is given by $i(s) = [(s,0)]$. Then, take any ring $R'$ and homomorphism $\varphi: S \to R'$; the existence and uniqueness of a commuting ring homomorphism $\psi: (S \times S)/\sim \to R'$ must be shown.
+
+%UNIQUENESS OF THE HOMOMORPHISM:
+Uniqueness follows quickly from its homomorphism properties and the commutativity of the universal property. Indeed, take two commuting ring homomorphisms $\psi$ and $\psi'$ from $S\times S/\sim$ to $R'$. Then, the restrictions $\psi \circ i = \varphi$ and $\psi' \circ i = \varphi$ paired with $i$ injective gives that $\psi = \psi'$ over the image $i(S)$. Then observe that any element $[(a,b)]$ is the composition of elements in $i(S)$ by $[(a,b)] = [(a,0)]-[(b,0)]$. Then, the homomorphism properties of rings extends $\psi$ and $\psi'$ to be equivalent over all of $(S\times S)/\sim$ giving uniqueness.
+	
+%EXISTENCE OF HOMOMORPHISM:
+It only remains to show existence of the homomorphism. The map $\psi: [(a,b)] \mapsto \varphi(a)-\varphi(b)$ works. Commutativity follows easily, for $(\psi \circ i)(s) = \psi([(s,0)]) = \varphi(s)$ for all $s \in S$. Now, it must be verified that $\psi$ is a homomorphism. So, consider elements $[(a,b)]$ and $[(c,d)]$ of the ring completion.
+
+%ADDITION PROPERTY:
+The following equality chain shows that the the additive property of $\varphi$ gives the additive property of $\psi$.
+\begin{align*}
+	&\psi([(a,b)+(c,d)]) 
+	= \psi([(a+c,b+d)])
+	= \varphi(a+c) - \varphi(b+d)\\
+	&= (\varphi(a)-\varphi(b)) + (\varphi(c)-\varphi(d))
+	= \psi([(a,b)]) + \psi([(c,d)])
+\end{align*}
+	
+%MULTIPLICATIVE PROPERTY:
+Similarly, the additive and multiplicative property of $\varphi$ gives the multiplicative property of $\psi$.
+\begin{align*}
+	&\psi([(a,b)]\cdot[(c,d)])
+	= \psi([(ac+bd, ad+bc)])\\
+	&= \varphi(ac+bd)-\varphi(ad+bc)
+	= \varphi(a)\varphi(c)+\varphi(b)\varphi(d)-\varphi(b)\varphi(c)-\varphi(a)\varphi(d)\\
+	&= (\varphi(a)-\varphi(b))(\varphi(c)-\varphi(d))
+	= \psi([(a,b)])\cdot\psi([(c,d)])
+\end{align*}
+
+Finally $\psi(1) = \psi([(1,0)]) = \varphi(1) = 1$, completing the proof.
+
+\end{proof}
+
+\end{document}

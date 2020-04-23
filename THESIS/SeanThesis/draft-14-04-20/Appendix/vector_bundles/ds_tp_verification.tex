@@ -1,0 +1,56 @@
+\documentclass[../../sean_thesis.tex]{subfiles}
+\begin{document}
+It must be verified that the direct sum has a natural topology that indeed makes it a vector bundle.
+	\begin{proof}
+		Take vector bundles $p_1: E_1 \to X$ and $p_2: E_2 \to X$ and recall that the direct sum on bundles as a set is given by the disjoint union of direct sums on fibers
+		\begin{equation*}
+		E_1 \op E_2 = \bigcup_{x \in X} p_1^{-1}(x) \op p_2^{-1}(x).
+		\end{equation*}
+		This set is paired with with the projection $p: E_1 \op E_2 \to X$ given by $p: p_1^{-1}(x) \op p_2^{-1}(x) \mapsto x$.
+		
+		 The topology on $E_1 \op E_2$ is defined in this paragraph. For each $x \in X$, the definition of vector bundle promises an open set $U$ containing $x$ over which both $E_1$ and $E_2$ are trivial. This provides trivializations $t_1: p_1^{-1}(U) \to U \times V_1$ and $t_2: p_2^{-1}(U) \to U \times V_2$ for vector spaces $V_1$ and $V_2$. Next, define the map $t_1 \op t_2: p_1^{-1}(U) \op p_2^{-1}(U) \to U \times (V_1 \op V_2)$ as follows.
+		\begin{equation*}
+			t_1 \op t_2: p_1^{-1}(x) \op p_2^{-1}(x) \mapsto t_1(p_1^{-1}(x)) \op t_2(p_2^{-1}(x)) 
+		\end{equation*}
+Then, the topology on $p_1^{-1}(U) \op p_2^{-1}(U)$ is defined by requiring the map $t_1 \op t_2$ to be a homeomorphism. By letting $x$ vary, this defines a topology over all of $E_1 \op E_2$. It must be verified, however, that this topology is well-defined.
+
+Before the proof of well-defined, observe how this choice of topology gives that $E_1 \op E_2$ is a vector bundle. Firstly, this choice equips each fiber $p_1^{-1}(x) \op p_2^{-1}(x)$ with the typical topology of the direct sum of vector spaces. This ensures that the projection map $p: E_1 \op E_2 \to X$ is continuous. Next, the local triviality condition must be verified. Luckily the topology is built exactly so that $t_1 \op t_2$ is a trivialization. For any $x \in X$, the mapping $t_1 \op t_2$ defined on the appropriate $U$ as described above satisfies all the conditions of a vector bundle homomorphism. Further, the defining condition that $t_1 \op t_2$ is a homeomorphism promises a continuous inverse and so $t_1 \op t_2$ is an isomorphism of vector bundles.
+
+It only remains to show that the topology on $E_1 \op E_2$ is well-defined. In particular, it must be shown that the topology is independent of the choice of trivializations over a single open set $U$ and that the open sets induce the same topology over their intersection. So, for $x \in X$ and corresponding $U \subset X$, consider two trivializations for each bundle: $t_1, t_1': E_1 \mapsto U$ and $t_2, t_2': E_1 \mapsto U$. Because each trivialization gives an isomorphism to the trivial bundle, the composition $t_1^{-1} \circ t_1': p^{-1}(U) \to p^{-1}(U)$ is an isomorphism and similarly $t_2^{-1} \circ t_2': p^{-1}(U) \to p^{-1}(U)$ is an isomorphism. Then composition $t_1' \circ t_1^{-1}$ is an isomorphism on $U \times V_1$ and similarly $t_2' \circ t_2^{-1}$ is an isomorphism on $U \times V_2$. It follows that the composition $(t_1' \op t_2') \circ (t_1 \op t_2)^{-1}$ is an isomorphism on $U \times (V_1 \ot V_2)$, which implies that the choices $(t_1 \op t_2)$ and $(t_1' \op t_2')$ supply the same topology. 
+
+Finally, consider a separate set of open set $U' \subset X$. Then, taking the restrictions of the bundles $p^{-1}(U)$ and $p^{-1}(U')$ over the intersection $U \cap U'$ would only differ in the trivializations, which induce the same topology as shown in the previous paragraph.
+\end{proof}
+	
+In the above argument, the only part that appeals to the direct sum operation itself is the implicit assumption that the mapping $(v,w) \mapsto v \op w$ is continuous. This is also true for the tensor product, so a simple substitution of ``$\ot$'' in place of ``$\op$'' in the above proof provides the needed verification for tensor product.
+
+\begin{proof}[Proof of claim \toadd{ref}]~
+	Verifying each claim requires establishing an isomorphism $\varphi$ over two bundles, say $p: E \to X$ and $q: F \to X$. The approach will be to establish a vector space isomorphism between the fibers, which gives necessary properties of vector bundle isomorphism except for continuity and continuity of inverse. To deal with the continuity conditions, the strategy is to show local continuity at every point as descried in \toadd{ref}. It then suffices to show that for every $x \in X$, there is an open neighborhood $U$ such that the restricted function $\varphi: p^{-1}(U) \to q^{-1}(U)$ is continuous in both directions.
+	\begin{enumerate}[(i)]
+		\item For associativity of the direct product, consider vector bundles $E_1$, $E_2$, $E_3$ over a base space $X$ with corresponding projection maps $p_1$, $p_2$, and $p_3$. An isomorphism $\varphi: (E_1 \op E_2) \op E_3 \to E_1 \op (E_2 \op E_3)$ must be constructed. Let $\varphi$ be the linear bijective function defined on the fibers by
+		\begin{equation*}
+			\varphi: (p^{-1}_1(x) \op p^{-1}_2(x)) \op p^{-1}_3(x) \mapsto p^{-1}_1(x) \op (p^{-1}_2(x) \op p^{-1}_3(x))
+		\end{equation*}
+		For the continuity conditions, fix a point $x \in X$. Then, choose an open set $U \subset X$ small enough such that the local triviality conditions are satisfied by both direct sum bundles. Then, noting the vector space isomorphism $(V_1 \op V_2) \op V_3 \iso V_1 \op (V_2 \op V_3)$, continuity in both directions is given by the following composition of isomorphisms
+		\begin{align*}
+			&(p^{-1}_1(U) \op p^{-1}_2(U)) \op p^{-1}_3(U)
+			\to U \times (V_1 \op V_2) \op V_3\\
+			&\to U \times V_1 \op (V_2 \op V_3)
+			\to p^{-1}_1(U) \op (p^{-1}_2(U) \op p^{-1}_3(U))
+		\end{align*}		
+		
+		The proof for commutativity follows in a near identical way. The difference being that an isomorphism $\varphi: E_1 \op E_2 \to E_2 \op E_1$ is considered with the mapping between fibers $\varphi: p^{-1}_1(x) \op p^{-1}_2(x) \mapsto p^{-1}_2(x) \op p^{-1}_1(x)$ and the vector space isomorphism $V_1 \op V_2 \iso V_2 \op V_1$ is considered instead.
+		
+		\item Verifying that $\tbund{0}$ is the identity element under direct sum requires establishing an isomorphism $\varphi: E \oplus \tbund{0} \to E$. This follows in the same way as the previous claims, but uses the mapping of fibers $\varphi: p^{-1}(x) \op \set{0} \mapsto p^{-1}(x)$ and uses the vector space isomorphism $V \op \set{0} \iso V$.
+		
+		\item The proofs for associativity and commutativity of the tensor product is given by a substitution of ``$\ot$'' for ``$\op$'' in the corresponding direct sum proofs.
+		
+		\item The proof that $\tbund{1}$ acts as an identity element over the tensor product follows similarly to the identity proof over direct sum. The difference being that here an isomorphism $\varphi: E \ot \tbund{1} \to E$ is established by the mapping of fibers $\varphi: p^{-1}(x) \ot V^{1} \mapsto p^{-1}(x)$ where $V^{1}$ represents a one dimensional vector space. This proof additionally uses the vector space isomorphism $V \op V^{1} \iso V$.
+		
+		\item Finally, the proof for distributivity establishes a vector space isomorphism $\varphi: E_1 \ot (E_2 \op E_3) \to (E_1 \ot E_2) \op (E_1 \ot E_3)$ given by the linear bijection on the fibers
+		\begin{equation*}
+			\varphi: p^{-1}_1(x) \ot (p^{-1}_2(x)) \op p^{-1}_3(x)) \mapsto p^{-1}_1(x) \ot p^{-1}_2(x) \op p^{-1}_1(x) \ot p^{-1}_3(x)
+		\end{equation*}
+		and later uses the isomorphism on vector spaces $V_1 \ot (V_2 \op V_3) \iso (V_1 \ot V_2) \op (V_1 \ot V_3)$.
+	\end{enumerate}
+\end{proof}
+\end{document}

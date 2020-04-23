@@ -1,0 +1,309 @@
+%Next:  Buckle down and write heat trace backgorund.  Include little details about stratificaiton that is needed to get the lemmas.  How much of the lemmas cna be reduced to citing a summary of remarks from DGGW.
+
+\documentclass{amsart}
+\usepackage{setspace, amssymb, amsmath, amsfonts}
+\usepackage{proofread}
+
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{theorem}[thm]{Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{proposition}{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{example}[thm]{Example}
+\newtheorem{examples}[thm]{Examples}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{remarks}[thm]{Remarks}
+\newtheorem{notation}[thm]{Notation}
+
+
+
+
+%New Commands
+
+\newcommand{\myabs}[1]{\vert#1\vert}
+
+\newcommand{\ld}{\lambda}
+\newcommand{\cp}{\mathcal{P}}
+\newcommand{\mfh}{\mathfrak{h}}
+\newcommand{\mfk}{\mathfrak{k}}
+\newcommand{\mfp}{\mathfrak{p}}
+\newcommand{\mfv}{\mathfrak{v}}
+\newcommand{\mfz}{\mathfrak{z}}
+\newcommand{\bv}{\boldsymbol{v}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cpt}{\mathbb{CP}^2}
+\newcommand{\pa}{\partial}
+\newcommand{\wtu}{\widetilde{U}}
+\newcommand{\wtn}{\widetilde{N}}
+\DeclareMathOperator{\Id}{Id}
+\newcommand{\semi}{\ltimes}
+\newcommand{\orb}{\mathcal O}
+\newcommand{\cc}{(\widetilde{U}, G_U, \pi_U)}
+\newcommand{\bs}{\backslash}
+
+\DeclareMathOperator{\iso}{Iso}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\fix}{Fix}
+\DeclareMathOperator{\area}{Area}
+\DeclareMathOperator{\vol}{vol}
+
+\begin{document}
+
+\title{You can hear the local orientability of an orbifold}
+
+\author[S.Richardson]{Sean Richardson}
+\address{Sean Richardson \\ Lewis and Clark College, Department of
+Mathematical Sciences, 0615 SW Palatine Hill Road, MSC 110, Portland, OR 97219}
+\email{srichardson@lclark.edu}
+\author[E. Stanhope]{Elizabeth Stanhope}
+\address{Elizabeth Stanhope \\ Lewis and Clark College, Department of
+Mathematical Sciences, 0615 SW Palatine Hill Road, MSC 110, Portland, OR 97219}
+\email{stanhope@lclark.edu}
+\thanks{{\it Keywords:} Spectral geometry \ Global Riemannian
+  geometry \ Orbifolds} 
+\maketitle
+
+
+
+
+\begin{abstract}
+The abstract.
+\end{abstract}
+
+\medskip
+
+\noindent 
+\begin{center}
+\begin{small}
+2000 {\it Mathematics Subject Classification:}
+Primary 58J53; Secondary 53C20
+\end{small}
+\end{center}
+\bigskip
+
+\section{Introduction}
+
+
+In contrast to the manifold setting, an orbifold can fail to be orientable in two ways.  If we consider a projective plane with a single cone point (as sketched by David Webb in his heat kernel notes), we see that each chart can be oriented.  However (we suspect) there is no way to compatibly fit together these charts.  In a sense orientability is failing in a global way.  However an orbifold with a mirror locus fails to be orientable because a local chart about points in the mirror locus cannot be oriented in a way that allows the local group to act by orientation preserving maps.  So here orientability is failing in a local way.  Our claim implies that an orbifold that fails to be orientable due to this local condition cannot be isospectral to an orientable orbifold.
+
+Be sure to mention that this strengthens slightly Theorem 5.1 in dggw.
+
+Ofd Laplace spectrum.  Cite CG survey
+
+State result.
+
+%outline end
+
+%Below is from one of my other papers.  Cannot plagiarize it, need to adapt to new paper.
+
+A Riemannian orbifold is a mildly singular generalization of a Riemannian manifold.  Originally introduced by I. Satake \cite{Satake56} in 1956, orbifolds were later popularized by W. Thurston \cite{Th}.  
+Today orbifolds are approached from a variety of viewpoints
+
+Hearing orientability in general.  Note that our result exists in dim 2 DGGW without note.
+
+Survey of isospectral results.  DGGW related result
+
+\begin{itemize}
+\item Martin Wiedlandt's Diplom Thesis ``Isospectral Orbifolds with Different Isotropy Orders"  Gives 3-dimensional isospectral orbifolds that are all orientable (see page 26).  Note that this result appears in the paper ``Isospectral orbifolds with different maximal isotropy orders" joint with Rossetti and Schueth.  In the RSW paper, further examples of isospectral orbifolds are given as quotients of quotients of compact Lie groups.  The examples they give all use $SO(n)$ and so all isometries in sight are orientation preserving.  Then they go on to flat 3d quotients. Example 3.9 gives isospectral non-orientable orbifolds.  It is not clear to me that these each of these orbifolds are locally non-orientable.  However it looks pretty likely -- we could ask any of the authors if they know.  Example 3.10 is similarly unclear.  These two examples are pretty detailed so we could likely work it out on our own.  Also there is some overlap with Wiedlandt's Diplom Thesis, so more might be there.
+\item This isn't an example as promised, but in DGGQ the dimension 2 degree zero heat invariant implies our result.  They just don't point it out.
+\item In Doyle and Rossetti, ``Isospectral hyperbolic surfaces have matching geodesics" section 6 they give some examples of isospectral flat orbisurfaces.  They use Conway's orbifold notation.  It appears that all the singular points in sight are cone points, so these are all orientable.
+\item Isospectral deformations happen on a single orbifold, just varying the metric.  So these aren't a problem.  (ours and Sutton)  
+\item Now for Shams Stanhope Webb.  The lists of fp sets in 4.2 and 4.3 use the same notation as the cycle decomposition of the permutations representing 13 of the group elements in both the subgroups of interest.  The other 13 group elements are just the inverses of the previous 13.  The parity of the permutation corresponds to the parity of the element of the orthogonal group element corresponding to that permutation.  Because all of the permutations in sight are products of 3-cycles, they are all even. A permutation and its inverse have the same parity, so the inverse permutations (which are not listed) are also even. So all of the isometries involved in these (global) quotients are orientation preserving. 
+\end{itemize}
+
+\section{Riemannian orbifolds and their Laplace spectra}
+
+In this section we recall the definition of a Riemannian orbifold and discuss features of the singular stratification of an orbifold.  With these ideas in place we present the asymptotic expansion of the heat trace of an orbifold. We follow the treatment of the asymptotic expansion for the heat trace on an orbifold from \cite{dggw}, which the reader can refer to for further details.  In addition we use the definition of an orbifold, and development of basic orbifold properties, presented in \cite{gordon12}.   
+
+\begin{definition} \label{defn:ofld}
+Let $\orb$ be a second countable Hausdorff space, and let $U$ be a connected open subset of $\orb$.   
+ \begin{enumerate}
+\item[a.] An $n$-dimensional \emph{orbifold coordinate chart} over $U$ is a
+    triple $\cc$ for which: $\wtu$ is a connected open subset of $\R^n$,
+    \rep{$\Gamma_U$}{$G_U$} is a finite group acting effectively on
+    $\wtu$ by diffeomorphisms, and the mapping \rep{$\varphi_U$}{$\pi_U$}
+    from $\wtu$ onto $U$\add{$\in \orb$} induces a homeomorphism from the orbit space
+    $\wtu/$\rep{$\Gamma_U$}{$G_U$} onto $U$.
+\item [b.] An \emph{orbifold atlas} is a collection of compatible orbifold
+    charts $\cc$ such that the images \rep{$\varphi_U({\wtu})$}{$\pi_U$} cover $\orb$.  An \emph{orbifold} is a second countable Hausdorff space together with an orbifold atlas.  
+\item[c.] Suppose $p\in U\subset \orb$ and $\cc$ is an orbifold chart over
+    $U$.  The \emph{isotropy type} of $p$ is the isomorphism class of the
+isotropy group \rep{a lift of $p$ of a lift $\tilde p$ of $p$ in $\wtu$}{of
+    $\tilde{p} \in \widetilde{U}$, a lift of $p$} under the action of
+    \rep{$\Gamma_U$}{$G_U$}.  The isotropy type of $p$ is independent of the choice of lift $\tilde p$ as well as the choice of orbifold chart.  
+\item[d.] Points in $\orb$ with nontrivial isotropy are called \emph{singular points}.  Points that are not singular are called \emph{regular points}. 
+\item[e.] A Riemannian structure on an orbifold is defined by giving the local cover $\wtu$ of each orbifold chart $\cc$ a $\Gamma_U$-invariant Riemannian metric so that the maps involved in the compatibility condition are isometries.  An orbifold with a Riemannian structure will be called a \emph{Riemannian orbifold}.  
+\end{enumerate}
+\end{definition}
+
+\com{Should the orientability / local orientability definitions be here? It
+may make sense to put them in the Main Result section, because it is only
+there that the reader will need to recall these definitions}
+
+ A \emph{smooth stratification} of a manifold or orbifold $M$ is a locally finite partition of $M$ into locally closed submanifolds called \emph{strata}.  Orbifolds possess a stratification given by their singular structure.  When points $p,q$ in an orbifold have the same isotropy type we say they are \emph{isotropy equivalent}.  An orbifold possesses a smooth stratification given by connected components of isotropy equivalent sets of points.  From \cite[Theorem 1.24]{gordon12} and \cite[Proposition 2.13]{dggw} we have the following properties of this stratification.  Please see these papers for further details.
+
+ \begin{theorem}\label{stratification} Let $\orb$ be an orbifold \add{,
+     then:}
+\begin{itemize}
+\item[a.]  The connected components of the isotropy equivalence classes of $\orb$ form a stratification of $\orb$ by locally closed submanifolds (called \emph{$\orb$-strata}).  The closure of a stratum $N$ is made up of the union of $N$ with a collection of lower-dimensional strata.  
+\item[b.] If $\orb$ is compact, the stratification of $\orb$ is finite.
+\item[c.] If $\orb$ is connected, then the set of all regular points of
+    $\orb$ form a single stratum which is open in $\orb$ and has \yel[I noticed in Gordon it says ``full dimension''. I assume
+        these are equivalent?]{full
+    measure.}
+\item[d.] Let $\cc$ be an orbifold coordinate chart on $\orb$.  The action of $G_U$ on $\wtu$ gives smooth stratifications on both $\wtu$ and $U$. Strata in $\wtu$ (called \emph{$\wtu$-strata}) are connected components of isotropy equivalent sets of points. Strata in $U$ (called \emph{$U$-strata}) are connected components of the intersection of a stratum in $\orb$ with $U$.  
+\item[e.] Given an orbifold coordinate chart $\cc$, any two points in the same stratum of $\wtu$ have the same isotropy subgroups in $G_U$. 
+\item[f.] Let $\cc$ be an orbifold coordinate chart on $\orb$.  For $H$ a subgroup of $G_U$, each connected component $W$ of the fixed point set of $H$ in $\wtu$ is a closed submanifold of $\wtu$.  If a $\wtu$-stratum intersects $W$ nontrivially, that stratum must lie entirely within $W$. Thus the stratification of $\wtu$ restricts to a stratification of $W$.
+\end{itemize}
+\end{theorem}
+
+
+
+The tools of spectral geometry transfer to the setting of Riemannian
+orbifolds using the local structure of these spaces. For example, given
+$f\in C^\infty(\orb)$, $x\in \orb$, and $\cc$ a coordinate chart about $x$,
+we compute $\Delta f (x)$ by taking the Laplacian of
+\rep{$\varphi_U$}{$\pi_U$}$^*(f)$ \com{Not familiar with what `$*$' means} at $\tilde{x} \in
+$\rep{$\varphi_U$}{$\pi_U$}$^{-1}(x)$.  As in the manifold setting, the eigenvalue spectrum of the Laplace operator of a compact Riemannian orbifold is a sequence
+$$
+0 \le \ld_0 \le \ld_1 \le \ld_2 \le\dots \uparrow +\infty
+$$
+where each eigenvalue has finite multiplicity.  We say that two orbifolds are \emph{isospectral} if their Laplace spectra agree.
+
+
+
+\section{Heat trace asymptotics for Riemannian orbifolds}
+
+\com{Should we have a brief motivation / connection between Laplace Spectra
+and Heat trace? Perhaps:}
+\add{In order to study the Laplace Spectra of an orbifold, we consider the trace
+of the heat kernel on some manifold. The heat trace is closely related to
+the Laplace Spectra; importantly, different asymptotic expansion of the heat
+trace imply different Laplace Spectra which [citation] demonstrates in the
+manifold case.}
+To state the asymptotics of the heat trace of a Riemannian orbifold we will
+need the following terms from~\cite{dggw}.
+
+\begin{defn} Let $\orb$ be an orbifold.
+\begin{itemize}
+\item[a.] For $a_k$ the usual heat invariants from the manifold setting, let $$I_0=(4\pi t)^{-\dim(\orb)/2} \sum_{k=0}^\infty a_k t^k.$$ 
+\item[b.] Let  $(\widetilde{U}, G_U, \pi_U)$ be an orbifold coordinate chart in $\orb$ and $\widetilde{N}$ a $\wtu$-stratum in $\wtu$. By Theorem~\ref{stratification}, all points in $\widetilde{N}$ have the same isotropy group.  This group will be denoted $\iso(\widetilde{N})$.  Define $\iso^{\max}(\widetilde{N})$ as the set of all $\gamma \in \iso(\widetilde{N})$ for which $\widetilde{N}$ is open in $\fix(\gamma)$, where $\fix(\gamma)$ denotes the set of points in $\wtu$ fixed by $\gamma$.
+\item[c.] Let $N$ be an $\orb$-stratum and $x\in N$.  Take $(\widetilde{U}, G_U, \pi_U)$ be an orbifold coordinate chart about $x$, $\tilde x \in \pi_U^{-1}(x)$, and let $\widetilde{N}$ be the $\widetilde{U}$-stratum through $\tilde x$.  Define
+ \[b_k(N,x) = \sum_{\gamma \in \iso^{\max}(\widetilde{N})} b_k(\gamma,\tilde{x}).\]
+ The function $b_k(\gamma,\tilde{x})$ is defined in \cite[Section 4.2]{dggw}.
+\item[d.] For $\orb$-stratum $N$, $$I_N=(4\pi t)^{-\dim(N)/2}\sum_{k=0}^\infty t^k \int_N b_k(N,x) d\vol_N(x).$$
+\end{itemize}
+\end{defn}
+
+With this notation in place, we recall the asymptotic behavior of the heat trace of a Riemannian orbifold as $t\rightarrow 0^+$.
+
+\begin{thm}\cite[Theorem 4.8]{dggw} \label{hta} Let $\orb$ be a Riemannian orbifold and let $\lambda_1 \le \lambda_2 \le \dots $ be the spectrum of the associated Laplacian acting on smooth functions on $\orb$. The heat trace $\sum_{j=1}^{\infty}e^{-\lambda_{j} t}$ of $\orb$ is asymptotic as $t \rightarrow 0^+$ to
+\[I_0+\sum_{N \in S(\mathcal{O})}\frac{I_N}{\myabs{\iso(N)}}\]
+where $S(\orb)$ is the set of all singular $\orb$-strata and where
+$\myabs{\iso(N)}$ is the order of the isotropy at each $p \in N$.
+\add{Notice} \rep{T}{t}his asymptotic expansion is of the form 
+\[(4\pi t)^{-\dim{\orb}/2} \sum_{j=0}^\infty c_j t^{\tfrac{j}{2}}\]
+for some constants $c_j$.
+\end{thm}
+
+\com{Should we also have a formal theorem connecting isospectral orbifolds
+to having equivalent heat expansions?}
+
+\section{Main result}
+
+\com{moved definition}
+\begin{definition}
+    A chart $(\tilde{U},G_U,\pi_U)$ on some orbifold is \emph{orientable} if all elements of the group $G_U$ are orientation-preserving transformations of the open set $\tilde{U} \subset \mathbb{R}^n$. An orbifold $\mathcal{O}$ is \emph{locally orientable} if every chart on $\mathcal{O}$ is orientable. Conversely, an orbifold $\mathcal{O}$ is \emph{locally non-orientable} if there exists a single chart on $\mathcal{O}$ that is not orientable.
+    
+    from Carolyn survey:An orbifold chart $\cc$ is said to be \emph{orientable} if the group $\Gamma_U$ consists of orientation-preserving transformations of $\wtu$.  An orientation of $\cc$ is given by a choice of orientation on $\wtu$. An \emph{orientable} orbifold is one which admits an atlas of compatibly oriented charts.
+\end{definition}
+
+\begin{lemma}\label{lem:b_0} Let $\orb$ be a Riemannian orbifold. Let $N$ be an $\orb$-stratum and $x\in N$. For a coordinate chart $(\widetilde{U}, G_U, \pi_U)$ about $x$ let $\widetilde{N}$ be the $\wtu$-stratum of a point $\tilde{x}\in \varphi_U^{-1}(x)$.  If $\iso^{\max}(\widetilde N)$ is non-empty then $b_0(N,x) > 0$.
+\end{lemma}
+
+\begin{proof} From \cite[p.16]{dggw} we have $$b_0(N,x) = \sum_{\gamma \in \iso^{\max}(\widetilde N)} \myabs{\det(B_\gamma(\tilde{x})) }$$
+where $B_\gamma(\tilde{x})$ is a non-singular matrix.  Because $\iso^{\max}(\widetilde N)$ is non-empty, we see that $b_0(N,x)$ is the sum of a list of positive numbers.
+\end{proof}
+
+\begin{lemma}\label{lem:dim_of_fix} Let $\orb$ be a Riemannian orbifold. Suppose $(\widetilde{U}, G_U, \pi_U)$ is a coordinate chart in orbifold $\orb$ and let $\widetilde{N}$ be a $\widetilde{U}$-stratum.  Then $\gamma \in \iso^{\max}(\wtn)$ if and only if $\dim(\fix(\gamma)) = \dim(\widetilde{N})$.
+\end{lemma}
+
+\begin{proof}
+Let $\gamma \in \iso(\wtn)$.  Since $\gamma \in \iso^{\max}(\wtn)$ means $\wtn$ is open in submanifold $\fix(\gamma)$, we have $\dim(\widetilde{N}) = \dim(\fix(\gamma))$. For the reverse direction recall that Theorem~\ref{stratification} states that each connected component of $\fix(\gamma)$ is stratified by a set of $\wtu$-strata, one of which is $\widetilde{N}$.  By \cite[Remark 2.9(i)]{dggw} maximum dimensional strata are open.  We see $\widetilde{N}$ is open in $\fix(\gamma)$, thus $\gamma \in \iso^{\max}(\wtn)$.
+\end{proof}
+
+Should we cite Donnelly II here for more about how the tangent space of M decomposes along N?  It helped a lot in this proof and is hard to find in the literature.
+
+\begin{lemma}\label{lem:dim-of-ori-rev} Let $\orb$ be a Riemannian orbifold and $\cc$ a coordinate chart in $\orb$. Suppose $\gamma \in \Gamma_U$. Then, $\dim(\fix(\gamma))$ is of opposite parity to $\dim(\mathcal{O})$ if and only if $\gamma$ is orientation reversing. 
+\end{lemma}  
+\begin{proof}  For simplicity write $\dim(\orb)=n$ and $\dim(\fix(\gamma))=d$.  Let $N$ be a connected component of $\fix(\gamma)$. Because $\wtu$ is connected it suffices to show that at some point $p\in N$ the differential of $\gamma$, denoted $\gamma_*$, is orientation reversing exactly when $n$ and $d$ have opposite parity.  We have that $\gamma_{*p}$ acts trivially on $T_pN$ and that
+\[(T_pN)^\perp =  (T_pN)^{\perp}(-1) \oplus  (T_pN)^{\perp}(\theta_1) \oplus \dots \oplus  (T_pN)^{\perp}(\theta_\ell)\]
+where each $\theta_i \ne \pi$,  $\gamma_{*p}$ acts on $(T_pN)^{\perp}(-1)$ by multiplication by $-1$, and each $(T_pN)^{\perp}(\theta_i)$ has even dimension and is acted upon by $\gamma_{*p}$ by a direct sum of rotations.  Now $\orb$ and $\fix(\gamma)$ have opposite parity exactly when $\dim((T_pN)^\perp)=n-d$ is odd. This can only occur if $(T_pN)^{\perp}(-1)$ is odd dimensional, in particular when $\gamma$ is orientation reversing.
+\end{proof}
+
+
+\begin{definition} Let $\orb$ be a Riemannian orbifold. If the dimension of an $\orb$-stratum $N$ has opposite parity to the dimension of $\orb$, we call $N$ an \emph{opposite parity stratum} of $\orb$. For convenience the phrase ``opposite parity stratum" will be abbreviated to ``OP-stratum."
+\end{definition}
+
+\begin{lemma}\label{orinop} Let $\orb$ be a Riemannian orbifold. Then $\orb$ is locally orientable if and only if $\orb$ has no primary OP-strata.
+\end{lemma}
+
+\begin{proof}
+Suppose $\orb$ is not locally orientable. Then there is a coordinate chart $\cc$ in $\orb$ with an orientation reversing element $\gamma \in G_U$. Lemma~\ref{lem:dim-of-ori-rev} implies $\fix(\gamma)$ has dimension of opposite parity to the dimension of $\orb$. Suppose $W$ is a connected component of  $\fix(\gamma)$. By Theorem~\ref{stratification} each connected component $W$ of  $\fix(\gamma)$ is stratified by a finite set of $\wtu$-strata $N_1, N_2, \dots, N_r$. So for at least one $i_0 \in \{1, 2, \dots, r\}$, stratum $N_{i_0}$ must have the same dimension as $\fix(\gamma)$. Lemma~\ref{lem:dim_of_fix} implies $\gamma \in \iso^{\max}(N_{i_0})$. Thus $N_{i_0}$ is the required primary OP stratum.
+
+Suppose $\orb$ has primary OP stratum $N$ and take $\gamma \in \iso^{\max}(N)$. Lemma~\ref{lem:dim_of_fix} implies $\dim(\fix(\gamma))= \dim(N)$. Thus $\fix(\gamma)$ has dimension of opposite parity to the dimension of $\orb$. By Lemma~\ref{lem:dim-of-ori-rev} we conclude $\gamma$ is orientation reversing.
+\end{proof}
+
+
+\begin{theorem}  We can hear local orientability.
+\end{theorem}
+
+\begin{proof} Suppose $\orb$ is an orbifold of dimension $n$.  For $m \in \mathbb{Z}_{\ge 0}$ let $i_m=m-\tfrac{1}{2}(n-1)$.  We will show that if $\orb$ is locally orientable then for all choices of $m$, the degree $i_m$ term in the asymptotic expansion in Theorem \ref{hta} is zero.  However if $\orb$ is not locally orientable then there exists at least one non-negative integer $m_0$ for which the degree $i_m$ term is nonzero.  Thus a locally orientable orbifold and a non-locally orientable orbifold cannot be isospectral.
+
+The $I_0$ portion of the sum in Theorem \ref{hta} does not contribute to the degree $i_m$ term in the heat trace asymptotics of $\orb$.  To see this we note that the degree of each term in $I_0$ is $k-n/2$, with $k\in \mathbb{Z}_{\ge 0}$.  Suppose for some $k \in \mathbb{Z}_{\ge 0}$ we have $m \in \mathbb{Z}_{\ge 0}$ for which $i_m=k-n/2$.  This implies $k-m = \tfrac{1}{2}$ which is a contradiction.
+
+Now consider the second portion of the sum in Theorem \ref{hta}, re-arranging the expression somewhat:
+\begin{align}\label{stratumpart}
+\sum_{N \in S(\mathcal{O})}\frac{I_N}{\myabs{\iso(N)}} &= \sum_{N \in S(\mathcal{O})} \sum_{k=0}^\infty \left( \frac{(4\pi)^{-\dim{N}/2}}{\myabs{\iso(N)}} \int_N b_k(N,x) d\vol_N(x) \right) t^{k-\dim{N}/2}.
+\end{align}
+Suppose $N$ is a singular stratum of $\orb$ for which there exists $k,m \in \mathbb{Z}_{\ge 0}$ with $i_m=k-\dim{N}/2$.  From the definition of $i_m$ we see $$n-\dim{N} = 2(m-k)+1,$$ and conclude that the dimension of $\orb$ and the dimension of $N$ must have opposite parity.  As noted above [after statement on heat trace] only primary singular strata contribute to the asymptotics of the heat trace of an orbifold.  Thus only a primary OP singular stratum can contribute to the degree $i_m$ term of the heat trace asymptotics of $\orb$.
+
+If $\orb$ is locally orientable then by Lemma \ref{orinop}, $\orb$ has no primary singular strata.  So for all $m \in \mathbb{Z}_{\ge 0}$ the degree $i_m$ term in the asymptotics of $\orb$ must vanish.  
+
+Now suppose $\orb$ is not locally orientable.  Lemma \ref{orinop} implies the set $\cp$ of primary OP strata in $\orb$ is nonempty.  Let $d$ be the largest dimension of the strata that appear in $\cp$.  Note that $n-d$ is a non-negative odd number, so $m=\tfrac{1}{2}(n-d-1) \in \mathbb{Z}_{\ge 0}$.  We will show that for this value of $m$, the degree $i_m=-\tfrac{d}{2}$ term in the heat asymptotics of $\orb$ is nonzero.
+
+
+
+We now show that the only strata in $\orb$ that contribute to the degree $-\tfrac{d}{2}$ term are those in $\cp_d=\{N \in \cp : \dim(N)=d\}$.  If singular stratum $N$ contributes to the degree $-\tfrac{d}{2}$ term, the argument above and remarK?? (only primary contribute - after Heat Trace setup) implies $N \in \cp$. This implies $\dim{N} \le d$.  In line \ref{stratumpart} we see that the exponent $-\tfrac{d}{2}$ must have the form $k-\dim{N}/2$ for some $k \in \mathbb{Z}_{\ge 0}$.   This implies $\dim{N} \ge d$.  So $\dim{N}=d$ and $N \in \cp_d$ as claimed.
+
+Now consider the contribution of $N \in \cp_d$ to the coefficient of the degree $-\tfrac{d}{2}$ term in the heat expansion of $\orb$.  By line \ref{stratumpart} and the fact that $\dim{N}=d$ this term has the form,
+\[\left( \frac{(4\pi)^{-\dim{N}/2}}{\myabs{\iso(N)}} \int_N b_0(N,x) d\vol_N(x) \right) t^{-\tfrac{d}{2}}.\]
+From DGGW (add this to above) and the fact that $N$ is a primary singular strata, $b_0(N,x)$ is a sum of positive numbers JUST CITE LEMMA ABOVE HERE.   Thus $N$ contributes to the degree $\tfrac{d}{2}$ term in the heat asymptotics of $\orb$.
+
+Because the full coefficient of the degree $-\tfrac{d}{2}$ term in the heat asymptotics of $\orb$ is the sum of the positive contributions from strata in the nonempty set $\cp_d$, we conclude that the degree $-\tfrac{d}{2}$ term is nonzero.
+
+\end{proof}
+%%%Bibliography
+
+
+\bibliographystyle{plain}
+\bibliography{localoribib}
+
+\end{document}
+
+

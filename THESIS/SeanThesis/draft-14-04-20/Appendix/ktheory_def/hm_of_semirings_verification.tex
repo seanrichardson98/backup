@@ -1,0 +1,18 @@
+\documentclass[../../sean_thesis.tex]{subfiles}
+
+\begin{document}
+\begin{proof}
+	Let $f: X \to Y$ denote a continuous function between two compact Hausdorff spaces.
+
+First it must be verified that $J(f)$ is well-defined. Specifically, it must be shown that if $[E_1] = [E_2]$, then $J(f)([E_1]) = J(f)([E_2])$. That is, it must be shown that $E_1 \op \tbund{n} \tiso E_2 \op \tbund{n}$ for some $n$ implies $f^{*}(E_1) \siso f^{*}(E_2)$. First, note the following application of the distributivity of pullback over direct sum \toadd{ref}.
+\begin{equation*}
+	f^{*}(E_1) \op f^{*}(\tbund{n})
+	\tiso  f^{*}(E_1 \op \tbund{n})
+	\tiso f^{*}(E_1 \op \tbund{n})
+	\tiso f^{*}(E_2) \op f^{*}(\tbund{n})
+\end{equation*}
+The result that the pullback of a trivial bundle is trivial combined with the above confirms $f^{*}(E_1) \siso f^{*}(E_2)$ and so $J(f)$ is well-defined.
+	
+With $J(f)$ well-defined, verifying that $J(f)$ is a semiring homomorphism follows easily from the properties of pullback. Specifically, the distributivity of pullback over direct sum directly gives the distributivity of $J(f)$ over the defined addition. Similarly, the distributivity of pullback over tensor product gives that $J(f)$ distributes over the defined multiplication. Lastly, the property that $f^{*}$ maps the bundle $\tbund{1}$ over $X$ to the bundle $\tbund{1}$ over $Y$ implies that $J(f)$ maps the multiplicative identity to the multiplicative identity. 
+\end{proof}
+\end{document}

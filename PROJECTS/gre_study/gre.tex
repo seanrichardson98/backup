@@ -1,0 +1,193 @@
+\documentclass[12pt]{amsart}
+\usepackage{multicol}
+\usepackage[margin=0.5in]{geometry}
+\setlength{\parindent}{0cm}
+
+\usepackage{siunitx}
+
+
+\DeclareMathOperator{\proj}{\mathbf{proj}} 
+\DeclareMathOperator{\lcm}{lcm}
+
+
+
+\newcommand{\deriv}[2]{\frac{d#1}{d#2}}
+\newcommand{\myabs}[1]{\vert#1\vert} 
+
+
+\begin{document}
+\title{GRE Prep}
+\author{Sean Richardson}
+\maketitle
+
+\begin{multicols}{2}
+\section{Precalculus}
+\textbf{Bits and Bobs:}
+\begin{itemize}
+    \item \emph{Parabola}: Let $F$ be a point and $D$ a fixed line that
+        doesn't contain $F$. A parabola is the set of points in the plane
+        equidistant from $F$ and $D$. Further, for $y = \frac{1}{4p} x^2$, $F = (0,p)$ and $D$ is given by $y = -p$.
+    \item \emph{Hyperbola}: The set of all points in plane such that the
+    difference between the distances of two fixed points (the \emph{foci})
+    is constant. Further, for $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$, the
+    foci are given by $(\pm c, 0)$ where $c = \sqrt{a^2+b^2}$. (Can find
+        asyptotes and vertices).
+    \item \emph{Elipse}: Thse set of all points in the plane 
+    \item Fundamental theorem of algebra.
+    \item Rational roots Thm [18] To remember: $0 = a_1x+a_0$ /*pf*/
+    \item Conjugate radical roots theorem [18] /*remember with quadratic
+        formula*/. /*pf*/
+    \item Complex conjugate roots thm
+    \item Sum of roots of polynomial is $-\frac{a_{n-1}}{a_n}$. /*pf*/
+    \item Product of roots of polynomial is $(-1)^n\frac{a_0}{a_n}$. /*pf*/
+\end{itemize}
+\textbf{Trig:}
+\begin{itemize}
+    \item $1+\tan^2(\theta) = \sec^2(\theta)$.
+    \item $1+\cot^2(\theta) = \csc^2(\theta)$.
+    \item $\sin(\alpha+\beta) =
+        \sin(\alpha)\cos(\beta)+\sin(\beta)\cos(\alpha)$.
+    \item $\cos(\alpha+\beta) = \cos(\alpha)\cos(\beta) -
+        \sin(\alpha)\sin(\beta)$.
+    \item $\tan(\alpha+\beta) =
+     \frac{\tan(\alpha)+\tan(\beta)}{1-\tan(\alpha)\tan(\beta)}$.
+    \item $\sin(2\theta) = 2\sin(\theta)\cos(\theta)$.
+    \item $\cos(2\theta) = \cos^2(\theta)-\sin^2(\theta) =
+        1-2\sin^2(\theta) = 2\cos^2(\theta)-1$.
+    \item $\tan(2\theta) = \frac{2\tan(\theta)}{1-\tan^2\theta}$
+    \item $\sin(\frac{\theta}{2}) = \pm \sqrt{\frac{1-\cos\theta}{2}}$.
+    \item $\cos(\frac{\theta}{2}) = \pm \sqrt{\frac{1+\cos\theta}{2}}$.
+    \item $\tan(\frac{\theta}{2}) = \frac{\sin\theta}{1+\cos\theta}$.
+\end{itemize}
+\section{Calculus I and II}%
+\begin{itemize}
+    \item sequence convergence rules
+    \item limit convergence rules
+    \item Squeeze theorem
+    \item L'Hopital's rule
+    \item Extreme \& Intermediate value theorems
+    \item Definition of derivative
+    \item Derivative of inverse function:
+        $(f^{-1})^{'}(y_0)=\frac{1}{f^{'}(x_0)}$ if $y_0 = f(x_0)$
+    /*how to remember*/
+    \item Implicit differentiation
+    \item Mean value theorem
+    \item Integration by parts
+    \item Fundamental Theorem of Calculus (both forms).
+    \item Solids of revolution
+    \item Arc length of curve $y(x)$ given by 
+        \begin{equation}
+            s = \int_{x_i}^{x_f} \sqrt{{\left(\deriv{y}{x}\right)}^2+1}\ \ dx
+        \end{equation}
+    \item derivative of $f(x)^{g(x)}$ things.
+    \item $1+x+\dots+x^n = \frac{1-x^{n+1}}{1-x}$. And can take $n \to \infty$ for $\myabs{x}$
+    \item p-series
+    \item Comparison test
+    \item Ratio test
+    \item Integral test
+    \item Root test \dots $\lim_{n\to\infty}(a_n)^{ \frac{1}{n}}$.
+    \item Interval of convergence of power series: use ratio test and solve for $x$. (endpoints must be checked case by case).
+    \item Taylor Series given by
+        \begin{equation}
+        f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}{(x-a)}^n 
+        \end{equation}
+    \item Taylor's theorem / Taylor Series error thing.
+\end{itemize}
+\textbf{Derivatives to know:}
+\begin{itemize}
+    \item $\deriv{}{x}(a^x) = \log(a)a^x$.
+    \item $\deriv{}{x}(\log_a(x)) = \frac{1}{x\log(a)}$.
+    \item $\deriv{}{x}(\tan x) = \sec^2(x)$.
+    \item $\deriv{}{x}(\cot x) = -\csc^2(x)$.
+    \item $\deriv{}{x}(\sec x) = \sec x \tan x$.
+    \item $\deriv{}{x}(\csc x) = -\csc x \cot x$.
+    \item $\deriv{}{x}(\arcsin x) = \frac{1}{\sqrt{1+x^2}}$.
+    \item $\deriv{}{x}(\arccos x) = \frac{-1}{\sqrt{1+x^2}}$.
+    \item $\deriv{}{x}(\arctan x) = \frac{1}{1+x^2}$.
+\end{itemize}
+\textbf{Integrals to know:}
+\begin{itemize}
+    \item $\int a^x dx = \frac{1}{\log a} a^x + c$.
+    \item $\int \sec^2 x dx = \tan x + c$.
+    \item $\int \csc^2 x dx = -\cot x + c$.
+    \item $\int \sec x \tan x dx = \sec x + c$.
+    \item $\int \csc x \cot x dx = -\csc x + c$.
+    \item $\int \frac{1}{\sqrt{1-x^2}} dx = \arcsin x + c$.
+    \item $\int \frac{1}{1+x^2} dx = \arctan x + c$.
+\end{itemize}
+\textbf{Taylor Series to know:}
+\begin{itemize}
+    \item $ \frac{1}{1-x} = \sum^{\infty}_{n=0} x^n$, $-1 < x < 1$
+    \item $ \frac{1}{1+x} = \sum^{\infty}_{n=0} {(-1)}^n x^n$, $-1 < x < 1$
+    \item $ \log(1-x) = -\sum^{\infty}_{n=0} \frac{x^n}{n}$, $-1 \leq x < 1$
+    \item $ e^x = \sum^{\infty}_{n=0} \frac{x^n}{n!} $, all $x$.
+    \item $ \sin x = \sum^{\infty}_{n=0} \frac{{(-1)}^n}{(2n+1)!}x^{2n+1}$, all $x$
+    \item $ \cos x = \sum^{\infty}_{n=0} \frac{{-1}^n}{(2n)!}x^{2n}$, all $x$
+\end{itemize}
+\textbf{Trig Substitution Method:}\\
+For integrals that contain $\sqrt{a^2-x^2}$, $\sqrt{a^2+x^2}$, or $\sqrt{u^2-x^2}$. In particular:
+\begin{center}
+    \begin{tabular}{c c}
+        \textit{If integrand contains} & \textit{Make this substitution} \\
+        $\sqrt{a^2-u^2}$               & $x = a\sin\theta$\\
+        $\sqrt{a^2+u^2}$               & $x = a\tan\theta$\\
+        $\sqrt{u^2-a^2}$               & $x = a\sec\theta$\\
+    \end{tabular}
+\end{center}
+\textbf{Partial Fractions Method:}\\
+For integrals of the form $\int \frac{P(x)}{Q(x)} dx$, with $P(x), Q(x)$ polynomials, $\deg(P) < \deg(Q)$. The method:
+\begin{enumerate}
+    \item First, factor $Q(x)$.
+    \item Express $\frac{P(x)}{Q(x)} = \frac{A_1}{q_1(x)} + \frac{A_2}{q_2(x)} \dots$. The $q_i$'s are factors of $Q$. If $Q$ factors with a term of th form $(ax+b)^n$, there will be $n$ corresponding partial fractions $(ax+b), (ax+b)^2, \dots$. If you get irreducible quadratic, have a degree $1$ numerator.
+    \item Solve for $A_i$'s by multiplying both sides by corresponding $q_i$ and plugging in root.
+\end{enumerate}
+\section{Multivariable Calculus}%
+\label{sec:multivariable_calculus}
+
+\begin{itemize}
+    \item Projection of $ \mathbf{b}$ onto $ \mathbf{a}$:
+    \begin{equation*}
+            \proj_{\mathbf{a}}\mathbf{b} = \frac{ \mathbf{a} \cdot \mathbf{b}} { \mathbf{a} \cdot \mathbf{a}} \mathbf{a}.
+    \end{equation*}
+    \item Triple product is volume of paraleltope
+    \item Various vector product identities?
+    \item Line equations in space
+    \item Plane equations in space
+    \item Various coordinate systems
+    \item Tangent plane to surface and linear approxmations
+    \item Higher order approximations /*TODO*/
+    \item Chain rule
+    \item Gradient and properties
+    \item Min / max problems /*2nd deriv test TODO*/
+    \item Min / max problems with constraint: if possible combine constraint and function into simple function and apply calc 1.
+    \item Otherwise \dots Lagrange multiplier method. Function $f$ and constraint $g = c$. Then, impose $\nabla f = \lambda \nabla g$.
+    \item Line integrals and arclength, integrating on V.F etc.
+    \item Fundamental theorem of calc for line integrals.
+    \item Green's theorem and applications.
+    \item Weird cases /*[158--159]*/
+\end{itemize}
+\section{Differential Equations}%
+\label{sec:differential_equations}
+
+\section{Number Theory}%
+\label{sec:number_theory}
+
+\begin{itemize}
+    \item Relating divisibility to digits rules
+    \item Division algorithm
+    \item $\gcd$ and $\lcm$ definitions and relation to prime factorizations (min and max).
+    \item Also, $\gcd(a,b) \cdot \lcm(a,b) = ab$.
+    \item Euclidean algorithm.
+    \item Fermat's Little Theorem. If $p$ prime, $p \not| a$, then
+        \begin{equation*}
+            a^{p-1}\equiv1(\text{mod }p)
+        \end{equation*}
+\end{itemize}
+
+    \textbf{Diophantine Equation} $ax+by=c$. Has solution iff $\gcd(a,b) | c$. Given solution $(x_1,y_1)$ all solutions are given by:
+    \begin{equation*}
+        x = x_1+ t\frac{b}{\gcd(a,b)} \text{ and } y = y_1- t\frac{a}{\gcd(a,b)} 
+        \end{equation*}
+        for $t \in \mathbb{Z}$.
+\end{multicols}
+\end{document}

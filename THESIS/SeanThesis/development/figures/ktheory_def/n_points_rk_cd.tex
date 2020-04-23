@@ -1,0 +1,10 @@
+\adjustbox{scale=\cdscale,center}{
+\begin{tikzcd}[
+  ar symbol/.style = {draw=none,"#1" description,sloped},
+  isomorphic/.style = {ar symbol={\cong}},
+  equals/.style = {ar symbol={=}},
+  ]
+	\KR(\set{x_0, \dots, x_{n-1}}) \ar[r, "\varphi"] & K(\set{x_0, \dots, x_{n-1}}) \ar[r, "K(i)"] & K(\set{x_0})
+	%\\& \Z^n \ar[u,isomorphic] \ar[r, "K(i)"] & \Z \ar[u,isomorphic]
+\end{tikzcd}
+}

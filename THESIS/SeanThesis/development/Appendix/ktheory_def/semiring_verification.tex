@@ -1,0 +1,48 @@
+\documentclass[../../sean_thesis.tex]{subfiles}
+
+\begin{document}
+	\begin{proof}
+Take a compact Hausdorff space $X$. It must be verified that the set of stable isomorphism classes of vector bundles over $X$ with operations defined by the direct sum $\op$ and the tensor product $\ot$ indeed satisfies all the properties of a commutative semiring with additive cancellation.
+		
+%ADDITION WELL-DEFINED
+Before proceeding further, it must be verified that addition is well defined. So, take $E_1 \siso E_2$ and $F_1 \siso F_2$ to be vector bundles over $X$. Then, take nonnegative integers $n$ and $m$ such that $E_1 \op \tbund{n} = E_2 \op \tbund{n}$ and $E_1 \op \tbund{m} = E_2 \op \tbund{m}$ as promised by definition. Then it follows that $E_1 \op F_1 \siso E_2 \op F_2$ by the following chain of equalities.
+\begin{align*}
+	(E_1 \op F_1) \op \tbund{n+m}
+	\tiso (E_1 \op \tbund{n}) \op (F_1 \op \tbund{m})
+	\tiso (E_2 \op \tbund{n}) \op (F_2 \op \tbund{m})
+	\tiso (E_2 \op F_2) \op \tbund{n+m}
+\end{align*}
+Where the equivalence $\tbund{n+m} \tiso \tbund{n} \op \tbund{m}$ \toadd{reference} was used.		
+		
+%ADDITION ASSOCIATIVE, COMMUTATIVE %ADDITIVE IDENTITY
+With addition well defined, the associativity and commutativity of addition follows directly from the associativity and commutativity of the direct sum on vector bundles \toadd{reference}. Further, the result $E \op \tbund{0} \iso E$ for any vector bundle $E$ \toadd{ref} makes the equivalence class $[\tbund{0}]$ the additive identity.
+
+%ADDITIVE CANCELLATION
+The additive cancellation follows from \toadd{reference $E \op E'$ trivial result}, which applies here by $X$ compact Hausdorff. Indeed, take bundles $E$, $F$, and $S$ over $X$ such that $[E] + [S] = [F] + [S]$. First note that in the case of $S$ trivial, $[E] = [F]$ by definition. Otherwise, by \toadd{ref}, there exists a bundle $S$ such that $S \op S'$ is trivial. Adding $[S']$ to both sides reduces the expression to the first case with $[E] + [S \op S'] = [F] + [S \op S']$, giving $[E] = [F]$ as desired.
+		
+%MULTIPLICATION WELL-DEFINED	
+Before proceeding with any multiplicative verifications, it must be verified that the tensor product $\ot$ gives a well defined multiplicative operation. So, again take $E_1 \siso E_2$ and $F_1 \siso F_2$ to be vector bundles over $X$ and nonnegative integers $n$ and $m$ such that $E_1 \op \tbund{n} = E_2 \op \tbund{n}$ and $E_1 \op \tbund{m} = E_2 \op \tbund{m}$ as promised by definition. Next, define the bundle $M$ by
+\begin{equation*}
+	M \tiso \tbund{n} \ot (F_1 \op \tbund{m}) 
+	\op \tbund{m} \ot (E_1 \op \tbund{n})
+	  \tiso \tbund{n} \ot (F_2 \op \tbund{m}) 
+	\op \tbund{m} \ot (E_2 \op \tbund{n})
+\end{equation*}
+Next, observe that $M$ is constructed exactly so that the relation $E_1F_1 \op M \tiso E_2F_2 \op M$ holds:
+\begin{align*}
+	E_1 \ot F_1 \op M
+	\tiso (E_1 \op \tbund{n})(F_1 \op \tbund{m}) \op \tbund{n}\tbund{m}
+	\tiso (E_2 \op \tbund{n})(F_2 \op \tbund{m}) \op \tbund{n}\tbund{m}
+	\tiso E_2 \ot F_2 \op M
+\end{align*}
+So, take $M'$ to be the bundle such that $M \op M'$ is trivial as promised by \toadd{ref}. Then, the desired conclusion follows easily, giving that multiplication is well-defined.
+\begin{equation*}
+	E_1 \ot F_1 \op (M \op M') = E_2 \ot F_2 \op (M \op M')
+\end{equation*}
+%MULTIPLICATION ASSOCIATIVE, COMMUTATIVE. MULTIPLICATIVE IDENTITY:
+With multiplication well defined, the associativity and commutativity of multiplication follows directly from the associativity and commutativity of the tensor product on vector bundles \toadd{reference}. Similarly, the distributivity of $\ot$ over $\op$ in vector bundles \toadd{ref} gives that the defined multiplication distributes over the defined addition. Finally, the result $E \ot \tbund{1} \iso E$ for any vector bundle $E$ \toadd{ref} makes the equivalence class $[\tbund{1}]$ the multiplicative identity.
+	
+		
+%DISTRIBUTIVE LAW
+	\end{proof}
+\end{document}

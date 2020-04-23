@@ -1,0 +1,36 @@
+Need to include relevant skills:
+    - Git
+    - Python
+    - C, C++
+    - Java
+    - Linux User ... shell commands
+    - ___ classes in Math, CS, Physics
+    - Writing experience
+    - Some HTML/CSS?
+    - LaTeX?
+
+
+What to include in cover letter:
+    REQUIRED:
+    - Timeline of availability
+    - Citezenshpip status
+    - Salary requirement for consideration
+    WHAT ELSE:
+    - Moving to D.C. in ______
+    - Show I know about the job and the company
+    - Show that I am passionate about this. want to solve interesting problems
+    - Argue that I am well-qualified
+
+
+    P1: Intro and summary for why I am qualified
+
+    P2: Address job requirements and how I fit them. Emphasize cloud thing
+
+    P3: Address what they want me to address
+
+    P4: Talk about the company and why I'm passionate / excited.
+
+ALSO... references:
+    - Math: Liz Stanhope...
+    - CS: Peter Drake...
+    - Also... Broide or Andy?

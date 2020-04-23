@@ -1,0 +1,39 @@
+Contact Information
+
+About Me:
+    - Undergrad, etc.
+    - Academic Interests
+    - Running
+
+Projects:
+- Orbifolds
+    - Description
+    - Published Paper
+    - Poster
+    - Presentation
+- Thesis (when completed)
+- Cloud Identification
+    - Description
+    - Poster
+    - Presentation
+- This Website
+    - Descrption
+    - Link to Source Code
+
+Writing Samples:
+    - history goulash communism
+    - philosophy intuitionism
+    - cat paper
+    - calc4 paper
+    - abstract paper
+    - small farms columbia
+    - econ paper on internet and education
+
+More  Information:
+
+    Education
+
+    Academic Achievements:
+    (stuff on resume)
+
+    Work Experience:

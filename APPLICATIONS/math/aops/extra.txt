@@ -1,0 +1,142 @@
+Describe your math, Python, chemistry and/or physics background - Please list relevant courses that you've taken, including any AoPS classes if you are a former student of ours. Please also list any relevant contests that you've participated in and how you placed.
+
+I am a student at Lewis & Clark College and I will graduate in May 2020 with a major in mathematics and computer science with a second major in physics, so I have completed a number of courses in math, physics, and CS which are listed at the end of this document.
+
+Other than courses, I have done a number of personal and group projects in python. Notably, I and a peer programmed a neural network to identify meteorological clouds for a research project in summer 2017.
+
+Additionally, I participated in the 2019 Putnam math competition in which I received 20 points.
+
+Relevant Lewis & Clark College Classes:
+math:
+- Abstract Algebra I (i.e. Ring Theory)
+- Abstract Algebra II (i.e. Group Theory)
+- Real Analysis I
+- Analysis and Topology (i.e Real Analysis II)
+- Calc 4 (i.e. Introduction to PDE's)
+- Complex Variables (i.e Complex Analysis)
+- Differential Equations
+- Linear Algebra
+- Calculus 3 (i.e. Multivariable Calculus)
+
+Physics:
+- Thermodynamics / Statistical Mechanics
+- Quantum Physics
+- Experimental Methods
+- Electricity and Magnetism
+- Advanced Electricity and Magnetism
+- Theoretical Dynamics (i.e. Advanced Mechanics)
+- Waves and Matter
+
+Computer Science:
+- Theory of Computation
+- Computer Graphics
+- Advanced Computer Graphics
+- Algorithm Design and Analysis
+- Computer Architecture
+
+Courses at Budapest Semesters in Mathematics:
+- Number Theory
+- Conjecture and Proof
+
+Relevant High School Classes:
+- AP Physics C: Mechanics (score: 5)
+- AP Physics 1 (score: 5)
+- AP Calculus AB (score: 5)
+- AP Calculus BC (score: 5)
+- AP Physics C (score: 5)
+- AP Chemistry (score: 5)
+- AP Computer Science A (score: 5)
+
+For all courses listed I received a grade of "A".
+
+
+You have given a very strong argument that there can be at most $3$ acute interior angles! You first showed that it is possible for an 11 sided polygon to have $3$ acute interior angles by providing a specific example. Then you showed that having more than $3$ acute interior angles is impossible. Nice work!
+
+One suggestion to make your argument even better would be to elaborate further on your example. Can you demonstrate that the choices of $86^{\circ}$ for the acute angles and $170^{\circ}$ for the obtuse angles gives a total of $1620^{\circ}$? Are there more accurate choices for these angles?
+
+In fact, once you have a strong example, you do not need the section of your argument in which you assume $3$ acute interior angles summing to $< 270^{\circ}$ $-$ the example takes care of this part of the proof by itself! You do not always have to show the reader how you found the answer, you only need to show the proof of the answer.
+
+Your argument used exterior angles to show that having more than $3$ acute interior angles is impossible $-$ this is a great solution!
+
+However, your argument is not quite complete. You have shown that more than $3$ acute interior is impossible, but is it possible to have exactly $3$ acute interior angles? The best way to show it is possible for a polygon to have $3$ acute interior angles is to create a polygon that does. What would a polygon with $3$ acute interior angles look like?
+
+Also, in the first sentence of your response you made a small typo $-$ did you mean $\emph{supplementary}$ instead of $\emph{complementary}$?
+
+
+You have exactly the right idea here! You first found the sum of the interior angles, then you showed a polygon with $4$ acute angles can be made, and finally you argued that having more than $4$ acute angles is impossible. Nice work!
+
+However, remember that an acute angle must be $\emph{strictly}$ less than $90^{\circ}$, meaning an acute angle cannot equal $90^{\circ}$. Also, an obtuse angle must be strictly less than $180^{\circ}$ because an angle of exactly $180^{\circ}$ does not make an angle. Keeping this in mind, is it still possible to make an $11$ sided polygon with $4$ acute interior angles?
+
+Remember to carefully explain the details of your argument to the reader. How did you get to the $1620$ number? Perhaps you can write out the calculation you did to find $1620$ in your response. Can you show the calculations for the other numbers too?
+
+----------------
+You have many good ideas in your code. However, currently your code does not run $-$ let's work through it together. Remember that sometimes pieces of code need to be written in a particular order. Here, you need to first import your package, then declare your functions, and have your main code with the "for" loop at the very end. Below is a version of your code that has been reordered. With this reordering, you are very close! (Try running it)
+
+[pywindow]
+import random
+
+def list_add(list1,list2): #add 2 lists
+        list = []
+        for i in range(11):
+            list.append(list1[i]+list2[i])
+        return list
+
+
+def tally(i):
+    Roll = 2*random.randint(1,6) #roll two dice
+    t2 = 0 #counters
+    t3 = 0
+    t4 = 0
+    t5 = 0
+    t6 = 0
+    t7 = 0
+    t8 = 0
+    t9 = 0
+    t10 = 0
+    t11 = 0
+    t12 = 0
+    if Roll==2: #tally
+        t2 = t2+1
+    if Roll==3:
+        t3 = t3+1
+    if Roll==4:
+        t4 = t4+1
+    if Roll==5:
+        t5 = t5+1
+    if Roll==6:
+        t6 = t6+1
+    if Roll==7:
+        t7 = t7+1
+    if Roll==8:
+        t8 = t8+1
+    if Roll==9:
+        t9 = t9+1
+    if Roll==10:
+        t10 = t10+1
+    if Roll==11:
+        t11 = t11+1
+    if Roll==12:
+        t12 = t12+1
+    return [t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,12]
+
+Tally = [0,0,0,0,0,0,0,0,0,0,0,0,0]
+for i in range(1001): #go up to 1000
+    Tally = list_add(tally(i),Tally)
+
+print(Tally)
+[/pywindow]
+
+The above code has some small additional small changes so that the code runs without errors. Firstly, avoid naming two things the same. In this case, you have two different things names "Tally" $-$ a function and a list. I changed the function to a lowercase "t". Secondly, the for loop "list_add" function goes too high and creates an index out of bounds, so the upper bound of the loop must be lowered.
+
+Now that the code runs, here are some additional things to look at:
+$\circ$ First, notice that all the odd numbers in the table are $0$. Why could this be? It is related to line $11$ in the updated code.
+---------------------
+Your solution is exactly the right idea! You make a list of size 11 to hold the information, then you choose two random numbers from 1-6 and add the sums together to simulate rolling two dice. Then, you keep track of how many times each number is rolled in your list. Especially good use of the format command to give a nice display. Good work!
+
+However, notice the error you get when you run your code: the function "roll_1000_dice()" is not recognized. Did you mean to write the name of the function you defined on line 2?
+
+Also, take note of your code on line 11. You add "d" to "x[d-2]", but remember that "x[d-2]" counts how many $\emph{times}$ the value of d is rolled. You should be adding a different number to "x[d-2]" to accomplish this counting $-$ what number?
+
+For an extra challenge, can you combine the two "for" loops on lines 14 and 16 into one "for" loop?
+---------------
+

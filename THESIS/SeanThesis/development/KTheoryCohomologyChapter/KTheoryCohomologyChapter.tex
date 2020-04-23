@@ -1,0 +1,187 @@
+\documentclass[../sean_thesis.tex]{subfiles}
+
+\begin{document}
+
+\chapter{K-Theory as a Cohomology Theory}
+
+\section{Exact Sequences}
+
+\begin{definition}[Short Exact Sequence]
+	Let $A$, $B$, and $C$ be abelian groups. Then let $\psi: A \to B$ be an injective homomorphism and let $\varphi: B \to C$ be a surjective homomorphism. Further suppose that $\ker\varphi = \im\psi$. Then, the pair of homomorphisms $\psi$ and $\varphi$ are called \emph{exact} and the sequence $A \xrightarrow{\psi} B \xrightarrow{\varphi} C$ is called a \emph{short exact sequence}.
+\end{definition}
+
+Note that an exact sequence does not need to be short. A sequence of arbitrary length can \emph{exact} so long as each adjacent pair of homomorphisms is exact. Of particular note is the \emph{long exact sequence}, which is a sequence of groups extending infinitely in both directions such that each adjacent pair of homomorphism is exact.
+\begin{equation*}
+	\dots \xrightarrow{} A^{-2} \xrightarrow{\alpha} A^{-1} \xrightarrow{\beta} A^{0} \xrightarrow{\gamma} A^{1} \xrightarrow{\delta} A^{2} \xrightarrow{} \dots
+\end{equation*}
+The above definitions of exact sequences used groups, but replacing the word ``groups'' with ``commutative rings'' or even with ``modules'' gives a definition of exact sequence for other categories.
+
+Exact sequences are useful. Recall that the computation of the reduced K-Theory for $n$ points in example~\ref{ex:kr_n_points} makes use of an exact sequence. The following result is partially responsible for why exact sequences are so useful.
+
+\begin{claim}[Splitting Lemma] Take a short exact sequence $A \xrightarrow{\psi} B \xrightarrow{\varphi} C$. Then, the following three statements are equivalent:
+\vspace{-\varparskip}
+	\begin{enumerate}[(i)]
+		\item There exists a homomorphism $\alpha: B \to A$ such that $\alpha \circ \psi$ is the identity on $A$.
+		\item There exists a homomorphism $\beta: C \to B$ such that $\varphi \circ \beta$ is the identity on $C$.
+		\item There is an isomorphism $A \op C \iso B$.
+	\end{enumerate}
+\end{claim}
+
+\toadd{verify and describe how this implies $K$ and $\KR$ properties}
+
+\section{Exact Sequences in K-Theory}
+However, exact sequences has a bigger role in K-Theory than highlighting the relationship between K-Theory and reduced K-Theory. Given a pair $(X,A)$ of topological spaces with particular properties, the K-Theory functor induces a natural long exact sequence of groups with nice properties. This mapping from a pair $(X,A)$ to a long exact sequence is the idea of \emph{cohomology}. Constructing this long exact sequence, however, requires some work beginning with the short exact sequence in the following claim.
+
+\begin{claim}
+\label{thm:subspace_short_exact_sequence}
+	Take the pair of compact Hausdorff topological spaces $(X,A)$ where $A \subset X$ to be a closed subset. Then consider the inclusion and quotient maps $i: A \to X$ with $q: X \to X/A$. This can also be written $A \xrightarrow{i} X \xrightarrow{q} X/A$. This sequence of morphisms between topological spaces induces a sequence of morphisms between commutative rings (possibly without identity) $\KR(X/A) \xrightarrow{q^{*}} \KR(A) \xrightarrow{i^{*}} \KR(X)$
+as depicted in ~\ref{fig:functor_on_subspace_sequence}. The sequence of ring homomorphisms is exact.
+\end{claim}
+
+\begin{figure}[ht!]
+	\include{figures/ktheory_cohomology/functor_on_subspace_sequence}
+	\caption{Inducing Sequence of Rings}
+	\label{fig:functor_on_subspace_sequence}
+\end{figure}
+
+\toadd{verify the above and talk about proof}
+
+This short exact sequence can be extended into a slightly longer exact sequence. First consider the sequence of spaces beginning with $A$ and $X$ such that each additional space is given by the disjoint union of the previous space together with the cone of the space two steps back. The disjoint unions allow for natural inclusions between spaces as depicted in the following diagram.
+\begin{equation*}
+	A \xrightarrow{i} X \xrightarrow{i} X \cup CA \xrightarrow{i} (X \cup CA) \cup CX \xrightarrow{i} ((X \cup CA) \cup CX) \cup C(X \cup CA)
+\end{equation*}
+The strategy will be to apply claim~\ref{thm:subspace_short_exact_sequence} to show that each adjacent pair of ring homomorphisms induced by $\KR$ is exact. However, applying this claim requires taking the topological quotient of each space by collapsing the subspace two steps back to a point.
+\begin{align*}
+	X \xrightarrow{q} X/A &&
+ X \cup CA \xrightarrow{q} (X \cup CA)/CX && 
+ (X \cup CA) \cup CX \xrightarrow{q} ((X \cup CA) \cup CX)/(CX) 
+\end{align*}
+So, the above diagrams define the inclusion maps and show the necessary quotient maps to incorporate, but claim~\ref{thm:subspace_short_exact_sequence} requires a relationship between the inclusion and quotient maps that is currently missing from this construction. For this, consider the relationship between spaces given by the following additional quotient maps. \toadd{discuss these quotient maps or at least the form of these quotient maps earlier?}
+\begin{align*}
+	X \cup CA \xrightarrow{Q} X/A & \hspace{2cm}
+	(X \cup CA) \cup CX \xrightarrow{Q} (X \cup CA)/CX\\
+	((X \cup CA) \cup CX) &\cup C(X \cup CA) \xrightarrow{Q} ((X \cup CA) \cup CX)/(CX) 
+\end{align*}
+The following result comes to the rescue.
+
+\begin{claim}
+\label{thm:Q_to_ism}
+	\toadd{claim to justify that vertical maps induce isomorphisms... multiple ways to do this. Can actually avoid homotopy here if need be. Come back to this section of argument later}
+\end{claim}
+
+\toadd{finish this part of argument}
+
+The top two rows of Figure~\ref{fig:long_exact_argument} summarizes all of the maps talked about so far. \toadd{some commutativity needs to be shown in order to write this}.
+\toadd{some typos in the following --- fix later}
+
+\begin{figure}[ht!]
+	\include{figures/ktheory_cohomology/long_exact_argument}
+	\caption{Relationship between Inclusion and Quotient Maps}
+	\label{fig:long_exact_argument}
+\end{figure}
+
+Figure~\ref{fig:long_exact_argument} also includes the following additional pleasant isomorphisms \toadd{talk about these isomorphisms or the form of these isomorphisms previously}
+\begin{align*}
+	(C \cup CA)/CX \tiso SA && 
+	((C \cup CA) \cup CX)/(CX) \tiso SX
+\end{align*}
+Next, applying the $\KR$ functor on all of these maps will take the inclusion maps and quotient maps to ring homomorphisms in the opposite directions. Additionally, $\KR$ will take the isomorphisms to ring isomorphisms and will additionally take each map denoted with a ``$Q$'' to a ring isomorphism by claim~\ref{thm:Q_to_ism}. This is summarized in Figure~\ref{fig:kr_to_long_exact}.
+\begin{figure}[ht!]
+	\include{figures/ktheory_cohomology/kr_to_long_exact}
+	\caption{Applying the Functor $\KR$}
+	\label{fig:kr_to_long_exact}
+\end{figure}
+Note in particular that claim~\ref{thm:subspace_short_exact_sequence} promises that each $i^{*}q^{*}$ composition gives a short exact sequence. \toadd{give the particular sequences?}. Then, by viewing each inclusion map as the composition of an isomorphism with a quotient map, the entire top row is then exact. By further composing with the vertical isomorphisms provides a simple short exact sequence as shown in figure~\ref{fig:nice_long_sequence}. However, while this sequence is useful, a cohomology theory requires more structure.
+\begin{figure}[ht!]
+	\include{figures/ktheory_cohomology/nice_long_sequence}
+	\caption{The Resulting Exact Sequence}
+	\label{fig:nice_long_sequence}
+\end{figure}
+
+\section{K-Theory as a Cohomology Theory}
+
+A cohomology theory requires an infinite collection of functors where each functor takes a fixed subcategory  topological space pairs to the category of abelian groups. K-Theory considers the subcategory of compact Hausdorff space-subspace pairs --- all pairs of the form $(A,X)$ discussed earlier. A cohomology theory must further satisfy the Eilenberg-Steenrod cohomology axioms to some degree. But at a minimum, the functors must take homotopic continuous maps to equivalent homomorphisms, and additionally induce an exact sequence extending infinitely in both directions. A cohomology theory that satisfies these minimum requirements is called a \emph{reduced cohomology theory}. By building upon the work in the previous section, reduced K-Theory can be extended into a reduced cohomology theory.
+
+The first step to develop this cohomology theory is to extend the exact sequence developed in the previous section into an exact sequence that extends infinitely in both directions. Figure~\ref{fig:nice_long_sequence} induces a slightly longer exact sequence given the initial compact Hausdorff space-subspace pair $(X,A)$, but repeating the same process for the pair $(SX, SA)$ will give a longer sequence. This can be extended infinitely to the left giving the infinite exact sequence. \toadd{note commutativity of quotient and suspension}
+\begin{equation*}
+	\cdots \xrightarrow{}
+	\KR(S^2X) \xrightarrow{}
+	\KR(S^2A) \xrightarrow{}
+	\KR(SX/SA)) \xrightarrow{}
+	\KR(SX) \xrightarrow{}
+	\KR(SA) \xrightarrow{}
+	\KR(X/A) \xrightarrow{}
+	\KR(X) \xrightarrow{}
+	\KR(A)
+\end{equation*}
+However, getting the sequence to extend infinitely to the right requires the following theorem. 
+
+\begin{theorem} (Bott Periodicity)
+	For any compact Hausdorff space $X$ there is an isomorphism $\KR(X) \iso \KR(S^2X)$.
+\end{theorem}
+
+\toadd{give the idea of this proof, but will not prove}
+
+Applying Bott periodicity to the infinite exact sequence induced by the pair $(X,A)$ immediately gives $\KR(X) \iso \KR(S^2X)$,  $KR(A) \iso KR(S^2A)$. In fact, there are only $6$ distinct group isomorphism classes in the infinite exact sequence. This justifies drawing the following cyclic commutative diagram.
+%
+\begin{figure}[ht!]
+	\include{figures/ktheory_cohomology/cyclic_exact_sequence}
+	\caption{Cyclic Exact Sequence}
+	\label{fig:cyclic_exact_sequence}
+\end{figure}
+%
+A cyclic exact sequence can be interpreted as an exact sequence extending infinitely in both direction by continuing around the cycle infinitely in both directions. However, before unraveling the cyclic sequence, adopt the following change in notation to negative indices. From now on, denote $\KR(S^kX)$ by $\KR^{-k}(X)$, denote $\KR(S^kA)$ by $\KR^{-k}(A)$ and denote $\KR(S^kX/S^kA)$ by $\KR^{-k}(X,A)$. However, by Bott periodicity and as depicted in Figure~\ref{fig:cyclic_exact_sequence}, there are $6$ distinct group isomorphism classes:
+%
+\begin{align*}
+	\KR^{-1}(X,A) && \KR^{-1}(X) && \KR^{-1}(A) && 
+	\KR^{0}(X,A) && \KR^{0}(X) && \KR^{0}(A)
+\end{align*}
+%
+This allows for the following definition for positive indices. Specifically, let $\KR^{k}(A)$ be $\KR^{0}(A)$ for even $k$ and $\KR^{1}(A)$ for odd $k$. Doing the same for $\KR^{k}(X)$ and $\KR^{k}(X,A)$ gives the following infinite sequence of groups.
+%
+\begin{equation*}
+	\cdots \xrightarrow{}
+	\KR^{-1}(X) \xrightarrow{}
+	\KR^{-1}(A) \xrightarrow{}
+	\KR^{0}(X,A) \xrightarrow{}
+	\KR^{0}(X) \xrightarrow{}
+	\KR^{0}(A) \xrightarrow{}
+	\KR^{1}(X,A) \xrightarrow{}
+	\KR^{1}(X) \xrightarrow{}
+	\cdots
+\end{equation*}
+%
+This infinite sequence is indeed exact, for it is only a reformulation of the cyclic exact sequence shown in figure~\ref{fig:cyclic_exact_sequence} and each functor $\KR^{k}$ preserves homotopy by $\KR$ preserves homotopy.
+\toadd{technically need to talk about suspension as a functor \dots}
+
+\toadd{include computations to demonstrate spaces are not the same? Add something here to make it seem immediately useful?}
+
+\toadd{extend to $K$}
+
+\section{Further Structure on the Cohomology Theory}
+
+\toadd{motivation for external product}
+
+\begin{definition}[External Product]
+	Let $X$ and $Y$ be compact Hausdorff spaces and let $p_1: X\times Y \to X$ and $p_2: X \times Y \to Y$ be the natural projections. Then, the \emph{external product} is a mapping $\mu: K(X) \ot K(Y) \to K(X \times Y)$ and is defined by $\mu(a \ot b) = p_1^{*}(a) p_2^{*}(b)$.
+\end{definition}
+
+\toadd{need to do all of the work to get $K(S^{2k}) \ot K(X) \to K(S^{2k} \times X)$ ISM}
+
+\toadd{extend to rings / address external product / graded stuff if time?}
+
+%
+%IMPORTANT RESULTS TO BUILD TOWARDS. WHICH OF THESE DO I NEED FOtgR THE NEXT CHAPTER VS. HAVE I ALREADY USED?
+%\begin{itemize}
+%
+%\item External Product Definition
+%\item (Theorem 2.2) The external product $\mu: K(X) \ot \Z [H]/(H-1)^2 \to K(X \times S^2)$ is an isomorphism of rings.
+%\item (Corollary 2.3) $\Z[H]/(H-1)^2 \to K(S^2)$ is an isomorphism of rings.
+%\item (Proposition 2.9) $X$ compact Hausdorff and $A \subset X$ closed subspace, then inclusion and quotient maps $A \to X \to X/A$ induces exact homomorphism sequence of rings $\KR(X/A) \to \KR (X) \to \KR(A)$.
+%\item (Lemma 2.10) $A$ contractible implies $q: X \to X/A$ induces bijection $q^*: \vect^n(X/A) \to \vect^n(X)$.
+%\item (Bottom of pg. 53) $\KR(X) \to \KR(A) \op \KR(B)$ is an isomorphism
+%\item (Top of pg. 54) $\KR(S(X \vee Y)) \tiso \KR(SX) \op \KR(SY)$.
+%\item (Theorem 2.11: Bott periodicity) $\KR(X) \tiso \KR(S^2X)$
+%\end{itemize}
+
+\end{document}

@@ -1,0 +1,22 @@
+\documentclass[../../sean_thesis.tex]{subfiles}
+\begin{document}
+	\begin{proof}
+		First it must be verified that the direct sum operation $\op$ is well-defined on the equivalence classes. So, consider vector bundles $E_1 \sim E_2$ and $F_1 \sim F_2$. Then let $n_1$, $m_1$, $n_2$, $m_2$ be the numbers such that $E_1 \op \tbund{n_1} \biso E_2 \op \tbund{n_2}$ and $F_1 \op \tbund{m_1} \biso F_2 \op \tbund{m_2}$. It then follows that $E_1 \op F_1 \biso E_2 \op F_2$
+		\begin{align*}
+			(E_1 \op F_1) \op (\tbund{n_1+m_1})
+			\biso (E_1 \op \tbund{n_1}) \op (F_1 \op \tbund{m_1})	
+			\biso (E_2 \op \tbund{n_2}) \op (F_2 \op \tbund{m_2})
+			\biso (E_1 \op F_1) \op (\tbund{n_2+m_2})	
+		\end{align*}
+		Where the above computation used $\tbund{n+m} \biso \tbund{n} \op \tbund{m}$.
+		
+		With the group operation well-defined, the associativity and commutativity of the operation follows from direct sum associative and commutative on bundles.
+		
+		The identity element in the group is given by the equivalence class $[\tbund{0}]$, which is the set of all trivial bundles. Indeed, $[E] + [\tbund{0}] = [E \op \tbund{0}] = [E]$.
+		
+		It only remains to show the existence of inverses, which appeals to \toadd{ref}. Then take any element $[E]$ and consider the promised bundle $E'$ such that $E \op E' \biso \tbund{n}$ for some trivial bundle of dimension $n$. Then, the element $[E']$ is the inverse element.
+		\begin{align*}
+			[E] + [E'] = [E \op E'] = [\tbund{n}] = [\tbund{0}]
+		\end{align*} 
+	\end{proof}
+\end{document}

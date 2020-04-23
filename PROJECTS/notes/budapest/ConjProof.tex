@@ -1,0 +1,95 @@
+\documentclass[12pt]{amsart}
+
+\setlength{\parindent}{0cm}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{commath}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{cancel}
+\usepackage{subfigure}
+\usepackage{multicol}
+\usepackage{gensymb}
+
+\usepackage{graphicx}
+\graphicspath{{graphics/}}
+
+\usepackage{my_notes}
+\usepackage{my_math}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{technique}[theorem]{Technique}
+
+\newenvironment{just}{\textit{Justification.}}{}
+\newenvironment{trans}{\textit{Translation.}}{}
+
+\newenvironment{mybox}
+{\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]}
+{\end{tcolorbox}}
+
+\newenvironment{mytbox}[1]
+{\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=#1]}
+{\end{tcolorbox}}
+
+\def\mathunderline#1#2{\color{#1}\underline{{\color{black}#2}}\color{black}}
+
+\begin{document}
+\title{Conjecture \& Proof}
+\author{Sean Richardson}
+\date{\today}
+\maketitle
+
+
+\section{Non Existence / ``Show it is impossible'' Proofs}
+\begin{technique}[Invariant]
+Find an invariant --- some value that is impossible to change
+        sufficiently.    
+\end{technique}
+Problems:
+\begin{enumerate}
+    \item Show it is impossible to get from $4$ to $6$ using the operations $n \rightarrow
+        n^2$, $n \rightarrow 2^n$ and $n \rightarrow n-49$.
+    \item 
+\end{enumerate}
+\begin{technique}[Contradiction]
+    Proof by contradiction. Assume that it does exist. This will give some
+    information to work with in order to generate a contradiction. 
+    \\Note: when possible, it does not hurt to assume some extra
+    information such that the assumption is in some kind of minimal form. 
+\end{technique}
+\section{Existence Proofs}
+\begin{technique}[Directly]
+    Provide an example. Done.
+\end{technique}
+
+
+\section{Other Techniques}
+\begin{technique}
+    To arrive at a contradiction, generate a sequence $a_n$ such that $a_n
+    \rightarrow 0$ but that we can place a lower bound on. Note: the fact
+    $a \in \mathbb{Z}, a > 0 \implies a \geq 1$ is often useful.
+\end{technique}
+\begin{enumerate}
+    \item Show $\sqrt{2}$ is irrational. (Can take sequence $a_n =
+        (1-\sqrt{2})^n$).
+\end{enumerate}
+
+\begin{technique}[This or That]
+    Conclude that one thing in some set of things must be true. AND, in the
+    whole set of things, the claim must hold.
+\end{technique}
+\begin{enumerate}
+    \item Show there exists $a,b \notin \mathbb{Q}$ such that $a^b \in
+        \mathbb{Q}$. Hint: consider ${\left(
+        \sqrt{2}^\sqrt{2}\right)}^\sqrt{2}$
+\end{enumerate}
+
+\end{document}

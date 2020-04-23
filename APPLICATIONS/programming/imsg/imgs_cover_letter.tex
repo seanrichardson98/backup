@@ -1,0 +1,80 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+%Version for spanish users, by dgarhdez
+
+\documentclass[11pt,letterpaper,roman]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+
+% moderncv themes
+\moderncvstyle{classic}                            % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{green}                              % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\name{Sean}{Richardson}
+\title{Resumé title}                               % optional, remove / comment the line if not wanted
+\address{8622 SE 11th Avenue}{Portland, OR 97202}% optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
+\phone[mobile]{503-707-9353}                   % optional, remove / comment the line if not wanted
+%\phone[fixed]{+2~(345)~678~901}                    % optional, remove / comment the line if not wanted
+%\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
+\email{seanhrichrdson@gmail.com}                               % optional, remove / comment the line if not wanted
+\homepage{www.seanhrichardson.com}                         % optional, remove / comment the line if not wanted
+%\extrainfo{additional information}                 % optional, remove / comment the line if not wanted
+%\photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+%\quote{Some quote}                                 % optional, remove / comment the line if not wanted
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%-----       letter       ---------------------------------------------------------
+% recipient data
+\recipient{I.M. Systems Group }
+{3206 Tower Oaks Boulevard\\
+Suite 300,
+Rockville, MD 20852}
+\date{\today}
+\opening{To whom it may concern,}
+\closing{Thank you for your time,}
+         % use an optional argument to use a string other than "Enclosure", or redefine \enclname
+\makelettertitle
+I am writing to apply for the Scientific Programmer position at I.M. Systems Group. My programming proficiency together with my experience in mathematics, physics, and research qualifies me for the position will make me a valuable contributor to the ASSISTT team.
+
+I have direct experience with the listed duties and skills. A summer research project in identifying meteorological clouds provided experience managing data, preprocessing data, using Git with a team, writing shell scripts to automate training a neural network, and writing unit tests. However, I have a unique set of skills aside from the software development through graduating with a major in computer science \& mathematics and a second major in physics. My physics background will allow for a faster understanding of scientific concepts, but I put particular emphasis on my strength in mathematics. I have excelled in my mathematics studies and through research, I have published a new mathematics result in a peer reviewed journal. I will able to quickly learn the necessary mathematical concepts that the job requires. Additionally, years of tutoring experience has allowed me to clearly communicate complex ideas and my research experience may help in communicating with the research teams.
+
+I will be graduating from Lewis \& Clark College in May and moving to the Rockville area this summer. I am available to start anytime following the first of June, but I would prefer to start in July. I am a U.S. citizen and would consider a salary of approximately \$50k for a year.
+
+Regarding the references, Dr. Peter Drake of computer science led the cloud identification research project that I helped write the code for. Dr. Liz Stanhope of mathematics is a faculty advisor and collaborator in my published mathematics research work. Dr. Andrew Funk is my advisor for the physics major whom I have had in class and graded for.
+
+I am excited to help tackle any complex problems that the ASSISTT team encounters. I would particular enjoy applying my programming and mathematics skills in a scientific environment that helps address environmental challenges.
+
+\vspace{0.5cm}
+
+\makeletterclosing
+
+\end{document}
+
+%% end of file `template.tex'.

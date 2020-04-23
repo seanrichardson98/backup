@@ -1,0 +1,24 @@
+Schooling:
+- declared majors
+- current gpa
+
+Future Career Interests:
+- teaching (sqrc)
+- research
+
+Research Experience / presentations & papers?
+- (1) --> presentation
+- (2) --> (writing manuscript)
+
+
+Skills:
+    - Fluency in: c, c++, java, python, latex
+
+More:
+(xc, track, chess)
+
+Honors:
+- Pamplin Society
+- Nomination for Goldwater
+- Deans?
+

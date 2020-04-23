@@ -1,0 +1,115 @@
+%THE DOCUMENT
+\documentclass[leqno]{amsbook}
+\usepackage{geometry}
+\geometry{letterpaper}
+
+%MATH PACKAGES:
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+
+%ORGANIZATION PACKAGES:
+\usepackage{subfiles}
+\usepackage{import}
+\usepackage{nameref,zref-xr}
+\zxrsetup{toltxlabel}
+
+%MISCELLANEOUS PACKAGES:
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{adjustbox}
+\usepackage{subcaption}
+%\usepackage[shortlabels]{enumitem}
+
+%TIKZ:
+\usepackage{tikz}
+\usetikzlibrary{cd}
+
+%NUMBERS:
+\newcommand{\cdscale}{1.5}
+\newcommand{\varparskip}{1em}
+
+%THEOREM SETTINGS
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{definition}[theorem]{Definition}                                 
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary} 
+\newtheorem{lemma}[theorem]{Lemma}   
+\newtheorem{example}[theorem]{Example}
+
+%SETTINGS
+\setlength{\parindent}{0em}
+\setlength{\parskip}{\varparskip}
+%\setlist[itemize]{noitemsep, topsep=0pt}
+
+%NOTE COMMANDS
+\newcommand{\sean}[1]{\textcolor{purple}{#1}}
+\newcommand{\iva}[1]{\textcolor{purple}{#1}}
+\newcommand{\toadd}[1]{/*#1*/}
+
+%MATH SHORTCUT COMMANDS
+%justified shortcuts
+\DeclareMathOperator{\vect}{Vect}
+\DeclareMathOperator{\id}{Id}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\const}{const}
+\newcommand{\iso}{\cong} %isomorphic symbol
+\newcommand{\biso}{\approx}
+\newcommand{\siso}{\approx_s} %stably isomorphic
+\newcommand{\tiso}{\approx} 
+\newcommand{\hmtpy}{\simeq}
+\newcommand{\pset}[1]{\mathcal{P} (#1)} %power set
+\newcommand{\KR}{\widetilde{K}} 
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\eset}{\emptyset}
+\newcommand{\rest}[2]{{#1} \vert_{#2}}
+\newcommand{\vecxx}[2]{#1 \choose #2}
+\newcommand{\comp}[1]{\overline{#1}}
+\newcommand{\abs}[1]{\vert #1 \vert}
+%shortcuts for my extreme laziness
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\F}{\mathcal{F}} 
+\newcommand{\tbund}[1]{\varepsilon^{#1}}
+\newcommand{\op}{\oplus} 
+\newcommand{\ot}{\otimes} 
+\newcommand{\RK}[1]{\widetilde{K}(#1)}
+
+\begin{document}
+
+\subfile{FrontMatter}
+
+\tableofcontents
+
+%\chapter*{Introduction}
+%\sean{I may add a brief introductiony-ish thing that provides a brief summary (similar to what my slide presentation will be) of the direction that the book is going. It feels a bit harsh to push the reader into category theory and hope they survive until chapter 4 to finally see vector bundles... This  way I can also talk of the motivation to what I address along the way. I can use the word vector bundle earlier to give motivation and do a better job of giving a story.}
+
+\subfile{CategoryTheoryChapter/CategoryTheoryChapter}
+
+\subfile{LinearAlgebraChapter/LinearAlgebraChapter}
+
+\subfile{TopologyChapter/TopologyChapter}
+
+\subfile{VectorBundleChapter/VectorBundleChapter}
+
+\subfile{KTheoryDefChapter/KTheoryDefChapter}
+
+\subfile{KTheoryCohomologyChapter/KTheoryCohomologyChapter}
+
+\subfile{DivisionAlgebraChapter/DivisionAlgebraChapter}
+
+%\subfile{Appendix/Appendix}
+
+\nocite{*}                                                                   
+\bibliographystyle{plain}                                                    
+\bibliography{bib}
+
+\end{document}
+

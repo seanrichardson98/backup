@@ -1,0 +1,24 @@
+\documentclass[12]{amsart}
+
+\usepackage{mathtools}                                                       
+\usepackage{hyperref}                                                        
+\usepackage{amsmath}                                                         
+\usepackage{amssymb} 
+
+\newcommand{\deriv}[2]{\frac{d#1}{d#2}}
+\newcommand{\dderiv}[2]{\frac{d^2#1}{d#2^2}}
+\newcommand{\abs}[1]{\vert#1\vert} 
+
+\begin{document}
+    \section{Fitting one resonance}
+    Following the TeachSpin Quantum Analogs manual, we model the system close to a resonace frequency as a damped, driven, harmonic oscillator. Let $p$ denote the air pressure, let $\omega_0$ denote the specific resonance frequency, and let $\gamma$, and take $K$ and $\gamma$ to be constants corresponding to the power of the speaker and the damping of the system respecitively. Then, we have the linear differential equation
+    \begin{equation*}
+        \dderiv{p}{t} + 2\gamma\deriv{p}{t} + \omega_0^2p = K\cos(\omega t)
+    \end{equation*}
+    Then, we solve for the amplitude $A$ of the steady state solution, which will gives the long term behavior of the resonace. Combining the solution to the amplitude $A$ with the assumption $\omega_0 \gg \gamma$, this simplifies to the model.
+    \begin{equation*}
+        \abs{A(\omega)} = \frac{K}{\sqrt{(\omega_0-\omega)^2+\lambda^2}}
+    \end{equation*}
+For some variable $\lambda$. This gives a model for fitting a single peak. Combining this with the MATlab Curve Fitting Toolbox with free variables $K$, $\omega_0$, and $\lambda$, we can accuractely fit the given data such as in /**/.
+    
+    \end{document}

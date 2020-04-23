@@ -1,0 +1,188 @@
+\documentclass[12pt]{amsart}
+\usepackage{multicol}
+\usepackage[margin=0.5in]{geometry}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+\title{Putnam Summary}
+\author{Sean Richardson}
+\maketitle
+\begin{multicols}{2}
+\section{General}
+\subsection{Working Flowchart}
+\begin{enumerate}
+    \item Understand the problem. (Play around with the problem in whatever
+        way I find intuitive / test something concrete)
+    \item Select good notation to symbolically represent the problem.
+    \item Write down known information symbolically and draw a diagram if applicable.
+    \item Write down what to show symbolically. Brainstorm what would be
+        sufficient to prove.
+    \item Brainstorm all relevant approaches to the problem (see approaches
+        listed below).
+    \item Identify relevant areas of math and brainstorm all relevant tools
+        for the problem (see tools listed below).
+    \item Choose what seems to be the best approach.
+    \item Play around with tools on the problem with this approach
+        \emph{algebraically} (start
+        with a specific/easier instance of the problem if possible). Make
+        sure to incorporate all necessary information.
+    \item If stuck, brainstorm possible instances of ``if stuck'' ideas.
+    \item If appears to be a dead end, write down possible new
+        tools/approaches, consider a new approach and repeat.
+\end{enumerate}
+
+\subsection{If Stuck}
+\begin{itemize}
+    \item Consider special case / simplified version of problem. What would
+        be the easiest thing to prove?
+    \item Brainstorm intermediate steps to solving the problem. What would
+        be sufficient to prove?
+    \item Derive consequence of problem and try to show that first.
+    \item Reformulate problem. (contrapositive, contradiction, substitution, clever manipulation).
+\end{itemize}
+
+\subsection{General Approaches}
+\begin{itemize}
+    \item Contradiction.
+    \item Induction
+    \item Construction
+    \item Invariant
+    \item Clever Reformulation
+    \item Clever Choice
+    \item Weaker Claim
+    \item Stronger Claim
+\end{itemize}
+
+\subsection{General Tools}
+\begin{itemize}
+    \item Pigeonhole Principle
+\end{itemize}
+\section{Number Theory}
+\subsection{Approaches}
+\begin{itemize}
+    \item Manipulate problem so we are dealing with integers on both sides.
+    \item Modular arithmetic / even vs odd argument.
+\end{itemize}
+\subsection{Tools}
+\begin{itemize}
+    \item Fundamental theorem of arithmetic.
+    \item $\gcd$ theorem.
+    \item Chinese Remainder Theorem.
+    \item Fermat-Euler Theorem / Fermat's Little Theorem.
+    \item Division algorithm / euclidean algorithm for $\gcd$.
+    \item Euclid's Lemma
+    \item Wilson's Theorem.
+    \item Linear Diophantine Equation theory.
+    \item Pell's Equation theory.
+\end{itemize}
+
+\section{Algebra}
+\subsection{Approaches}
+\begin{itemize}
+    \item Algebraic manipulation of problem into simpler form.
+    \item Imposing symmetry on the problem to make things (ex: factorization) more obvious.
+\end{itemize}
+\subsection{Tools}
+\begin{itemize}
+    \item Geometric sum formula (finite and infinite). Useful for factoring things, evaluating telescoping products and sums.
+    \item $x^2 > 0$
+    \item Division algorithm for polynomials
+    \item Fundamental Theorem of Algebra.
+    \item Roots and Divisibility relationship
+    \item A polynomial can only have a finite number of roots (if can establish infinite pattern, use this!)
+    \item Rational Roots Theorem
+    \item Vieta's Relations: Given\\ $P(x) = a_n x^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0 = a_n(x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_n)$, then \dots /**/
+    \item Unique Factorization of Polynomials (even for multivariabled polynomials).
+    \item $x^n-y^n = $
+    \item $x^n+y^n = $
+    \item $x^3 + y^3 + z^3 - 3xyz = $
+    \item $(x+y)^p$ for primes $p$.
+    \item Lagrange Identity
+    \item Cauchy-Schwartz Inequality
+    \item Bernoulli's Identity
+    \item Cauchy's Inequality
+    \item Triangle Inequality
+    \item Reverse Triangle Inequality
+    \item Euler's identities on products of sums of squares.
+    \item Sophie Germaine Identity
+    \item (other algebraic manipulations)
+\end{itemize}
+\section{Geometry}
+\subsection{Approaches}
+\subsection{Tools}
+\begin{itemize}
+    \item Cross, dots products
+    \item $\vec{a} \times (\vec{b} \times \vec{c}) = (\vec{c} \times \vec{a}) \vec{b} - (\vec{b} \times \vec{a}) \vec{c}$
+    \item $\vec{u} \cdot (\vec{v} \times \vec{w}) = \vec{w} \cdot (\vec{u} \times \vec{v})$
+    \item 
+\end{itemize}
+\section{Linear Algebra}
+\subsection{Approaches}
+\subsection{Tools}
+\begin{itemize}
+    \item Cauchy-Schwartz Inequality
+    \item $m$ homogeneous linear equations with $n$ variables. $m < n$ implies
+        there exists a nontrivial solution.
+    \item Trace
+    \item Eigenstuff
+    \item Sum of eigenvalues is the trace
+\end{itemize}
+
+\section{Combinatorics and Graph Theory}
+\subsection{Approaches}
+\begin{itemize}
+    \item Count something two different ways
+    \item Vector space dimension bound
+    \item Homogeneous System of Linear Equations Method
+    \item Probability Method
+\end{itemize}
+
+\subsection{Tools}
+\begin{itemize}
+    \item Pigeonhole Principle
+    \item Inclusion-Exclusion Principle
+    \item Binomial Theorem / Multinomial Theorem
+\end{itemize}
+
+\section{Analysis, Calculus, and Diff eq}
+\subsection{Approaches}
+\begin{itemize}
+    \item Prove for $\mathbb{Z}$, then $\mathbb{Q}$, then $\mathbb{R}$.
+    \item Apply definite integrals to differential equations
+    \item Associate given differential equation with (Euler method inspired
+        sequence) and vice versa
+\end{itemize}
+\subsection{Tools}
+\begin{itemize}
+    \item Fundamental Theorem of Calculus in various forms
+    \item Mean Value Theorem
+    \item Intermediate Value Theorem
+    \item Definition of derivative
+    \item Taylor's Theorem / Taylor Series
+    \item $f(x)\leq g(x)$ on $a \leq x \leq b$, then we have $\int_a^b f(x) dx \leq \int_a^b g(x) dx$.
+    \item Integration by substitution: Basic techniques, trig substitution techniques, technique on simple fractions.
+    \item Integration by parts techniques.
+    \item Integration by partial fractions.
+    \item Can take advantage of complex numbers to simplify integral.
+    \item Continuity (multiple definitions)
+    \item Every bounded monotonic sequence is convergent
+    \item For every real number $x$, there is a rational sequence
+        converging to $x$.
+    \item Integral test. Specifically, if $g$ is a positive decreasing function, $\int_{1}^{n+1}g(x)dx \leq g(1) + \cdots + g(n) \leq \int_{0}^{n}g(x)dx$. (In particular, $\ln$).
+    \item Separable differential equations solution
+    \item Functions that grow at a more than proportional rate to function
+        itself blow up in finite time.
+    \item Additive functions
+    \item Hamel Basis
+\end{itemize}
+\section{Set Theory and Abstract Algebra}
+\subsection{Approaches}
+\begin{itemize}
+    \item Impose an order on your set.
+\end{itemize}
+\subsection{Tools}
+\begin{itemize}
+    \item Order, total order.
+\end{itemize}
+\end{multicols}
+\end{document}

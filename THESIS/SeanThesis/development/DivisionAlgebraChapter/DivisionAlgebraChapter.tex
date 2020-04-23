@@ -1,0 +1,58 @@
+\documentclass[../sean_thesis.tex]{subfiles}
+\begin{document}
+
+\chapter{Division Algebra Application}
+
+Recall from \toadd{ref} that a division algebra is a ring with multiplicative inverses. Further recall that a division algebra structure in $\R^n$ induces an H-space structure over the sphere $S^{n-1}$ by considering the subset of $\R^n$ with norm $1$. And so if a division algebra structure on $\R^n$ exists, then there is an H-space structure on the sphere $S^{n-1}$. As Bott periodicity hints at, K-Theory has a close relationship with spheres, making K-Theory a good tool to examine the existence of H-spaces on spheres. This chapter will use K-Theory to show that an H-space structure cannot exist on any sphere other than $S^0$, $S^1$, $S^3$, and $S^7$. This conclusion regarding H-spaces together with the explicit examples of the reals, the complex numbers, the quaternions, and the octonions gives the following theorem.
+\begin{theorem}
+	$\R^n$ is a division algebra only when $n$ is $1$, $2$, $4$, or $8$.
+\end{theorem}
+
+\section{The odd case}
+The argument will first rule out the possibility of a division algebra structure on odd dimensions, so assume for the purpose of contradiction that there is a division algebra structure on $\R^{2k+1}$ for some nonnegative $k$. It then follows that $S^{2k}$ is an H-Space, which promises a continuous mapping $\mu: S^{2k} \times S^{2k} \to S^{2k}$. Additionally let $p_1$ denote the projection from $S^{2k} \times S^{2k}$ to the first factor and let $p_2$ be the projection to the second factor. Applying the K-Theory functor to the H-space multiplication mapping gives a homomorphism between rings $\mu^{*}: K(S^{2k} \times S^{2k}) \to K(S^{2k})$ \toadd{ref...do this step as an example earlier}. This puts the homomorphism in the form $\mu^{*}: \Z[\gamma]/(\gamma^2) \to \Z[\alpha, \beta]/(\alpha^{2}, \beta^{2})$ such that $\alpha = p_1^{*}(\gamma)$ and $\beta = p_2^{*}(\gamma)$. Note that $\gamma$ is the generator of the ring and in particular, $\gamma$ is $H-1$ where $H$ denotes the canonical line bundle over the space. 
+
+The contradiction will arise in analyzing the quantity $\mu^{*}(\gamma)$. To accomplish this, define $i_1: S^{2k} \to S^{2k} \times S^{2k}$ by $i_1: x \mapsto (x,e)$ where $e$ is the identity element of $S^{2k}$ as an H-space. Note that $\mu \circ i_1$ is the identity, giving $i_1^{*} \circ \mu^{*}$ is the identity, so studying $i_1^{*}$ will give information about $\mu^{*}$.
+
+It follows from the definition of $i_1$ that $p_1 \circ i_1 = \id$ and so $i_1^{*} \circ p_1^{*}$ is identity. Plugging in $\alpha$ to both sides and recalling the definition of $\alpha$ then gives:
+\begin{equation*}
+	i_1^{*}(\alpha) = \gamma	
+\end{equation*} 
+%
+In a similar way, it follows that $p_2 \circ i_1$ is a constant function always mapping to the H-space identity point $e$. Denote this by $p_2 \circ i_1 = \const_e$, which gives $i_1^{*} \circ p_2^{*} = \const_e^{*}$. Again plug in $\gamma$ to both sides and recall the definition of $\beta$ and thus $i_1^{*}(\beta) = \const_e^{*}(\gamma)$. \toadd{remember to note the notation that will now be used} To simplify this further, recall that $\gamma$ is $H-1$ where $H$ is the canonical line bundle. And note that because each fiber of $H$ is of dimension $1$ and $\const_e$ maps to a point, the pullback $\const^{*}_e(H)$ is the trivial bundle $\tbund{1}$, which is the multiplicative identity denoted by $1$. Thus by  the ring homomorphism properties:
+\begin{equation*}
+\const^{*}(\gamma) = \const^{*}(H-1) = \const^{*}(H)-\const^{*}(1) = 1-1=0
+\end{equation*}
+This gives the following crucial piece of information.
+\begin{equation*}
+	i_1^{*}(\beta) = 0
+\end{equation*}
+%
+Now return to analyzing the quantity $\mu^{*}(\gamma)$. As an element of $\Z[\alpha, \beta]/(\alpha^{2}, \beta^{2})$, the quantity is of the form $\mu^{*}(\gamma) = n + a \alpha + b \beta + m \alpha \beta$ for some integers $a,b,n,m$. However, now apply $i_1^{*} \circ \mu^{*} = \id$ with the information $i_1^{*}(\alpha) = \gamma$ and $i_1^{*}(\beta) = 0$ and keeping ring homomorphism properties in mind:
+\begin{align*}
+	\gamma 
+	&= i_1^{*}(\mu^{*}(\gamma)) 
+	= i_1^{*}(n+a\alpha+b\beta+m\alpha\beta) 
+	= n+a\cdot i_1^{*}(\alpha)+b\cdot i_1^{*}(\beta)+m \cdot i_1^{*}(\beta) \cdot i_1^{*}(\alpha)
+	= n + a\gamma
+\end{align*}
+And thus by $\gamma = n+a\gamma$, it follows that $n=0$ and $a=1$. Applying the same argument by considering the inclusion $i_2: S^{2k} \to S^{2k} \times S^{2k}$ by $i_2: x \mapsto (e,x)$ will give that $b=1$. And so $\mu^{*}$ can be written in the reduced form
+\begin{equation*}
+\mu^{*} = \alpha + \beta + m\alpha\beta
+\end{equation*}
+%
+The contradiction arises from the observation that the relation $\gamma^2 = 0$ gives that $(\mu^{*}(\gamma))^2 = 0$. However, the derived expression for $\mu^{*}(\gamma)$ and the relations $\alpha^2 = \beta^2 = 0$ imply a different result.
+\begin{equation*}
+(\mu^{*}(\gamma))^2 = (\alpha + \beta + m\alpha\beta)^2 = 2\alpha\beta \neq 0
+\end{equation*}
+\section{The even case}
+
+
+
+
+
+
+
+
+
+
+\end{document}

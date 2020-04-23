@@ -1,0 +1,19 @@
+~var
+-method
++sub
+
+object board
+    ~ 1d array of pieces
+    - get_coord(i,j)
+    - in_check() /*boolean from position*/
+    - get_legal_moves /*array of legal moves (pieces cleared, pieces placed)*/
+        ! in_check()
+    - get_fen()
+    + normal extends board
+        - get_legal_moves()
+        ! how each piece moves
+    + crazyhouse extends board
+        ~
+    + atomic extends board
+    + 3-check
+    + etc.

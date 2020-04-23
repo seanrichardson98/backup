@@ -1,0 +1,12 @@
+instructions:
+
+halt
+(stops instruction execution)
+
+nop
+(???)
+
+
+:wq
+
+

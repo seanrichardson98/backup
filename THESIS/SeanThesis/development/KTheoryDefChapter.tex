@@ -1,0 +1,72 @@
+\documentclass[../sean_thesis.tex]{subfiles}
+
+\begin{document}
+
+\chapter{The Definition of K-Theory}
+
+\section{Initial Definitions}
+
+\sean{I must decide on how much I lean on complex vs. real bundles. I think complex bundles will be necessary}\\
+
+\toadd{Relate to category theory more}
+
+K-Theory is a functor from the category of topological spaces to the category of groups and rings by considering all possible vector bundles over a topological space. Topological spaces are messy, making it difficult to understand properties about topological spaces and homomorphisms between topological spaces. However, groups and rings are simple algebraic objects with much structure --- an easier object to analyze. 
+
+There are two veins of K-Theory that we will address. There is the \emph{K-Theory} of a topological space $X$, denoted $K(X)$. Secondly, there is the \emph{reduced K-Theory} of a topological space $X$, denoted $\KR(X)$. The reduced K-Theory is simpler to define, making them an easier starting point.
+
+For now, we will fix our base space; later we will develop tools to allow comparing different base spaces. So, let $X$ be a base space. Recall the definition of the trivial n-dimensional bundle $\tbund{n}$ and the direct sum $\oplus$ on vector bundles. Then, for two vector bundles $E$ and $E'$ over $X$, define the relation $\sim$ such that $E \sim E'$ if $E \oplus \varepsilon^n \iso E' \oplus \varepsilon^m$ for nonnegative integers $n$ and $m$. This relation is then an equivalence relation \toadd{exercise and answer?}. Considering the set of all equivalence classes gives us the following result
+
+%REDUCED K THEORY DEFINITION
+    \begin{definition}[Reduced K-Theory]
+        Take compact Hausdorff base space $X$. The set of all equivalence classes under $\sim$ forms an abelian group under the direct sum operation $\oplus$. We call this group the \emph{reduced K-theory of $X$} and denote it $\RK{X}$. 
+    \end{definition}
+    The necessary proof that $\KR(X)$ indeed forms an abelian group follows.
+
+    \begin{proof}
+        Note that the direct sum operation is commutative and associative over vector bundles. \toadd{}
+        %Direct sum is well-defined
+        First, we must verify $\oplus$ is well-defined. So, take $E_1, E_2, E_1', E_2'$ to be vector bundles over $X$ such that $E_1 \sim E_1'$ and $E_2 \sim E_2'$ and consider the promised $n_1,m_1,n_2,m_2 \in \N$ such that $E_1 \op \tbund{n_1} \tiso E_1' \op \tbund{m_1}$ and $E_1$. I then claim that $E_1 \op E_2 \sim E_1' \op E_2'$. This follows from
+       	\begin{equation*}
+            (E_1 \op E_2) \op \tbund{n_1m_1} = (E_1 \op )
+        \end{equation*}
+
+        %Identity element
+        The zero element is given by $\varepsilon^n$ 
+        \toadd{justification}
+
+        Finally, we show the existence of inverse
+        \toadd{proof in Hatcher}
+
+        \toadd{Make it clear where compact Hausdorff used}
+    \end{proof}
+
+    \toadd{$K(X) \iso \RK{X} \oplus \mathbb{Z}$ result for examples.}
+
+    \begin{example}[K-Theory of a point]
+        As a simple example, let us compute the K-theory of a single point $\set{x_0}$. The set of all vector bundles over $\set{x_0}$ is simply the set of all vector spaces $n$ dimensional vector spaces over that single point. So, we simply have all the trivial bundles $\vect(X) = \set{\tbund{0}, \tbund{1}, \dots}$. 
+    \end{example}
+
+    \toadd{Examples: A point, $S^0$ or $n$ points. Maybe: $S^1$ and $I$ if possible?}
+
+Just as reduced K-Theory used the \toadd{name needed} equivalence relation, K-Theory uses the stably isomorphic equivalence relation. Just as in reduced K-Theory, the group operation is given by $\op$, and the verification that $\op$ is well-defined, commutative, and associative follows exactly as that for reduced K-Theory. In this case, the identity element is given by $\tbund{0}$, for 
+\toadd{}
+However, the proof for existence inverses does not work. Consider the stable isomorphism classes of a point. All possible vector bundles are given by $\vect(X) = \set{\tbund{0},\tbund{1}, \dots}$, and each element is in its own stable isomorphism class. But then, we wish to have $\tbund{1} \op E = \tbund{0}$ for some inverse element $E$. However, no such $E$ exists! So, with the stably isomorphic equivalence class, inverses are not given. However, these classes do have a well-defined associative and commutative group operation, making the set of stably isomorphic equivalence classes a \emph{monoid} (recall definition \ref{def:monoid}). Further recall that monoids have a natural \emph{group completion} as described in \ref{def:group_completion}. Through the process of group completion we can translate the stable isomorphism classes into a group and this is the group $K(X)$. Below is a formal definition.
+
+\begin{definition}[K-Theory]
+	Take compact Hausdorff base space $X$. The set of all equivalence classes under $\siso$ forms an abelian monoid under the direct sum operation $\oplus$. We call the group completion of this monoid the \emph{K-theory of $X$} and denote it $K(X)$. 
+\end{definition}
+
+\section{Ring Structure on K-Theory}
+
+Currently $K(X)$ and $\KR(X)$ 
+
+\toadd{Ring structure on $\KR(X)$ and $K(X)$}
+Given a monoid $M$, recall that the proof of existence group completion (proof of existence of definition~\ref{def:group_completion}), we represented elements of the group completion $A$ as /**/
+
+Now, there are two of equivalence classes here, and this 
+
+\begin{claim}
+	\toadd{claim that makes K(X) into a commutative ring}
+\end{claim}
+
+\end{document}

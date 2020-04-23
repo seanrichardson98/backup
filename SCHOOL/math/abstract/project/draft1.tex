@@ -1,0 +1,394 @@
+%REORDER... finite groups --> Lie groups?
+
+\documentclass[12]{amsart}
+
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}                                 
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}  
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\R}[0]{\mathbb{R}} 
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\orb}[0]{\mathcal{O}} 
+\newcommand{\seg}[2]{[#1,#2]} 
+\newcommand{\todo}[1]{/*#1*/} 
+\newcommand{\gen}[1]{\left<#1\right>}
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+\newcommand{\vecxx}[2]{\begin{pmatrix} #1 \\ #2 \end{pmatrix}}
+\newcommand{\vecxxx}[3]{\begin{pmatrix} #1\\#2\\#3\end{pmatrix}}
+\newcommand{\pset}[1]{\mathcal{P} (#1)} %power set
+
+\newcommand{\T}{\mathcal{T}}
+
+
+
+\DeclareMathOperator{\id}{Id} 
+\DeclareMathOperator{\conv}{conv} 
+\DeclareMathOperator{\GL}{GL}
+
+
+
+\begin{document}
+\title{Orbitopes}
+\author{Sean Richardson}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+
+An orbitope is a geometric object resulting from a group action. In particular, to construct an orbitope, we require four ingredients (the following notation is used throughout the paper).
+\begin{enumerate}
+    \item A compact group $G$.
+    \item A real vector space $V$.
+    \item A group action $\rho$ acting linearly on the vector space $\rho: G \times V \to V$.
+    \item An element of the vector space $x \in V$.
+\end{enumerate}
+ Applying the group action on $x$ results in an orbit $\orb$ in the vector space $V$. The resulting orbitope is the convex hull of the orbit.
+
+The group $G$ can be a simple finite group, or a continuous Lie group resulting in a variety of constructions. However, to fully understand the definition of an orbitope we must address some questions:
+ \begin{itemize}
+    \item What is the \emph{convex hull}?
+    \item What constitutes a \emph{compact} group?
+ \end{itemize}
+Simple finite examples of orbitopes are immediately accessible (ignoring a few details) and will make up section~\ref{sec:finite_exs}. Section~\ref{sec:finite_background} will fill in the necessary details for finite groups. Then, section~\ref{sec:definition} will give a formal definition of orbitope for finite groups as well as a discussion of the existence and uniqueness of orbitopes. The discussion of finite group orbitopes will end with the proof that every platonic solid is an orbitope in Section~\ref{sec:platonic_solids}. Section~\ref{sec:infinite_background} will build towards orbitopes with infinite groups through a discussion of compactness, and section~\ref{sec:infinite_exs} will give some examples of infinite orbitopes.
+
+\section{Examples of Finite Group Orbitopes}
+\label{sec:finite_exs}
+It is not necessary to have a rigorous understanding of the notions of \emph{convex hull} and \emph{compact} to see how examples with finite groups work out. For now, simply know that all finite groups are compact. Further note that in each of the below examples, it should be verified that the given $\rho$ is a group action, but ignore this detail for now; claim~\ref{thm:rep_action} will provide a general proof that each given $\rho$ is indeed a group action. First, let us show that a diamond can be constructed as an orbitope.
+\begin{example}[Diamond]
+	For the construction of a diamond, take the following ingredients:
+	\begin{enumerate}
+		\item As the group $G$, take the cyclic group of order 4  with generator $r$. So, $G = \gen{r} = Z_4$
+		\item Let the plane $\mathbb{R}^2$ as the real vector space $V$.
+		\item Take the group action $\rho: Z_4 \times \mathbb{R}^2 \to \mathbb{R}^2$ defined by interpreting $r$ as a rotation by $\pi/2$.
+		\begin{equation*}
+			\rho: (r^n,\vec{v}) \mapsto 
+			\begin{pmatrix}
+				0 & 1\\ 1 & 0
+			\end{pmatrix}^n \vec{v}
+		\end{equation*}
+		\item Finally, consider the initial element of the vector space $x = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$
+	\end{enumerate}	
+	Then, the action $\rho$ on the initial value $\vec{x}$ results in an orbit within $\mathbb{R}^2$. In particular, we get:
+	\begin{equation*}
+		\rho: (e, \vec{x}) \mapsto 
+		\begin{pmatrix} 1 \\ 0 \end{pmatrix},\ \ 
+		\rho: (r, \vec{x}) \mapsto 
+		\begin{pmatrix} 0 \\ 1 \end{pmatrix},\ \ 
+		\rho: (r^2, \vec{x}) \mapsto 
+		\begin{pmatrix} -1 \\ 0 \end{pmatrix},\ \ 
+		\rho: (r^3, \vec{x}) \mapsto 
+		\begin{pmatrix} 0 \\ -1 \end{pmatrix}	
+	\end{equation*}
+	These four values account for everything in the orbit, so
+	$$\orb = \set{\vecxx{1}{0}, \vecxx{0}{1}, \vecxx{-1}{0}, \vecxx{0}{-1}}$$
+	Then, the convex hull of this set $\conv{\orb}$ can be thought of, for the time being, as wrapping a line about the set. So, we get a diamond shape as the resulting orbitope. This process is summarized in the following diagram:
+	\begin{figure}[h!]
+		\includegraphics[scale=0.09]{images/diamond.png}
+		\caption{Diamond Orbitope Construction}
+		\label{fig:diamond}
+	\end{figure}		
+		\label{ex:diamond}
+\end{example}
+\begin{example}
+	As a second example, again take the vector space $V = \mathbb{R}^2$, but now take $G$ to be the symmetries of a square $D_8$. Let $r,s \in D_8$ be the usual generators with the usual relations. Then, now define the action $\rho: D_8 \times \mathbb{R}^2 \to \mathbb{R}^2$ so that $s$ represents a reflection across the x-axis and let $r$ denote a counter clockwise rotation by $\pi/2$. As a formula,
+	\begin{equation*}
+		\rho: (r^n s^m, \vec{v}) \mapsto
+		\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}^n
+		\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}^m
+		\vec{v}
+	\end{equation*}
+	In this case, different orbitopes arise from different choices of the initial vector $\vec{x}$. 
+	First take $\vec{x} = \vecxx{\frac{1}{2}}{\frac{\sqrt{3}}{2}}$. Then, the resulting orbit is given by 
+	$$\orb = \set{\\
+	\vecxx{\frac{\sqrt{3}}{2}}{\frac{1}{2}}, 
+	\vecxx{\frac{1}{2}}{\frac{\sqrt{3}}{2}}, 
+	\vecxx{-\frac{1}{2}}{\frac{\sqrt{3}}{2}}, 
+	\vecxx{-\frac{\sqrt{3}}{2}}{\frac{1}{2}}, 
+	\vecxx{-\frac{\sqrt{3}}{2}}{-\frac{1}{2}}, 
+	\vecxx{-\frac{1}{2}}{-\frac{\sqrt{3}}{2}}, 
+	\vecxx{\frac{1}{2}}{-\frac{\sqrt{3}}{2}}, 
+	\vecxx{\frac{\sqrt{3}}{2}}{-\frac{1}{2}}}$$
+	Then, the resulting orbitope is again found by taking the convex hull. In this case, the resulting orbitope is given by an octogon. The following figure provides a visual summary of this process. 
+
+	\begin{figure}[h!]
+		\includegraphics[scale=0.09]{images/octagon.png}
+		\caption{Octagon Orbitope Construction}
+		\label{fig:octagon}
+	\end{figure}		
+	
+	However, a different initial vector would result in a different orbitope. For instance, take $\vec{x} = \vecxx{1}{0}$ to be the initial vector. Then, the resulting orbit is the same as in Example~\ref{ex:diamond}, and so we would get a diamond as the final orbitope.
+\end{example}
+
+\begin{example}[Octahedron]
+	Now, we will consider a three dimensional example. So, take $V = \mathbb{R}^3$ as the vector space, and take the quaternion group $G = S_4$ as the group. Note that $S_4$ has the following presentation:
+	\begin{equation*}
+		S_4 = \gen{a,b \vert a^2 = b^4 = (ab)^3 = 1}
+	\end{equation*}
+This relation is satisfied by taking $b = (1234)$ and $a = (1234)(1243)^{-1}(1234)$, so the $4$-cycles generate $S_4$.
+We will then define the group action $\rho: Q \times \mathbb{R}^3 \to \mathbb{R}^3$ on the $4$-cycles that the element $(1234)$ represents a $\pi/2$ rotation about the $x$ axis while $(1243)$ and $(1324)$ represent $\pi/2$ rotations about the $y$ and $z$ axes respectively. To formally define $\rho$, consider the homomorphism $\varphi: S_4 \to GL(V)$ that takes these elements to rotations.
+	\begin{equation*}
+		\varphi: (1234) \mapsto
+		\begin{pmatrix}
+		1 & 0 & 0\\
+		0 & 0 & -1\\
+		0 & 1 & 0
+		\end{pmatrix},
+		\varphi: (1243) \mapsto
+		\begin{pmatrix}
+		0 & 0 & 1\\
+		0 & 1 & 0\\
+		-1 & 0 & 0
+		\end{pmatrix},
+		\varphi: (1324) \mapsto
+		\begin{pmatrix}
+		0 & -1 & 0\\
+		1 & 0 & 0\\
+		0 & 0 & 1
+		\end{pmatrix}
+	\end{equation*}
+	Repeated matrix multiplication verifies that this homomorphism preserves the relations, so this extends to a well-defined homomorphism. Then, $\rho$ is defined by
+	 \begin{equation*}
+	 	\rho: (\sigma, \vec{v}) \mapsto \varphi(\sigma)\vec{v}
+	 \end{equation*}
+	 Finally, consider the initial vector 
+	 $x = \begin{pmatrix} 1 & 0 & 0 \end{pmatrix}^T$. Then we get the following orbit from $\rho$.
+	 \begin{equation*}
+	 \orb = \set{\vecxxx{1}{0}{0}, \vecxxx{-1}{0}{0}, 
+	             \vecxxx{0}{1}{0}, \vecxxx{0}{-1}{0},
+	             \vecxxx{0}{0}{1}, \vecxxx{0}{0}{-1}}
+	 \end{equation*}
+	 Intuitively, the convex hull of a three dimensional point set is given by tightly wrapping a sheet around the points. In this case, the resulting shape is the octahedron. 
+	 \begin{figure}[h!]
+		\includegraphics[scale=0.09]{images/octahedron.png}
+		\caption{Octahedron Orbitope Construction}
+		\label{fig:octahedron}
+	\end{figure}		
+\end{example}
+
+\section{Background for Finite Group Orbitopes}
+\label{sec:finite_background}
+\subsection{Representation Theory}
+
+	\begin{definition}[Representation]
+		Let $G$ be a finite group and $V$ a vector field over field $F$. Then, a \emph{representation} of $G$ is a group homomorphism $\varphi: G \to \GL(V)$.
+	\end{definition}
+		Note that in every introductory example defined above, the generators of each group $G$ were associated with either reflection of rotation --- elements of $GL(V)$. This association can be extended to a well-defined homomorphism from $G$ to $GL(V)$ after verifying that the homomorphism satisfies the relations, giving a representation. So, in each of the above examples a representation defines a group action in the following way.
+	\begin{claim}
+		Take a group $G$, a vector space $V$, and a representation $\varphi: G \to GL(V)$. Then, the mapping $\rho: G \times V \to V$ given by $\rho: (g,\vec{v}) \mapsto \varphi(g)\vec{v}$ is a linear group action.
+	\label{thm:rep_action}
+	\end{claim}
+	\begin{proof}
+	Denote $\rho(g,\vec{v})$ as $g.\vec{v}$.
+	There are two things to verify: $e.\vec{v} = \vec{v}$ and $g.(h.\vec{v}) = (gh).\vec{v}$. Firstly, take $\vec{v} \in V$. Note that by definition of homomorphism, $\varphi(e) = I$ where $I$ is the identity matrix. Then we get the desired result
+	$$ e.\vec{v} = \varphi(e)\vec{v} = I\vec{v} = \vec{v} $$
+Next take $g,h \in G$ and $\vec{v} \in V$. Note that by the definition of homomorphism we get $\varphi(g)\varphi(h) = \varphi(gh)$. Using this we again get the desired result
+	$$g.(h.\vec{v}) = g.(\varphi(h)\vec{v}) = \varphi(g)\varphi(h)\vec{v} = \varphi(gh)\vec{v} = (gh).\vec{v}$$
+For completeness, we will verify that this action is \emph{linear} --- a property that will be discussed formally later in Definition~\ref{def:linear_action} In this case, this comes from the linearity of matrices on vectors. So, for $g \in G$, $\vec{v}, \vec{w} \in \GL(V)$, and $\alpha, \beta \in \mathbb{R}$:
+	$$g.(\alpha \vec{v} + \beta \vec{w}) = \varphi(g)(\alpha \vec{v} + \beta \vec{w}) = \alpha \varphi(g) \vec{v} + \beta \varphi \vec{w} = \alpha (g.\vec{v}) + \beta (g.\vec{w})$$
+	\end{proof}
+	The above claim and proof show that a representation of a group paired with an initial vector results in a natural orbitope construction.
+~\\\subsection{Convex Geometry}~\\
+The definition and analysis of orbitopes requires knowledge of basic convex geometry. In this section, we introduce basic terminology with a focus on the definition and some properties of the \emph{convex hull}. Convex geometry examines subsets of a real vector space, so for the remainder of this section take $V$ to be a real vector space.
+\\\\
+For $x,y \in V$, denote by $\seg{x}{y}$ the line segment connecting them. Specifically,  $\seg{x}{y} \coloneqq \{ tx + (1-t)y : t \in [0,1] \}$. Now, we can give the definition of convex.
+\begin{definition}[Convex]
+Given real vector space $V$ and subset $E \subset V$, we say that $E$ is \emph{convex}, if for every $x,y \in E$, we have $\seg{x}{y} \subset E$.
+\end{definition}
+
+\begin{theorem}
+    The intersection of any family of convex sets is itself convex.
+\end{theorem}
+
+Now, we can define the convex hull.
+\begin{definition}[Convex Hull]
+    Take a real vector space $V$ and subset $E \subset V$. Then, the \emph{convex hull} of $E$, denoted $\conv(E)$ is the smallest convex subset containing $V$.
+\end{definition}
+It remains to show existence and uniqueness of this definition. These both follow from the following theorem.
+\begin{theorem}
+    Take real vector space $V$, and subset $E \subset V$. Then, consider the set $\mathcal{C}$ of all convex sets containing $E$.
+    \begin{equation*}
+        \mathcal{C} = \{ A \subset V : A \text{\emph{ convex, }} E \subset A \}
+    \end{equation*}
+    Then, the convex hull of $E$ is equivalent to the intersection of all elements in $\mathcal{C}$.
+    \begin{equation*}
+        \conv(E) = \bigcap_{A \in \mathcal{C}} A
+    \end{equation*}
+
+\label{thm:conv_eq_int}
+\end{theorem}
+\begin{proof}
+    First, note that the whole vector space $V$ is convex, so $\mathcal{C}$ is nonempty which gives the existence of the intersection. Next, note that by theorem \todo{do theorem} the intersection is convex. Additionally, for every element $v \in E$, we have that $v \in A$ for all $A \in \mathcal{C}$. And so, it follows that $v$ is in the intersection, and so $E$ is contined within the intersection. So, the intersection is itself a convex set containing $E$, and by the construction it must be the minimal such set, giving us the equivalence to $\conv(E)$.
+\end{proof}
+\begin{corollary}
+    \label{cor:cv_ex_un}
+    For real vector space $V$ and subset $E \subset V$, the convex hull $\conv(E)$ exists and is unique.
+\end{corollary}
+\begin{proof}
+    $\conv(V)$ is equivalent to the intersection given in theorem~\ref{thm:conv_eq_int}. This intersetion exists (as noted in the above proof), and is well defined, giving uniqueness.
+\end{proof}
+
+\section{The Definition of an Orbitope}
+\label{sec:definition}
+With the necessary background work behind us, I present the formal definition of an orbitope.
+\begin{definition}[Linear Group Action]
+    Take group $G$, real vector space $V$, and group action $\rho: G \times V \to V$. We call $\rho$ \emph{linear} if for any $g \in G$, $v,w \in V$, and $\alpha, \beta \in \R$ we have:
+    \begin{equation*}
+        \rho((g,\alpha v + \beta w)) = \alpha\rho(g,v)+\beta\rho(g,w)
+    \end{equation*}
+    \label{def:linear_action}
+\end{definition}
+\begin{definition}[Orbitope]
+    Take compact group $G$, a real vector space $V$, an element $x \in V$, and take a linear group action $\rho: G \times V \to V$. 
+    Then, the convex hull of the orbit of $x$ by action $\rho$ is an orbitope.
+\end{definition}
+
+We now have the formal definition of an orbitope; however, it remains to show that this construction exists and defines a unique object.
+\begin{theorem}
+    Take a compact group $G$, real vector space $V$, linear action $\rho: G \times V \to V$, and element $x \in V$. Then, the resulting orbitope as defined above exists and is unique.
+\end{theorem}
+\begin{proof}
+    $G$ must contain identity element $1$. By definition of group action, $\rho(1,x) = x$ and so $x$ is in the resulting orbit. So, the resulting orbitope is the convex hull of a nonempty set and by Corollary~\ref{cor:cv_ex_un}, this suffices to show existence and uniqueness.
+\end{proof}
+
+\section{Platonic Solids are Orbitopes}
+\label{sec:platonic_solids}
+\begin{definition}[Platonic Solid]
+	A \emph{Platonic solid} is a convex polyhedra in $\mathbb{R}^3$ with equivalent faces composed of congruent convex regular polygons.
+	\end{definition}
+	It turns out that there are exactly $5$ platonic solids and are shown in figure~\ref{fig:platonic_solids}.
+\begin{figure}[h!]
+	\includegraphics[scale=0.4]{images/platonic_solids.png}
+	\caption{The Platonic Solids}
+	\label{fig:platonic_solids}
+\end{figure}
+\begin{claim}
+Every Platonic Solid is an orbitope.
+\end{claim}
+\begin{proof}
+Take any platonic solid $S$ in vector space $\mathbb{R}^3$. Center the solid $S$ at the origin and fix coordinates for every vertex of $S$. Let $G$ denote the group of rotational symmetries of the platonic solid $S$, so
+$$ G = \set{g \in SO(3) \vert g(S) = S} $$
+Note that by definition we have $G \leq \GL(\mathbb{R}^3)$ and so we have a homomorphism by the inclusion $i: G \to \GL(\mathbb{R}^3)$. Then, Theorem~\ref{thm:rep_action} applies, which gives a linear group action $\rho: G \times \mathbb{R}^3 \to \mathbb{R}^3$ given by
+	$$\rho(g,\vec{v}) = i(g)\vec{v} = g\vec{v}$$
+Next, take the initial vector $\vec{x}$ to be given by some vertex of $S$. I claim that the orbit $\orb$ of $\vec{x}$ by the action $\rho$ is exactly the set of vertices of $S$. 
+
+First, take some vertex $\vec{v}$ of $S$. Then, consider a rotation $g$ of the platonic solid that takes $\vec{x}$ to $\vec{v}$ and aligns the faces. By the symmetry of a platonic solid, this operation takes $S$ to $S$ and so $g \in G$. Then, by definition of $g$ we have that $g.\vec{x} = g\vec{x} = \vec{v}$ and thus $\vec{v} \in \orb$.
+
+Next, take any point $\vec{w} \in S$ that is not a vertex of $S$. Then, assume for the purpose of contradiction that $\vec{w} \in \orb$. Then, for some $g \in G$ we have $g.\vec{x} = g\vec{x} = \vec{w}$. But then $g$ takes a vertex of $S$ to a point that is not a vertex of $S$ and so $g$ cannot be a symmetry of $S$.
+
+So the orbit $\orb$ is exactly the vertices of $S$. I then claim  that the convex hull of the orbit is exactly $S$. First, observe that $S$ is convex by definition; I show that $S$ is the smallest convex subset containing $\orb$ by arguing that any convex set containing $\orb$ must contain $S$. So, take $A$ to be any convex set containing $\orb$ and consider $\vec{v}, \vec{w} \in \orb$. By definition of convex, the line segment $[\vec{v},\vec{w}]$ must be contained in $A$. In other words, $A$ contains every edge of $S$. Similarly, take any point $\vec{u} \in S$ contained in a face of $S$. Any point on a face rests inside a line segment connecting two edges and so we must have $\vec{u} \in A$. Finally, every vector contained within the orbit lies on the line connecting two faces and so must be contained in $A$. Thus, every vertex, edge, face, and interior point of $S$ is contained in $A$ and thus $S \subseteq A$.  
+\end{proof}
+
+\section{Background for Infinite Orbitopes}
+\label{sec:infinite_background}
+\subsection{Compact Groups}
+\begin{definition}[Topology of a Set]
+    Given a set $X$, then $\T \subseteq \pset{X}$ is a \emph{topology of $X$} if:
+    \begin{enumerate}[(i)]
+        \item The empty set $\emptyset$ and the full set $X$ are in $\T$.
+        \item For every family $\U_\alpha$ in $\T$ where $\alpha \in I$, the infinite union $\cup_{\alpha\in I} \U_\alpha$ is in $\T$.
+        \item For any two subsets $U_1$ and $U_2$ in $\T$. Their intersection   $\U_1 \cap \U_2$ is in $\T$.
+    \end{enumerate}
+    Take $\U \in \T$. $\U$ is called an \emph{open} set, and its complement $\overline{\U}$ is called a \emph{closed set}.
+\end{definition}
+
+\begin{definition}[Continuous Function]
+	Take two topological spaces and corresponding open sets $(X, \T_X)$ and $(Y, \T_Y)$. A function between the spaces $f: X \to Y$ is called \emph{continuous} if for every open set $V \in \T_Y$, its preimage is open: $f^{-1}(V) \in \T_X$.
+\end{definition}
+
+\begin{definition}[Topological Group]
+	A \emph{topological group} is a group $G$ given a topology such that the group operation map and the inverse map are continuous.
+\end{definition}
+
+\begin{example}
+	\label{ex:(R,+)}
+	Consider the group $\mathbb{R}$ under the operation of normal addition $+$. Further, take the open sets of $\mathbb{R}$ to be the usual open sets. Consider the open interval $(0,1) \subseteq \mathbb{R}$. Then, the preimage under the inverse operation is simply $(-1,0)$, an open set. Similar, the preimage under the group operation is 
+$$\set{(x,y) \in \mathbb{R} \times \mathbb{R} \vert 0 < x+y < 1}$$
+which will give an open set in $\mathbb{R} \times \mathbb{R}$. Note that this argument extends to any open interval and extends further to any union of open intervals, which accounts for every open set and gives that $(\mathbb{R}, +)$ is a topological group.
+\end{example}
+
+\begin{definition}[Compact Group]
+	A topological group $G$ is \emph{compact} if every open cover of $G$ has a finite subcover. That is, for any cover $G = \cup_{\alpha \in I} U_\alpha$ with open $U_\alpha \subset G$ for all $\alpha \in I$, then there exists $\alpha_1, \alpha_2, \dots, \alpha_n \in I$ such that $G = U_{\alpha_1} \cup U_{\alpha_2} \cup \dots U_{\alpha_n}$.
+\end{definition}
+
+Note that the group $(\mathbb{R}, +)$ given in Example~\ref{ex:(R,+)} is \emph{not} a compact topological group, for we can take the infinite cover $\mathbb{R} = \set{(n-1,n+1) | n \in \mathbb{Z}}$. Removing the open set $(n-1,n+1)$ for any $n$ makes it so that $n$ is not in the open cover, thus there is no finite subcover to this open cover. 
+
+\section{Examples of Infinite Group Orbitopes}
+\label{sec:infinite_exs}
+\subsection{Carath\'{e}odory Orbitopes}
+
+The Carath\'{e}odory orbitopes is a whole family of orbitopes steming from the group $SO(2)$. For completion, I give the definition of $SO(n)$.
+
+\begin{definition}[Special Orthogonal Group]
+    The special orthogonal group of order $n$, denoted $SO(n)$, is the group of rotations in $R^n$. In matrix form, this group is given by:
+    \begin{equation*}
+        SO(n) = \{ A \in \R^{n \times n} \vert AA^T = \id,\  \det(A) = 1 \}
+    \end{equation*}
+\end{definition}
+
+The entire family of Carath\'{e}odory orbitopes is extensive and complicated,
+so let us begin with a simple subfamily: the Carath\'{e}odory orbitopes in $\R^2$. Then, we define the necessary paramters to create an orbitope.
+
+$SO(2)$, let our vector space $V$ be the space $\R^2$. Then, consider a family of actions $\rho_a: G \times V \to V$ indexed by $a \in \mathbb{N}$ and given by repeated matrix multiplication.
+\begin{equation*}
+    \rho_a: (A,v) \mapsto A^a v
+\end{equation*}
+Finally, consider the specific element $x$ of $V$ to be given by $x = (1,0)^T$. These parameters uniquely define an orbit $\orb$, and the corresponding orbitope $\conv(\orb)$.
+
+Let us now explore what this is. Note that all the elements in $SO(2)$ can be parametrized by the variable $\theta$ in the following way:
+
+\begin{equation*}
+    \text{Let }A_\theta = 
+    \begin{pmatrix}
+        \cos(\theta) & -\sin(\theta) \\
+        \sin(\theta) & \cos(\theta)
+    \end{pmatrix}
+    \text { note }
+    (A_\theta)^a = 
+    \begin{pmatrix}
+        \cos(a\theta) & -\sin(a\theta) \\
+        \sin(a\theta) & \cos(a\theta)
+    \end{pmatrix}
+\end{equation*}
+
+Then, $SO(2) = \{ A_\theta: \theta \in [0,2\pi)\}$.
+We then find that the orbit $\orb$ of $\rho_1$ on $(0,1)^T$ is given by $A_\theta (1,0)^T = (\cos(\theta), \sin(\theta))^T$. Iterating over $\theta$ we find that the $\orb$ is given simply by the unit circle. Then, the correspoinding orbitope $\conv(\orb)$ is the two dimensional closed unit ball. We considered $\rho_1$, but the orbit of $\rho_a$ for any $a$ will result in the same orbitope.
+
+In $2$ dimensions, Carath\'{e}odory orbitopes are not particularly interesting. Luckily all other Carath\'{e}odory orbitopes are much richer and complex, but these these orbitopes are of dimension $4$ or higher, so we cannot visualize them. Here is the general defintion for a Carath\'{e}odory orbitope.
+\begin{definition}[Carath\'{e}odory Orbitope]
+    Take $d \in \mathbb{N}$ and consider the vector space $V = \R^{2d}$. Then, fix $a_1, a_2, \dots, a_d$ and consider the following matrix:
+    \begin{equation*}
+    A_\theta^* = 
+    \begin{pmatrix}
+        (A_\theta)^{a_1} & 0 & \dots & 0 \\
+        0 & (A_\theta)^{a_2} & \dots & 0 \\
+        \vdots & & \ddots & \vdots \\
+        0 & 0 & \dots & (A_\theta)^{a_d}\\
+    \end{pmatrix}
+    \end{equation*}
+    Then, consider the orbit $\orb$ of $(1,0,1,0,\dots,1,0)^T \in \R^{2d}$ under $A_\theta^*$ with $\theta \in [0,2\pi)$. The convex hull $\conv(\orb)$ of the orbit is the Carath\'{e}odory Orbitope.
+\end{definition}
+While we cannot visualize this, note that the orbit is given by a trigonemetric curve $\{ (\cos(a_1\theta), \sin(a_`1\theta), \cos(a_2\theta),\dots \cos(a_d\theta), \sin(a_d\theta)): \theta \in [0,2\pi) \}$. To give a sense of what such a curve may look like in high dimensions, Figure~\ref{} gives an illustration of similar curves in $\R^3$.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=120mm]{trig_curves.png}
+    \caption{Convex Hulls of Trigonemetric Curves}
+    %\source{Image source: ``orbitopes'' \cite{orb}}
+\end{figure}
+
+\nocite{*}
+\bibliographystyle{plain}                                                    
+\bibliography{bib}                                                   
+
+\end{document}

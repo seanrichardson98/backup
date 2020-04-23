@@ -1,0 +1,215 @@
+\documentclass[../sean_thesis.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Vector Bundles}
+
+\toadd{big idea to talk about throughout: doing things to the fibers and everything else works out.}
+
+\section{Definition and Examples}
+
+%MOTIVATION:
+To motivate vector bundles, consider any vector field any vector field over $\R^2$ and ask: what larger object is a home for this vector field? A vector field is certainly not a point in $\R^2$, so what larger object does the vector field lie inside of? To identify each vector of a vector field requires $4$ numbers: two numbers $(x,y)$ to identify the location of the vector within the topological space and two additional numbers $\vecxx{v_x}{v_y}$ to communicate the direction of the vector at this point. This suggests that this vector field rests inside of $\R^2 \times \R^2$ or something similar; denote this $T\R^2$ for now. Interpret $T\R^2$ as the \emph{topological space} $\R^2$ with a copy of the \emph{vector space} $\R^2$ at every point. There is an important distinction between the structure on the two sets $\R^2$. The topological space $\R^2$ is where each point $(x,y) $ resides and the vector space $\R^2$ is where each vector $\vecxx{v_x}{v_y}$ resides. This distinction opens the door for changing the topological space $\R^2$ to any arbitrary topological space.
+
+Now consider changing the topological space, which is perhaps better called the \emph{base space}, to the sphere $S^2$. What would a field look like over $S^2$? Not much changes: a vector field would associate to each point in $S^2$ some vector in the plane $\R^2$ tangent to the sphere. Then, the whole space that the vector field lives inside is the topological space $S^2$ with a vector space $\R^2$ associated at every point.
+
+\toadd{need to include some figures for the motivation}
+
+%DEFINITION:
+\begin{definition}[Vector Bundle]
+\label{def:vector_bundle}
+	Take $X$ as a topological space. Then, a topological space $E$ paired with a continuous map $p: E \to X$ is a \emph{vector bundle} over $X$ if:
+\vspace{-\varparskip}
+	\begin{enumerate}[(i)]
+		\item For each $x \in X$, the preimage $p^{-1}(x)$ is a finite vector space with the appropriate subspace topology induced from $E$.
+		\item $E$ is locally trivial; that is, for each $x \in X$, there exists an open neighborhood $U \subset X$ containing $x$ such that the preimage is trivial. That is, $p^{-1}(U) \tiso U \times V$ for a vector space $V$.
+	\end{enumerate}
+\end{definition}
+
+The topological space denoted $X$ in the definition is called the \emph{base space} and represents the topological spaces $\R^2$ and $S^2$  discussed earlier. Then, at each point in the base space $X$, there is the vector space $p^{-1}(x)$ which is called the \emph{fiber} at $X$ and is equivalent to a copy of the vector space $\R^2$ at a point of the sphere discussed previously. However, this construction of vector bundle is more general than the spaces $TS^2$ and $T\R^2$ as discussed earlier because each fiber does not have to be tangent to the topological space as in the following example
+
+\begin{example}[Cylinder]
+	Take $S^1$ with the standard topology to be the base space. As a vector space, take $\R$ and consider the vector bundle given by the product $S^1 \times \R$. Giving $\R$ the standard topology induces the product topology on $S^1 \times \R$ and take the projection map $p: S^1 \times \R \to S^1$ given by $p: (x,v) \mapsto x$ to be the continuous projection map. Then, each preimage $p^{-1}(x)$ is a copy of the vector space $\R$ with the appropriate topology and thus this gives a vector bundle. In fact, this vector bundle should be visualized as a cylinder.
+\end{example}
+
+\toadd{figure of a cylinder}
+
+The above construction of the cylinder demonstrates that fibers need not be tangent to the base space, but in fact fibers are not required to correspond to the dimension of the base space. The example of the cylinder is a specific case of the idea of a \emph{trivial bundle} which is defined as follows.
+
+\begin{definition}[Trivial Bundle]
+	Let $X$ be a topological base space and let $V$ be a vector space with a topology. Then, taking the product topology, $X \times V$ forms a topological space. This together with the projection map $p: X \times V \to X$ given by $p: (x,v) \mapsto x$ forms a vector bundle. This vector bundle is called a \emph{trivial bundle}. If $E$ is of dimension $n$, the trivial bundle is often denotes $\tbund{n}$.
+\end{definition}
+
+With this construction of the trivial bundle, note in the ``locally trivial'' condition in definition~\ref{def:vector_bundle}, the $X \times V$ is understood as the trivial bundle. However, there are many bundles that are not trivial bundles and the best example of such a bundle is the Mobius strip.
+
+\begin{example}[Mobius Strip]
+	\toadd{include example of Mobius Strip}
+\end{example}
+
+\toadd{Also give as examples, the formal construction of $TS^2$ and the normal bundle over $S^2$}
+
+%NOTE TO READER ON HOMOMORHISMS OF VECTOR BUNDLES:
+To complete the category of vector bundles, a notion of homomorphisms between vector bundles is necessary. Vector bundles contain the structure of both a topological space and of many vector spaces, so a homomorphism of vector bundles aims to preserve both of these structures. These homomorphisms will be over the same base space and are defined as follows.
+
+%DEFINITION OFVECTOR BUNDLE HOMOMORPHISM:
+\begin{definition}[Homomorphisms of Vector Bundles]
+	Take two vector bundles $E$ and $F$ both with base space over $X$. Then, let $p: E \to X$ and $q: F \to X$ be the continuous maps. A mapping $\varphi: E \to F$ is a \emph{homomorphism of vector bundles} if:
+\vspace{-\varparskip}
+	\begin{enumerate}[(i)]
+		\item $q \varphi = p$
+		\item $\varphi: E \to F$ is a homomorphism of topological spaces; that is, $\varphi$ is continuous.
+		\item For each $x \in X$, the mapping $\varphi: p^{-1}(x) \to q^{-1}(x)$ is a homomorphism of vector spaces; that is, $\varphi$ is a linear map between these vector spaces.
+	\end{enumerate}
+\end{definition}
+
+\toadd{Include an example of homomorphism?}
+
+The definition of isomorphism for vector bundles carries over from the definition of isomorphism in category theory: a homomorphism with a homomorphism as an inverse. However, some of the homomorphism properties of the inverse follow automatically. For instance, take vector bundles $p: E \to X$ and $q: F \to X$ and a bijective homomorphism $\varphi: E \to F$. Then, it follows immediately from $q\varphi = p$ that $p \varphi^{-1} = q$, so this does not need to be checked. Additionally, a bijective linear map will have a linear inverse. Then, it does not need to be verified that $varphi^{-1}$ maps the fibers in a linear way because it is known that $\varphi$ does. However, the continuous property of $\varphi^{-1}$ does not follow automatically and is typically the most difficult part of isomorphism proofs. With these observations, an isomorphism can be defined in the following more practical way.
+
+\begin{definition}[Isomorphism]
+	For two vector bundles $p: E \to X$ and $q: F \to X$, a map $\varphi: E \to F$ is defined to be an isomorphism if it is a bijective homomorphism with continuous inverse.
+\end{definition}
+
+\toadd{include an example of an isomorphism?}
+
+\section{Direct Sum and Tensor Product on Vector Bundles}
+
+It is worth emphasizing that every point of a vector bundle $E$ belongs to some fiber of the bundle. In fact, $E$ as a set can be thought of as the disjoint union of only fibers. By taking the perspective of a vector bundle as the union of vector spaces, much of the structure of vector spaces extends to vector bundles. For instance, the fibers can be used to construct the direct sum operation in the following way.
+
+\begin{definition}[Direct Sum of Vector Bundles]
+	Let $p_1: E_1 \to X$ and $p_2: E_2 \to X$ be vector bundles over $X$. Then, consider the disjoint unions of the direct sums of fibers
+\begin{equation*}
+	E_1 \op E_2 = \bigcup_{x \in X} p_1^{-1}(x) \op p_2^{-1}(x)
+\end{equation*}
+together with the projection mapping $p: E_1 \op E_2 \to X$ given by $p: p_1^{-1}(x) \op p_2^{-1}(x) \mapsto x$. Then, $p: E_1 \op E_2 \to X$ when given a natural topology forms a vector bundle over $X$ called the \emph{direct sum} of $E_1$ and $E_2$.
+\end{definition}
+
+\toadd{mention intuition of pairs for direct sum bundle}
+
+Of course, a vector bundle has more structure than simply a union of vector spaces; in particular, vector bundles must be given a topology and must satisfy the local triviality condition. \toadd{ref} gives the specifics of the ``natural topology'' referred to in the above definition along with this necessary proof of local triviality, but these verifications all work out.  Because a vector bundle is built out of fibers, vector space properties such as the direct sum carry over naturally to vector bundles and the extra properties typically ``all work out''.
+
+In this construction, consider some $x \in X$ and let $v_1 \in p_1^{-1}(x)$ and $v_2 \in p_2^{-1}(x)$ be elements of both fibers. Then, taking the direct sum of these vector spaces, these two vectors can be identified with $v_1 \op v_2$, which can also be thought of as simply $(v_1, v_2)$. 
+
+A second similar construction by using the fibers is in the extension of the tensor product to vector bundles.
+
+\begin{definition}[Tensor Product of Vector Bundles]
+	Let $p_1: E_1 \to X$ and $p_2: E_2 \to X$ be vector bundles over $X$. Then, consider the disjoint unions of all tensor products of the fibers
+\begin{equation*}
+	E_1 \ot E_2 = \bigcup_{x \in X} p_1^{-1}(x) \ot p_2^{-1}(x)
+\end{equation*}
+together with the projection mapping $p: E_1 \ot E_2 \to X$ given by $p: p_1^{-1}(x) \ot p_2^{-1}(x) \mapsto x$. Then, $p: E_1 \ot E_2 \to X$ when given a natural topology forms a vector bundle over $X$ called the \emph{tensor product} of $E_1$ and $E_2$.
+\end{definition}
+
+Again, the specifics of the ``natural topology'' and the verification of natural triviality all work out as explained in \toadd{ref}. The proof is identical to the proof for direct sum. It is worth mentioning that this construction can be generalized to other operations on vector spaces such as the dual and the exterior power, but these notes only require the direct sum and the tensor product.
+
+Because the tensor product and direct sum are defined on each fibers, the properties of direct sum and tensor product on vector spaces carry over to analogous properties on vector bundles.
+
+\begin{claim}
+Listed below are properties of direct sum and tensor product over vector bundles.
+\vspace{-\varparskip}
+\begin{enumerate}[(i)]
+	\item The direct sum between bundles is associative and commutative.
+	\item The trivial bundle of dimension $0$ is an identity element for the direct sum. That is, $E \op \tbund{0} = E$.
+	\item The tensor product between bundles is associative and commutative.
+	\item The trivial dimension of dimension $1$ is an  identity element for the tensor product. That is, $E \ot \tbund{1} = E$.
+	\item The tensor product distributes over direct sum.
+\end{enumerate}
+\end{claim}
+
+\section{Pullback Bundles}
+
+%TELLING READER TO PAY ATTENTION:
+The following construction, addresses pullback bundles. In the next chapter of this story, all of the arrows will suddenly point backwards as a contravariant functor emerges. The reason why the arrows will point backwards is due to pullback bundles.
+
+%IDEA OF CONSTRUCTION	
+Consider two base spaces $X$ and $Y$ where $X$ has a vector bundle structure $p: E \to X$ but $Y$, unfortunately, has no such structure. However, $Y$ can be given a vector bundle $q: F \to Y$ by stealing the structure of $E$ through the association given by $f$. Specifically, each fiber $q^{-1}(y)$ can just take a copy of the fiber $p^{-1}(f(y))$. 
+
+
+\begin{definition}[Pullback Bundle]
+\label{def:pullback}
+	Let $f: X \to Y$ be a mapping and $p: E \to X$ a bundle as defined above. Then there exists a unique bundle $f^{*}(p): f^{*}(E) \to Y$ and a mapping $h: f^{*}(E) \to E$ such that $h$ maps each fiber $(f^{*}(p))^{-1}(y)$ to the fiber $p^{-1}(f(y))$ as a vector space isomorphism. This bundle is called the \emph{pullback bundle} and denoted $f^{*}(p): f^{*}(E) \to Y$.
+\end{definition}
+
+\toadd{talk about existence and uniqueness proofs}
+
+However, there is a detail of well-defined to address. When given a vector bundle $p: E \to X$ with continuous functions $f: X \to Y$ and $g: Y \to Z$, how is the bundle structure on $X$ pulled back to a bundle on $Z$? There are two options: $(f \circ g)^{*}(E)$ and $f^{*}(g^{*}(E))$. Luckily, the following claim shows that the two options are isomorphic and gives more pleasant properties of the pullback.
+
+\begin{claim}
+	Listed below are important properties of pullbacks.
+	\vspace{-\varparskip}
+	\begin{enumerate}[(i)]
+		\item $(f \circ g)^{*}(E) \tiso g^{*}(f^{*}(E))$ for any bundle $E$ and continuous functions $f$ and $g$.
+		\item $\id^{*}(E) \tiso E$ for any vector bundle $E$ over $X$ and the identity mapping $\id: X \to X$.
+		\item $f^{*}(\tbund{n}) \tiso \tbund{n}$ for all continuous functions $f$ and trivial bundles $\tbund{n}$ over the corresponding base spaces.
+		\item $f^{*}(E_1 \op E_2) \tiso f^{*}(E_1) \op f^{*}(E_2)$ for all bundles $E_1$ and $E_2$ and continuous function $f$.
+		\item $f^{*}(E_1 \ot E_2) \tiso f^{*}(E_1) \ot f^{*}(E_2)$ with $E_1$ and $E_2$ vector bundles and $f$ a continuous function.
+	\end{enumerate}
+\end{claim}
+
+Note that given a vector bundle $p: E \to X$, a function $f$ from $Y$ \emph{to} $X$ is necessary to induce a pullback bundle $f^{*}(E)$ over $Y$; not the other way around. The function must point this direction in order for $f^{*}(E)$ to effectively steal the structure of $E$. A function $f': X \to Y$ would be rather useless, for this function may associate each point of the base space $Y$ to multiple points in the base space $X$ or non at all. However, given the function $f: Y \to X$, each point in $Y$ is mapped to a single point in $X$ and so the structure of $E$ can be effectively stolen. This fact --- that a function induces a vector bundle in the opposite direction --- is half way to defining a contravariant functor.
+
+%\begin{figure}[ht!]
+%	\input{figures/vector_bundles/pullback_bundle}
+%	\caption{Pullback Bundle Induced by $f$}
+%	\label{fig:pullback_bundle}
+%\end{figure}
+
+%This justifies the drawing of the commutative diagram in figure~\ref{fig:induced_bundle}. 
+%
+%\begin{figure}[ht!]
+%		\input{figures/vector_bundles/induced_bundle}
+%		\caption{Commutative Relation of Pullback}
+%		\label{fig:induced_bundle}
+%\end{figure}%
+
+%\toadd{Composition of Pullback figure}
+%\begin{figure}[ht!]
+%		\centering
+%		\input{figures/vector_bundles/composition_of_pullback}
+%		\caption{Commutative Relation of Pullback}
+%		\label{fig:induced_bundle1}
+%\end{figure}
+
+\section{Necessary Results on Vector Bundles}
+\sean{this section is still in progress}
+
+\toadd{Canonical Line bundle over $\R P^1$ gives mobius band}
+
+\toadd{$A$ contractible implies the bundle over $A$ is trivial}.
+
+\begin{claim}
+	For every bundle $E$ over a compact Hausdorff space $X$, there exists a bundle $E'$ over $X$ such that $E \op E'$ is trivial.
+\end{claim}
+
+This claim is central to the story, so a full proof \toadd{I still need to do this} is provided in \toadd{ref}. The proof is long with many lemma's, so more useful than reading the full proof is to read the following summary of the proof's idea. Given the bundle $p: E \to X$ over a compact Hausdorff space, a huge trivial bundle $T$ is constructed by using a topology theorem\footnote{Urysohn's Lemma} that follows from the compact Hausdorff condition. The trivial bundle $T$ is built exactly such that there is a convenient isomorphism from $E$ to a subbundle $E_0$ in the huge trivial bundle. Another topology tool\footnote{Partition of Unity} allows the  extension of a metric to vector bundles, which then gives a Gran-Schmidt orthogonalization process on vector bundles. The orthogonal complement of each fiber in $E_0$ gives a vector bundle $E_0^{\perp}$ such that $E_0 \op E_0^{\perp} = T$ and the desired conclusion follows from $E \iso E_0$.
+
+\toadd{example: $NS^2 \op TS^2$ is trivial}
+
+\begin{example}
+	For an example of the above theorem, consider the tangent bundle to $S^2$, denoted $TS^2$. As promises by theorem \toadd{ref}, the normal bundle to $S^2$, denoted $NS^2$, satisfies $TS^2 \op NS^2$ trivial. To see this, consider the space $S^2$ as embedded inside $\R^3$. Then elements of $TS^n$  can be expressed $(x,v) \in S^2 \times \R^3$ and similarly, elements of $NS^2$ are given by $(x,n) \in S^2 \times \R^3$. Further, at a fixed point $x$, all vectors $v$ in the tangent fiber will be orthogonal to the vectors $n$ in the normal fiber by the definition of the bundles. Then elements of the direct sum $TS^2 \op NS^2$ can be expressed by $(x, v \op n)$ or simply $(x,v,n)$. Then consider the isomorphism $\varphi: TS^2 \op NS^2 \to S^2 \times \R^3$ given by the isomorphism.
+	\begin{equation*}
+		\varphi: (x, v, n) \mapsto (x, v+n)
+	\end{equation*}
+The above mapping an isomorphism follows from the above continuous and a linear bijection. The inverse map to the above can be constructed by taking the projection of the vector component onto the normal and tangent subspaces, which is again continuous giving isomorphism.	
+\toadd{a picture would be nice here}
+\end{example}
+
+
+\toadd{example: $M$ mobius band ... $M \op M$ trivial}
+
+\toadd{Example: Mobius band with itself is stably trivial AND/OR tangent bundle over $S^2$ with normal bundle over $S^2$}
+
+\section{Verifications}
+\subsection{Direct Sum and Tensor Product Verifications}
+\subfile{Appendix/vector_bundles/ds_tp_verification.tex}
+
+\subsection{Pullback Bundle Verifications}
+\label{sec:pullback}
+\subfile{Appendix/vector_bundles/pullback_verification}
+
+\subsection{Other Verifications}
+\subfile{Appendix/vector_bundles/trivial_ds_existence.tex}
+
+%\section{Appendix}
+%\subfile{Appendix/vector_bundles/fiber_ism_thm.tex}
+\end{document}

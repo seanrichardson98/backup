@@ -1,0 +1,24 @@
+\documentclass[11pt]{article}{}
+
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{cancel}
+
+\usepackage{my_notes}
+\usepackage{my_math}
+
+\begin{document}
+	\title{Mechanics}
+	\author{Sean Richardson}
+	\date{\today}
+	\maketitle
+	\section{Kinematics}
+		\begin{align*}
+			%\conj, or \mean, or \variant
+			\Delllta d=v_i\cdot \Delta t + \frac{1}{2}\cdot a \cdot \Delta t^2 \\
+			v_f^2 = v_i^2 + 2\cdot a\cdot \Delta d \\
+			\bar{a} = \frac{\Delta v}{\Delta t} \\
+			\bar{v} = \frac{\Delta d}{\Delta t} 
+		\end{align*}
+\end{document}

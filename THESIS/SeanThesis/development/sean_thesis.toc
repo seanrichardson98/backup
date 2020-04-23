@@ -1,0 +1,43 @@
+\contentsline {chapter}{\tocchapter {Chapter}{1}{Category Theory}}{5}{chapter.1}
+\contentsline {section}{\tocsection {}{1}{Categories and Functors}}{5}{section.1.1}
+\contentsline {section}{\tocsection {}{2}{Further Examples}}{9}{section.1.2}
+\contentsline {chapter}{\tocchapter {Chapter}{2}{Algebra}}{11}{chapter.2}
+\contentsline {section}{\tocsection {}{1}{Ring Completion}}{11}{section.2.1}
+\contentsline {section}{\tocsection {}{2}{Packing Together Modules}}{14}{section.2.2}
+\contentsline {section}{\tocsection {}{3}{Verifications}}{15}{section.2.3}
+\contentsline {chapter}{\tocchapter {Chapter}{3}{Topology}}{19}{chapter.3}
+\contentsline {section}{\tocsection {}{1}{The Category of Topological Spaces}}{19}{section.3.1}
+\contentsline {section}{\tocsection {}{2}{Some Mappings and Corresponding Topologies}}{21}{section.3.2}
+\contentsline {section}{\tocsection {}{3}{Nice Properties of Topological Objects}}{23}{section.3.3}
+\contentsline {section}{\tocsection {}{4}{Operations on Topological Spaces}}{24}{section.3.4}
+\contentsline {section}{\tocsection {}{5}{More Topology}}{25}{section.3.5}
+\contentsline {section}{\tocsection {}{6}{Homotopy}}{26}{section.3.6}
+\contentsline {section}{\tocsection {}{7}{Appendix}}{26}{section.3.7}
+\contentsline {subsection}{\tocsubsection {}{7.1}{Continuity as a Local Property}}{27}{subsection.3.7.1}
+\contentsline {subsection}{\tocsubsection {}{7.2}{Important Topological Facts}}{27}{subsection.3.7.2}
+\contentsline {chapter}{\tocchapter {Chapter}{4}{Vector Bundles}}{29}{chapter.4}
+\contentsline {section}{\tocsection {}{1}{Definition and Examples}}{29}{section.4.1}
+\contentsline {section}{\tocsection {}{2}{Direct Sum and Tensor Product on Vector Bundles}}{31}{section.4.2}
+\contentsline {section}{\tocsection {}{3}{Pullback Bundles}}{32}{section.4.3}
+\contentsline {section}{\tocsection {}{4}{Necessary Results on Vector Bundles}}{33}{section.4.4}
+\contentsline {section}{\tocsection {}{5}{Verifications}}{34}{section.4.5}
+\contentsline {subsection}{\tocsubsection {}{5.1}{Direct Sum and Tensor Product Verifications}}{34}{subsection.4.5.1}
+\contentsline {subsection}{\tocsubsection {}{5.2}{Pullback Bundle Verifications}}{36}{subsection.4.5.2}
+\contentsline {subsection}{\tocsubsection {}{5.3}{Other Verifications}}{39}{subsection.4.5.3}
+\contentsline {chapter}{\tocchapter {Chapter}{5}{The Definition of K-Theory}}{41}{chapter.5}
+\contentsline {section}{\tocsection {}{1}{The K-Theory Functor $\mathbf {K}$}}{41}{section.5.1}
+\contentsline {section}{\tocsection {}{2}{The Reduced K-Theory Functor $\mathbf {\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle K$}\mathaccent "0365{K}}$}}{44}{section.5.2}
+\contentsline {section}{\tocsection {}{3}{Verifications}}{46}{section.5.3}
+\contentsline {subsection}{\tocsubsection {}{3.1}{Semiring Verification}}{46}{subsection.5.3.1}
+\contentsline {subsection}{\tocsubsection {}{3.2}{Homomorphism of Semirings Verification}}{47}{subsection.5.3.2}
+\contentsline {subsection}{\tocsubsection {}{3.3}{K-Theory Functor Satisfies Contravariant Composition Law}}{48}{subsection.5.3.3}
+\contentsline {subsection}{\tocsubsection {}{3.4}{Reduced K-Theory forms Group}}{49}{subsection.5.3.4}
+\contentsline {chapter}{\tocchapter {Chapter}{6}{K-Theory as a Cohomology Theory}}{51}{chapter.6}
+\contentsline {section}{\tocsection {}{1}{Exact Sequences}}{51}{section.6.1}
+\contentsline {section}{\tocsection {}{2}{Exact Sequences in K-Theory}}{51}{section.6.2}
+\contentsline {section}{\tocsection {}{3}{K-Theory as a Cohomology Theory}}{54}{section.6.3}
+\contentsline {section}{\tocsection {}{4}{Further Structure on the Cohomology Theory}}{55}{section.6.4}
+\contentsline {chapter}{\tocchapter {Chapter}{7}{Division Algebra Application}}{57}{chapter.7}
+\contentsline {section}{\tocsection {}{1}{The odd case}}{57}{section.7.1}
+\contentsline {section}{\tocsection {}{2}{The even case}}{58}{section.7.2}
+\contentsline {chapter}{\tocchapter {Chapter}{}{Bibliography}}{59}{chapter*.22}

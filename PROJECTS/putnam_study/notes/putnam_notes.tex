@@ -1,0 +1,415 @@
+\documentclass[12pt]{amsart}
+
+\setlength{\parindent}{0cm}
+\usepackage[margin=0.8in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{commath}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{cancel}
+\usepackage{subfigure}
+\usepackage{multicol}
+\usepackage{gensymb}
+\usepackage{enumitem}
+
+\usepackage{graphicx}
+\graphicspath{{graphics/}}
+
+\usepackage{my_notes}
+\usepackage{my_math}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{tool}[theorem]{Tool}
+\newtheorem{approach}[theorem]{Approach}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{just}{\textit{Justification.}}{}
+\newenvironment{trans}{\textit{Translation.}}{}
+
+\newenvironment{mybox}
+{\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]}
+{\end{tcolorbox}}
+
+\newenvironment{mytbox}[1]
+{\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=#1]}
+{\end{tcolorbox}}
+
+\def\mathunderline#1#2{\color{#1}\underline{{\color{black}#2}}\color{black}}
+
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+
+\begin{document}
+\title{Putnam}
+\author{Sean Richardson}
+\maketitle
+
+\section{General Advice}
+
+Before you even begin to attempt the problem, there are a few important
+steps:
+\begin{enumerate}
+    \item Understand the Problem/Question.
+    \item Select good notation to symbolically represent problem
+    \item Write down all known information and what needs to be shown in the
+        selected notation. Draw a diagram if applicable.
+\end{enumerate}
+
+Would recommend writing down all known information on one page for
+something to stare at. As new information is gained, add it to the page.
+Once this is completed, you can continue as follows:
+
+\begin{enumerate}[resume]
+    \item Brainstorm all relevant approaches to the problem (see approaches
+        listed below).
+    \item Identify relevant areas of math and brainstorm all relevant tools
+    for the problem (see tools listed below).
+    \item Choose what seems to be the best approach.
+    \item Play around with tools on the problem with this approach
+    \emph{algebraically} (start
+    with a specific/easier instance of the problem if possible). Make
+    sure to incorporate all necessary information.
+    \item If I get stuck, consider a new approach and repeat.
+    \item If run out of approaches, brainstorm ``if stuck'' ideas.    
+\end{enumerate}
+
+If stuck or you need new information, can try the following:
+\begin{itemize}
+    \item Consider special case / simplified / generalized version of problem
+    \item Formulate conjecture that would imply problem and try to prove
+        conjecture
+    \item Derive consequence of problem and try to show that first.
+    \item Reformulate problem. (contrapositive, contradiction,
+        substitution, clever manipulation).
+\end{itemize}
+
+Now on to all of the various approaches and tools to attempt to apply:
+\subsection{General Approaches}
+\begin{approach}[Proof by Contradiction]
+    If supposing the opposite of the claim gives some concrete information
+    to manipulate, supposing the opposite could be the best way to start.
+\end{approach}
+\begin{approach}[Proof by Induction] If trying to prove for a general $n$,
+    induction is likely a good place to start. In trying to get the
+    inductive step, you could try working with a concrete small $n$ and try
+    to prove it using smaller terms. Remember, can also apply strong
+    induction, suppose a stronger inductive hypothesis, induct in reverse,
+    induct for $2^n$ first, or other variations on the idea.
+\end{approach}
+\begin{approach}[Weaker Claim]
+    Is it sufficient to prove a weaker version of claim or only prove the
+    claim for some subset of cases? \textit{Such as proving a claim only
+    for primes implies $\mathbb{N}$ in some cases.}
+\end{approach}
+\begin{approach}[Stronger Claim]
+    Is it easier to prove a stronger version of the claim?  \textit{This is
+    particularly useful in induction proofs, for it gives a stronger
+    induction hypothesis. And in many other situations a stronger claim
+    gives more tools.}
+\end{approach}
+\begin{approach}[Reframe Problem]
+    Is it possible to move the problem to a different and easier setting by
+    an isomorphism of some sort? \textit{To find such a setting, first
+    identify the relevant aspects of the question, and find settings with
+    the same relevant aspects}
+\end{approach}
+\begin{approach}[Clever Choice]
+    Do you have control over some variable / freedom to choose a specific
+    value or some subset of values? Perhaps a clever choice of what you
+    have control over will make things fall into place.
+\end{approach}
+\begin{approach}[Invariant]
+    Useful for proving nonexistence. In showing that some
+    process/construction is impossible, find an \emph{invariant} --- an
+    unchanged value --- that cannot take on a sufficient value for the
+    existence.
+\end{approach}
+\subsection{General Tools}
+\begin{tool}[Pigeonhole Principle] If trying to show existence, this is a
+    common technique that can come up in combinatorics, number theory, and
+    a variety of unexpected places.
+\end{tool}
+\section{Number Theory}
+\subsection{Approaches}
+\begin{approach}[Algebraic Maniuplation into Integers] If possible, get the
+    equation / statement in the form of integers. This will allow the
+    application of all the number theory designed for integers below.
+\end{approach}
+\begin{approach}[Modular Arithmetic] A common approach to getting problems
+    into a simpler form. 
+\end{approach}
+\subsection{Tools}
+\begin{tool}[Fundamental Theorem of Arithmetic]\end{tool}
+\begin{tool}[$\gcd$ theorem]\end{tool}
+\begin{tool} If $x \in \mathbb{Z}, x \neq 0$ then $x \geq 1$. \end{tool}
+\begin{tool}[Chinese Remainder Theorem]\end{tool}
+\begin{tool}[Fermat-Euler Theorem]
+    Recall the Euler function $\phi(n)$ gives the number smaller terms that
+    are coprime to $n$. Now to theorem,\\
+    If $a$ and $m$ are coprime, then
+    \begin{equation*}
+        a^{\phi(m)} \equiv 1\Mod m
+    \end{equation*}
+\end{tool}
+\begin{tool}[Fermat's Little Theorem]
+    A corollary of Euler-Fermat, given $p$ prime and $a$ integer,
+    \begin{equation*}
+        a^p \equiv a \Mod p
+    \end{equation*}
+\end{tool} 
+\begin{tool}[Division Algorithm]\end{tool}
+\begin{tool}[Euclidean Algorithm]\end{tool}
+\begin{tool}[Euclid's Lemma] This is the common definition of prime\end{tool}
+\begin{tool}[Wilson's Theorem]
+    If $p$ is prime then $(p-1)! \equiv -1 \Mod p$ 
+\end{tool}
+\begin{tool}[Linear Diophantine Equations]/*TODO*/\end{tool}
+\begin{tool}[Pell]\end{tool}
+%ALGEBRA
+\section{Algebra}
+\subsection{Approaches}
+\begin{approach}[Maniuplation]
+    Always be on the lookout for an algebraic manipulation of the problem
+    into a simpler form.
+\end{approach}
+\subsection{Tools}
+\begin{tool}[Geometric Sum Formula]
+    \begin{equation*}
+        \sum_{k=0}^nx^k = \frac{1-x^{n+1}}{1-x}
+    \end{equation*}
+    How to remember: Call the sum $\mathcal{S}$, to make things cancel, do
+    $\mathcal{S}-x\mathcal{S} = 1-x^{n+1}$
+\end{tool}
+\begin{tool} $x^2 \geq 0$. More useful than you'd think. \end{tool}
+\begin{tool}[Lagrange Identity]
+    \begin{equation*}
+        \sum_{k=1}^n a_k^2 \sum_{k=1}^n b_k^2
+        - \left(\sum_{k=1}^n a_k b_k \right)^2
+        = \sum_{i<k}(a_ib_k-a_kb_i)^2
+    \end{equation*}
+    How to remember: /*TODO*/
+\end{tool}
+\begin{tool}{Cauchy-Schwarz Inequality}
+    Following from Lagrange Identity and $x^2 > 0$:
+    \begin{equation*}
+        \sum_{k=1}^n a_k^2 \sum_{k=1}^n b_k^2
+        \geq \left(\sum_{k=1}^n a_k b_k \right)^2
+    \end{equation*}
+    How to remember: /*TODO*/
+\end{tool}
+\begin{tool}[Bernoulli's Inequality]
+    $(1+y)^n \geq 1 + ny$
+\end{tool}
+\begin{tool}[Cauchy's Inequality]
+    $x\cdot y \leq \frac{1}{2}(x^2+y^2)$
+\end{tool}
+\begin{tool}[Triangle Inequality]
+    $\myabs{x+y} \leq \myabs{x}+\myabs{y}$
+\end{tool}
+\begin{tool}[Reverse Triangle Inequality]
+    $\myabs{x-y} \geq \myabs{\myabs{x}-\myabs{y}}$
+\end{tool}
+\begin{tool}[Euler's Identity]
+    \begin{equation*}
+        (x_1^2+y_1^2)(x_2^2+y_2^2) =
+        {(x_1x_2-y_1y_2)}^2+{(x_1y_2+x_2y_1)}^2
+    \end{equation*}
+    How to remember: Interpret as the product of two complex norms.
+\end{tool}
+\begin{tool}[Euler's Other Identity]
+    \begin{align*}
+         &(x_1^2+x_2^2+x_3^2+x_4^2)(y_1^2+y_2^2+y_3^2+y_4^2)\\
+        =&(x_1y_1-x_2y^2-x_3y_3-x_4y_4)^2+(x_1y_2+x_2y_1+x_3y_4-x_4y_3)^2\\
+        +&(x_1y_3-x_2y_4+x_3y_1+x_2y_4)^2+(x_1y_4+x_2y_3-x_3y_2+x_4y_1)^2
+    \end{align*}
+    How to remember: Interpret as being the product of two quaternion norms.
+\end{tool}
+\begin{tool}
+    \begin{align*}
+        a^3+b^3+c^3-3abc
+        =\frac{1}{2}(a+b+c)({(a-b)}^2+{(a-c)}^2+{(b-c)}^2)
+    \end{align*}
+    Can remember this through below determinant. LHS is computation by
+    Saurus' rule. RHS is first add columns to first, then compute.
+    \begin{equation*}
+    \det\begin{pmatrix} a & b & c \\ c & a & b
+        \\ b & c & a \end{pmatrix}
+    \end{equation*}
+\end{tool}
+\begin{tool}[Sophie Germain Identity]
+    \begin{equation*}
+a^4 + 4b^4 = (a^2 + 2b^2 + 2ab)(a^2 + 2b^2 - 2ab)
+    \end{equation*}
+    /*remember?*/
+\end{tool}
+\section{Geometry}
+\subsection{Approaches}
+\subsection{Tools}
+\section{Linear Algebra}
+\subsection{Approaches}
+\subsection{Tools}
+\begin{tool}[Cauchy-Schwartz Inequality] /*TODO*/ \end{tool}
+\begin{tool}
+    $m$ homogeneous linear equations with $n$ variables. $m < n$ implies
+    there exists a nontrivial solution.
+\end{tool}
+\begin{tool}[Trace]
+\end{tool}
+\begin{tool}[Eigenstuff]
+\end{tool}
+\begin{tool}
+The sum of the eigenvalues is the trace.
+\end{tool}
+\section{Combinatorics}
+\subsection{Approaches}
+\begin{approach}
+    In proving an identity that takes integer values, find a situation that
+    the two halves are counting in different ways.
+\end{approach}
+\subsubsection{Advanced Combinatorics}
+\begin{approach}[Vector Space Dimension Bound Method]
+\end{approach}
+\begin{approach}[Homogenous System of Linear Equations Method]
+\end{approach}
+\begin{approach}[Probability Method]
+\end{approach}
+\subsection{Tools}
+\begin{tool}[Pigeonhole Principle]
+    If $kn+1$ objects ($k \geq 1$) are distributed among $n$ boxes, one box
+    will contain $k+1$ objects. Note that $k$ not necessarily finite, so we
+    have an infinite PHP. The notion of equivalence classes is useful for
+    grouping things into ``boxes''.
+\end{tool}
+\begin{tool}[Inclusion-Exclusion Principle] /*TODO*/ \end{tool}
+\begin{tool}[Binomial Theorem]
+    \begin{equation*}
+        (x+y)^n = \sum_{k=0}^{k=n}\begin{pmatrix} n \\ k \end{pmatrix} x^k
+        y^{n-k}
+    \end{equation*}
+\end{tool}
+\begin{tool}[Multinomial Theorem] /*TODO and how to remember*/\end{tool}
+
+\section{Analysis, Calculus, and Differential Equations}
+\subsection{Approaches}
+\begin{approach}
+    When trying to prove a claim over $\mathbb{R}$, first prove for
+    $\mathbb{N}$, then $\mathbb{Q}$, then $\mathbb{R}$.
+\end{approach}
+\begin{approach}
+    If you have continuity, I think contradiction is solid? /*hash out*/
+\end{approach}
+\begin{approach}
+    Apply definite integrals to differential equations. Example: $g'(x) >
+    1$ for all $x$ implies $\int_{t=0}^{t=x}g'(t)dt > \int_{t=0}^{t=x}dt$,
+    so $g(x) > x + g(0)$.
+\end{approach}
+\begin{approach}
+    Associate the differential equation $y' = f(y)$ with sequence $a_{n+1}
+    - a_n = f(a_n)$. Apparently, this is useful in either direction.
+\end{approach}
+\subsection{Tools}
+\begin{tool}[Fundamental Theorem of Calculus]
+    /*2 forms*/\\
+    Further, if $f'$ is continuous, then
+    \begin{equation*}
+        f(x) = f(a) + \int{t=a}^x f'(t) dt
+    \end{equation*}
+\end{tool}
+\begin{tool}[Mean Value Theorem]\end{tool}
+\begin{tool}[Intermediate Value Theorem]\end{tool}
+\begin{tool}[Taylor's Theorem]\end{tool}
+\begin{tool}[Taylor Series]\end{tool}
+\begin{tool}[Continuity]\end{tool}
+\begin{theorem} Every bounded monotonic sequence is convergent\end{theorem}
+\begin{theorem} For every $x \in \mathbb{R}$, there is a rational sequence
+$r_n$ with $\lim_{n\to\infty} r_n = x$ \end{theorem}
+\begin{tool} Can solve separable differential equations \end{tool}
+\begin{tool} Functions that grow at a more than proportional rate to the
+function itself blow up in finite time. \end{tool}
+\begin{tool}[Additive functions] \end{tool}
+\begin{tool}[Hamel Basis]\end{tool}
+
+\section{Set Theory and Abstract Algebra}
+\subsection{Approaches}
+\begin{approach}
+    When possible, impose an order on your set. Why not? It might make it
+    easier.
+\end{approach}
+\subsection{Tools}
+\begin{definition}[Order, Total Order]
+    An \emph{order} on a set is relation $\leq$ such that
+    \begin{enumerate}
+        \item $a\leq a$,
+        \item $a\leq b$ and $b \leq a$
+        \item $(a \leq b) \land (b \leq c) \implies a\leq c$.
+    \end{enumerate}
+        The order is called \emph{total} if either $a \leq
+        b$ or $b \leq a$ for all $a,b$ in the set.
+\end{definition}
+\section{Problems}
+\subsection{Putnam}
+\begin{itemize}
+\item (B2-2006) Prove that for every set $X = \{x_1, x_2, \dots, x_n\}$ of
+    $n$ real numbers, there exists a nonempty subset $S$ of $X$ and an
+    integer $m$ such that
+    \begin{equation*}
+        \big| m+\sum_{s\in S}s \big| \leq \frac{1}{n+1}
+    \end{equation*}
+    [PHP, fractional part of sum, and chain in $X$]
+\end{itemize}
+\subsection{Olympiads}
+\begin{itemize}
+    \item (26th International Mathematical Olympiad, proposed by Mongolia)
+        Given a set $M$ of $1985$ distinct positive integers, none of which
+        has a prime divisor greater than $26$, prove that $M$ contains at
+        least one subset of four distinct elements whose product is the
+        fourth power of an integer. [PHP and equivalence classes in
+        canonical form].
+\end{itemize}
+\subsection{Books}
+Books drawn upon include: Putnam and Beyond (P\&B), \dots
+\begin{itemize}
+    \item (P\&B-1) Prove that $\sqrt{2} + \sqrt{3} +\sqrt{5}$ is an
+        irrational number. [Contradiction similar to Pythagoras method for
+        $\sqrt{2}$] 
+    \item (P\&B-2) Show that no set of nine consecutive integers can
+        be partitioned into two sets with the product of the elements of
+        the first set equal to the product of the elements of the second
+        set. [Contradition]
+    \item (P\&B-3) Find the least positive integer $n$ such that any set of
+        $n$ pairwise relatively prime integers greater than 1 and less than
+        2005 contains at least one prime number. [Find an obvious maximal
+        example, and argue anything above that exaple is contradiction]
+    \item (P\&B-4) Every point of three-dimensional space is colored red,
+        green, or blue. Prove that one of the colors attains all distances,
+        meaning that any positive real number represents the distance
+        between two points of this color. [Contradiction. Careful what the
+        negation says, and can solve it without computation]
+    \item (P\&B-5) The union of nine planar surfaces, each of area equal to
+        1, has a total area equal to 5. Prove that the overlap of some two
+        of these surfaces has an area greater than or equal to
+        $\frac{1}{9}$.
+        [Contradiction, Inclusion-Exclusion approximation]
+    \item (P\&B-6) Show that there does not exist a function $f: \mathbb{Z}
+        \to \{ 1,2,3\}$ satisfying $f(x) \neq f(y)$ for all $x,y \in
+        \mathbb{Z}$ in which $\myabs{x-y} \in \{2,3,5\}$. [Contradition,
+        focus on specific numbers].
+    \item (P\&B-34) A sequence of $m$ positive integers contains exactly
+        $n$ distinct terms. Prove that if $2n \leq m$ then there exists a
+        block of consecutive terms whose product is a perfect square. [PHP,
+        define relation between products given by even/odd in exponents and
+        look at a chain of products in the sequence.]
+        
+\end{itemize}
+\subsection{BSM}
+\subsection{School}
+\subsection{Other}
+\end{document}

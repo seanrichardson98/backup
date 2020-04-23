@@ -1,0 +1,8 @@
+fac:
+    subq $8,%rsp
+    movq %rbx, (%rsp)
+    movq %rdi, %rbx
+    cmpq $1, %rdi
+    jle 1f
+    subq $1, %rdi
+

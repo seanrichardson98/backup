@@ -1,0 +1,93 @@
+\documentclass[12]{amsart}
+
+%IMPORTANT PACKAGES:
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{enumerate}
+\usepackage{xcolor}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{.2em}
+
+%NOTE
+\newcommand{\toadd}[1]{/*#1*/}
+\newcommand{\say}[1]{\textcolor{purple}{#1}}
+\newcommand{\note}[1]{\textcolor{teal}{#1}}
+
+\begin{document}
+\title{Orbitope Presentation Outline}
+\author{Sean Richardson}
+\maketitle
+\section{Intro}%
+\toadd{give outline, some examples of orbitopes, etc.}
+
+\section{Ingredients to Make an Orbitope}
+\toadd{on small piece of paper so can carry it around}
+
+INGREDIENTS:
+\begin{enumerate}[(1)]
+	\item A compact group $G$
+	\item A real vector space $V$
+	\item A group action acting linearly on the V.S $\rho: G \times V \to V$
+	\item An element of the V.S.	$x$
+\end{enumerate}
+
+STEPS:
+
+Consider the orbit $S$ of $x$ by $G$ with $\rho$. An orbitope is the convex hull of $S$.
+
+\say{Don't need to be comfortable with everything now\dots}
+\section{Example of a Diamond}
+\begin{enumerate}[(1)]
+	\item $G = Z_4 = <r>$
+	\item $V = \mathbb{R}^2$
+	\item $(r,v) \mapsto$ \toadd{rotation by $\pi/2$ counter clockwise}
+	\item $x = (0,1)^T$
+\end{enumerate}
+
+\note{Show $S$ with picture}
+
+\note{show orbitope with separate picture}
+\section{Octagon Example?}
+\toadd{todo}
+
+\section{Octahedron Example}
+\toadd{simplify construction}
+
+\section{A Little Representation Theory?}
+
+\section{Convex Geometry}
+\toadd{definition of convex as smallest convex set}
+
+\note{add picture}
+
+\toadd{definition of convex hull}
+
+\note{add picture}
+
+\toadd{Show Intersection gives existence and uniqueness}
+
+\section{Return to Definition of an Orbitope}
+
+\section{Every Platonic Solid is an Orbitope}
+\toadd{outline proof}
+
+\section{Some More Convex Geometry}
+\toadd{alternative definition of convex hull}
+
+\toadd{Caratheodory's theorem and intuition}
+
+\section{Application: Protein Folding Problem}
+\subsection{Background and The Question}
+
+\subsection{Measurements an What we Know}
+
+\subsection{As a Mathematical Inverse Problem}
+
+\subsection{Construction of Orbitope}
+
+\subsection{What We Learn from the Orbitope}
+\end{document}

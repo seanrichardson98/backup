@@ -1,0 +1,26 @@
+\def\cprime{$'$}
+\begin{thebibliography}{1}
+
+\bibitem{dggw}
+E.~B. Dryden, C.~S. Gordon, S.~J. Greenwald, and D.~L. Webb.
+\newblock Asymptotic expansion of the heat kernel for orbifolds.
+\newblock {\em Michigan Math. J.}, 56(1):205--238, 2008.
+
+\bibitem{gordon12}
+C.~S. Gordon.
+\newblock Orbifolds and their spectra.
+\newblock In {\em Spectral geometry}, volume~84 of {\em Proc. Sympos. Pure
+  Math.}, pages 49--71. Amer. Math. Soc., Providence, RI, 2012.
+
+\bibitem{Satake56}
+I.~Satake.
+\newblock On a generalization of the notion of manifold.
+\newblock {\em Proc. Nat. Acad. Sci. U.S.A.}, 42:359--363, 1956.
+
+\bibitem{Th}
+W.~Thurston.
+\newblock Geometry and topology of three-manifolds, 2002.
+\newblock Lecture Notes, Electronic Version 1.1,
+  http://library.msri.org/books/gt3m/.
+
+\end{thebibliography}

@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+
+\usepackage{my_math}
+
+\usepackage{sectsty}
+
+\begin{document}
+
+\title{\Huge{Hilbert's Problem}}
+\author{\normalsize{Sean Richardson}}
+\date{\normalsize{\today}}
+\maketitle
+
+
+\section{Algorithm}
+We take input of a sequence of coefficients $\{a_0,a_1,\dots,a_n\}$
+describing
+a polynomial $p(x) = \sum_{k=0}^{n}a_k x^k = a_n x^n + a_{n-1}x^{n-1} + \cdots +
+a_1 x^1 + a_0 x^0$ where the sequence continues until the highest nonzero
+degree term in the polynomial which we call $n$.
+\\We then have the following proposed algorithm:
+
+\begin{enumerate}
+    \item We define a bound $M \in \mathbb{Z}$ such than $M =
+        \sum_{k=0}^{n-1}\myabs{a_k}$.
+    \item Then, we iterate over the integers from $-M$ to $M$. For each
+        instance $z \in \mathbb{Z}$ we have:
+    \begin{enumerate}
+        \item We evaluate $p(z)$. If $p(z) = 0$, we accept the input for
+            $p$ has a integer root at input $z$.
+            Otherwise, continue.
+    \end{enumerate}
+    \item If there are no roots within the interval we can safely reject,
+        for we can guarantee that there are no roots outside of this
+        interval. We have the proof below.
+\end{enumerate}
+\begin{proof}
+    Take some $x \in \mathbb{Z}$ such that $\myabs{x} > M$. Then,
+    $$ \myabs{a_n x_n} > \myabs{x^n} > \myabs{x^{n-1}}\myabs{x} >
+    x^{n-1}\sum_{k=0}^{n-1}\myabs{a_k} $$
+    Note $\myabs{x} \geq 1$ and thus $\myabs{x^k} < \myabs{x^{n-1}}$ for $k \leq n-1$.
+    So, 
+    $$\myabs{a_n x^n} > \sum_{k=0}^{n-1}\myabs{a_k x^{n-1}} >
+    \sum_{k=0}^{n-1}\myabs{a_k x^k}$$
+    For $a_n x^n > 0$ we then must have
+    $$ a_n x^n > \sum_{k=0}^{n-1}\myabs{a_k x^k} > -\sum_{k=0}^{n-1}a_k x^k$$
+    Thus we have 
+    $$\sum_{k=0}^{n}a_k x^k = a_n x^n + \sum_{k=0}^{n-1} a_k x^k > 0$$
+    Similarly, for $a_n x^n < 0$ we then must have
+    $$ a_n x^n < -\sum_{k=0}^{n-1}a_k x^k$$
+    Thus we have 
+    $$\sum_{k=0}^{n}a_k x^k = a_n x^n + \sum_{k=0}^{n-1} a_k x^k > 0$$
+    So, in both cases $p(x)$ cannot have a root, so it is safe to reject.
+\end{proof}
+
+\sectionfont{\fontsize{12}{15}\selectfont}
+\section{Note}
+I noticed that Hilbert's Problem is generalized for a multi-variable
+equation. Perhaps this is a valid algorithm for one dimensional
+polynomials, but does not work for more variables.
+
+\end{document}

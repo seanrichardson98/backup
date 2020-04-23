@@ -1,0 +1,25 @@
+%QUOTIENT MAP MOTIVATION:
+The most intuitive and familiar way to define a quotient begins with a topological space $(X, \T_X)$ and equivalence relation $\sim$ on the space $X$. Then, let $Y$ denote the set of equivalence classes $X/\sim$. To consider $Y$ as a topological space, choose a topology $\T_Y$. For a single equivalence class $[x] \in Y$, the natural choice is to say $[x] \in \T_Y$ exactly when $\{ x' \vert x' \in [x] \} \in \T_X$. In general, any group of equivalence classes $\cup_i [x_i]$ in $Y$ should be open exactly when $\{x' \vert x' \in \cup_i [x_i] \} \in \T_X$. However, this idea is better represented in terms of a continuous maps in the spirit of category theory. In particular, this calls for a quotient map.
+
+%QUOTIENT MAP DEFINES EQUIVALENCE RELATION:
+While defining the quotient topology in terms of an equivalence relation works, it pays off to think in terms of the quotient map. In fact, given a quotient map $q$, the corresponding equivalence relation follows easily: $x_1 \sim x_2$ exactly when $q(x_1) = q(x_2)$.
+
+%NOTE TO READER:
+Note that the quotient topology as defined above provides $Y$ with the maximum amount of open sets so that $Y$ is still continuous. So, this quotient map will always be a homomorphism, which allows for the application of category theory.
+We can define the same topology addressed with an equivalence relation in a cleaner way by using the concept of a quotient map. An equivalence relation on a topological space $(X, \T_X)$ defines a natural quotient map. Consider the map $\pi: X \to X/\sim$ as defines by $\pi: x \mapsto [x]$. $\pi$ is indeed surjective as each equivalence class will have at least one representative. Then, this in turn defines a quotient topology on $X/\sim$.
+
+\begin{example}
+	\toadd{example of turning $I$ into $S^1$ perhaps.}
+\end{example}
+
+%INCLUSION MAP MOTIVATION:
+Along with the quotient topology and corresponding quotient map, there is a subspace topology and corresponding inclusion map. Consider a topological space $(X,\T_X)$ and an open subset $A \subset X$ with no pre-defined topology. However, the subset $A$ can borrow topology from the larger space $X$ in a natural way: define $\T_A$ by $\U \in \T_A$ exactly when $U \in T_X$. However, note that this definition only works when $A$ is open, for we require $A \in \T_A$ to satisfy the definition of  topological space. A more general construction that does not rely on $A$ open is given by $\T_A = \{ \U \cap A \vert \U \in \T_X \}$. This gives the same open sets as previously for $A$ open, but also defines a valid topology for $A$ closes. This topology is called the \emph{subspace topology}. However, this is also better addressed in terms of a topological homomorphism.
+
+
+%INCLUSION MAP DEFINITION:
+\sean{TODO: make sure following definition is okay}
+\begin{definition}[Inclusion Map and Subspace Topology]
+	Take topological spaces $(A, \T_A)$ and $(X,\T_X)$. Then, an injective map $i: A \hookrightarrow X$ is called an \emph{inclusion map} when $\U \in \T_A$ if and only if there exists a $V \in \T_X$ such that $V \cap i(A) = i(\U)$. In the case that $\T_A$ is not defined, a specified inclusion map defines a \emph{subspace topology} on $A$.
+\end{definition}
+The subset topology as defines above gives $A$ the minimum amount of open sets so that the inclusion map is still continuous. Then the inclusion map will always be a homomorphism.
+With this idea of an inclusion map, the subspace topology follows cleanly. Given topological space $(X, \T_X)$ and subset $A \subset X$, the natural inclusion map $i: A \to X$ is given by $i(x) = x$. This is indeed injective, and so taking this map as the inclusion map, this defines the same subset topology as addressed earlier.

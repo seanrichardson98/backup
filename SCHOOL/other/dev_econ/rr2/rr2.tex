@@ -1,0 +1,53 @@
+\documentclass[12pt]{amsart}
+
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+\author{Sean Richardson, Economic Development}
+\title{Reading Review 2}
+\date{\today}
+\maketitle
+
+In this reading review, I address Roland chapter 2 and touch on the
+\textit{Poverty and Vulnerability Analysis} reading. Overall, Roland
+Chapter 2 discusses different methods to measure poverty. Methods include
+calorie counting --- but often nutrition is more complicated than calories.
+We can also take use of calories to define a poverty line as the price of
+the cheapest basket of goods that attains $2000$ calories and all those
+under this income are considered poor. 
+Roland discusses some individual formulas such as the headcount ratio, and
+the poverty gap, but these are captured in the more general
+Foster-Greer-Thorback expression (and it's variations) as discussed in DeJanvry and Sadoulet: 
+$$P_\alpha = \frac{1}{n}\sum_i^q\left(\frac{z-y_i}{z}\right)^\alpha$$
+where we take $n$ to be the total population, $z$ to be the poverty line,
+$q$ to be the population under the poverty line, and $y_i$ to iterate over
+the income of all those under the poverty line. We typically take $\alpha =
+0,1,2$.
+There is also the Lorentz Curve, which attempts to measure income
+inequality. Each point on the Lorentz Curve denotes what percentage of
+wealth the given percentage of poorest people control. This can be
+simplified to an individual number, the Gini coefficient, which takes twice
+the area between the line of equality and the Lorentz Curve.
+Finally, it is important to keep in mind that to transition between various
+currencies in this analysis, we make use of Purchasing Power Parity, which
+is based on a typical basket of goods in two countries (not only traded
+goods).\\
+
+One observation I made had to do with how the Gini coefficient places equal
+value for equal redistributions of wealth anywhere among the population.
+Let me explain: if we take a wealth distribution of $\{1,2,3\}$ and
+consider moving $1$ unit from person $1$ to person $2$ we arrive at
+$\{0,3,3\}$ with a Gini coefficient of $0.33$. But, if we were to instead
+move $1$ unit from person $2$ to person $3$ we arrive at the distribution
+$\{1,1,4\}$ which has the same Gini coefficient of $0.33$. I believe this
+holds in general and it would be interesting to mathematically prove this
+conservation and more interesting to extend the proof of this behavior from
+the discrete case to the continuous case. Additionally, I appreciated
+DeJanvry and Sadoulet's discussion of how a higher value of $\alpha$ puts
+more weight on the poorest person. As a policy maker this is important to
+keep in mind: for $\alpha = 0$, it is beneficial to give aid to the richest
+of the poor; for $\alpha = 1$, there is no bias to giving aid to any one of
+the poor; and for $\alpha \geq 2$, it is beneficial to give aid to the poorest
+of the poor.
+
+\end{document}

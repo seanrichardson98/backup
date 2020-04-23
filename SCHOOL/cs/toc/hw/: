@@ -1,0 +1,78 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\DeclareMathOperator{\floor}{floor}
+\DeclareMathOperator{\range}{Range}
+\DeclareMathOperator{\domain}{Domain}
+
+
+\setlength{\parindent}{0cm}
+
+\title{Homework 2}
+\author{Sean Richardson}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{0.1}
+
+\begin{itemize}
+    \item[(e)] This is the set of all palindrome binary numbers
+    \item[(f)] This is the empty set $\O$
+\end{itemize}
+
+\subsection*{0.6}
+
+\begin{itemize}
+    \item[(a)] $f(2) = 7$.
+    \item[(b)] $\range(f)$ $ = \{ 6, 7 \}$ \\
+    $\domain(f) = \{ n \mid n \in \mathbb{Z}, 1 \leq n \leq 5 \}$ 
+    \item[(c)] $g(2,10) = 6$
+    \item[(d)] $\domain(g) = \{ (p,q) \mid p,q \in \mathbb{Z}, 1 \leq p
+        \leq 5, 6 \leq q \leq 10 \}$\\
+        $\range(g) = \{ n \mid n \in \mathbb{Z}, 6 \leq n \leq 10 \}$
+    \item[(e)] $g(4, f(4)) = g(4,7) = 8$
+\end{itemize}
+
+\subsection*{0.9}
+
+$G = \{ V, E \}$ where $V$ is the set of vertices and $E$ is the set of
+edges.
+
+$$V = \{ 1, 2, 3, 4, 5, 6 \}$$
+
+$$E = \{ (p,q) \mid \floor \left( \frac{p}{3} \right) = \floor \left(
+    \frac{q}{3} \right) \}$$
+
+\subsection*{0.10}
+
+    The error in the proof is in the division by $(a-b)$ from both sides.
+    Because $a=b$, this is division by $0$.
+
+\subsection*{0.13}
+
+Every graph with two or more nodes contains two nodes that have equal
+degrees. I assume we are not allowing self loops, for we would have the
+counter example $G = \{ \{ 1,2 \}, \{(1,1)\} \}$
+
+\begin{proof}$ $
+
+We proceed by the method of induction.
+
+We consider the base case of $n=2$ nodes, in which we have a graph $G$ of
+the form $G = \{ \{1,2\}, E \}$ where $E = \O$ or $E = \{(1,2)\}$. In both
+cases the base case holds.
+
+We assume our inductive hypothesis: that a graph with $n$
+nodes must contain two nodes of equal degree. We will now show the
+inductive step --- that under
+the inductive hypothesis, a graph with $n+1$ nodes must have two nodes of
+equal degree.
+
+\end{proof}
+
+\end{document}

@@ -1,0 +1,179 @@
+\documentclass[11pt]{amsart}
+%\usepackage{showkeys} %SHOWS LABELS
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{mathbbol}
+\usepackage{txfonts}%Christina's fonts
+\usepackage{ mathrsfs }%This lets you do \mathscr 
+
+
+%%%%%%
+
+\textwidth=5.8in
+\textheight=8.2in
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{claim}{Claim}
+\newtheorem{defn}{Definition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\div}{\mathrm{div}}
+\newcommand{\grad}{\mathrm{grad}}
+\newcommand{\dvol}{\mathrm{dvol}}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\newcommand{\F}{\mathfrak{F}}
+\newcommand{\X}{\mathfrak{X}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\Riem}{\mathrm{Riem}}
+\newcommand{\Scal}{\mathrm{Scal}\,}
+\newcommand{\Ricci}{\mathrm{Ricci}}
+\newcommand{\Sec}{\mathscr{K}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\J}{\mathscr{J}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\GCD}{\mathrm{GCD}}
+
+%%%%
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+
+%%%%
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\T}{\mathcal{T}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+
+\title{Point Set Topology}
+
+%\author{Iva Stavrov}
+%\address{Lewis \& Clark College}
+%\email{istavrov@lclark.edu}
+%
+
+\date{}
+
+\keywords{}
+
+\maketitle
+
+\section{Definition of topological spaces}
+\noindent Topological space is a pair $(X, \T)$ with $\T\subseteq \mathcal{P}(X)$ such that 
+\begin{itemize}
+\item $\emptyset, X \in \mathcal{P}(X)$;
+\medbreak
+\item If $\U_\alpha$ with $\alpha \in I$ is a family of elements of $\T$ then so is $\bigcup_\alpha \U_\alpha$.
+\medbreak
+\item If $\U_1$ and $\U_2$ are elements of $\T$ so is $\U_1\cap \U_2$.
+\end{itemize}
+Elements of $\T$ are called open sets. Their complements are called closed sets. 
+
+\section{Examples of topological spaces}
+\begin{itemize}
+\item Topology of open sets in a metric space. 
+\medbreak
+\item Discrete topology on $X$: given by $\T=\mathcal{P}(X)$. Actually, this topology is metrizable. (Find a metric for which the topology of open sets is the discrete topology!)
+\medbreak
+\item Anti-discrete topology on $X$: given by $\T=\{\emptyset, X\}$.(Convince yourself that if $X$ has at least two elements, then anti-discrete topology is not metrizable.)
+\medbreak
+\item (Don't know the name in English): Let $X\neq \emptyset$ and let $p\in X$. Let $\T=\{\U \big{|} p\in \U\}$.
+\medbreak
+\item Cofinite topology on $X$: given by $\T=\{\U \big{|} X\smallsetminus \U \text{\ \ is finite}\}$. Verify this is a topology. Worth doing. 
+\medbreak
+\item Cocountable topology on $X$: given by $\T=\{\U \big{|} X\smallsetminus \U \text{\ \ is countable}\}$.
+\medbreak
+\item Sorgenfrey line: Here $X=\R$ and $\U\in\T$ if and only if $\U$ can be seen as a union of half-open intervals $[a,b)$. In other words, $\U\in\T$ if and only if there exists an index set $I$ and a family of intervals $[a_\alpha, b_\alpha)$ with $\alpha \in I$ such that 
+$$\U=\bigcup_\alpha [a_\alpha, b_\alpha).$$
+\underline{Iva's commentary:} If memory serves me well, many interesting (counter)examples in point-set topology arise from the Sorgenfrey line. It is well worth looking into.  For example, let $(\R, \T_1)$ be the Sorgenfrey line, and let $(\R, \T_2)$ be the real line with standard topology. Think about continuity of the identity mapping $\mathrm{Id}_{12}:(\R,\T_1)\to (\R,\T_2)$ and the identity mapping $\mathrm{Id}_{21}:(\R,\T_2)\to (\R,\T_1)$.
+\medbreak
+\item Topology of left intervals: Here $X=\R$ and $\T=\{(-\infty,a)\,\big{|}\,a\in \R\}$. Study the continuity of the identity mapping as in the previous paragraph.
+\end{itemize}
+
+\section{Basis / subbasis for a topological space}
+
+A collection of open sets $\U_\alpha$ with $\alpha\in I$ is called a basis for the topology $\T$ if for all $\U\in \T$ there is a subset $J\subseteq I$ with 
+$$\U=\bigcup_{\beta\in J}\U_\beta.$$
+
+\noindent\underline{Iva's commentary:} To digest this show that the collection of open balls serves as a basis for the topology of open sets in a metric space. It is semi-common to see a topology specified via a basis -- see Sorgenfrey line above. A yet weaker approach is this: start with a set $X$ and some subset $\mathcal{S}$ of $\mathcal{P}(X)$ with $\emptyset, X\in \mathcal{S}$. Consider the collection $\T$ of subsets of $\mathcal{P}(X)$ which are unions of finite intersections of sets in $\mathcal{S}$. As the notation suggests, the collection $\T$ is a topology on $X$. We say that the set $\mathcal{S}$ serves as a subbasis of $\T$.
+
+\bigbreak
+
+It's a huge deal when a topological space has a countable basis. You will hear people saying something like \underline{``a second countable topological space"}. All that means is that the space has a countable basis. Here is a theorem I remember proving for homework about the time I was your age, and I remember feeling like I was a mathematical adult (haha). It was a milestone for me back then. (1997?) The theorem is attributed to Lindel\"of.
+\begin{theorem} If a space is second countable, then every basis for the space has a countable subset which itself is a basis. (If a space is second countable then from every basis we can extract a countable basis.)
+\end{theorem}
+Here is a nice homework problem: Show that Sorgenfrey line is not second countable.
+\bigbreak
+
+In relation to this I should mention the term \underline{separable} topological space. A space is called separable if it has a countable dense subset. (Dense is understood in the sense of every open set intersecting said subset.) I think it is worth showing ... 
+
+\begin{itemize}
+\item .... that a separable metric space is second countable. 
+\medbreak
+\item ... that every second countable space is separable. 
+\medbreak
+\item ... that every open cover of a second countable space permits a countable\footnote{I completely forgot about this. Spaces in which every open cover has a countable subcover are called Lindel\"of.} subcover. 
+\end{itemize}
+
+\section{Separation Axioms}
+
+\begin{itemize}
+\item $T_0$: given $p\neq q$ there exists an open set $\U_p$ with $p\in \U_p$ and $q\not \U_p$ \underline{or} an open set $\U_q$ with $p\not\in \U_q$ and $q\in \U_q$.
+\medbreak
+\item $T_1$: given $p\neq q$ there exists an open set $\U_p$ with $p\in \U_p$ and $q\not \U_p$ \underline{and} an open set $\U_q$ with $p\not\in \U_q$ and $q\in \U_q$.
+\medbreak
+\item $T_2$: given $p\neq q$ there exist disjoint open sets $\U_p\ni p$ and $\U_q\ni q$. (Alternative name for $T_2$ spaces is ``Hausdorff spaces".)
+\medbreak
+\item $T_3$: when in addition to $T_1$ the space is \emph{regular}, that is, for all $p$ and closed sets $A$ with $p\not in A$ there exist disjoint open sets $\U_p\ni p$ and $\U_A\supseteq A$ with $\U_p\cap \U_A=\emptyset$.
+\medbreak
+\item $T_4$: when in addition to $T_1$ the space is \emph{normal}, that is, for all disjoint closed sets $A$ and $B$ there exist disjoint open sets $\U_A\supseteq A$ and $\U_B\supseteq B$.
+\end{itemize}
+
+\underline{Iva's commentary}: At least $T_1$ is assumed in everything I have ever seen. Reason? Prove this: a topological space is $T_1$ if and only if all of its points are closed. My notes lead me to believe that one could have regular without $T_1$ but that must be some stupid situation like anti-discrete topology or some such. I have no intention to think about that. 
+
+It is the case that $T_4$ implies $T_3$ implies $T_2$ implies.... It is perhaps worthwhile to exhibit examples where, say, $T_0$ holds but $T_1$ does not, $T_2$ holds but $T_3$ does not, etc. The list of topological spaces from the beginning could be a good starting point. 
+
+As I recall, $T_4$ is a huge deal because of the following two results. There are huge, and hard to prove. (Though the proofs are accessible to you at this stage.) The only thing worth doing now is the reverse direction of Urysohn's Lemma: if such continuous functions exist then we have $T_4$.....
+
+\begin{theorem}
+{\bf (Urysohn Lemma)} Let $(X,\T)$ be $T_1$. Then $(X,\T)$ is $T_4$ if and only if for all disjoint closed subsets $A$ and $B$ there exists a continuous function\footnote{The interval $[0,1]$ is equipped with standard topology.} $f:X\to [0,1]$ for which 
+$$A\subseteq f^{-1}(\{0\}) \text{\ \ and\ \ } B\subseteq f^{-1}(\{1\}).$$
+\end{theorem}
+
+\begin{theorem}
+{\bf (Tietze Extension Theorem)} Let $(X,\T)$ be $T_4$ and let $A\subseteq X$ be closed. Furthermore, let 
+$f:A\to \R$ be a continuous\footnote{Assume the subspace topology on $A$. That is consider the topology $\T_A=\{\U\cap A\big{|} \U\subseteq X \text{\ open\ }\}$.} function. Then there exists a continuous function $g:X\to \R$ such that $g(a)=f(a)$ for all $a\in A$.
+\end{theorem}
+
+Once you see Urysohn's Lemma you start wondering if there is a corresponding theorem for $T_3$. Turns out the answer is no. And then in hindsight another separation axiom was added. 
+
+\begin{itemize}
+\item $T_{3\frac{1}{2}}$: when in addition to $T_1$ the space $X$ is \emph{completely regular}, that is, for all $p$ and closed sets $A$ with $p\not in A$ there exists a continuous function $f:X\to [0,1]$ for which 
+$$p\in f^{-1}(\{0\}) \text{\ \ and\ \ } A\subseteq f^{-1}(\{1\}).$$
+\end{itemize}
+
+As the notation suggests, one can cook up $T_{3\frac{1}{2}}$ is strictly stronger than $T_3$ and strictly weaker than $T_3$. Not sure if I ever looked into the (counter)examples which address the relationship between $T_3$, $T_{3\frac{1}{2}}$ and $T_4$. There is an if and only if characterization of $T_{3\frac{1}{2}}$ spaces due to Tychonoff: a space is $T_{3\frac{1}{2}}$ if and only if it is homeomorphic to a subset of a cube. The word ``cube" here is loaded. It demands development of product topology for the ``Cartesian product" (Tychonoff product) of an arbitrary amount of topological spaces. This material should be treated with care. Suffice it to say that it involves the Axiom of Choice. 
+
+While we are here, it is worth pointing out to one more result. Both Urysohn Lemma and Urysohn Metrization Theorem have incredibly deep and beautiful proofs, which are not for the faint of hearts. 
+
+\begin{theorem} {\bf (Urysohn Metrization Theorem)} 
+If $X$ is $T_3$ and second countable, then it is metrizible.
+\end{theorem}
+
+\end{document}

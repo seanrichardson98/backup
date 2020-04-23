@@ -1,0 +1,52 @@
+# begin execution at address zero
+        .pos    0
+        irmovq  stack, %rsp     # set stack to 0xFF8, grow to lower addresses
+        call    main            # start main
+        halt                    # done
+
+        .align  8
+count:
+        .quad   0x05
+array:
+        .quad   0x01
+        .quad   0x03
+        .quad   0x04
+        .quad   0x09
+        .quad   0x0A
+
+main:
+        irmovq  array, %rdi
+        irmovq  count, %rax
+        mrmovq  (%rax), %rsi
+        call    check
+        ret
+
+# int check(long *data, long count)
+# data in %rdi, count in %rsi
+check:
+        irmovq  $8, %r8         # constant 8
+        irmovq  $1, %r9         # constant 1
+        rrmovq  %rsi, %rdx
+        subq    %r9, %rdx       # count - 1
+        irmovq  $0, %rax        # initialize i
+loop:
+        rrmovq  %rdx, %rcx
+        subq    %rax, %rcx      # count - 1 - i
+        jle     good            # i >= count - 1
+        mrmovq  0x8(%rdi), %r12 # a[i + 1]
+        mrmovq  (%rdi), %rcx    # a[i]
+        subq    %r12, %rcx      # a[i] - a[i + 1]
+        jg      bad             # a[i] > a[i + 1]
+        addq    %r9, %rax       # ++i
+        addq    %r8, %rdi       # ++a
+        jmp     loop            # next iteration
+good:
+        irmovq  $1, %rax        # a[i] < a[i + 1] for all i's: return true
+        ret
+bad:
+        irmovq  $0, %rax        # a[i] > a[i + 1] for some i: return false
+        ret
+
+# stack starts here
+        .pos    0xFF8
+stack:

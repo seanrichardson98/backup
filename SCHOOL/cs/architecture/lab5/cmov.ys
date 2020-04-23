@@ -1,0 +1,88 @@
+# begin execution at address zero
+        .pos    0
+        irmovq  stack, %rsp     # set stack to 0xFF8, grow to lower addresses
+        call    main            # start main
+        halt                    # done
+
+# set up array, length, followed by data
+        .align  8
+count:
+        .quad   0x0A
+array:
+        .quad   0x0FFF
+        .quad   0x0F20
+        .quad   0xFFFFFFFFFFFFFF45
+        .quad   0xFFFFFFFFFFFFFFFF
+        .quad   0x01
+        .quad   0x03
+        .quad   0x04
+        .quad   0x0A
+        .quad   0x09
+        .quad   0x11
+
+main:
+        irmovq  array, %rdi
+        irmovq  count, %rax
+        mrmovq  (%rax), %rsi
+        call    sort
+        ret
+
+# void sort(long *data, long count)
+# data in %rdi, count in %rsi
+# %rdi .... data
+# %rsi .... count
+# %rcx .... last
+# %rbx .... i
+# %r8 ..... 8
+# %r9 ..... 1
+# r10 ..... test
+sort:
+        #setup
+        irmovq $8, %r8
+        irmovq $1, %r9
+        rrmovq %rsi, %rcx 
+        subq %r9, %rcx #last = count-1
+        irmovq $0, %rbx # i = 0
+        #test
+loop:
+        rrmovq %rbx, %rax
+        addq %rax, %rax
+        addq %rax, %rax
+        addq %rax, %rax
+        addq %rdi, %rax #get address
+
+        #main swap
+        irmovq  $8, %r8
+        addq    %rax, %r8
+        mrmovq  (%rax), %r11
+        mrmovq  (%r8), %r12
+        rrmovq  %r11, %r10
+        rrmovq  %r12, %r13
+        subq    %r12, %r10
+        cmovl   %r11, %r13
+        rrmovq  %r13, %r14
+        rrmovq  %r11, %rdx
+        subq    %r13, %rdx
+        addq    %rdx, %r14
+        rrmovq  %r12, %rdx
+        subq    %r13, %rdx
+        addq    %rdx, %r14
+        rmmovq  %r13, (%rax)
+        rmmovq  %r14, (%r8)
+
+
+        addq %r9, %rbx
+        rrmovq %rbx, %rax
+        subq %rcx, %rax
+        jl loop #inner loop go back
+        irmovq $0, %rbx #reset outer loop
+        subq %r9, %rcx
+        irmovq $0, %rax
+        subq %rcx, %rax
+        jl loop
+        
+        ret
+
+# stack starts here
+        .pos    0xFF8
+stack:

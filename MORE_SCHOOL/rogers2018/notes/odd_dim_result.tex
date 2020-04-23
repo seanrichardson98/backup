@@ -1,0 +1,33 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Defintion}
+
+\begin{document}
+
+\title{Odd Dimensional Orbifolds}
+\author{Liz Stanhope and Sean Richardson}
+\date{\today}
+\maketitle
+
+\section{}
+
+\begin{definition}
+    A chart $(\tilde{U},G_U,\pi_U)$ on some orbifold is \emph{orientable} if the group $G_U$ consists of orientation-preserving transformations of the open set $\tilde{U} \subset \mathbb{R}^n$. An orbifold $\mathcal{O}$ is \emph{locally orientable} if every chart on $\mathcal{O}$ is orientable. Conversely, an orbifold $\mathcal{O}$ is \emph{locally non-orientable} if there exists a single chart on $\mathcal{O}$ that is not orientable.
+\end{definition}
+
+\begin{lemma}
+    Let $\mathcal{O}$ be a locally orientable orbifold. If $\dim(\mathcal{O})$ is odd, then there exists no primary singular stratum $N$ such that $\dim(N)$ is even. Similarly, if $\dim(\mathcal{O})$ is even, then there exists no primary singular stratum $N$ such that $\dim(N)$ is odd.
+\end{lemma}
+
+\begin{theorem}
+    Consider a locally orientable orbifold $\mathcal{A}$ and a locally non-orientable orbifold $\mathcal{B}$. If $\dim(\mathcal{A}) = \dim(\mathcal{B})$ is odd, then there exists no $\mathcal{A}$ and $\mathcal{B}$ that are isospectral.
+\end{theorem}
+
+\end{document}

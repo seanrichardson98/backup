@@ -1,0 +1,15 @@
+\adjustbox{scale=1,center}{
+\begin{tikzcd}
+	\KR(A) \ar[d, "\iso"] &
+	\KR(X) \ar[d, "\iso"] \ar[l, "i^{*}" above] \ar[dr, "q^{*}" ,leftarrow]  &
+	\KR(X \cup CA) \ar[d, "\iso"] \ar[l, "i^{*}" above] \ar[dr, "q^{*}", leftarrow] & 
+	\KR((X \cup CA) \cup CX) \ar[d, "\iso"] \ar[l, "i^{*}" above] \ar[dr, "q^{*}", leftarrow]& 
+	\KR(\dots) \ar[d, "\iso"] \ar[l, "i^{*}" above]\\
+	%
+	\KR(A) \ar[d, "\iso"] & 
+	\KR(X) \ar[d, "\iso"] & 
+	\KR(X/A) \ar[d, "\iso"] &
+    \KR((X \cup CA)/(CX)) \ar[d, "\iso"] & \KR(\dots) \ar[d, "\iso"]\\
+	\KR(A) & \KR(X) & \KR(X/A) & \KR(SA) & \KR(SX)
+\end{tikzcd}
+}

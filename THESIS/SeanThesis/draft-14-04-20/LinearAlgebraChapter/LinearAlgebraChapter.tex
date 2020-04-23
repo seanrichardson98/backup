@@ -1,0 +1,171 @@
+\documentclass[../sean_thesis.tex]{subfiles}
+%\zexternaldocument*{Appendix/algebra/completion_existence}
+%\zexternaldocument*{Appendix/Appendix}
+
+\begin{document}
+
+\chapter{Algebra}
+
+\section{Ring Completion}
+An example of a category that the reader is likely unfamiliar with is the category of semirings. The objects in these categories are called semirings, which are simply rings without necessarily having an additive inverse. For completion, a formal definition of semiring follows.
+
+\begin{definition}[Semiring]
+	\label{def:semiring}
+	A \emph{semiring} is a set $S$ paired with the binary operations $(+,\cdot)$ such that the following properties hold:
+\vspace{-\varparskip}
+\begin{enumerate}[(i)]
+	\item The operation $+$ is associative and commutative
+	\item The operation $\cdot$ is associative
+	\item The operation $\cdot$ distributes over $+$
+	\item $S$ has both an additive and multiplicative identity.
+\end{enumerate}
+\end{definition}
+
+A simple example of a semiring is the set of nonnegative integers under the usual addition and multiplication operations. The element $0$ is the additive identity and $1$ is the multiplicative identity. In fact, this example of $\N \cup \set{0}$ has two additional nice properties: commutativity of multiplication and the cancellation property under addition. To be precise, the cancellation property promises that given elements $a$, $b$, and $s$ in a semiring, the statement $a+s=b+s$ implies $a=b$. This section will focus on commutative semirings with the additive cancellation property.
+
+To complete the category of semirings, the morphisms of a category must be discussed. In this case, the morphisms are referred to as homomorphisms of semirings and the definition follows.
+
+\begin{definition}[Homomorphism of Semirings]
+	Take monoids $S$ and $R$ and consider a mapping $\varphi: S \to R$. Then, $\varphi$ is a \emph{homomorphism of semirings} if:
+\vspace{-\varparskip}
+	\begin{enumerate}[(i)]
+		\item $\varphi(a+b) = \varphi(a)+\varphi(b)$ for all $a,b \in S$.
+		\item $\varphi(a\cdot b) = \varphi(a)\cdot \varphi(b)$
+		\item $\varphi(1) = 1$
+	\end{enumerate}
+\end{definition}
+	
+	Note homomorphisms between semirings follows the same structure as homomorphism between rings; in fact, a homomorphism of rings \emph{is} a homomorphism of semiring, for rings are themselves semirings. In fact, even a mapping from a semiring $S$ to a ring $R$ could be considered a homomorphism of semirings if the mapping satisfies the necessary properties. Overall, the category of semirings is frustratingly close to the category of rings. Luckily, there is a functor from the category of commutative semirings with cancellation to the category of rings  called \emph{ring extension} -- a way to expand the structure of a monoid into a fully fledged ring. K-Theory heavily relies on this functor, so pay particular attention to it.
+	
+	 The formal definition of ring extension is addressed shortly, but first consider the following example. Take the semiring of nonnegative integers; predictably, the ring extension of this example is the set of all integers. In this example, ring extension hinges on the fact we can map a pair of nonnegative integers $(a,b)$ to an element of $\Z$ via the mapping $a-b$. In a semiring, there is no promise of subtraction, but the pair $(a,b)$ can secretly represent the difference $a-b \in \Z$ through an equivalence relation. 
+	 	
+\begin{definition}[Ring Completion]
+	\label{def:group_completion}
+	Take commutative semiring $S$ with additive cancellation. Then, a \emph{ring completion} of of $S$ is a commutative ring $R$ together with an injective homomorphism $i: S \to R$ that satisfies the following property: for any commutative ring $R'$ and corresponding homomorphism of semirings $\varphi: S \to R'$, there exists a unique homomorphism of rings such $\psi: R \to R'$ such that the following diagram commutes:
+	
+\begin{figure}[ht!]
+	\input{figures/algebra/groupcompletion10}
+	\caption{The Universal Property}
+	\label{fig:universal_property}
+\end{figure}
+
+That is, $\psi \circ i = \varphi$.
+\end{definition}
+%NOTE ON DEFINITION
+There is still work to be done with this definition; it must still be verified that the above construction exists and is unique. The requirement that the above triangle commutes is the \emph{universal property}, and throughout this chapter there will be many constructions using the universal property structure. 
+
+%INTUITION BUILDING FOR UNIVERSAL PROPERTY
+To get a better feel for this definition, recall the example of semiring of nonnegative integers extending into ring of all integers. In this case, the extension function $i: \N \cup \set{0} \to \Z$ is given by the injective identity function $i(n) = n$. First, observe how the choice of $\Z$ as the extension fulfills the requirement of the definition. For instance, taking $R' = \mathbb{Z}/(2)$ and homomorphism $\varphi: n \mapsto n\mod 2$, then the homomorphism over the integers $\psi: z \mapsto z\mod 2$ satisfies the triangle, and it follows from the restrictions provided by the definition of a ring homomorphism that this is the unique choice of $\psi$. However, this is only one specific case. The homomorphism $\psi$ will be unique regardless of the choice of $R'$ and $\varphi$. This makes $\mathbb{Z}$ a valid group completion for the nonnegative integers. In fact, $\mathbb{Z}$ is the \emph{unique} group completion and the proof of this is given now.
+
+%UNIVERSAL PROPERTY IMPLIES UNIQUENESS
+\begin{proof}[Proof of Uniqueness of Definition \ref{def:group_completion}]
+Consider two ring completions $(R,i)$ and $(R',i')$. It must be shown that $R$ and $R'$ are isomorphic. By $(R,i)$ a ring completion and taking $(R',i')$ to be a ring-homomorphism pair,   the universal property in the definition of ring completion promises the existence of a unique homomorphism $\psi_1: R \to R'$ such that $\psi_1\circ i = i'$. Similarly, by swapping the roles of $(R,i)$ and $(R',i')$, there exists a a unique homomorphism $\psi_2\circ i' = i$. But then, the composition $\psi_2 \circ \psi_1: R \to R$ satisfies the commutativity restriction $(\psi_2 \circ \psi_1) \circ i = i$. Thus $\psi_2 \circ \psi_1$ must be the unique map promised by the universal property by applying the universal property of ring completion $(R,i)$ on $(R,i)$ itself. However, the identity mapping also satisfies the condition $\id \circ i = i$ and so the uniqueness conditions gives that $\psi_2 \circ \psi_1 = \id$. See Figure~\ref{fig:ring_comp_un} for a visual of this argument. The same argument gives that $\psi_1 \circ \psi_2 = \id$ and thus $\psi_1$ and $\psi_2$ are inverses of one another. This gives that $\psi_1$ and $\psi_2$ are isomorphisms and so $R \iso R'$. 
+ 
+\begin{figure}[ht!]
+	\input{figures/algebra/groupcompletion20}
+	\caption{Uniqueness of Ring Completion Argument}
+	\label{fig:ring_comp_un}
+\end{figure}
+
+\end{proof}
+
+%NOTE ON THE UNIQUENESS PROOF:
+The above argument never appeals to the specific properties of rings and semirings; in fact, this argument applies to \emph{all} definitions defines through the universal property. For every additional definition using the universal property in this chapter, uniqueness will follow automatically. 
+
+%NOTE ON THE EXISTENCE PROOF:
+All that needs to be shown to justify a definition using the universal property is existence. For the case of semiring completion, this existence proof is given in section \ref{sec:ring_comp_ex} of the Appendix. Here are the important takeaways from the proof. For a semiring $S$, the proof uses the equivalence relation $\sim$ on $S \times S$ given by $(a_1,b_1) \sim (a_2,b_2)$ if $a_1 + b_2 = a_2 + b_1$. The motivation for this equivalence relation is that the integers can be created by all differences of the nonnegative numbers. In fact, one can think of this equivalence relation as ``sneaky subtraction'' stemming from the wish to express $a_1 - b_1 = a_2 - b_2$ without the explicit use of subtraction. From this equivalence relation, we get a natural addition on the equivalence classes that gives a commutative group structure. However, in order to get a well-defined multiplication, the semiring must have the additive cancellation property.
+
+%OVERALL NOTE TO READER:
+Rings are nicer than semirings; they have additive inverses and extensive theory. As shown above, every commutative semiring with cancellation extends to a unique ring; therefore, given a semiring with these properties, it is best to ditch the semiring and instead talk about the ring extension. Keep this motivation to extend an ``incomplete'' object into a nicer object in mind for the following constructions.
+
+\section{Packing Together Modules}
+\sean{I am still working on this section --- probably not worth reading}
+
+%\sean{Question: How do I define tensor product over commutative rings with modules?}
+
+%NOTE TO READER ON VECTOR SPACES, DIRECT SUM, TENSOR PRODUCTS, GIVING MOTIVATION FOR MODULES:
+
+%DEFINITION OF A MODULE:
+\begin{definition}[Module]
+	Let $M$ be a set, and let $R$ be a commutative ring with identity. Further, take an additive operation $+: M \times M \to M$ and a scalar multiplication from $R \times M$ to $M$. Then, $M$ is a \emph{module over R} if:
+\vspace{-\varparskip}
+	\begin{enumerate}[(i)] 
+		\item $(r+s)m = rm+sm$ for all $r,s \in R$ and $m \in M$
+		\item $r(m+n) = rm + rn$ for all $r \in R$ and $m,n \in M$
+		\item $(rs)m = r(sm)$ for all $r,s \in R$ and $m \in M$
+		\item $1\cdot m = m$ for all $m \in M$
+	\end{enumerate}
+\end{definition}
+
+%CONCRETE EXAMPLE OF A MODULE:
+
+%DEFINITION OF MODULE HOMOMORPHISM:
+Modules can be made into a category. Keeping in mind that modules are generalizations of vector spaces, the natural homomorphism to associate with with modules is a linear map as in the following definition.
+
+\begin{definition}[Module Homomorphism]
+	Let $R$ be a commutative ring and let $M$ and $N$ be $R$-modules. Then, a \emph{homomorphism of modules} is a mapping $\varphi: M \to N$ such that
+\vspace{-\varparskip}
+	\begin{enumerate}[(i)]
+		\item $\varphi(m_1+m_2) = \varphi(m_1) + \varphi(m_2)$ for all $m_1,m_2 \in M$.
+		\item $\varphi(rm) = r\varphi(m)$ for all $r \in R$ and $m \in M$.
+	\end{enumerate}
+\end{definition}
+
+%RELATIONSHIP OF VECTOR SPACES, ABELIAN GROUPS, COMMUTATIVE RINGS TO MODULES:
+%vector spaces:
+%abelian groups:
+%commutative rings:
+
+%motivation for direct sum and distinction from cartesian product
+
+%DEFINITION OF DIRECT SUM:
+\begin{definition}[Direct Sum]
+	Take commutative ring $R$ with identity and consider a collection $M_\lambda$ of $R$-modules, $\lambda \in I$ where $I$ is an index set. Then, the \emph{direct sum} of the collection $M_\lambda$, denoted $\op_{\lambda \in I} M_\lambda$, is the unique $R$-module such that:
+\vspace{-\varparskip}
+	\begin{enumerate}[(i)]
+		\item For all $\lambda \in I$, there is an inclusion map $i_\lambda: M_\lambda \to \op_{\lambda_\in I}M_\lambda$.
+		\item The universal property is satisfied. That is, for any $R$-module $N$ and homomorphisms of $R$-modules $\varphi_\lambda: M_\lambda \to N$ there exists a unique homomorphism of $R$-modules $\psi: \op_{\lambda \in I} M_\lambda$ such that the following diagram commutes.
+		\begin{figure}[ht!]
+			\include{figures/algebra/direct_sum_univ_property}
+			\caption{Universal Property of Direct Sum}
+			\label{fig:direct_sum_univ_property}
+		\end{figure}
+		That is, $\psi \circ i_\lambda = \psi_\lambda$ for all $\lambda \in I$.
+	\end{enumerate}
+\end{definition}
+%NOTE ON EXISTENCE AND UNIQUNESS:
+Uniqueness of the direct sum follows directly from the universal property as mentioned in the ring completion section. \toadd{comment on existence}.
+
+%EXTEND DIRECT SUM TO VECTOR SPACES, ABELIAN GROUPS, COMMUTATIVE RINGS
+Recall the categories of vector spaces, abelian groups, and commutative rings all are special cases of modules. Then, the functor from each of these categories to the category of modules defines allows each category to borrow the direct sum operation on modules, which in turn defines a direct sum operation on each category. However, borrowing a module operation only promises that the resulting direct sum will be a module --- not a vector space, abelian group, or commutative ring. For each individual category, it must be verified that the direct sum construction is an object in the same category. For example, the direct sum of vector spaces with field $F$ promises an $F$-module which is luckily exactly equivalent to a vector space over $F$. Similarly, the direct sum of abelian groups promises a $\Z$-module which again is luckily exactly equivalent to an abelian group. However, showing that the direct sum of commutative rings results in a commutative ring takes more work to verify, for there is no predefined multiplication mapping on the direct sum \toadd{prove this works and elaborate}.
+
+%\sean{Question: Does this construction for direct sum of rings work?}
+
+%Define bilinear map
+
+%DEFINITION OF TENSOR PRODUCT:
+\begin{definition}[Tensor Product]
+	Take commutative ring $R$ with identity and take $M_1$ and $M_2$ to be $R$-modules. Then, the \emph{tensor product} of $M_1$ and $M_2$, denoted $M_1 \ot M_2$ is the unique $R$-module such that:
+\vspace{-\varparskip}
+	\begin{enumerate}[(i)]
+		\item There is a bilinear map $b: M_1 \times M_2 \to M_1 \ot M_2$
+		\item The universal property is satisfied. That is, for for any $R$-module $N$ with corresponding bilinear map $\omega: M_1 \times M_2 \to N$, there exists a unique homomorphism of modules $\psi: M_1 \ot M_2 \to N$ such that the following diagram commutes.
+		\begin{figure}[ht!]
+			\include{figures/algebra/tensor_product_univ_property}
+			\caption{Universal Property of Tensor Products}
+			\label{fig:tensor_prod_univ_property}
+		\end{figure}
+		That is, $\psi \circ b = \omega$.
+	\end{enumerate}
+\end{definition}
+
+%COMMENT ON UNIQUENESS AND EXISTENCE
+Again, uniqueness of the direct sum follows automatically from the universal property. \toadd{comment on existence}.
+
+%EXTEND TENSOR PRODUCT TO VECTOR SPACES, ABELIAN GROUPS, COMMUTATIVE RINGS
+\toadd{extend to vector spaces, abelian groups, and commutative rings}
+
+\section{Verifications}
+\subfile{Appendix/algebra/completion_existence}
+
+\end{document}

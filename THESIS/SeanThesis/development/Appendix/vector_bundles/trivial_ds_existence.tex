@@ -1,0 +1,44 @@
+\documentclass[../../sean_thesis.tex]{subfiles}
+\begin{document}
+	
+	\begin{lemma}
+		\toadd{yikes, this lemma (lemma 1.2 in Hatcer) uses partition of unity... this is becoming a rabbit hole}
+	\end{lemma}	
+	
+	Given a vector space $V$ and a vector subspace, $V_0 \subset V$, the Gram-Schmidt orthogonalization process provides the orthogonal complement $V_0^{\perp}$ to the subspace $V_0$ in $V$. Further, it holds that $V_0 \op V_0^{\perp} = V$. An analogous result holds for vector bundles by applying the same process to each fiber.
+	
+	\begin{lemma}
+		Take a vector bundle $p: E \to X$ that has 
+	\end{lemma}
+	
+	\toadd{assumes all $V_i$'s are equal. Need to fix? Say it suffices to consider connected components}
+	\begin{proof}[Proof of \toadd{ref}]
+		The strategy of this proof is to construct a trivial vector space, later called $X \times \mathcal{V}$, that an isomorphic copy of the given vector bundle resides in. Then the result will follow by the above lemma.
+	
+		Consider a vector bundle $p: E \to X$ where $X$ is a compact Hausdorff topological space.. Each point $x \in X$ has a neighborhood $U_x$ over which the bundle is trivial. By $X$ compact Hausdorff, apply Urysohn's Lemma \toadd{ref} on the closed sets $\set{x}$ and the complement $\comp{U_x}$. Urysohn's Lemma then promises a continuous function $\varphi_x: X \to [0,1]$ satisfying $\varphi_x^{-1}(\set{0}) \subset \comp{U_x}$ and $\varphi_x^{-1}(\set{1}) \subset \set{1}$. In other words, $f$ evaluates to $0$ outside of $U_x$ and to $1$ at $x$. Note that $\varphi_x^{-1}(0,1]$ contains $X$ and is open by by $\varphi_x$ continuous and the interval equipped with standard topology. Then $\varphi_x^{-1}(0,1]$ provides an open cover when allowing $x$ to vary. By compactness there is a finite subcover; denote this subcover $\varphi_i^{-1}(0,1]$ and let the corresponding functions and neighborhoods be indexed $\varphi_i$ and $U_i$.
+		
+		Next, for each index define a function $g_i: E \to V$ as follows. Let $h_i: p^{-1}(U_i) \to U_i \times V$ be the  trivialization as promised by the choice of $U_i$.  Additionally, let $\pi_i: X \times V \to V$ be the projection from the trivial bundle to the corresponding vector component: $\pi_i: (x,v) \mapsto v$. Then, the function $g_i$ is defined as follows.
+		\begin{align*}
+			g_i(e) =
+			\begin{cases}			
+			 \varphi_i(p(e)) \cdot (\pi_i \circ h_i(e)) \text { if } p(e) \in U_i \\
+			 0 \text{ otherwise. }
+			 \end{cases}
+		\end{align*} 
+		Note $g_i$ is continuous by $g_i$ a composition of continuous functions and by $\varphi_i$ is $0$ outside of $U_i$. Importantly note that each $g_i$ is a linear injection over the fibers of $\varphi_i^{-1}(0,1]$. Indeed, fix an $x_0 \in \varphi_i^{-1}(0,1] \subset U_i$ and take $v_1$, $v_2$ in the fiber $p^{-1}(x_0)$ such that $g_i(v_1) = g_i(v_2)$. That is,
+		\begin{equation*}
+			\varphi_i(p(v_1)) \cdot (\pi_i \circ h_i(v_1))
+			=
+			\varphi_i(p(v_2)) \cdot (\pi_i \circ h_i(v_2))
+		\end{equation*}
+	The fixed $x$ gives $\varphi_i(p(v_1)) = \varphi_i(p(v_1)) = \varphi_i(x_0)$. This together with $h_i$ an isomorphism and $\pi_i$ an isomorphism over the fixed $x_0$ promises $v_1 = v_2$, confirming injectivity over the fibers. Linearity follows by $\pi_i$ and $h_i$ linear over the fibers.
+	
+	Next, consider the vector space $\mathcal{V} = V \times V \times \dots \times V$ with one copy of $V$ for each of the indices $i$. Then, define the function $g: E \to \mathcal{V}$ given by $g: e \mapsto (g_1(e), g_2(e), \dots, g_k(e))^{T}$. Note that $g$ is a linear injection. Indeed, fix an $x_0 \in \varphi_i^{-1}(0,1] \subset U_i$ and take $v_1$, $v_2$ in the fiber $p^{-1}(x_0)$ such that $g(v_1) = g(v_2)$. By the collection $\varphi_i^{-1}(0,1]$ a cover, $x_0 \in \varphi_i^{-1}(0,1]$ for some $i$. But then, $g_i(v_1) = g_i(v_2)$, which then provides the desired $v_1 = v_2$ confirming injectivity. Linearity follows by each individual $g_i$ linear.
+	
+	Finally consider the map $f: E \to X \times \mathcal{V}$ given by $f: e \mapsto (p(e), g(v))$. Now observe that the image of $f$ is a subbundle of of $X \times \mathcal{V}$. The bundles takes the natural projection map of the larger trivial bundle and by linearity of $g$ each fiber of the image has a vector space structure. It only remains to verify the local triviality condition. Indeed, for each $x_0 \in X$, the open cover promises $x_0 \in \varphi_i^{-1}(0,1]$ for some $i$. Then, consider the projection $X \times \mathcal{V}$ by mapping the vector component of $(x,v)$ to the ith copy of $V$ used to construct $\mathcal{V}$ and call the projection $q$. Then, a local trialization over the region is provided by $(x,v) \mapsto (x, q(v))$. With the verification that $\im f$ indeed forms a vector bundle, and by injective implies bijective onto the image, lemma \toadd{ref} applies and gives that the image is isomorphic to a subbundle of $X \times \mathcal{V}$. So, lemma \toadd{ref} applies and promises a bundle $E'$ such that $E \op E' = X \times \mathcal{V}$.
+	
+	
+%	It only remains to verify the local triviality condition. Indeed, for each $x_0 \in X$, the open cover promises $x_0 \in \varphi_i^{-1}(0,1]$ for some $i$. But then the composition $f \circ \pi^{-1}$ is a homomorphism from the trivialization of $p^{-1}(\varphi_i^{-1}(0,1])$ to the  image of $f$ in the corresponding region. Further, this map is a linear bijection over each fiber by $f$ injective and y considering the image. Then, Lemma~\toadd{ref 1.1} applies and provides an isomorphism to the trivial bundle, giving local triviality. 
+	
+	\end{proof}
+\end{document}

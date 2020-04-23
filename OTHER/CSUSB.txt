@@ -1,0 +1,73 @@
+1. Describe your academic interests:
+At Lewis & Clark, I study mathematics, physics, and computer science. But, throughout college I have gravitated more towards pure mathematics, taking as many mathematics classes that I can. Within mathematics, I have a particular interest in Riemannian Geometry (which appears to be the focus of many past research projects in this program).
+
+2.
+Mathematics:
+Math 341 (Real Analysis I): A
+Math 225 (Linear Algebra): A
+Math 233 (Multivariable Calculus): A
+Math 235 (Differential Equations): A
+Math 305 (Partial Diff. Eqns.): A
+Math 365 (Complex Variables): A
+Math 442 (Real Analysis II): (currently enrolled)
+
+Computer Science:
+CS 465 (Theory of Computation): A
+CS 383 (Algorithm Design & Analysis): A
+CS 367 (Computer Graphics I): A
+CS 467 (Advanced Computer Graphics): A
+CS 277 (Computer Architecture): (currently enrolled)
+
+Also, Physics:
+Phys 321 (Quantum Physics): A
+Phys 152 (Waves and Matter): A
+Phys 201 (Experimental Methods): A
+Phys 251 (Electromagnetism): A
+Phys 252 (Thermodynamics): (currently enrolled)
+
+3. Describe any independent study or research projects in which you have been involved:
+
+RESEARCH PROJECTS:
+
+(1)
+3-Orbifolds and their Laplace Spectra: (Lewis & Clark College with Professor Liz Stanhope) -- Summer 2018
+In this project, we considered the abstract geometrical constructions of 'orbifolds' (generalizations of manifolds) and asked: if it is only known at what frequencies an unknown orbifold vibrates at (formally the Laplace spectra), what properties can we deduce about the orbifold? We found and proved such a property, which we call "local orientability".
+
+(2)
+Identifying Clouds with Neural Networks: (Lewis & Clark College with Professor Peter Drake) -- Summer 2017
+Our team worked towards an automated process to identify clouds in images of the sky, which could assist climate scientists. We implemented and trained a convolution neural network that takes a picture of the sky as input and distinguishes between clear, thin cloud, and thick cloud pixels with 94% accuracy.
+
+INDEPENDENT STUDIES:
+
+(1)
+Riemannian Geometry and General Relativity: (Lewis & Clark College with Professor Iva Stavrov) -- Spring 2018 and Spring 2019
+An informormal independent study on Riemannian geometry and working towards an understanding of general relativity. Currently, I have covered all the background for and up to the Riemann curvurture tensor along with some other items (such as the derivation of the geodesic equations).
+
+(2)
+Math Machine Learning: (Lewis & Clark College with Professor Paul Allen) -- Spring 2019
+An indpendent study / reading group with three other students. We are following Stanfords course on "Convolutional Neural Networks for Visual Recognition". We watch the lectures and do the assignments from this class in which we build simple neural networks. 
+
+4. What are your long-term career plans? 
+
+Currently, I am most interested in teaching mathematics and pursuing math research.
+
+My interest in a teaching career is in part motivated in working as a math, physics, and computer science tutor at the Lewis & Clark tutoring center. But more specifically, my interest in teaching increased after my orbifold research this previous summer. In the research, I particularly enjoyed presenting my research project through various slideshow or poster presentations. In partiular, I gave a slideshow presentation to the other research students on campus -- primarily biology and chemistry students -- in which I described the project. I attempted to give an intuitive interpretation of the research question and our approach to answer the question while maintaining accuracy. And, I believe that the audience left with an intuitive understanding of my project and hopefully an appreciation for the natural patterns that are captured behind the formality of math. This sharing of intuition is something that I enjoy in my work in the tutoring center, and it is something that I would like to continue in the future with teaching.
+
+The orbifold research project has also motivated a potential future in research. I would like to continue learning mathematics, so I plan to pursue mathematics to the Ph.D level and continue research. I have developed a particular interest in the field of differential geometry through my independent study with professor Iva Stavrov and the orbifold project. I find both this study of Riemannian geometry and the research project on orbifolds to have an appealing connection between mathematic formality and visual intuition.
+
+5. Are there research opportunities available to you at your home institution? If so, describe them.
+
+Lewis & Clark has research positions over the summer. The majority of the research is for students of chemistry or biology, but there are a few math positions. The program entails 10 weeks of research along with a slideshow presentations to other researchers and a poster presentation at the end.
+
+
+6. If your home institution offers research opportunities, how likely are you to participate? 
+
+I am not likely to participate in the Lewis & Clark research opportunities this summer for a few reasons. Firstly, I was one of only three mathematics student researchers this previous summer, and the other two students has a statistics research project, so I did not work with any other student researches. While I did work closely with my research mentor, I would like to be in an environment with more students working on similar projects. Secondly, I both grew up and attend college in Portland Oregon, so I would like to spend a summer getting a feel for other places and have a broader perspective for research.
+
+
+
+
+
+
+
+

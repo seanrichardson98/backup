@@ -1,0 +1,117 @@
+\documentclass[12]{amsart}
+
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{mathtools}
+
+\DeclareMathOperator{\vect}{Vect} 
+
+
+\begin{document}
+\section{Category Theory}%CATEGORY THEORY:
+\begin{enumerate}
+    \item Definition of Category Theory \label{cat_theory}
+    \item homomorphism, monomorphism, epimorphism, isomorphism, automorphism?
+    \item Category of Sets
+    \item Category of Rings
+
+\section{Linear Algebra}%LINEAR ALGEBRA:
+    \item Category of Vector Spaces 
+    \item Direct sum on V.S. definition
+    \item Complentary Definition
+    \item Tensor product on V.S. definition
+
+\section{Topology}%TOPOLOGY
+    \item Category of Toplogical Spaces (\ref{cat_theory})
+    \item Hausdorff and Normal definitions [???]
+    \item Tietze Extension Theorem \label{tietze} [???]
+    \item Homotopy things \label{homotopy}
+        \begin{enumerate}
+            \item Homotopic functions
+            \item Homotopy equivalence of spaces 
+            \item Retraction definition
+            \item Contractible definition \label{contractible}
+        \end{enumerate}
+    \item Operations on topological spaces: \label{top_ops}
+        \begin{enumerate}
+            \item Topological quotient
+            \item Wedge Sum
+            \item Smash Product
+            \item Cone and Suspension
+        \end{enumerate}
+
+\section{Vector Bundles} %VECTOR BUNDLES
+    \item Category of vector bundles 
+    \item Definition of V.B.
+    \item Definitions of $\Gamma(E)$, homomorphism, isomorphism. \label{vect_morph}
+    \item Restriction and pullback of bundles
+    \item Applying functor $T$ on vector spaces to functor on vector bundles [make less abstract?] [Need $\oplus$, $\otimes$, anything else?].
+        \begin{itemize}
+            \item Do concretely for one and introduce others as an exercise?
+        \end{itemize}
+        \begin{enumerate}
+            \item Definition of $T$ on bundles
+            \item Verify $T(E)$ has natural topology and $T(\varphi)$ is continuous.
+        \end{enumerate}
+    \item Sub-bundle definition [???]
+    \item Quotient bundle definition (\ref{top_ops}) [???]
+    \item Hermetian bundle and metric on bundle definition [???]
+    \item Bundle form of Tietze Extension Theorem (\ref{tietze}) \label{tietze_vb} [???]
+    \item Collapsing Operation (Lemma 1.4.7) (\ref{vect_morph}, \ref{top_ops}, \ref{homotopy})
+    \item Gluing/Clutching Construction (\ref{vect_morph}, \ref{top_ops})
+
+    \section{Definition of K-Theory (and reduced K-Theory?)} %K-THEORY:
+    \item Definition of $\vect(X)$ (\ref{vect_morph}) \label{vect}
+    \item $\vect(X)$ equipped with $\oplus$ and $\otimes$. \label{vect_ops} 
+    \item Stably isomorphic definition. (\ref{vect_ops}) $\label{iso_stab}$
+    \item Group/Ring Completion through Universal Property \label{completion}
+    \item Definition of K(X) [and $\tilde{K}(X)$?] (\ref{vect}, \ref{completion}, \ref{iso_stab}).
+    \begin{itemize}
+        \item Verify relevant equivalence relations.
+        \item Computation of $K(X)$ and $\tilde{K}(X)$ for contractible bundles?
+        \item Proof of equivalence of multiple definitions. (Present one way and introduce another as an exercise).
+    \end{itemize}
+
+\section{K-Theory as a cohomomology theory}
+    \item $f_t: Y \to X$ homotopy then $f_0^*E \cong f_1^*E$. \label{homotopy_iso} (\ref{homotopy})
+    \item If $f: X \to Y$ is a homotopy equivalence, $f^*: \vect(X) \to \vect(Y)$ is bijective. (Lemma 1.4.4 in Atiyah) (\ref{homotopy_iso})
+    \item Contractible $Y$ and $f: X \to X/Y$ induces bijection $f^*: \vect(X/Y) \to \vect(X)$ (Lemma 1.4.8 in Atiyah, Lemma 2.10 in Hatcher) (\ref{contractible}, \ref{vect})
+    \item Exact sequences
+    \begin{enumerate}
+        \item Definition of exact sequence of vector spaces
+        \item Definition of exact sequence of vector bundles
+        \item (?) If short exact sequence $0 \to E' \to E \to E'' \to 0$ then $E \cong E' \oplus E''$
+    \end{enumerate}
+    \item Bott Periodicity Theorem
+
+\section{Division Algebra Application} %DIVISION ALGEBRAS APPLICATION:
+
+\end{enumerate}
+
+\section{Other}
+
+\begin{itemize}
+    \item V.B. homomorphism is isomorphism iff bijective
+    \item Strict homomorphism definition
+    \item $\Gamma(E)$ is a V.S.
+    \item Prop 1.3.2 (Ker, Im, Coker and sub bundles)
+    \item Natural isomoprhism $f^*T(E) \cong Tf^*(E)$
+    \item Projection operator definition
+    \item Fundamental Product Theorem in Hatcher
+\end{itemize}
+
+\section{Notes/Questions on Outline}
+\begin{itemize}
+    \item How much time should I spend on vector bundles?
+    \item Try to talk about vector bundles with manifolds?
+    \item Category of sets as example?
+    \item Should I lean to abstract or to concrete? I'm thinking concrete.
+\end{itemize}
+
+\section{Questions on Material}
+\begin{itemize}
+    \item Stably isomorphic classes vs. group completion of $\vect(X)$.
+    \item Wedge Sum, smash product, cone, suspension.
+\end{itemize}
+
+\end{document}

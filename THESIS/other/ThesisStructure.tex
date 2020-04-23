@@ -1,0 +1,113 @@
+\documentclass[11pt]{amsart}
+%\usepackage{showkeys} %SHOWS LABELS
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{mathbbol}
+\usepackage{txfonts}%Christina's fonts
+\usepackage{ mathrsfs }%This lets you do \mathscr 
+
+
+%%%%%%
+
+\textwidth=5.8in
+\textheight=8.2in
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{claim}{Claim}
+\newtheorem{defn}{Definition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\div}{\mathrm{div}}
+\newcommand{\grad}{\mathrm{grad}}
+\newcommand{\dvol}{\mathrm{dvol}}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\newcommand{\F}{\mathfrak{F}}
+\newcommand{\X}{\mathfrak{X}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\Riem}{\mathrm{Riem}}
+\newcommand{\Scal}{\mathrm{Scal}\,}
+\newcommand{\Ricci}{\mathrm{Ricci}}
+\newcommand{\Sec}{\mathscr{K}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\J}{\mathscr{J}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\GCD}{\mathrm{GCD}}
+
+%%%%
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+
+%%%%
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\T}{\mathcal{T}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+
+\title{Possible Thesis Structure}
+
+%\author{Iva Stavrov}
+%\address{Lewis \& Clark College}
+%\email{istavrov@lclark.edu}
+%
+
+\date{}
+
+\keywords{}
+
+\maketitle
+
+\section{Possible chapters}
+
+\begin{itemize}
+\item Chapter 1: Category theory
+\medbreak
+\item Chapter 2: The definition of $K$-theory
+\medbreak
+\item Chapter 3: $K$-theory as a cohomology theory
+\end{itemize}
+
+\section{What to say under Category theory}
+
+First and foremost, you say what in principle categories are and you introduce the five basic categories: Sets, Vector Spaces, Topological Spaces, Vector Bundles, Rings. 
+
+You need to define what all these things are -- what a vector space is, what topological space is, what continuous map is, give some examples and / or non--examples, etc. You may choose to add a little something on quotient spaces. The reason is that through quotient spaces you can introduce M"obius band, real projective space, complex projective space, etc. Spend some time on vector bundles. Mention M"obius band. Prove that it is not a trivial line bundle.  
+
+Next, you introduce $\mathrm{Vect}(X)$. At first $\mathrm{Vect}(X)$ is just a set. You have a choice of whether you are doing things over $\R$ or over $\C$. So maybe distinguish $\mathrm{Vect}_{\mathbb{R}}(X)$ and $\mathrm{Vect}_{\mathbb{C}}(X)$.
+
+Next, mention functors. Do some classics like taking the dual (a functor from real vector spaces to itself) or taking the conjugate (a functor from complex vector spaces to itself). Make a big to do about $\mathrm{Vect}$ as a contravariant functor from Topological spaces to Sets.
+
+\section{What to say under The definition of $K$-theory}
+
+The two big operations you need to talk about here are direct sum $\oplus$ and tensor product $\otimes$. Both are given by Universal Properties. Talk about the fact that these two operations can also be done on vector bundles. You may want to add a little something about the functorial nature of $\oplus$ and $\otimes$. Or an example such as the tensor product of two M"obius bands being a trivial line bundle. 
+
+Then you make a big-to-do with the fact that $\mathrm{Vect}(X)$ is equipped with $\oplus$ and $\otimes$. If $X$ consists of only one point, then this is the story about $\N$. But $X$ has topology then maybe things are more interesting. As in: the cancelation rule for $\oplus$ does not work. The classic example to mention here is that of the tangent bundle to $S^2$. It is not trivial (there is some business of non-existence of nowhere vanishing tangent vector field on $S^2$) yet upon adding the normal bundle it does become trivial. So $[TS^2]=[\mathbf{1}^2]$.
+
+So, you define what it means for two vector bundles to be stably equivalent: $V_1\sim V_2$ if and only if there exists a vector bundle $W$ such that $V_1\oplus W\cong V_2\oplus W$.  You go ahead and verify that both $\oplus$ and $\otimes$ give rise to an associative operation on the stable equivalence classes. In this regard the set of stable equivalence classes is like $\N$. The goal is to make a $\Z$ out of it. That's $K$-theory. Then go over the construction using the universal property. 
+
+\section{$K$-theory as a cohomology theory}
+
+Here you talk about the functorial nature of $K(X)$. But you also talk about the fact that $f^*$ depends only on the homotopy class of $f$. This means that you need to have a subsection about homotopy class of a mapping, homotopy equivalence, contractibility, etc. 
+
+As a side note, this seems to be a very nice resource. 
+
+\texttt{https://www.math.ru.nl/$\sim$gutierrez/k-theory2015.html}
+
+\end{document}

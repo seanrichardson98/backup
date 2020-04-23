@@ -1,0 +1,123 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newcommand{\myabs}[1]{\vert#1\vert}
+\newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+
+\DeclareMathOperator{\iso}{Iso}
+\DeclareMathOperator{\fix}{Fix}
+\DeclareMathOperator{\tr}{Tr}
+
+\setlength\parindent{0pt}
+
+\begin{document}
+
+FOCUS ON GIVING THE PROOF IN SIMPLE TERMS
+
+Proof:
+\begin{itemize}
+    \item Triangle
+        \begin{itemize}
+            \item Define Orbifold
+            \item Define Laplace Spectrum
+            \item Explain Heat expansion
+        \end{itemize}
+    \item 
+\end{itemize}
+
+\section{What is an Orbifold?}
+\subsection{Notes}
+\begin{itemize}
+    \item In differential geometry, there exists the idea of a \emph{Riemannian Manifold}. Simply put, a manifold is some $n$-dimensional surface with topological and geometric properties.
+    \item The formal definition of a mainifold requires an atlas of compatable local charts where each local chart has the structure of $\mathbb{R}^n$.
+    \item An orbifold is a generalization of a Riemannian manifold.
+    \item An orbifold is definied by a similar atlas of local charts, but with more freedom in the structure of the local chart $\tilde{U}$.
+    \item Formally, /*Formal def*/
+    \item In other words, a small neighborhood $U$ on an orbifold has local structure $\tilde{U}$ that can ``unfold'' to $\mathbb{R}^n$ with a set of isometries $\Gamma_u$. Each small neighborhood $\tilde{U}$ is mapped onto the orbifold by some mapping $\pi_u$. 
+    \item (Graphic)
+\end{itemize}
+\subsection{Draft}
+\begin{itemize}
+    \item 
+\end{itemize}
+
+\section{Spectral Geometry}
+\begin{itemize}
+    \item All objects, including orbifolds, have a spectrum of fundamental frequencies that they vibrate at. We can think of an 
+   \item (manifold visual)
+   \item Laplace Spectra Summary:
+   \begin{itemize}
+        \item $u(t,\mathbf{x})$ describes the location of the objects surface at any instance in time
+        \item Say that the surface has more energy the faster it moves and the more stretched it is.
+        \item In applying conservation of energy, we find that $u$ must satisfy the PDE $\Delta u(t,\mathbf{x}) = \frac{d^2u}{dt^2}$. This is called the ``wave equation''.
+        \item Assume $u(t,x) = A(t)\psi(\mathbf{x})$. This reduces our PDE down to:
+        $$\Delta \psi(\mathbf{x}) = -\lambda \psi(\mathbf{x}) \text{ and } \Delta A(t) = -\lambda A(t)$$
+    \item The eigenvalues to the Lalace operator are called the ``Laplace Spectra'' and are denoted $\lambda_1, \lambda_2, \lambda_3 \dots$.
+    \item This spectrum is related to frequency in that $\sqrt{\lambda_i}$ is a valid fundamental frequency of the object.
+   \end{itemize}
+    \item Given a specific object, the laplace spectra is determined.
+    \item However, multiple objects can share the same laplace spectra. So, if given the laplace spectra, it is impossible to tell the specific object it came from.
+    \item But, with the laplace spectra, we can deduce specific \emph{properties} the object must have. 
+   \begin{itemize}
+        \item (dimension, volume, \dots)
+   \end{itemize}
+    \item (mapping diagram visual?)
+    \item Research question: From the laplace spectrum, what can we deduce about the corresponding orbifold?
+\end{itemize}
+
+\subsection{Draft1}
+/*Orbifold or object in math?*/
+/*Make Equations stand out more?*/
+\\
+All objects, including orbifolds, have a spectrum of fundamental frequencies that they vibrate at. We imagine some orbifold $\mathcal{O}$ to have a surface of elastic material, allowing the surface of $O$ to oscillate up and down. At specific frequencies, the entire orbifold will vibrate [visual]. 
+
+We formally define these as 
+
+We now wish to know more about these specific frequencies. We define the function $u(t,\mathbf{x})$ to describe the amplitude of a location $\mathbf{x}$ on $\mathcal{O}$ at time $t$. We say that the elsastic material has more energy the more stretched it is and the faster it moves /*more detail?*/. In applying conservation of energy, we find that our function $u(t,\mathbf{x})$ must satisfy the PDE $\Delta u(t,x) = \frac{d^2u}{dt^2}$. This is called the ``wave equation''. Fundamental frequencies will vibrate the orbifold in the form $u(t,x) = A(t)\psi(x)$. With this information, we reduce the PDE down to $\Delta \psi(\mathbf{x}) = -\lambda \psi(\mathbf{x})$ and $\Delta A(t) = -\lambda A(t)$. The eigenvalues to the Laplace operator are called the ``Laplace Spectra'' and are denoted $\lambda_1, \lambda_2, \lambda_3 \dots$. This spectrum is related to frequency in that $\sqrt{\lambda_i}$ is a valid fundamental frequency of an object.
+
+Given a specific object, the laplace spectra is determined (just as a specific drum will only make certain sounds). However, multiple objects can share the same laplace spectra. So, if given the laplace spectra, it is impossible to tell the specific object it came from. But, with the laplace spectra, we can deduce specific \emph{properties} the object must have [mapping visual?]. 
+
+\subsection{Draft2}
+\subsubsection{Intuitive}
+
+\subsubsection{Formal}
+I will now give a more mathematically grounded definition of the Laplace Spectra. Consider some manifold $\mathcal{M}$. Let $u(t,\mathbf{x})$ be the displacement of some point $x$ on $\mathcal{M}$ at time $t$ from equilibrium. (picture).We then define the energy of the manifold $E_{\mathcal{M}}$ to be higher the faster the surface moves and the more stretched it is. /*get exact formula?*/ In applying conservation of energy ($\pder{E_{\mathcal{M}}}{t} = 0$), we derive the following PDE known as the wave equation.
+\begin{equation}\label{eq:test}
+    \Delta u(t,\mathbf{x}) = \frac{d^2 u}{dt^2}
+\end{equation}
+We are looking for fundamental frequencies, which we define to be waves of the form $u(t,\mathbf{x}) = A(t)\psi(\mathbf{x})$. With this, we break down the wave equation into the following.
+\begin{equation}
+    \Delta \psi(\mathbf{x}) = -\lambda \psi(\mathbf{x})
+    \text{ and }
+    \Delta A(t) = -\lambda A(t)
+\end{equation}
+For some $\lambda$. Only discrete values of $\lambda$ solve this equation. These values are represented $\lambda_1, \lambda_2, \dots$ and called the Laplace Spectra.
+
+\section{Asymptotic Heat Expansion}
+\subsection{Notes}
+\begin{itemize}
+   \item Derivation
+       \begin{itemize}
+        \item The function $u(t,\mathbf{x})$ describes the heat at time $t$ and location $\mathbf{x}$
+        \item $K(t,p,q)$ is the heat kernel. 
+        \item We consider the differential equation $-\Delta u= \frac{du}{dt}$
+        \item Solution is $u(t,\mathbf{x}) = \int_M K(t,\mathbf{x}) \mu_0(\mathbf{y}) dvolM_y $
+        \item Gives rise to the heat kernel $K(t,\mathbf{x},\mathbf{y}) = \sum_{j=1}^{\infty} e^{\lambda_j t} \varphi_i(\mathbf{x}) \varphi_j(\mathbf{y})$.
+        \item Consider $\tr(K) = \int_M K(t,\mathbf{x},\mathbf{y})$ which reduces to $\sum_{j=0}^{\infty}e^{-\lambda_j t}$.
+        \item As $t \rightarrow 0^{+}, \tr(K) \rightarrow \infty$
+        \item We consider the asymptotic expansion of the heat trace. For orbifolds, we find that:
+       \begin{align*}
+            \tr(K) &= \sum_{j=0}^{\infty}e^{-\lambda_j t}
+            \stackrel{t\rightarrow 0^+}{\sim} {(4\pi t)}^{-\dim(\mathcal{O})/2}\sum_{k=0}^{\infty}a_k(\mathcal{O})t^k \\
+            &+\sum_{N \in S(\mathcal{O})}\frac{{(4\pi t)}^{-\dim(N)/2}}{\myabs{\iso(N)}}\sum_{k=0}^{\infty}t^k\int_{N} \sum_{\gamma \in \iso^{\max}(\tilde{N})}b_k(\gamma,x) dvol_N
+       \end{align*}
+   \end{itemize}
+\end{itemize}
+
+\subsection{Draft}
+    
+
+
+\end{document}

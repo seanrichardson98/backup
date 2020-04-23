@@ -1,0 +1,9 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Introduction to Vector Bundles}{2}{0}{1}
+\beamer@sectionintoc {2}{Topology Interlude}{8}{0}{2}
+\beamer@sectionintoc {3}{Back to Vector Bundles}{12}{0}{3}
+\beamer@sectionintoc {4}{Algebra Interlude}{17}{0}{4}
+\beamer@sectionintoc {5}{Extending Vector Space Operations to Vector Bundles}{22}{0}{5}
+\beamer@sectionintoc {6}{Another Algebra Interlude}{27}{0}{6}
+\beamer@sectionintoc {7}{Quest for the Additive Cancellation Property}{31}{0}{7}
+\beamer@sectionintoc {8}{The Definition of K-Theory}{35}{0}{8}

@@ -1,0 +1,71 @@
+\documentclass[12pt]{amsart}
+
+\setlength{\parindent}{0cm}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{commath}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{cancel}
+\usepackage{subfigure}
+\usepackage{multicol}
+\usepackage{gensymb}
+
+\usepackage{graphicx}
+\graphicspath{{graphics/}}
+
+\usepackage{my_notes}
+\usepackage{my_math}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{technique}[theorem]{Technique}
+
+\newenvironment{just}{\textit{Justification.}}{}
+\newenvironment{trans}{\textit{Translation.}}{}
+
+\newenvironment{mybox}
+{\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]}
+{\end{tcolorbox}}
+
+\newenvironment{mytbox}[1]
+{\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=#1]}
+{\end{tcolorbox}}
+
+\def\mathunderline#1#2{\color{#1}\underline{{\color{black}#2}}\color{black}}
+
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cE}{\mathcal{E}}
+
+\begin{document}
+\title{Combinatorics 2}
+\author{Sean Richardson}
+\date{\today}
+\maketitle
+
+\begin{definition}[Hypergraph]
+    A \emph{hypergraph} $\cH$ is given by $\cH = (V,\cE)$ for a set
+    \emph{vertex set} $V$ and \emph{edge set} $\cE$: a collection of subsets
+    of $V$.  Additionally: $V,\cE \neq \O$. Note we allow repeated edges
+    and $\cE \ni e = \O$.
+\end{definition}
+\begin{definition}[Simple Hypergraph]
+    A hypergraph $\cH$ with no \emph{multiedges} (there are no repeated
+    edges in $\cE$).
+\end{definition}
+\begin{definition}[Singleton, Isolated]
+    An edge $e \in \cE$ is a \emph{singleton} if $\abs{e} = 1$. A vertex $v
+    \in V$ is \emph{isolated} if no edge contains it.
+\end{definition}
+\begin{definition}[Degree]
+    
+\end{definition}
+
+\end{document}

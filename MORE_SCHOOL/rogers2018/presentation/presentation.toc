@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{What is an Orbifold?}{6}{0}{1}
+\beamer@sectionintoc {2}{What is the ``Sound'' of an Orbifold?}{11}{0}{2}
+\beamer@sectionintoc {3}{Heat Expansion}{16}{0}{3}
+\beamer@sectionintoc {4}{Result}{24}{0}{4}
+\beamer@sectionintoc {5}{Questions?}{31}{0}{5}

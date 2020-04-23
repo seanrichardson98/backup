@@ -1,0 +1,142 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newcommand{\myabs}[1]{\vert#1\vert}
+\newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+
+\DeclareMathOperator{\iso}{Iso}
+\DeclareMathOperator{\fix}{Fix}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\vol}{Vol}
+
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\section{Abstract}
+
+
+\hspace{\parindent} Given some object, such as a drum, there exists a
+spectrum of fundamental frequencies determined by physics. However, if the
+drum was in a neighboring room and you could only listen to these
+frequencies, is it possible to deduce the drum's shape? In other words,
+``Can you hear the shape of a drum?''. In this research project, we ask a
+similar question but for abstract mathematical objects. The vibrational
+frequencies for abstract objects correspond to the eigenvalue spectrum of
+the Laplace operator associated to the object. 
+
+The abstract shapes we study are called \emph{orbifolds}. An orbifold is a
+multidimensional object that is allowed to have some ``trouble spots,''
+which are tied to the symmetries allowed in $n$-dimensional space. We ask:
+Given the Laplace spectrum of an unknown orbifold $\mathcal{O}$, what
+properties of $\mathcal{O}$ are determined?  We show that one can hear the
+\emph{local orientability} of an orbifold.  That is, we can use the Laplace
+spectrum to detect trouble spots associated to orientation reversing
+symmetries of $n$-dimensional space.
+
+
+\section{Symmetries in Space}
+
+2 examples..
+symmetrical b/c can perform some action on the piece of paper that leaves
+the paper unchanged.
+\\- $\Gamma$.
+\\- isometries
+\\- orientation preserving
+\\- orientation reversing.
+
+Introduce strata?
+
+\section{Orbifold}
+\subsection{Intuitive}
+
+We consider abstract objects called \emph{orbifolds}. Visually, we
+represent $2$ dimensional orbifolds as a surface in space with a few
+``trouble spots''. 
+\\- 2 dimensions: torus with ``trouble spots''
+\\- In this case, the trouble spots correspond to symmetries of $2$
+dimensional space
+\\- rotational symmetry
+\\- reflectional symmetry
+
+Gets ``folded'' in half or ``twisted'' like a party hat, resulting in 
+
+
+
+\subsection{Formal}
+
+Formally, an \emph{orbifold} is a generalization of the Riemannian
+Manifold (some $n$ dimensional surface). While a manifold requires local
+structure of $\mathbb{R}^n$, an orbifold allows local structure of
+$\mathbb{R}^n/\Gamma$ where $\Gamma$ is a group of isometries.
+
+\section{Laplace}
+\subsection{Intuitive/motivation}
+When you pluck a string, the string produces a sound determined by a
+specific resonance frequency it can vibrate at. Actually, the string can
+vibrate at a \emph{spectrum} of resonance frequencies. Furthermore, all
+objects, not just strings, vibrate at a certain spectrum as observed by the
+sounds that drums produce. Mathematically, we express these frequencies
+through the \emph{Laplace Spectra}.
+
+\subsection{Formal}
+The Laplace Spectra follows from the solutions to the following PDE called
+the ``wave equation''.
+$$ \Delta u(t,\mathbf{x}) = \pder{u(t,\mathbf{x})}{t} $$
+\\
+(formal definition of the Laplace Spectra)
+
+I will now give a more mathematically grounded definition of the Laplace
+Spectra. Consider some manifold $\mathcal{M}$. Let $u(t,\mathbf{x})$ be the
+displacement of some point $x$ on $\mathcal{M}$ at time $t$ from
+equilibrium. (picture). We then define the energy of the manifold
+$E_{\mathcal{M}}$ to behigher the faster the surface moves and the more
+stretched it is. /*get exact formula?*/ In applying conservation of energy
+($\pder{E_{\mathcal{M}}}{t} =0$), we derive the following PDE known as the
+wave equation
+
+\begin{equation}\label{eq:test}
+    \Delta u(t,\mathbf{x}) = \frac{d^2 u}{dt^2}
+\end{equation}
+We are looking for fundamental frequencies, which we define to be waves of the form $u(t,\mathbf{x}) = A(t)\psi(\mathbf{x})$. With this, we break down the wave equation into the following.
+\begin{equation}
+    \Delta \psi(\mathbf{x}) = -\lambda \psi(\mathbf{x})
+    \text{ and }
+    \Delta A(t) = -\lambda A(t)
+\end{equation}
+For some $\lambda$. Only discrete values of $\lambda$ solve this equation. These values are represented $\lambda_1, \lambda_2, \dots$ and called the Laplace Spectra.
+
+\section{The Question:}
+Given a specific drum, it is possible to deduce what sound the drum will make when hit. However, consider the reverse: if you hear a drum in the neighboring room, is it possible to deduce the drum. Put nicely by /**/, can you hear the shape of a drum? This is what the field of \emph{Inverse Spectral Geometry} attempts to answer. In this research, we apply Inverse Spectral Geometry techniques to Orbifolds.
+
+Formally, consider some laplace spectra $\lambda_1, \lambda_2, \dots$ (as defined in /**/) belonging to some unknown orbifold $\mathcal{O}$ (as defined in /**/). From the laplace spectra, what properties can we deduce about $\mathcal{O}$?
+
+\section{Asymptotic Heat Expansion Technique}
+\subsection{Intuitive}
+Consider heating a point $\mathbf{x}$ on some orbifold $\mathcal{O}$ with a
+match. Then, allow the heat to disperse around $\mathcal{O}$. The
+temperature of the initial value will decrease.
+
+\subsection{Formal}
+The solution to the following PDE (the heat equation)
+$$-\Delta u(t,\mathbf{x}) =  \pder{u(t,\mathbf{x})}{t}$$
+is of the form $u(t,\mathbf{x}) = \int_{\mathcal{M}}
+K(t,\mathbf{x},\mathbf{y}) \mu_0dvol
+\mathcal{M}_y$. \\
+$$\tr(K) = \sum_{j=1}^{\infty}e^{-\lambda_j t} \sim a_0 t^{1}$$
+
+\section{Results}
+
+\subsection{Locally Orientable}
+First, we define \emph{locally orientability}. 
+\subsubsection{Intuitive}
+Intuitively, \dots
+
+\subsubsection{Formal}
+
+If for $g \in \Gamma$, $\det(g) = -1$. $\Gamma$ is orientation reversing.
+A chart $(.,.,.)$ on $\mathcal{O}$ is defined to be $\emph{orientable}$ if there exists
+some orientation reversing operation in $\Gamma$.
+\end{document}

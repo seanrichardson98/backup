@@ -1,0 +1,215 @@
+\documentclass[12]{amsart}
+
+%IMPORTANT PACKAGES:
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%RANDOM PACKAGES:
+\usepackage{xcolor}
+\usepackage{enumerate}
+
+%THEOREM SETTINGS
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}[theorem]{Definition}                                 
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}  
+\newtheorem{example}[theorem]{Example}
+
+%NOTE COMMANDS
+\newcommand{\sean}[1]{\textcolor{purple}{#1}}
+\newcommand{\iva}[1]{\textcolor{purple}{#1}}
+\newcommand{\toadd}[1]{/*#1*/}
+
+%MATH SHORTCUT COMMANDS
+%justified shortcuts
+\DeclareMathOperator{\vect}{Vect}
+\DeclareMathOperator{\id}{Id}
+\newcommand{\iso}{\cong} %isomorphic symbol
+\newcommand{\siso}{\approx_s} %stably isomorphic
+\newcommand{\tiso}{\approx} 
+\newcommand{\pset}[1]{\mathcal{P} (#1)} %power set
+\newcommand{\RK}[1]{\widetilde{K}(#1)} 
+\newcommand{\KR}{\widetilde{K}}
+\newcommand{\set}[1]{\{#1\}}
+%shortcuts for my extreme laziness
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\U}{\mathcal{U}} 
+\newcommand{\tbund}[1]{\varepsilon^{#1}}
+\newcommand{\op}{\oplus} 
+\newcommand{\ot}{\otimes} 
+
+%LIST:
+\newcommand{\itemc}{\item[\checkmark]}
+\newcommand{\itemp}{\item[$\sim$]}
+\newcommand{\itemo}{\item[$\circ$]}
+\newcommand{\items}{\item[$\circ$]}
+
+\begin{document}
+\title{Thesis Outline}
+\maketitle
+
+\section{Category Theory}%CATEGORY THEORY:\\
+\begin{itemize}
+    \itemc Definition of Category
+    \itemc Definition of Functor
+    \itemc Category of Rings and/or Groups
+    \itemo Category of sets
+    \itemc Category of Vector Spaces 
+    \itemc Definition of isomorphism
+    \itemo Category of abelian group sequence?
+    \itemo Category of pairs?
+
+\section{Algebra}%LINEAR ALGEBRA:
+\subsection{Ring Completion}~
+	\itemc Ring completion definition
+	\itemc Ring completion verification
+	\itemc Ring completion Example 
+    \itemo (for n-points): ring completion of $(\N \cup \set{0})^n$
+\subsection{Packing together Modules}~
+    \itemc Direct sum on modules definition
+    \item Verifications for direct sum
+    \item Extension to other categories
+    \item Example for vector spaces: $\R^n \op \R^m \iso \R^{n+m}$
+    \itemc Tensor product on modules definition
+	\item Verifications for tensor product
+    \item Extension to other categories 
+    \item Example for vector spaces: $\R^n \ot \R^m \iso \R^{nm}$
+    \itemo Example/Result: $\Z[\alpha]/(\alpha^2)\ot\Z[\beta]/(\beta^2) \iso 
+    		   \Z[\alpha,\beta]/(\alpha^2,\beta^2)$  
+    \itemo Idea of a \emph{outer product} i.e. \emph{external product} to make $\mu$ less jarring later.  
+
+\section{Topology}%TOPOLOGY
+\subsection{Basic Definitions}~
+    \itemc Definition of topological space
+    \itemc Definition of HM. i.e. cnts function
+\subsection{Category of Topological Spaces}~
+	\itemc Definition of the Category
+	\itemc Formal comparison to metric space with functor
+	\itemc Construction of $S^2$ as example	
+\subsection{Mappings in Topology}~
+	\itemc Definition of quotient map and quotient topology
+	\itemo Example: $I$ to $S^1$
+	\itemc Definition of inclusion map and subspace topology
+	\itemo Example of $\R P^1$
+	\item Definition of $\C P^1$
+	\item Theorem: $\C P^1 \iso S^2$
+\subsection{Operations on Topological Spaces}~
+	\item Wedge Sum
+    \item Smash Product
+    \item Cone Definition
+    \item Example: $D^n$ construction
+    \item Suspension Definition
+    \item Example: $S^n$ construction
+    \item Reduced Suspension
+    \item Relevant sequence construction.
+    \item Discuss the ``union'' sign.
+\subsection{More Topology}~
+    \itemc Definition of Compact
+    \itemc Definition of Hausdorff
+    \itemo Definition of Normal
+    \itemo Theorem: Every Compact Hausdorff Space is Normal 
+\subsection{Homotopy Things}~
+	\item Homotopic Functions
+	\item Homotopic Spaces
+    \item Contractible definition
+    \item Examples: those necessary for ch. 6 costruction
+\subsection{Appendix}~
+    \itemo Urysohn Lemma
+\section{Vector Bundles} %VECTOR BUNDLES
+\subsection{Basic Definition and Examples}~
+	\itemp Motivation: vector fields
+    \itemc Definition of V.B.
+    \itemc Brief definition of fiber.
+    \itemo Brief definition of section.
+    \item Example: Definition of trivial bundle of dimension $n$: $\varepsilon^n$.
+    \item Example: Tangent Bundle over $S^1$ or $S^2$.
+    \item Example: Mobius band
+    \itemo Canonical line bundle over $\R P^1$ gives mobius band
+\subsection{Category Theory of Vector Bundles}~
+    \itemc Definitions of homomorphism, isomorphism. 
+    \itemc Explanation of Category
+    \item Definition of restriction
+    \item Vereification that restrction is a vector bundle.
+    \itemc Definition of $\oplus$ on vector bundles
+    \itemc Properties of $\oplus$ on vector bundles (required for K-Theory def)
+    \itemc Verifications for $\oplus$
+    \itemc Definition of $\otimes$ on vector bundles.
+    \itemc Propertues of $\oplus$ on vector bundles (required for K-Theory def)
+    \itemc Verifications for $\otimes$
+    \itemc Definition of pullback bundle
+    \itemc Verifications for pullback bundles
+   	\itemc Important properties of pullback bundles
+    \itemc Verification of properties of pullbacks
+    \item Note restriction as example of pullback
+\subsection{Necessary Results on Vector Bundles}~
+	\item Theorem: If $H$ is canonical line bundle on $\C P^1$, $(H \ot H) \op 1 \iso H \op H$
+	\itemo Verification for above.
+	\itemc Theorem: For every vector bundle $E$, there exists an $E'$ such that $E \op E'$ is trivial.
+	\itemo Verification for above.
+	\itemo Example of above. Mobius band with itself.
+    \item Pullback from homotopic map gives an isomorphism.
+	\item Corrolarry: $A$ contractible implies the bundle over $A$ is trivial.
+\section{Definition of K-Theory} %K-THEORY:
+\subsection{The K-Theory Functor $K$}~
+    \itemc Definition of $K$ functor on topological spaces.
+    \itemc Verification that above gives ring.
+    \itemc Definition of $K$ functor on homomorphisms.
+    \itemc Verification that above gives homomorphism of rings.
+    \itemc Verification that above is a functor.
+    \item Simple Examples
+\subsection{The Reduced K-Theory Functor $\KR$}~
+    \item Definition of $\KR$ functor on topological spaces.
+    \item Verification that above gives ring.
+    \item Definition of $\KR$ functor on homomorphisms.
+    \item Verification that above gives homomorphism of rings.
+    \item Verification that above is a functor.
+    \item Simple Examples
+	\item Theorem: $K(X) \iso \KR(X) \op \Z$
+\subsection{Notation}~
+    \item Describing elements of $K$ and $\KR$
+    \item pullback notation
+
+
+\section{K-Theory as a cohomomology theory}~
+\subsection{Exact Sequences}~
+    \item Short exact sequence definition
+    \item State splitting Lemma
+    \itemo Verify splitting lemma
+    \item Verify $\KR$ and $K$ relations claimed previously
+    \item Discuss that $(X,A)$ induces a short exact sequence
+    \item Verify that the above is indeed a short exact sequence
+    \item Extend above sequence to a long sequence
+    \item Talk about homotopy equivalences and K-Theory at some point.
+
+\subsection{Extending to a cohomology theory}~
+    \item Discussion of what constitues a cohomology theory and why the reader should care?
+    \item The construction
+
+\subsection{Patterns of K-Theory}~
+    \item Definition of the external product
+	\item The external product $\KR(S^{2k}) \ot \KR(X) \to \KR(S^{2k} \wedge X)$ is an isomorphism.
+    \item Bott Periodicity\dots
+    \item $\KR(S^n)$ is $\Z$ for $n$ even and $0$ for $n$ odd.
+   	\item $K(S^{2k}) \ot K(X) \to K(S^{2k} \times X)$ is an isomorphism.
+
+\section{Division Algebra Application}~
+\subsection{Division Algebras and Paralizable Spheres}~
+    \item Define division algebras
+    \item reduce division algera problem to a K-Theory problem
+    \itemo Define paralizable spheres
+    \itemo reduce paralizable spheres to a K-Theory problem
+\subsection{Even Case}~
+
+\subsection{Odd Case}~
+        
+        \section{Overall Themes and Ideas}~
+    \item Tell the reader right at the beginning the plan to get a ring out of a space and remind the reader of this goal all the way through.
+    \item I may add a brief introductiony-ish thing that provides a brief summary (similar to what my slide presentation will be) of the direction that the book is going. It feels a bit harsh to push the reader into category theory and hope they survive until chapter 4 to finally see vector bundles... This way I can also talk of the motivation to what I address along the way. I can use the word vector bundle earlier to give motivation and do a better job of giving a story.
+\end{itemize}
+\end{document}

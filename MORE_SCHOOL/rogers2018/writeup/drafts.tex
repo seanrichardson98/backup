@@ -1,0 +1,130 @@
+\documentclass{amsart}
+\usepackage{setspace, amssymb, amsmath, amsfonts}
+\usepackage{proofread}
+
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{theorem}[thm]{Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{proposition}{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{example}[thm]{Example}
+\newtheorem{examples}[thm]{Examples}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{remarks}[thm]{Remarks}
+\newtheorem{notation}[thm]{Notation}
+
+
+
+
+%New Commands
+
+\newcommand{\myabs}[1]{\vert#1\vert}
+
+\newcommand{\ld}{\lambda}
+\newcommand{\cp}{\mathcal{P}}
+\newcommand{\mfh}{\mathfrak{h}}
+\newcommand{\mfk}{\mathfrak{k}}
+\newcommand{\mfp}{\mathfrak{p}}
+\newcommand{\mfv}{\mathfrak{v}}
+\newcommand{\mfz}{\mathfrak{z}}
+\newcommand{\bv}{\boldsymbol{v}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cpt}{\mathbb{CP}^2}
+\newcommand{\pa}{\partial}
+\newcommand{\wtu}{\widetilde{U}}
+\newcommand{\wtn}{\widetilde{N}}
+\DeclareMathOperator{\Id}{Id}
+\newcommand{\semi}{\ltimes}
+\newcommand{\orb}{\mathcal O}
+\newcommand{\cc}{(\widetilde{U}, G_U, \pi_U)}
+\newcommand{\bs}{\backslash}
+
+\DeclareMathOperator{\iso}{Iso}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\fix}{Fix}
+\DeclareMathOperator{\area}{Area}
+\DeclareMathOperator{\vol}{vol}
+
+\begin{document}
+
+Take $\orb_o$ to be some locally orientable orbifold and $\orb_n$ to be
+some locally non-orientable orbifold.\\
+
+It is well known that orbifold of different dimensions will have different
+Laplace Spectra. So, we only must consider the case in which $\dim(\orb_o)
+= \dim(\orb_n)$. Without loss of generality, we will take this dimension to
+be odd. 
+
+
+By Lemma~/*4.5*/ $\orb_o$ will have no even dimensional primary strata while
+$\orb_n$ will have at least one even dimensional primary stratum.\\
+
+We first claim that every integer power coefficient in the heat expansion
+of $\orb_o$ is $0$. We proceed by contradiction under the assumption that
+there exists some nonzero integer power coefficient. So, consider the asymptotic expansion given by
+
+\begin{equation*}
+    I_0 + \sum_{N \in S(\orb)} \frac{I_N}{\myabs{\iso(N)}}
+\end{equation*}
+
+But, for an odd dimensional orbifold, the $I_0$ will not contribute to
+integer power terms. So, we consider only the second part of the sum. We
+use /**/ to expand the second half of the sum and arrive at the following
+expression.
+
+\begin{equation*}
+    \sum_{N \in S(\mathcal{O})}\frac{{(4\pi
+    t)}^{-\dim(N)/2}}{\myabs{\iso(N)}}\sum_{k=0}^{\infty}t^k\int_{N}
+    \sum_{\gamma \in \iso^{\max}(\widetilde{N})}b_k(\gamma,x) dvol_N
+\end{equation*}
+
+In studying the above, we find that in order for $\orb_o$ to have some
+nonzero integer power coefficient, $\orb_o$ must have some even dimensional
+primary strata. However, this contradicts our earlier conclusion and thus
+we reject our assumption and conclude that every integer power coefficient
+in the expansion of $\orb_o$ is $0$.\\
+
+We now show that at least one integer power coefficient in the expansion of
+$\orb_n$ is nonzero. We have that there exists at least one even
+dimensional primary strata in $\orb_n$, so we consider all such strata of
+maximal dimension $d$ in $\orb_n$. Note that only these strata of maximal
+dimension will contribute to the $-d/2$ term in the heat expansion, which
+occurs in the $k=0$ iteration in the sum. Furthermore, by Lemma~/*4.1*/ the
+$b_0$ term for each contributing strata is strictly positive. Thus, the
+integer $-d/2$ term is the sum of strictly positive terms and is thus
+nonzero. This confirms the claim that $\orb_n$ has at least one nonzero
+integer power coefficient.\\
+
+So, $\orb_o$ and $\orb_n$ differ in at least one term in the heat
+expansion. Specifically, $\orb_n$ will have some nonzero integer power
+coefficient in the expansion while the same term in $\orb_o$ is guaranteed
+to be $0$.\\
+
+So, any orientable and non-orientable orbifold will have differing heat
+expansions, so we conclude that any orientable and non-orientable orbifold
+will have different Laplace Spectra. This concludes the proof that we can
+hear local orientability.
+
+The proof for the case that $\orb_o$ and $\orb_n$ are of even dimension
+proceeds identically to the above with a few small differences. Instead of
+considering even dimensional primary stratum, take odd dimensional primary
+stratum. And, instead of looking at integer coefficients, take half-integer
+coefficient.
+
+
+\end{document}

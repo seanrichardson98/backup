@@ -1,0 +1,31 @@
+\documentclass[12]{amsart}
+
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newcommand{\RK}{\widetilde{K}} 
+\newcommand{\tiso}{\approx} 
+\newcommand{\Z}{\mathbb{Z}}
+
+\title{Reading Questions 4 March}
+
+\begin{document}
+\maketitle
+
+Hi Iva! This week I gave page 57 a first pass, and I read the bottom of 60 through towards the bottom of page 61. I spent a good amount of time trying to fully understand the proof at the bottom of 60 -- that $S^{2k}$ is not an H-space if $k > 0$. This is the first result in which K-Theory leads to a concrete result! Very exciting! I mostly understand this proof, but I do have one question about it down below.
+
+\begin{enumerate}
+	\item Perhaps the most pressing question: Towards the top of page 61 in the paragraph beginning with ``Now we specialize \dots '', Hatcher mentions a ``cell $e^{4n}$ attached by $f$''. From google-ing, I found something called a ``CW Complex'' which I believe to be related. Here is my current understanding which may be completely wrong:
+	\begin{itemize}
+		\item $e^{4n}$ refers to a $4n$-disk.
+		\item We regard $S^{4n-1}$ as the boundary of $e^{4n}$ and so it is a subspace.
+		\item $C_f$ is the quotient of the disjoint union $(S^{2n} \cup^* e^{4n})/\sim$ where the equivalence relation $\sim$ glues the boundary of $e^{4n}$ to $S^{2n}$ as according to the $f$.
+	\end{itemize}
+Even if this is correct, I feel that I do not have a good intuition of this construction. Further, in the proof of Lemma 2.18, Hatcher mentions the ``characteristic map $\Phi$ of the $4n$-cell of $C_f$'', and I am not sure what this refers to.
+	\item Also, at the bottom of page $60$ in the justification that $S^{2k}$ is not an H-space if $k>0$, Hatcher mentions that ``$i^*$ for $i$ inclusion onto the first factor sends $\alpha$ to $\gamma$ and $\beta$ to $0$''. This makes intuitive sense to me, but I am having trouble formally justifying this. It seems this requires tracing the isomorphisms $K(S^{2k} \times S^{2k}) \tiso K(S^{2k}) \otimes K(S^{2k}) \tiso \mathbb{Z}[\alpha]/(\alpha^2) \otimes \mathbb{Z}[\beta]/(\beta^2) \tiso \mathbb{Z}[\alpha,\beta]/(\alpha^2,\beta^2)$. From here, perhaps retractions are useful? I can semi-justify this piece, but I still don't have a proof.
+\end{enumerate}
+I think that's it. I had some other questions, but I believe I figured them out in the process of trying to ask them.
+
+\end{document}

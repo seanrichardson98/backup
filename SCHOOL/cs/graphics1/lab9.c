@@ -1,0 +1,367 @@
+#include <FPT.h>
+#include <D3d_matrix.h>
+#include <mytools.h>
+
+//General:
+int HEIGHT = 1000;
+int WIDTH = 1000;
+double HA = M_PI/3;
+
+//Light:
+double LIGHT[3] = {0,0,0};
+double EYE[3] = {0,0,0};
+double AMBIENT = 0.2;
+double DIFFUSE_MAX = 0.5;
+double SPECULAR_MAX = 0;
+double RGB[3] = {0.5,0,0};
+double IN_COLOR = 0.7;
+
+//Clipping:
+double far_plane = 50;
+double close_plane = 10;
+
+//Global data:
+int numpoints[10];
+double x[10][5000], y[10][5000], z[10][5000];
+int numpolys[10];
+int psize[10][5000];
+int con[10][5000][50];
+double cent[10][3];
+FILE *q;
+
+typedef
+struct {
+  int objnum ;
+  int polynum ;
+  double dist ;
+} THING;
+
+THING things[5000];
+int thing_index = 0;
+
+void poly_center(double ret[3], int f, int p) {
+  int i;
+  double xp[100], yp[100], zp[100];
+  for (i = 0; i < psize[f][p]; i++) {
+    xp[i] = x[f][con[f][p][i]];
+    yp[i] = y[f][con[f][p][i]];
+    zp[i] = z[f][con[f][p][i]];   
+  }
+  int n = psize[f][p];
+  ret[0] = (max(xp,n)+min(xp,n))/2;
+  ret[1] = (max(yp,n)+min(yp,n))/2;
+  ret[2] = (max(zp,n)+min(zp,n))/2;
+}
+
+void thingify(int f) {
+  int p,i;
+  for (p = 0; p < numpolys[f]; p++) {
+    double cent[3];
+    poly_center(cent, f, p);
+    double d = sqrt(d_prod(cent,cent,3));
+    things[thing_index].objnum  = f;
+    things[thing_index].polynum = p;
+    things[thing_index].dist    = d;
+    thing_index++;
+    //printf("%lf\n",d);
+  }
+}
+
+void normal_vec(double n[3], int f, int p) {
+  int p0 = con[f][p][0];
+  int p1 = con[f][p][1];
+  int p2 = con[f][p][2];
+  double u[3] = {x[f][p0]-x[f][p1],y[f][p0]-y[f][p1],z[f][p0]-z[f][p1]};
+  double v[3] = {x[f][p2]-x[f][p1],y[f][p2]-y[f][p1],z[f][p2]-z[f][p1]};
+  x_prod(n,u,v);
+  normalize(n,3);
+}
+
+double intensity(int f, int p) {
+  SPECULAR_MAX = 1-AMBIENT-DIFFUSE_MAX;
+  IN_COLOR = AMBIENT+DIFFUSE_MAX;
+  //initializing:
+  double cent[3],l[3],n[3],r[3],e[3],hold[3];
+  poly_center(cent,f,p);
+  subtract_vec(l,LIGHT,cent,3);
+  normalize(l,3);
+  normal_vec(n,f,p);
+  double scale = 2*d_prod(n,l,3);
+  scale_vec(hold,n,scale,3);
+  subtract_vec(r,hold,l,3);
+  subtract_vec(e,EYE,cent,3);
+  normalize(e,3);
+  /*printf("poly #%d:\n",p);
+  printf("l: "); print_arr(l,3);
+  printf("n: "); print_arr(n,3);
+  printf("e: "); print_arr(e,3);
+  printf("r: "); print_arr(r,3);*/
+  //calculation:
+  double diffuse, specular;
+  if (d_prod(e,n,3) < 0 && d_prod(l,n,3) < 0) {
+    scale_vec(n,n,-1,3);
+  }
+  diffuse = DIFFUSE_MAX*d_prod(n,l,3);
+  if (diffuse < 0) {diffuse = 0;}
+  specular = SPECULAR_MAX*pow(d_prod(r,e,3),30);
+  if (specular < 0) {specular = 0;}
+  if (d_prod(e,n,3)* d_prod(l,n,3) < 0) {
+    specular = 0; diffuse = 0;
+  }
+  //printf("%lf, %lf, %lf\n", AMBIENT, diffuse, specular);
+  return AMBIENT + diffuse + specular;
+}
+
+int compare (const void *p, const void *q) {
+  THING *a, *b;
+
+  a = (THING*)p ;
+  b = (THING*)q ;
+
+  if  (((*a).dist) < ((*b).dist)) return 1;
+  else if (((*a).dist) > ((*b).dist)) return -1;
+  else return 0;
+}
+
+void draw_point(double point[3]) {
+  double xp = point[0];
+  double yp = point[1];
+  double zp = point[2];
+  xp = WIDTH*(xp/zp)/tan(HA) + WIDTH/2;
+  yp = HEIGHT*(yp/zp)/tan(HA) + HEIGHT/2;
+  G_rgb(1,1,0);
+  G_circle(xp,yp,3);
+}
+
+void color(double rgb[3], double inten) {
+  double white[3] = {1,1,1};
+  double black[3] = {0,0,0};
+  double hold[3];
+  double scale;
+  if (inten > IN_COLOR) {
+    subtract_vec(hold, white,RGB,3);
+    scale = (inten-IN_COLOR)/(1-IN_COLOR);
+  }
+  else {
+    subtract_vec(hold, black, RGB,3);
+    scale = (IN_COLOR-inten)/(IN_COLOR);
+  }
+  scale_vec(rgb,hold,scale,3);
+  add_vec(rgb, rgb, RGB,3);
+}
+int clip_polygon(double * xp, double *yp, double * zp, int n, double * abc, double d) {
+  //returns new length
+  double xt[n+10], yt[n+10], zt[n+10];
+  int ind = 0,i;
+  double in[3] = {0,0,(far_plane+close_plane)/2};
+  for (i = 0; i < n; i++) {
+    //printf("side #%d:\n",i);
+    int j = (i+1)%n;
+    double p1[3] = {xp[i],yp[i],zp[i]};
+    double p2[3] = {xp[j],yp[j],zp[j]};
+    double s[3]; subtract_vec(s,p2,p1,3);
+    double t = -(d_prod(abc,p1,3)+d)/(d_prod(abc,s,3));
+    double intersec[3], hold[3];
+    scale_vec(hold,s,t,3);
+    add_vec(intersec,hold,p1,3);
+    int good1 = (d_prod(abc,p1,3)+d)*(d_prod(abc,in,3)+d) > 0;
+    //printf("g1=%lf*%lf\n",(d_prod(abc,p1,3)+d),(d_prod(abc,in,3)+d));
+    int good2 = (d_prod(abc,p2,3)+d)*(d_prod(abc,in,3)+d) > 0;
+    //printf("g1: %d\tg2: %d\n",good1,good2);
+    if (good1 && good2) {
+      xt[ind] = xp[j];
+      yt[ind] = yp[j];
+      zt[ind] = zp[j];
+      ind++;
+    }
+    if (good1 && !good2) {
+      xt[ind] = intersec[0];
+      yt[ind] = intersec[1];
+      zt[ind] = intersec[2];
+      ind++;
+    }
+    if (!good1 && good2) {
+      xt[ind] = intersec[0];
+      yt[ind] = intersec[1];
+      zt[ind] = intersec[2];
+      ind++;
+      xt[ind] = xp[j];
+      yt[ind] = yp[j];
+      zt[ind] = zp[j];
+      ind++;
+    }
+    if (!good1 && !good2) {}
+  }
+  for (i = 0; i < ind; i++) {
+    xp[i] = xt[i];
+    yp[i] = yt[i];
+    zp[i] = zt[i];
+  }
+  return ind;
+}
+int clip(double * xp, double *yp, double * zp, int n) {
+  double abc[3] = {0,0,-1};
+  n = clip_polygon(xp,yp,zp,n,abc,10);
+  n = clip_polygon(xp,yp,zp,n,abc,50);
+  /*double ha = M_PI/4;
+  abc[0]=0; abc[1]=-cos(ha); abc[2]=sin(ha);
+  n = clip_polygon(xp,yp,zp,n,abc,0);
+  abc[1]=cos(ha);
+  n = clip_polygon(xp,yp,zp,n,abc,0);
+  abc[0]=-sin(ha); abc[1]=0; abc[2]=cos(ha);
+  //n = clip_polygon(xp,yp,zp,n,abc,0);
+  abc[0]=sin(ha);
+  //n = clip_polygon(xp,yp,zp,n,abc,0);*/
+  return n;
+}
+void draw_poly(int f, int p) {
+  //printf("polygon #%d:\n\n",p);
+  int i;
+  double xtemp[1000], ytemp[1000];
+  int n = psize[f][p];
+  double xp[n+10], yp[n+10], zp[n+10];
+  for (i = 0; i < n; i++) {
+    xp[i] = x[f][con[f][p][i]];
+    yp[i] = y[f][con[f][p][i]];
+    zp[i] = z[f][con[f][p][i]];
+  }
+  //printf("points_before:\n");
+  print_arr(xp,n); print_arr(yp,n); print_arr(zp,n);
+  n = clip(xp,yp,zp,n);
+  //printf("points_after:\n");
+  //print_arr(xp,n); print_arr(yp,n); print_arr(zp,n);
+  for (i = 0; i < n; i++) {
+    xtemp[i] = WIDTH*(xp[i]/zp[i])/tan(HA) + WIDTH/2;
+    ytemp[i] = HEIGHT*(yp[i]/zp[i])/tan(HA) + HEIGHT/2;
+  }
+  double inten = intensity(f,p);
+  double rgb[3] = {inten,inten,inten};
+  color(rgb,inten);
+  G_rgb(rgb[0],rgb[1],rgb[2]);
+  G_fill_polygon(xtemp,ytemp,n);
+  G_rgb(0,0,0);
+  //G_polygon(xtemp,ytemp,psize[f][p]);
+}
+void draw_object(int f) {
+  int i;
+  for (i = 0; i < numpolys[f]; i++) {
+    draw_poly(f,i);
+  }
+}
+int main(int argc, char ** argv) {
+  /*//light_init:
+  printf("light_x:\t");
+  scanf("%lf",&LIGHT[0]);
+  printf("light_y:\t");
+  scanf("%lf",&LIGHT[1]);
+  printf("light_z:\t");
+  scanf("%lf",&LIGHT[2]);*/
+  int f,i,j,n;
+  //Reading:
+  for (f = 0; f < argc-1; f++) {
+    char temp[20] = "xyz/";
+    strcat(temp,argv[f+1]);
+    q = fopen(temp,"r");
+    if (q == NULL) {
+      printf("can't open file %d\n",f+1);
+      exit(0);
+    }
+    fscanf(q,"%d", &numpoints[f]);
+    for (i = 0; i < numpoints[f]; i++) {
+      fscanf(q,"%lf %lf %lf",&x[f][i],&y[f][i],&z[f][i]);
+    }
+    fscanf(q,"%d",&numpolys[f]);
+    for (i = 0; i < numpolys[f]; i++) {
+      fscanf(q,"%d",&psize[f][i]);
+      for (j = 0; j < psize[f][i]; j++) {
+	fscanf(q,"%d",&con[f][i][j]);
+      }
+    }
+  }
+  //Drawing:
+  G_init_graphics(HEIGHT,WIDTH);
+  G_rgb(0,0,0);
+  G_clear();
+  G_rgb(1,0,0);
+
+  //Set centers:
+  for (f = 0; f < 10; f++) {
+    n = numpoints[f];
+    cent[f][0] = (max(x[f],n) + min(x[f],n))/2;
+    cent[f][1] = (max(y[f],n) + min(y[f],n))/2;
+    cent[f][2] = (max(z[f],n) + min(z[f],n))/2;
+  }
+  double m[4][4];
+  double minv[4][4];
+  D3d_make_identity(m);
+  D3d_make_identity(minv);
+  f = 0;
+  int disp[10];
+  int light = 0;
+  char opp = '0';
+  for (i = 0; i < 10; i++) {disp[i] = 0;}
+  while (1) {
+    char c = G_wait_key();
+    int num = c-48;
+    D3d_make_identity(m);
+    D3d_make_identity(minv);
+    if (num >= 0 && num <= 9) {
+      light = 0;
+      f = num;
+      if (opp == '+') {disp[f] = 1;}
+      if (opp == '-') {disp[f] = 0;}
+    }
+    else if (c == 'l') {light = 1;}
+    else if (c == 't' || c == 'r' || c == '+' || c == '-' || c == 's') {
+      opp = c;
+    }
+    else {
+      if (opp == 't') {
+	if (c == 'z') {D3d_translate(m,minv,0,0,1);}
+	if (c == 'Z') {D3d_translate(m,minv,0,0,-1);}
+	if (c == 'y') {D3d_translate(m,minv,0,1,0);}
+	if (c == 'Y') {D3d_translate(m,minv,0,-1,0);}
+	if (c == 'x') {D3d_translate(m,minv,1,0,0);}
+	if (c == 'X') {D3d_translate(m,minv,-1,0,0);}
+      }
+      if (opp == 'r') {
+	D3d_translate(m,minv,-cent[f][0],-cent[f][1],-cent[f][2]);
+	if (c == 'z') {D3d_rotate_z(m,minv,M_PI/90);}
+	if (c == 'Z') {D3d_rotate_z(m,minv,-M_PI/90);}
+	if (c == 'y') {D3d_rotate_y(m,minv,M_PI/90);}
+	if (c == 'Y') {D3d_rotate_y(m,minv,-M_PI/90);}
+	if (c == 'x') {D3d_rotate_x(m,minv,M_PI/90);}
+	if (c == 'X') {D3d_rotate_x(m,minv,-M_PI/90);}
+	D3d_translate(m,minv,cent[f][0],cent[f][1],cent[f][2]);
+      }
+      if (opp == 's') {
+	D3d_translate(m,minv,-cent[f][0],-cent[f][1],-cent[f][2]);
+	if (c == '>') {D3d_scale(m,minv,1.1,1.1,1.1);}
+	if (c == '<') {D3d_scale(m,minv,0.9,0.9,0.9);}
+	D3d_translate(m,minv,cent[f][0],cent[f][1],cent[f][2]);
+      }
+    }
+    if (light) {
+      D3d_mat_mult_pt(LIGHT,m,LIGHT);
+    }
+    else {
+      //printf("%d",f);
+      D3d_mat_mult_points(x[f],y[f],z[f],m,x[f],y[f],z[f],numpoints[f]);
+      D3d_mat_mult_pt(cent[f],m,cent[f]);
+    }
+    G_rgb(0,0,0);
+    G_clear();
+    G_rgb(1,0,0);
+    thing_index = 0;
+    for (i = 0; i < 10; i++) {
+      if (disp[i]) {
+	thingify(i);
+      }
+    }
+    qsort(things,thing_index,sizeof(THING),compare);
+    for (i = 0; i < thing_index; i++) {
+      draw_poly(things[i].objnum, things[i].polynum);
+    }
+    draw_point(LIGHT);
+  }
+}

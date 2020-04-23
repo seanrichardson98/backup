@@ -1,0 +1,100 @@
+\documentclass[../../sean_thesis.tex]{subfiles}
+\begin{document}
+
+\toadd{I should really break up this proof into Lemma's, but I do not want to dive back into this proof}
+
+\begin{proof}[Proof of Existence for Definition~\ref{def:pullback}]
+
+%DEFINING THE CONSTRUCTION:
+The proof of existence is by an explicit construction. Specifically, for a continuous function of topological spaces $f: X \to Y$ in addition to the vector bundle $p: E \to X$ consider the vector bundle $q: F \to Y$ where $F$ is the following set.
+\begin{equation*}
+	F = \set{(y,e) \in Y \times E: f(y) = p(e)}
+\end{equation*}	
+Further, let $q$ be the mapping $q: (y,e) \mapsto y$.
+
+It must be shown that $F$ is a vector bundle satisfying the defining property of the pullback bundle. However, in order for $F$ to be a vector bundle, it must be given extra structure. 
+
+Let $F$ have the natural choice of topology induced by $Y$ and $E$; specifically $F$ takes the subspace topology of the product $Y \times E$.
+
+Next, define the vector space structure over $F$ as follows. Consider a fixed $y \in Y$ and fiber $q^{-1}(y)$. Note for each element $(y,e)$ of the fiber, the condition $f(y) = p(e)$ restricts the elements of $E$ to be in the vector space $p^{-1}(f(y))$. Then, borrowing the vector space structure from $p^{-1}(f(y))$ gives the  natural definition of addition and scalar multiplication by a scalar $\alpha$.
+\begin{align*}
+	\alpha (y,v) &= (y,\alpha v)\\
+	(y,v) + (y,w) &= (y,v+w)
+\end{align*}
+It follows from the vector space structure on $p^{-1}(f(y))$ that $q^{-1}(y)$ will satisfy all the necessary axioms to be a vector space.
+
+Finally, the construction is complete and it must now be verified that $F$ is indeed a vector bundle. Firstly,  the definition of product topology promises that the projection $q$ will be continuous. Additionally, the above construction of the vector space structure over $F$ promises that each fiber $q^{-1}(y)$ will be continuous.
+
+It remains to show that $F$ is locally trivial so fix a point $y \in Y$. By definition, $E$ is locally trivial and so has a neighborhood $U$ containing $g(y)$ such that $p^{-1}(U)$ is locally trivial. This promises a trivializing isomorphism $t: p^{-1}(U) \to U \times V$ for some vector field $V$. Note that this trivial bundle comes with the projection map $p': U \times V \to U$ given by $p': (u,v) \to u$. Define the mapping $t_1: E \to U$ to be the composition of $t$ with the projection onto the first factor and take $t_2: E \to V$ to be the same composition but onto the second factor. This allows for the representation of the trivialization by $t: e \mapsto (t_1(e), t_2(e))$. Applying the condition $p' \circ t = p$ (given by $t$ a homomorphism) to the representation gives the conclusion $t_1(e) = p(e)$ and thus allows for the simplification
+\begin{equation*}
+	t: e \mapsto (p(e), t_2(e))
+\end{equation*}
+
+After unpacking the promised trivialization on $\rest{E}{U}$, a trivialization on $\rest{F}{f^{-1}(U)}$ can now be constructed. Specifically, let the trivialization $\tau: \rest{F}{f^{-1}(U)} \to f^{-1}(U) \times V$ be given by the following.
+\begin{align*}
+	\tau&: (y,e) \mapsto (y, t_2(e))
+\end{align*}
+Additionally note that the bundle $f^{-1}(U) \times V$ comes equipped with a projection map $q'$. 
+
+It must now be shown that $\tau$ is an isomorphism of vector spaces. Observe that $\tau$ satisfies all the properties of a vector bundle homomorphism. First, $\tau$ continuous follows from $t_2$ continuous. The property $q' \circ \tau = q$ follows by
+\begin{equation*}
+	(q' \circ \tau)((y,e)) = q'((y,t_2(e))) = y = q((y,e)).
+\end{equation*}
+The last property of a homomorphism is that is linearity  over the fibers. To see this, fix a $y \in U$ and notice that $t$ linear over $p^{-1}(f(y))$ gives that $t_2$ is linear.
+\begin{align*}
+  &(f(y), t_2(\alpha v + \beta w))
+= t(\alpha v + \beta w)
+= \alpha t(v) + \beta t(w) \\
+&= \alpha(f(y), t_2(v)) + \beta(f(y), t_2(w))
+= (f(y), \alpha t_2(v) + \beta t_2(w))
+\end{align*}
+where the above computation used the $p(e) = f(y)$ as well as the predefined vector space structure of the trivial bundle. By a similar computation, $t_2$ linear gives that $\tau$ is linear over the fiber and thus a homomorphism.
+
+To get that $\tau$ is an isomorphism, it suffices to show that that the inverse function is continuous. An explicit expression for $\tau^{-1}: f^{-1}(U) \times V$ follows.
+\begin{equation*}
+	\tau^{-1}: (y,v) \mapsto (y, t^{-1}(f(y),v))
+\end{equation*}
+Using $t \circ t^{-1} = \id$ and $t^{-1} \circ t = \id$, it follows that the above is indeed the inverse expression. Further, $t^{-1}$ continuous gives that $\tau^{-1}$ continuous and so $\tau$ is an isomorphism, completing the verification of $F$ a vector bundle.
+
+It still remains to show that $F$ has the defining property of the pullback. For this, take the function $h: F \to E$ to be the projection onto $E$.
+\begin{equation*}
+	h: (y,e) \mapsto e
+\end{equation*}
+Next, fix an element $y \in Y$ and consider the fiber $q^{-1}(y)$. The restriction $f(y) = p(e)$ ensures that $h((y,v)) = v$ is an element of $p^{-1}(f(y))$. Finally, the conclusion that $h$ is a linear map from the fiber $q^{-1}(y)$ to the fiber $p^{-1}(f(y))$ follows quickly from the vector space structure of $E$.
+\begin{align*}
+	h((y, \alpha v + \beta w)) = \alpha v + \beta w = \alpha h ((y, v)) + \beta h((y, w))
+\end{align*}
+Concluding the proof.
+
+As a side note, observe that $p \circ h = f \circ q$ follows by the condition $f(y) = p(e)$ in the construction.
+\begin{align*}
+	(p \circ h)((y,e)) = p(e) = f(y) = (f \circ q)((y,e))
+\end{align*}
+This justifies drawing the commutative diagram \toadd{ref} which hopefully helps in keeping track of variables for this proof.
+
+%\begin{figure}[h]
+%	\input{figures/vector_bundles/pullback_bundle}
+%	\caption{Pullback Bundle Induced by $f$}
+%	\label{fig:pullback_bundle}
+%\end{figure}
+%
+%\begin{figure}[ht!]
+%	\input{figures/vector_bundles/pullback_a_bundle_proof}
+%	\caption{d}
+%	\label{fig:pullback_bundle}
+%\end{figure}
+
+\end{proof}
+
+\begin{proof}[Proof of \toadd{ref}]
+	The strategy for proving each of the following isomorphisms is to take advantage of the uniqueness property. If it can be shown that one side of the isomorphism satisfies the defining property of pullback for the other side, then they must be isomorphic by uniqueness.
+	\begin{enumerate}[(i)]
+		\item For topological spaces $X$, $Y$, $Z$ let $g: Z \to Y$ and $f: Y \to X$ be continuous functions and let $p: E \to X$ be a vector bundle. By definition, the bundles $f^{*}(E)$ and $g^{*}(f^{*}(E))$ come equipped with maps $h_g: g^{*}(f^{*}(E)) \to f^{*}(E)$ and $h_f: f^{*}(E) \to E$ that isomorphically map fibers to corresponding fibers. Then, the composition $h_f \circ h_g: g^{*}(f^{*}(E)) \to E$ isomorphically maps fibers to corresponding fibers. Further, the bundle $g^{*}(f^{*}(E))$ comes equipped with a projection mapping $r$ into the base space $Z$. Thus, the triple $g^{*}(f^{*}(E))$, $h_f \circ h_g$, and $r$ satisfy the defining characteristics of the pullback bundle $(f \circ g)^{*}(E)$, giving isomorphism by uniqueness.
+		\item Take the mapping $\id: X \to X$ for a topological space $X$ with a bundle $p: E \to X$. Then, the bundle $E$ itself with the identity mapping $\id: E \to E$ isomorphically maps fibers to fibers and comes equipped with the projection mapping $p$ to $X$. Then, the triple $E$, $\id: E \to E$, and $p$ satisfy the defining characteristics of the pullback $\id^{*}(E)$ which promises the isomorphism $E \iso \id^{*}(E)$ by uniqueness.
+		\item Let $f: Y \to X$ be a continuous function between topological spaces and consider the trivial bundle $p: X \times V \to X$ over X with the regular projection $p$. Then, consider the trivial bundle over $q: Y \times V \to Y$ over $Y$ with the regular projection $q$. Then, the mapping $h: Y \times V \to X \times V$ given by $h: (y,v) \mapsto (f(y), v)$ gives the identity mapping over each fiber and is thus a linear isomorphism of the fibers. Thus, the triple $Y \times V$, $h$, and $q$ satisfies the defining properties of $f^{*}(X \times V)$ and thus uniqueness promises an isomorphisms between the trivial bundles $Y \times V \iso f^{*}(X \times V)$. Note that the trivial pullback is over the same vector space.
+		\item Next, take $f: Y \to X$ to be a continuous function between topological spaces. Further, let $p_1: E_1 \to X$ and $p_2: E_2 \to X$ be vector bundles. The pullbacks $f^{*}(E_1)$ and $f^{*}(E_2)$ then come with mappings $h_1: f^{*}(E_1) \to E_1$ and $h_2: f^{*}(E_2) \to E_2$ that are isomorphisms on the fibers. Then, the direct sum of the pullbacks has a mapping $h: f^{*}(E_1) \op f^{*}(E_2) \to E_1 \op E_2$ defined on the fibers by $h: p^{-1}_1(x) \op p^{-1}_2(x) \mapsto h_1(p^{-1}_1(x)) \op h_2(p^{-1}_2(x))$ which is also an isomorphism on the fibers. Additionally note that the direct sum comes equipped with a projection mapping $p$ onto $Y$. Thus the triple $f^{*}(E_1) \op f^{*}(E_2)$, $h$, and $p$ satisfy the defining properties of the pullback $f^{*}(E_1 \op E_2)$ giving the isomorphism $f^{*}(E_1) \op f^{*}(E_2) \iso f^{*}(E_1 \op E_2)$ by uniqueness.
+		\item The proof for the distributivity of pullback over tensor product is identical to preceding such proof for direct sum, differing only by replacing each ``$\op$'' with ``$\ot$''.
+	\end{enumerate}
+\end{proof}
+
+\end{document}

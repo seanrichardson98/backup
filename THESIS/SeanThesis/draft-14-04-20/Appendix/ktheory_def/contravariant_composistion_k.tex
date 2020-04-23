@@ -1,0 +1,39 @@
+\documentclass[../../sean_thesis.tex]{subfiles}
+
+\begin{document}
+
+\begin{proof}
+	Let $X$, $Y$, and $Z$ denote compact Hausdorff spaces and take $f: X \to Y$ and $g: Y \to Z$ be continuous functions between them.
+	
+	Further denote the semirings as defined in claim \toadd{ref} by $J(X)$, $J(Y)$, and $J(Z)$. Additionally, let $i_X: J(X) \to K(X)$, $i_Y: J(Y) \to K(Y)$, and $i_Z: J(Z) \to K(Z)$ denote the ring completions of each semiring as in definition \toadd{ref}. Further, let $J(g): J(Z) \to J(Y)$ and $J(f): J(Y) \to J(X)$ denote the homomorphism of semirings as described in claim \toadd{ref}.  Finally, let the functions $K(g): K(Z) \to K(Y)$, $K(f): K(Y) \to K(X)$, and $K(f \circ  g): K(Z) \to K(X)$ be the unique functions such that the following composition identities hold.
+	\begin{align*}
+		K(f) \circ i_X &= i_Y \circ J(f)\\
+		K(g) \circ i_Y &= i_Z \circ J(g)\\
+		K(f \circ g) \circ i_X &= i_Z \circ J(f \circ g)
+	\end{align*}	
+Additionally note that $J(f \circ g) = J(g) \circ J(f)$ follows from the pullback property of \toadd{ref} $(f\circ g)^{*}(E) = g^{*}(f^{*}(E))$ on a bundle $E$ by the following computation on an element $[E] \in J(X)$.
+	\begin{align*}
+		J(f \circ g)([E]) 
+		= [(f \circ g)^{*}(E)]
+		= [g^{*}(f^{*}(E))] 
+		= J(g)([f^{*}(E)])
+		= J(g)(J(f)([E]))
+	\end{align*}
+	
+Substitutions of the preceding result together with the earlier composition identities allows for the following result.
+	\begin{align*}
+		(K(g) \circ 	K(f)) \circ i_X 
+		= K(g) \circ (i_Y \circ J(f)) 
+		= (i_Z \circ J(Y)) \circ J(f)
+		= i_Z \circ J(f \circ g)
+	\end{align*}
+And so $K(f) \circ K(g)$ fulfills the defining property of $K(f \circ g)$. Because the function $K(f \circ g)$ is the unique function fulfilling this property, it must be that $K(f) \circ K(g) = K(f \circ g)$. Figure~\ref{fig:ktheory_contravariant_composition} provides a visual aid for this argument.
+
+\begin{figure}[ht!]
+	\input{figures/ktheory_def/ktheory_contravariant_composition}
+	\caption{K-Theory Contravariant Composition Argument}
+	\label{fig:ktheory_contravariant_composition}
+\end{figure}
+
+\end{proof}
+\end{document}

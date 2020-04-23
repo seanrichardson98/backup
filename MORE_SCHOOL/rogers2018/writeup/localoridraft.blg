@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: localoridraft.aux
+The style file: plain.bst
+Database file #1: localoribib.bib
+I was expecting a `,' or a `}'---line 289 of file localoribib.bib
+ :     
+ :     TITLE = {Inverse Spectral Problems in Riemannian Geometry}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You've used 4 entries,
+            2118 wiz_defined-function locations,
+            528 strings with 4563 characters,
+and the built_in function-call counts, 1325 in all, are:
+= -- 135
+> -- 44
+< -- 2
++ -- 18
+- -- 14
+* -- 88
+:= -- 216
+add.period$ -- 13
+call.type$ -- 4
+change.case$ -- 19
+chr.to.int$ -- 0
+cite$ -- 4
+duplicate$ -- 52
+empty$ -- 115
+format.name$ -- 14
+if$ -- 281
+int.to.chr$ -- 0
+int.to.str$ -- 4
+missing$ -- 3
+newline$ -- 24
+num.names$ -- 8
+pop$ -- 22
+preamble$ -- 2
+purify$ -- 15
+quote$ -- 0
+skip$ -- 35
+stack$ -- 0
+substring$ -- 94
+swap$ -- 13
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 16
+warning$ -- 0
+while$ -- 15
+width$ -- 5
+write$ -- 48
+(There was 1 error message)

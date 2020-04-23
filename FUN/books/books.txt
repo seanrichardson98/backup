@@ -1,0 +1,9 @@
+Topology by James Munkres
+Classical Mechanics by Taylor
+Riemannian Geometry by Petersen
+Combinatorics: Topics, Techniques, Algorithms by Peter J. Cameron
+Mathematical Statistics by Jun Shao
+/*A complex analysis book*/
+
+COOL MATH:
+https://www.math.upenn.edu/~ghrist/index.html

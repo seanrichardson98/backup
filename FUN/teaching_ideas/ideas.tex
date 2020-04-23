@@ -1,0 +1,62 @@
+\documentclass[12pt]{amsart}
+
+\setlength{\parindent}{0cm}
+\usepackage[margin=0.8in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{commath}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{cancel}
+\usepackage{subfigure}
+\usepackage{multicol}
+\usepackage{gensymb}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\usepackage{graphicx}
+\graphicspath{{graphics/}}
+
+\usepackage{my_notes}
+\usepackage{my_math}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{tool}[theorem]{Tool}
+\newtheorem{approach}[theorem]{Approach}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{just}{\textit{Justification.}}{}
+\newenvironment{trans}{\textit{Translation.}}{}
+
+\newenvironment{mybox}
+{\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]}
+{\end{tcolorbox}}
+
+\newenvironment{mytbox}[1]
+{\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=#1]}
+{\end{tcolorbox}}
+
+\def\mathunderline#1#2{\color{#1}\underline{{\color{black}#2}}\color{black}}
+
+\begin{document}
+\begin{itemize}
+    \item Motivation for existence proofs:
+        \href{https://www.youtube.com/watch?v=2Ub7cYtH-aw}{This} false
+        geometric proof that 90=100 by falsely assuming the intersection
+    exists within the quadrilateral.
+\end{itemize}
+\end{document}
+

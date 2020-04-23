@@ -1,0 +1,307 @@
+\documentclass[../sean_thesis.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Topology}
+
+\section{The Category of Topological Spaces}
+
+%\sean{I'm thinking I will begin this chapter with an example of a metric space to motivate topology. I'll add that part in when I think of a good metric space that also has potential to tie in to places later.}
+
+To begin this section, consider the following instance of a metric space. Note that a metric space is simply a set paired with a way of telling distance between two points. Note that a metric space gives rise to a notion of open sets.
+
+\begin{example}[The Interval as a Metric Space]
+\label{ex:interval_ms}
+Consider the metric space that takes the interval $[0,1]$ as a set and define the distance between two points $x,y \in [0,1]$ to be $\abs{x-y}$. This gives a notion of \emph{open sets} on the interval. For example, the open interval $(1/3,2/3)$ is an open set. In this case, the collection of all open sets is any finite intersection and infinite union of open intervals, where the whole set $[0,1]$ is also defined as open. 
+\end{example}
+
+This section addresses a new category --- the category of topological spaces. Topology looks at the open sets that come as a consequence of a metric and asks and asks: what if the \emph{only} thing we knew were what subsets of a space are open and and nothing else. What then can we say about the space? And importantly, what can we learn from comparing these spaces along with their open sets?
+
+Common terminology hints at this central role of open sets in topology. Something \emph{has a topology} if it is knowm what sets are open, and a set is \emph{topologized} by declaring what subsets are open. Below is a formal definition of a topological space. Keep in mind a topological space is simply a set together with a collection of open sets, often denoted $\T$, that follows some rules.
+
+\begin{definition}[Topological Space]
+    Given a set $X$ and $\T \subseteq \pset{X}$, the pair $(X,\T)$ is called a \emph{topological space} if:
+    \vspace{-\varparskip}
+    \begin{enumerate}[(i)]
+        \item The empty set $\emptyset$ and the full set $X$ are in $\T$.
+        \item For every set $\U_\alpha$ in $\T$ where $\alpha \in I$, the infinite union $\cup_{\alpha\in I} \U_\alpha$ is in $\T$.
+        \item For any two subsets $\U_1$ and $\U_2$ in $\T$, the intersection $\U_1 \cap \U_2$ is in $\T$.
+    \end{enumerate}
+     \vspace{-\varparskip}
+    For $\U \in \T$, the element $\U$ is called an \emph{open} set, and its complement $\overline{\U}$ is called a \emph{closed set}.
+\end{definition}
+
+Compare the above definition to the open sets in a metric space. Recall that in a metric space in which the open sets are given by a metric, it follows that the infinite union of open sets are open and the finite intersection of open sets are open. Topology focuses more directly on the open sets themselves and so makes these union and intersection properties defining characteristics of open sets. Further, note that in a metric space, a closed set has its own definition and it follows that open sets and closed sets are complements of one another. Here however, a closed set is by definition the complement of an open set. Topology describes the same structure as metric spaces, but from a different angle. It should be emphasized, however, that topology is more general than the notion of a metric space. Some topological spaces can be given a metric, but some can not. Below is the same interval
+
+\begin{example}[The Interval as a Topological Space]
+	Consider the topological space by taking the set $[0,1]$ and let the open sets $\T$ be defined by any combination of a finite number of intersections and an arbitrary number of unions on open intervals, and additionally let $[0,1] \in \T$. This indeed forms a topological space because: 
+\vspace{-\parskip}
+	\begin{enumerate}[(i)]	
+		\item $\emptyset$ and $[0,1]$ are open. 
+		\item For any collection of open sets $\U_\alpha$ with $\alpha \in I$, each $\U_\alpha$ is the union of open intervals, so the union of the collection $\cup_{\alpha\in I} \U_\alpha$ reduces to the union of open sets and thus gives an open set by definition.
+		\item For any two open sets $\U_1$ and $\U_2$, both $\U_1$ and $\U_2$ is the union of open intervals, but then consider the intersection $\U_1 \cap \U_2$. This is indeed open, for it is a combination of open intervals with only a single intersection operation.
+	\end{enumerate}
+	\vspace{-\parskip}
+	Thus the pair $[0,1]$ and $\T$ indeed forms a topological space. This topology is induced by the metric that describes physical distance as described in example~\ref{ex:interval_ms}, so this topology is called the \emph{standard topology}.
+\end{example}
+
+The category of topological spaces is still incomplete --- topological objects require some notion of morphisms between them. The inspiration for a good choice of morphism comes from the notion of continuous maps between metric spaces. In metric spaces, one equivalent way to define continuity is through open sets. This definition fits nicely in topology, so the category of topology borrows this definition to define continuity between topological spaces, which will be the morphisms of the category.
+
+\begin{definition}[Continuous Function]
+	Take two topological spaces and corresponding open sets $(X, \T_X)$ and $(Y, \T_Y)$. A function between the spaces $f: X \to Y$ is called \emph{continuous} if for every open set $V \in \T_Y$, its inverse image is open: $f^{-1}(V) \in \T_X$.
+\end{definition}
+
+As an example of a continuous function, consider the following mapping between intervals.
+
+\begin{example}
+	As an example of a continuous function, consider the interval $I$ with the standard topology and let the function $f: I \to I$ be given by $f(x) = 0$. To see that this map is continuous, take any set $V$ in the codomain. Consider two cases: $0 \in V$ and $0 \not\in V$. In the $0 \in V$ case, then the inverse image is the entire domain, that is $f^{-1}(V) = I$, and the domain as a whole is open. In the case that $0 \not\in V$, then the inverse image is the empty set, in other words $f^{-1}(V) = \eset$, and the empty set is open. Thus, $f$ is continuous.
+\end{example}
+
+Note that the above example does not actually depend on the topology $I$. This is typically not the case; in fact, the topology typically has a large impact on whether a function is continuous.
+
+\begin{example}
+\label{ex:cnts_and_top}
+	Take two topological objects $(I_1, \T_1)$ and $(I_2, \T_2)$ where $I_1$ and $I_2$ denote the interval and $\T_1$ and $\T_2$ will be discussed later. Then, let $f: I_1 \to I_2$ be a function given by $f(x) = x$. Now consider two possibilities:
+	\vspace{-\parskip}
+	\begin{itemize}
+		\item Firstly, take $\T_1$ to be the power set $\pset{I_1}$ and take $\T_2 = \set{\eset, I_2}$. Then, the preimage of every set $V$ in $I_2$ is indeed open, for every set in $I_1$ is open and thus $f$ is continuous.
+		\item Next, swap the topologies. Take $\T_1 = \set{\eset, I_1}$ and $\T_2 = \pset{I_1}$. Then, many open sets have a non-open preimage. For instance, the set $\set{0} \subset \T_2$ is open in this topology, but the preimage is given by $\set{0} \subset I_1$, which is not one of the two open sets $I_1$. Thus this map is not continuous.
+	\end{itemize}
+\end{example}
+
+As hinted at before, the category of topological spaces is similar to the category of metric spaces. Given a metric space, the objects can be translated to topological objects and the continuous functions between metric spaces can interpreted as continuous functions between topological objects. In fact, this is a functor from the category of metric spaces to the category of topological spaces. This functor can be used to define topological objects as in the following example. 
+
+\begin{example}[$S^2$]
+	Consider the unit sphere as understood as a metric space. That is, take the set $X \subset \mathbb{R}^3$ defined by $X = \{ (x,y,z) \in \mathbb{R} \vert x^2+y^2+z^2 = 1\}$. Then, consider the standard metric $d$ in $\mathbb{R}^3$ and the pair $(X,d)$ defines the unit sphere as a metric space. By considering all open sets $\T$ as defined by the metric $d$, the pair $(X,d)$ then defines the topology of the two dimensional sphere $S^2$. Take particular note that this process is due to the functor from metric spaces to topological spaces.
+\end{example}
+
+This process of defining topological spaces through metric spaces provides many fundamental topological objects that we can build upon. In particular, by using the standard metric of $\mathbb{R}^n$, we can get the topology of an interval $I$, the topology of any sphere $S^n$, and the topology of $\mathbb{R}^n$ itself.
+
+Recall that an isomorphism as generally defined in category theory is a morphism that has an inverse morphism, suggesting the following definition in topology.
+
+\begin{definition}[Isomorphism]
+	A function $f$ between topological spaces is an \emph{isomorphism} if $f$ is continuous with a continuous inverse.
+\end{definition}
+
+\toadd{example of isomorphism?}
+
+\section{Some Mappings and Corresponding Topologies}
+%NOTE TO READER
+This section addresses three useful mappings in topology: the quotient map, the inclusion map, and the product map. Ideally, these three maps will be continuous functions so that they fit into category theory. However, as demonstrated in example~\ref{ex:cnts_and_top}, changing the topology can \emph{make} a function continuous. So, each of these three mappings has a corresponding topology that provides continuity. With the completion of this section, there will be no need to stress about whether a quotient map, inclusion map, or product map is continuous --- the assumed topology will make it continuous.
+
+%QUOTIENT MAP MOTIVATION:
+A quotient map is a map from a topological $X$ to a quotient $X/\sim$ by some equivalence relation $\sim$ on $X$. Let $Y$ denote the set of equivalence classes $X/\sim$. Because elements of $Y$ are subsets of $X$, there is a natural choice of topology $\T_Y$. For a single equivalence class $[x] \in Y$, the natural choice is to say $[x] \in \T_Y$ exactly when $[x] \in \T_X$. In general, any group of equivalence classes $\cup_\alpha [x_\alpha]$ in $Y$ should be open in $Y$ exactly when $\cup_\alpha [x_\alpha]$ is open in $X$. This topology makes the mapping $x \mapsto [x]$ continuous. However, this quotient map is actually a better starting point to define the quotient topology, but note that the following definition is inspired by the above.
+
+%DEFINITION OF QUOTIENT MAP:
+\begin{definition}[Quotient Map and Quotient Topology]
+	Consider topological spaces $(X, \T_X)$, $(Y, \T_Y)$ along with a surjective function $q: X \to Y$. Further restrict $q$ such that $V \in \T_Y$ if and only if $q^{-1}(V) \in \T_X$. Then, $q$ is a \emph{quotient map}. Note that in the case that $\T_Y$ is not defined, a specified quotient map defines a \emph{quotient topology} on $Y$.
+\end{definition}
+
+%NOTE TO READER:
+Note that $q$ requires exactly the sets such that it is always continuous. The condition $V \in \T_Y$ if and only if $q^{-1}(V) \in \T_X$ is analogous to the condition $\cup_\alpha [x_\alpha] \in T_Y$ if and only if $\cup_\alpha [x_\alpha] \in \T_X$ discussed previously. However, the quotient map is a more natural starting point and gives the equivalence relation immediately by $x_0 \sim x_1$ if and only if $q(x_0) = q(x_1)$.
+
+\toadd{example of quotient map. collapsing $A \subset X$ to a point example?}
+
+%INCLUSION MAP MOTIVATION:
+Along with the quotient topology and corresponding quotient map, there is a subspace topology and corresponding inclusion map. Consider a topological space $(X,\T_X)$ and an open subset $A \subset X$ with no pre-defined topology. However, the subset $A$ can borrow topology from the larger space $X$ in a natural way: define $\T_A$ by $\U \in \T_A$ exactly when $U \in T_X$. However, note that this definition only works when $A$ is open in $X$ because for $A$ to be a topological space, the whole space must be open. A construction that works when $A$ is not open is given by $\T_A = \{ \U \cap A \vert \U \in \T_X \}$. This gives the same open sets as previously discussed for $A$ open, but also defines a valid topology for $A$ closed. This topology is constructed exactly so that the inclusion map $i: A \to X$ given by $i(a) = a$ is continuous. However, defining the inclusion map itself serves as a better starting point, but the following definition is motivated by the above.
+
+%DEFINITION OF INCLUSION MAP:
+\begin{definition}[Inclusion Map and Subspace Topology]
+	Take topological spaces $(A, \T_A)$ and $(X,\T_X)$. Then, an injective map $i: A \hookrightarrow X$ is called an \emph{inclusion map} when $\U \in \T_A$ if and only if there exists a $V \in \T_X$ such that $V \cap i(A) = i(\U)$. In the case that $\T_A$ is not defined, a specified inclusion map defines a \emph{subspace topology} on $A$.
+\end{definition}
+
+The defined subspace topology is equivalent to the topology discussed previously, and note this construction is perfectly engineered so that the inclusion map is continuous. Take an inclusion map $i: A \to X$ and an open set $V \subset X$. The parts of $X$ that do not contain the image of $A$ is irrelevant to the inverse image, so $i^{-1}(V)$ is equivalent to $i^{-1}(i(A) \cap V)$. Then, by definition, this corresponds to an open subset $\U$ in $A$, giving continuity.
+
+\toadd{example for interval and $\mathbb{R}$}
+
+So, the quotient map is paired with the quotient topology and the inclusion map is paired with the subspace topology. Now consider the projection map, which is paired with the product topology.
+\begin{definition}[Projection] Let $X_1, \dots, X_n$ be spaces with topologies $\T_1, \dots, \T_n$. Then the \emph{projection onto the k\textsuperscript{th} factor} is given by the following.
+	\begin{align*}
+	&p: X_1 \times \dots \times X_k \times \dots \times X_N \to X_K\\
+	&p: (x_1, \dots, x_k, \dots, x_n) \mapsto x_k
+	\end{align*}
+\end{definition}
+However, whether such a projection is continuous depends on the choice of topology for the product $X_1 \times \dots \times X_n$. The natural choice for this topology is the product topology, which is best defined through a universal property.
+
+\begin{definition}[Product Topology]
+Let $X_1, \dots, X_n$ be spaces with topologies $\T_1, \dots, \T_n$. Then, consider the family of projections onto the k\textsuperscript{th} factor $p_k: X_1, \dots, X_n \to X_k$. Then, the product topology $\T_\times$ is the unique topology that satisfies the following universal property of product topology. That is, the product topology is such that each $p_k$ is continuous, and for any topological space $Y$ together with a family of continuous map $f_k: Y \to X_k$ there exists a unique continuous map $f: Y \to X_1 \times \dots \times X_n$ such that the following diagram commutes for each $k$. That is, $f_k = p_k \circ f$ for each $k$. 
+
+\begin{figure}[ht!]
+\include{figures/topology/prod_top_univ_prop}
+\caption{Universal Property of Product Topology}
+\label{fig:prod_top_univ_prop}
+\end{figure}
+\end{definition}
+
+This definition still requires verifications of existence and uniqueness. Uniqueness follows automatically from the universal property; the proof follows similarly here even though the arrows are pointing in the opposite directions-. \toadd{still need to discuss existence}.
+
+The bottom line with the product topology is that the universal defines the topology of $X_1 \times \dots \times X_n$ exactly so that each of the projections $p_k$ is continuous. So, assuming the product topology, there is no need to stress about whether $p_k$ is continuous --- it will be just as the inclusion and quotient maps will be.
+
+\section{Nice Properties of Topological Objects}
+Topology does not assume a lot --- only any set and a notion of open sets. This results in there being a lot of possible topological objects. Some of these objects are intuitive and have nice properties, but many of these objects are unintuitive and often difficult to work with. This section will aim to identify two nice properties --- Hausdorff and compact. Restricting spaces to having these two nice properties will throw out the troublesome topological spaces that would obstruct the remainder of the story.
+
+First, note a nice property of the topological space $\R^2$ with the standard topology (which is defined by the standard metric). For any two distinct points $p,q \in \R^2$, it is possible to draw two tiny open sets --- one surrounding around $p$ and one surrounding $q$ --- such that the two open sets do not intersect. This corresponds to $p$ and $q$ having some distance between them --- some ``space'' to themselves. 
+
+However, not all topological objects have this property. For instance, consider the same set $\R^2$ with a ridiculous metric: the distance between any two points is $0$. The visual here is that all of $\R^2$ has been squashed into a single point. This then results in a ridiculous topology: $\T = \set{\emptyset, \R^2}$, containing only the empty set and the full set with nothing else. In this case, given any two points $p$ and $q$ it is impossible to draw two disjoint open sets where one contains $p$ and the other contains $q$. The reason for this is that there is literally no distance between $p$ and $q$. The best way to avoid working with this topological object is by imposing the Hausdorff condition. The definition follows, but intuitively think of the Hausdorff condition as requiring that any two distinct points have a nonzero distance between them.
+
+\begin{definition}[Hausdorff]
+	Let $X$ be a topological space. We call $X$ \emph{Hausdorff} if for any pair of distinct points $p,q \in X (p \neq q)$, there exists open sets $U_p$ with $p \in U_p$ and $U_q$ with $q \in U_q$ such that $U_p \cap U_q = \eset$.
+\end{definition}
+
+The Hausdorff property is required for the story to move forward. Another necessary property is \emph{compactness}, which prevents the topological spaces from getting too ``big''. For example, consider the interval $I$ with the standard metric in comparison to $\R$ with the standard metric. The space $\R$ is unbounded and in some sense bigger than $I$. The following definition characterizes this difference using only open sets.
+
+\begin{definition}[Compact]
+    A topological space $X$ is \emph{compact} if every open cover of $X$ has a finite subcover. That is, for any cover $X = \cup_{\alpha \in I} U_\alpha$ with open $U_\alpha \subset X$ for all $\alpha \in I$, then there exists $\alpha_1, \alpha_2, \dots, \alpha_n \in I$ such that $X = U_{\alpha_1} \cup U_{\alpha_2} \cup \dots U_{\alpha_n}$.
+\end{definition}
+
+With this criterion, spaces such as $D^n$ and $S^n$ are compact and spaces such as $\R^n$ are not compact. To practice, consider the following verification that $\R$ is not compact.
+\begin{example}[$\R^2$ is not compact]
+	In order to show $\R$ is not compact, it suffices to bring up a specific infinite open cover and prove it does not have a finite subcover. So consider the following infinite cover:
+	\begin{equation*}
+		C = \set{(k-1,k+1) \times \R : k \in \Z}
+	\end{equation*}
+	However, consider removing any element $(k-1, k+1)$ from the set. Then, the resulting set $C \setminus \set{(k-1,k+1)}$ does not contain the point $k$ in any of its sets and so it does not cover all of $\R$. Then, there is no way to reduce the cover and thus there is no finite subcover.
+\end{example}
+
+\sean{The rest of this chapter is not worth reading currently}
+
+\section{Operations on Topological Spaces}
+\sean{This section is still in progress}
+
+The cone operation $C$ takes some topological space and expands it by making it into a cone. Before giving the formal definition, here is an illustration. Begin with  $S^0$ --- the set of two points. Then, as is illustrates in figure~\ref{fig:cone}, $C(S^0)$ would be create a low dimensional cone shape which is isomorphic to the interval $I$. Then, $C(I)$ would create a cone, which is isomorphic to the two dimensional disk $D^2$.
+
+\begin{figure}
+	\toadd{Figure with cone operations}
+	\caption{Sequence of Cone Operations}
+	\label{fig:cone}
+\end{figure}
+ 
+The formal definition of the cone operation combines the product and quotient topologies.
+\begin{definition}[Cone Operation]
+	Take a topological space $X$. Then, taking the interval $I = [0,1]$, the cone operation $C$ is given by
+	\begin{equation*}
+		C(X) = (X \times I)/(X \times \set{0})
+	\end{equation*}
+\end{definition}
+Note the quotient of a topological space is given in example~\ref{ex:sub_quotient}. Intuitively, this cone operation takes extends the topological space into a new dimension by crossing with the interval and then ``pinches'' the top.
+ 
+A relative to the cone operation is the suspension operation $S$. If the cone ``cone-ifies'' a topological space, the suspension operation ``sphere-ifies'' the topological space. Again, before giving the formal definition, consider an example sequence of suspension operations. Following Figure~\ref{fig:suspension} and beginning with $S^0$, then $S(S^0)$ gives the circle $S^1$ and applying the suspension again gives $S(S^1)$ gives the sphere $S^2$.
+
+\begin{figure}
+\toadd{figure with suspension operations}
+\caption{Sequence of Suspension Operations}
+\label{fig:suspension}
+\end{figure}
+
+The formal definition of the suspension follows uses a similar construction as the cone operation.
+
+\begin{definition}[Suspension Operation]
+	Take a topological space $X$. Then, taking the interval $I = [0,1]$, the suspension operation $S$ is given by
+	\begin{equation*}
+		C(X) = (X \times I)/(X \times \set{0,1})
+	\end{equation*}
+\end{definition}
+
+And so the suspension operation takes the Cartesian product with the interval and ``pinches'' two sides together.
+ 
+\toadd{Wedge Sum}
+\toadd{Smash Product}
+\toadd{Think of good examples for the wedge sum and smash product}
+
+\section{More Topology}
+\sean{This section is still in progress}
+
+\toadd{Do I need to define it more general as subsets?}
+\begin{definition}[Compact]
+    A topological space $X$ is \emph{compact} if every open cover of $X$ has a finite subcover. That is, for any cover $X = \cup_{\alpha \in I} U_\alpha$ with open $U_\alpha \subset X$ for all $\alpha \in I$, then there exists $\alpha_1, \alpha_2, \dots, \alpha_n \in I$ such that $X = U_{\alpha_1} \cup U_{\alpha_2} \cup \dots U_{\alpha_n}$.
+\end{definition}
+
+\toadd{motivation}
+\begin{definition}[Hausdorff]
+	Let $X$ be a topological space. We call $X$ \emph{Hausdorff} if for any pair of distinct points $p,q \in X (p \neq q)$, there exists open sets $U_p$ with $p \in U_p$ and $U_q$ with $q \in U_q$ such that $U_p \cap U_q = \eset$.
+\end{definition}
+
+\toadd{examples}
+\toadd{Motivation for normal. Normal is stronger than Hausdorff.}
+\begin{definition}[Normal]
+	Let $X$ be a topological space. We call $X$ \emph{Normal} if for any two disjoint closed subsets $A \subset X$ and $B \subset X$, there exists open sets $U_A$ with $A \subset U_A$ and $U_B \subset B$ and $U_A \cap U_B = \eset$. 
+\end{definition}
+
+\toadd{motivation: will be dealing primarily with compact Hausdorff spaces}
+\begin{theorem}
+	Every compact Hausdorff space is normal.
+\end{theorem}
+\toadd{How difficult is this proof? I need this, should I prove it?}
+
+\toadd{Topological quotient of Hausdorff space with closed subspace is compact Hausdorff}
+
+\section{Homotopy}
+\sean{This section is still in progress}
+
+\toadd{Work towards definition of contractible}
+\begin{definition}[Homotopic Functions]
+	Take Topological spaces $X$ and $Y$ with functions $f,g:X \to Y$. Then, we say \emph{$f$ is homotopic to $g$} if there exists a continuous function $H: X \times [0,1] \to Y$ such that $H(x,0) = f(x)$ and $H(x,1) = g(x)$. We denote the homotopy with $f \simeq g$.
+\end{definition}
+Intuitively, two functions are homotopic if we can continuously deform the functions into one another. 
+
+\toadd{give a \emph{visual} example. $f,g: I \to \R^2$ with $f(x) = (x,0)$, $g(y) = (0,y)$ could work well? But perhaps too trivial. A better one could be $f,g: I \to \R^2 $ with $f(x) = (\cos(x), \sin(x))$ and $g(x) = (2\cos(x), 2\sin(x))$ The second example would build intuition for the first homology group, which I perhaps should include in the document}.
+
+\begin{definition}[Homotopic Spaces]
+	Take topological spaces $X$ and $Y$. We say $X$ and $Y$ are homotopy equivalent if there exist continuous functions $F:X \to Y$ and $G:X \to Y$ such that $F \circ G \simeq \id_Y$ and $G \circ F \simeq \id_X$. We denote the homotopy with $X \simeq Y$.
+\end{definition}
+
+
+
+\begin{example}
+	I claim that $\R^2 \setminus \set{(0,0)} \simeq S^1$.
+\end{example}
+
+\section{Appendix}
+\sean{This section is still in progress}
+\subsection{Continuity as a Local Property}~
+
+\toadd{description of continuity as a local property and importance}
+
+\toadd{Reformulate below to be more along the lines of a restriction; more useful later and more intuitive now.}
+
+\begin{definition}[Local Continuity]
+	Let $f: X \to Y$ be a function between two topological spaces and take $x \in X$. Then. $f$ is \emph{locally continuous at $x$} if there exists an open neighborhood $V_x$  containing $f(x)$ such that all open $V' \subset V_x$ satisfies $f^{-1}(V')$ open.
+\end{definition}
+
+\begin{claim}
+	A function $f: X \to Y$ is continuous if and only if it is locally continuous at every point in $X$.
+\end{claim}
+\begin{proof}
+	For the forward direction, assume a continuous function between topological spaces $f: X \to Y$ and consider an arbitrary point $x \in X$. Then, by continuity the entire set $Y$ provides the necessary open set about $f(x)$.
+	
+	For the reverse direction, assume a function $f: X \to Y$ is locally continuous at every point $x \in X$ and let $V_x$ denote the promised open neighborhood for each $x$. Then, fix an open set $V \subset Y$. Consider the union of preimages
+	\begin{align*}
+		\bigcup_{x \in X} f^{-1}(V \cap V_x).
+	\end{align*}
+	Note that by $V$ and $V_x$ open, each intersection $V \cap V_x$ is open, and by $V \cap V_x \subset V_x$, the definition of local continuity gives $f^{-1}(V \cap V_x)$ open and thus the entire expression $P$ is open. Finally, note that $P$ is equivalent to $f^{-1}(V)$. Indeed, for each $x \in f^{-1}(V)$, $x \in f^{-1}(V \cup V_x)$ and so $x$ is contained in the union ensuring that $f^{-1}(V)$ is contained in the union. Similarly, for each $x$ in the union, consider the corresponding $V_x$ and observe that $x \in f^{-1}(V \cap V_x) = f^{-1}(V) \cap f^{-1}(V_x)$, thus $x \in f^{-1}(V)$ and so the union is contained in the preimage. Thus, the union and and $f^{-1}(V)$ and by the union open it follows that $f^{-1}(V)$ is open.
+\end{proof}
+
+\subsection{Important Topological Facts}
+%\begin{definition}[$T_1$]
+%	A topological space $(X, \T)$ is called $T_1$ if every point in $X$ is closed.
+%\end{definition}
+%
+%\begin{definition}[Normal]
+%	A topological space $(X,\T)$ is called \emph{normal} if for all disjoint closed subsets $A$ and $B$, there exists disjoint open sets $\U_A$ and $\U_B$ such that $A \subset \U_A$ and $B \subset \U_B$.
+%\end{definition}
+%
+%\begin{theorem}
+%	Take a compact Hausdorff topological space $(X, \T)$. Then, $(X, \T)$ is normal.
+%\end{theorem}
+
+\toadd{Note this is weaker than the actual Lemma, but all that is needed currently}
+
+\begin{theorem}[One Direction of Urysohn's Lemma]
+	Let $(X, \T)$ be a compact Hausdorff topological space. Then for any disjoint closed subsets $A$ and $B$, there exists a continuous function $f: X \to [0,1]$ such that
+	\begin{equation*}
+		A \subset f^{-1}(\set{0}) \text{ and }
+		B \subset f^{-1}(\set{1}).
+	\end{equation*}
+\end{theorem}
+
+\end{document}

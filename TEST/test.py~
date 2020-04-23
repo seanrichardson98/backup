@@ -1,0 +1,13 @@
+class test:
+    '''def __init__(self,stuff):
+        self.name = "test"
+        print("check")'''
+    name = "test"
+    def f(self):
+        self.name += ":-)"
+
+test = test()
+
+print(test.name)
+test.f()
+print(test.name)

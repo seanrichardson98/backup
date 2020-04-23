@@ -1,0 +1,88 @@
+                            | # begin execution at address zero
+0x000:                      |         .pos    0
+0x000: 30f4f80f000000000000 |         irmovq  stack, %rsp     # set stack to 0xFF8, grow to lower addresses
+0x00a: 807000000000000000   |         call    main            # start main
+0x013: 00                   |         halt                    # done
+                            | 
+                            | # set up array, length, followed by data
+0x018:                      |         .align  8
+0x018:                      | count:
+0x018: 0a00000000000000     |         .quad   0x0A
+0x020:                      | array:
+0x020: ff0f000000000000     |         .quad   0x0FFF
+0x028: 200f000000000000     |         .quad   0x0F20
+0x030: 45ffffffffffffff     |         .quad   0xFFFFFFFFFFFFFF45
+0x038: ffffffffffffffff     |         .quad   0xFFFFFFFFFFFFFFFF
+0x040: 0100000000000000     |         .quad   0x01
+0x048: 0300000000000000     |         .quad   0x03
+0x050: 0400000000000000     |         .quad   0x04
+0x058: 0a00000000000000     |         .quad   0x0A
+0x060: 0900000000000000     |         .quad   0x09
+0x068: 1100000000000000     |         .quad   0x11
+                            | 
+0x070:                      | main:
+0x070: 30f72000000000000000 |         irmovq  array, %rdi
+0x07a: 30f01800000000000000 |         irmovq  count, %rax
+0x084: 50600000000000000000 |         mrmovq  (%rax), %rsi
+0x08e: 809800000000000000   |         call    sort
+0x097: 90                   |         ret
+                            | 
+                            | # void sort(long *data, long count)
+                            | # data in %rdi, count in %rsi
+                            | # %rdi .... data
+                            | # %rsi .... count
+                            | # %rcx .... last
+                            | # %rbx .... i
+                            | # %r8 ..... 8
+                            | # %r9 ..... 1
+                            | # r10 ..... test
+0x098:                      | sort:
+                            |         #setup
+0x098: 30f80800000000000000 |         irmovq $8, %r8
+0x0a2: 30f90100000000000000 |         irmovq $1, %r9
+0x0ac: 2061                 |         rrmovq %rsi, %rcx 
+0x0ae: 6191                 |         subq %r9, %rcx #last = count-1
+0x0b0: 30f30000000000000000 |         irmovq $0, %rbx # i = 0
+                            |         #test
+0x0ba:                      | loop:
+0x0ba: 2030                 |         rrmovq %rbx, %rax
+0x0bc: 6000                 |         addq %rax, %rax
+0x0be: 6000                 |         addq %rax, %rax
+0x0c0: 6000                 |         addq %rax, %rax
+0x0c2: 6070                 |         addq %rdi, %rax #get address
+                            | 
+                            |         #main swap
+0x0c4: 30f80800000000000000 |         irmovq  $8, %r8
+0x0ce: 6008                 |         addq    %rax, %r8
+0x0d0: 50b00000000000000000 |         mrmovq  (%rax), %r11
+0x0da: 50c80000000000000000 |         mrmovq  (%r8), %r12
+0x0e4: 20ba                 |         rrmovq  %r11, %r10
+0x0e6: 20cd                 |         rrmovq  %r12, %r13
+0x0e8: 61ca                 |         subq    %r12, %r10
+0x0ea: 22bd                 |         cmovl   %r11, %r13
+0x0ec: 20de                 |         rrmovq  %r13, %r14
+0x0ee: 20b2                 |         rrmovq  %r11, %rdx
+0x0f0: 61d2                 |         subq    %r13, %rdx
+0x0f2: 602e                 |         addq    %rdx, %r14
+0x0f4: 20c2                 |         rrmovq  %r12, %rdx
+0x0f6: 61d2                 |         subq    %r13, %rdx
+0x0f8: 602e                 |         addq    %rdx, %r14
+0x0fa: 40d00000000000000000 |         rmmovq  %r13, (%rax)
+0x104: 40e80000000000000000 |         rmmovq  %r14, (%r8)
+                            | 
+                            | 
+0x10e: 6093                 |         addq %r9, %rbx
+0x110: 2030                 |         rrmovq %rbx, %rax
+0x112: 6110                 |         subq %rcx, %rax
+0x114: 72ba00000000000000   |         jl loop #inner loop go back
+0x11d: 30f30000000000000000 |         irmovq $0, %rbx #reset outer loop
+0x127: 6191                 |         subq %r9, %rcx
+0x129: 30f00000000000000000 |         irmovq $0, %rax
+0x133: 6110                 |         subq %rcx, %rax
+0x135: 72ba00000000000000   |         jl loop
+                            |         
+0x13e: 90                   |         ret
+                            | 
+                            | # stack starts here
+0xff8:                      |         .pos    0xFF8
+0xff8:                      | stack:

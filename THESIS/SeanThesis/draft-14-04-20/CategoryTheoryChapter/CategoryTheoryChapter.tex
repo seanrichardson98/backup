@@ -1,0 +1,110 @@
+\documentclass[../sean_thesis.tex]{subfiles}
+
+\begin{document}
+\chapter{Category Theory}
+
+A good starting spot is with several mathematical areas that the reader is already familiar with and that do not at first appear to have any connection with one another. 
+The study of linear algebra focuses on two things: vector spaces and linear transformations between vector spaces. Set theory examines sets as well as mappings between sets. Group theory considers groups and homomorphisms between groups whereas ring theory focuses on rings and homorphisms between rings. Real analysis studies metric spaces together with continuous functions between metric spaces as well as manifolds paired with smooth mappings between these manifolds. A pattern emerges: each one of these topics have two things: some \emph{objects} of study (vector spaces, metric spaces, manifolds, sets, groups, rings) as well a specific type of function within the objects of study (linear transformations, continuous functions, smooth mappings, set mappings, homomorphisms); these functions are generally referred to as \emph{morphisms}. Any such object-morphism pair is called a \emph{category} so long as it obeys some rules.
+
+\begin{definition}[Category]
+	Let $\mathcal{O}$ denote a collection of objects and let $\mathcal{M}$ denote a collection of morphisms. Then, the pair $(\mathcal{O}, \mathcal{M})$ is called a \emph{category} if:
+	\vspace{-\varparskip}
+	\begin{enumerate}[(i)]
+		\item There is an identity element $\id$ in the morphisms $\mathcal{M}$ that satisfies: $\id(obj) = obj$ for all objects $obj$ in the objects $\mathcal{O}$ and the composition law $f \circ \id = f = \id \circ f$ holds for all $f$ in $\mathcal{M}$.
+		\item For a specific object $obj$, the collection of morphisms from $obj$ to itself must contain the identity
+		\item composition is associative: for all $f,g,h \in \mathcal{M}$,  $(f \circ g) \circ h = f \circ (g \circ h)$.
+	\end{enumerate}
+	\vspace{-\varparskip}
+\end{definition}
+
+The above idea of a category takes all the specific object-morphisms pairs mentioned earlier and identifies the commonality between them. To get a feel for this formal notion of category, examine the following two categories.
+
+\begin{example}[Vector Spaces as a Category]
+	The category of vector spaces has as objects the collection of all vector spaces and as morphisms the collection of all linear maps between vector spaces.
+	\vspace{-\varparskip}
+	\begin{enumerate}[(i)]
+		\item The collection of all linear maps indeed includes the identity mapping. Here, the $1\times 1$ identity matrix, the $2 \times 2$ identity matrix, the $3 \times 3$ identity matrix, and all of the others are representations of the same identity morphism. Indeed for any other linear map $L$, the composition requirement $\id \circ L = L = L \circ \id$ holds.
+		\item The collection of all linear maps from a particular vector space $V$ to itself indeed includes the identity. In this case, fixing a basis for an $n$ dimensional vector space allows the $n\times n$ identity matrix to represent this identity map.
+		\item The composition of linear maps, by the nature of functions, is associative.
+	\end{enumerate}
+\end{example}
+
+\begin{example}[Rings as a Category]
+	The category of rings has as objects the collection of all  rings and as morphisms the collection of all rings homomorphisms between rings.
+	\vspace{-\varparskip}
+	\begin{enumerate}[(i)]
+		\item The collection of all ring homomorphisms indeed includes the identity. Here the identity is the mapping that takes elements to themselves and is indeed a ring homomorphism:
+		\begin{align*}
+			\id(r+s) &= r+s = \id(r)+\id(s)\\
+			\id(rs) &= rs = \id(r)\id(s)\\
+			\id(1) &= 1
+		\end{align*}
+		Further, for any other ring homomorphism $\varphi$, the composition requirement $\varphi \circ \id = \varphi$ holds.
+		\item Additionally, the set of all ring homomorphisms from a particular ring $R$ to itself includes the identity mapping. Taking the elements of $R$ to themselves is a valid ring homomorphism from $R$ to $R$.
+		\item Finally, the composition of ring homomorphisms, by the nature of functions, is associative.
+	\end{enumerate}
+\end{example}
+
+So the rules posed in the definition of category seem to work out for specific examples. However, this general idea of a ``category'' is currently quite useless; however, pinning down the similarities between different categories allows for creating relationships between categories. The following defines a way to map one category to another.
+
+\begin{definition}[Functor]
+\label{def:functor}
+	Consider two categories $\mathcal{C}_A = (\mathcal{O}_A, \mathcal{M}_A)$ and $\mathcal{C}_B = (\mathcal{O}_B, \mathcal{M}_B)$. Then, consider a mapping $\mathcal{F}: \mathcal{C}_A \to \mathcal{C}_B$, which maps $\mathcal{O}_A$ to $\mathcal{O}_B$ and $\mathcal{M}_A$ to $\mathcal{M}_B$. Then, $\mathcal{F}$ is called a \emph{functor} if $\mathcal{F}$ preserves identity identity: $\mathcal{F}(\id_A) = \id_B$ as well as satisfies either one of the following two composition requirements:
+	\vspace{-\varparskip}
+	\begin{itemize}
+		\item For, $f,g \in \mathcal{M_A}$, then $\mathcal{F}(g\circ f) = \mathcal{F}(g) \circ \mathcal{F}(f)$. Here, $\mathcal{F}$ is called a \emph{covariant functor}.
+		\item  For, $f,g \in \mathcal{M_A}$, then $\mathcal{F}(g\circ f) = \mathcal{F}(f) \circ \mathcal{F}(g)$. Here, $\mathcal{F}$ is called a \emph{contravariant functor}.
+	\end{itemize}
+\end{definition}
+
+\sean{Is there a good simple example of a functor? I could do the functor from rings to abelian group by forgetting multiplication.}
+
+The difference between covariant and contravariant functors becomes clearer when examining \emph{commutative diagrams} as depicted in the included figures. Figure~\ref{fig:covariantfunctor} shows the arrows pointing in the same direction and corresponds to a covariant functor. However, Figure~\ref{fig:contravariantfunctor} reverses the direction of the arrow with the application of the functor and represents a contravariant functor. Both of these diagrams represents a functor between to categories, say from category $A$ to category $B$. Then, $X$ and $Y$ represent two objects in category $A$ and $f$ is a morphism from object $X$ to object $Y$. Then $\F$ denotes a functor from category $A$ to category $B$ and so $\F(X)$ and $\F(Y)$ are objects in categories $B$; more specifically, $\F(X)$ is where the functor maps object $X$ to and $\F(Y)$ is where the functor maps object $Y$ to. The functor takes $f$ to $\F(f)$, which represents a morphism between $\F(X)$ and $\F(Y)$, but keep in mind the direction of this mapping depends on the type of functor.
+
+\begin{figure}
+	\include{figures/categorytheory/covariantfunctor}
+	\caption{Covariant Functor}
+	\label{fig:covariantfunctor}
+\end{figure}
+
+\begin{figure}
+	\include{figures/categorytheory/contravariantfunctor}
+	\caption{Contravariant Functor}
+	\label{fig:contravariantfunctor}
+\end{figure}
+
+So, the direction of the arrows is preserved for covariant functors and reversed for contravariant functors. But how does this but how does this relate to the composition requirements as given in definition~\ref{def:functor}? Applying the functor on an additional object $Z$ together with an additional morphism $f$ as in Figures~\ref{fig:covariantfunctor_comp} and \ref{fig:contravariantfunctor_comp} gives a visual of the composition requirements. For covariant functors as in figure~\ref{fig:covariantfunctor_comp}, the natural composition requirement is not surprising, $\F(g \circ f)$ = $\F(g) \circ \F(f)$. However, in the case of contravariant functors as depicted in Figure~\ref{fig:contravariantfunctor_comp}, the statement $\F(g) \circ \F(f)$ does not make sense! It is impossible to apply $\F(f)$ and then immediately $\F(g)$ because the input space of $\F(g)$ is different than the output space of $\F(f)$. The relevant composition requirement then must be $\mathcal{F}(g\circ f) = \mathcal{F}(f) \circ \mathcal{F}(g)$.
+
+\begin{figure}
+	\include{figures/categorytheory/covariantfunctor_comp}
+	\caption{Covariant Functor Composition}
+	\label{fig:covariantfunctor_comp}
+\end{figure}
+
+\begin{figure}
+	\include{figures/categorytheory/contravariantfunctor_comp}
+	\caption{Contravariant Functor Composition}
+	\label{fig:contravariantfunctor_comp}
+\end{figure}
+
+The word isomorphism is used when working in rings, groups, manifolds, vector spaces, and various other settings. So perhaps it does not come as a surprise that category theory also provides general definition of isomorphism that carries over to all of these different categories.
+
+\begin{definition}[Isomorphism]
+	Given a category $(\mathcal{O},\mathcal{M})$ and two objects $X$ and $Y$, then a morphism $\varphi: X \to Y$ is an \emph{isomorphism} if there exists a morphism $\psi: Y \to X$ such that $\varphi \circ \psi = \id$ and $\psi \circ \varphi = \id$.
+\end{definition}
+
+The above definition essentially says an isomorphism is a morphism that has a morphism as an inverse. For example, a linear map is an isomorphism if it has a linear inverse and a ring homomorphism is an isomorphism if its inverse is a ring homomorphism. However, in linear algebra, the definition of an isomorphism is often given as a bijective linear map. Similarly, in ring theory, an isomorphism is often defined as a bijective ring homomorphism. These definitions do not address the morphism properties of the inverse. However, in these specific cases, one can verify that the inverse of a bijective linear map $L$ is always linear. For instance, the scalar verification would go as follows.
+\begin{align*}
+	L^{-1}(\alpha x) 
+	= L^{-1}(\alpha L(x')) 
+	= L^{-1}(L(\alpha x'))
+	= \alpha x'
+	= \alpha L^{-1}(x)
+\end{align*}
+Where the first step $x = L(x')$ for some $x'$ uses surjectivity of $L$ and the last step $x' = L^{-1}(x)$ uses the injectivity of $L$. A similar argument gives the additive property of linear transformations and 
+
+However, it is not always true that a bijective morphism will have a morphism as an inverse. In particular, a continuous bijection need not have a continuous inverse.
+
+Category theory is, by design, abstract. Comfort with speaking in the language of category theory comes with practice and the following chapters will aid in practicing this language.
+
+\end{document}

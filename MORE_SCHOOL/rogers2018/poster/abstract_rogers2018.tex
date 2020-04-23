@@ -1,0 +1,47 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newcommand{\myabs}[1]{\vert#1\vert}
+\newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+
+\DeclareMathOperator{\iso}{Iso}
+\DeclareMathOperator{\fix}{Fix}
+\DeclareMathOperator{\tr}{Tr}
+
+\begin{document}
+
+\date{\today}
+\title{Abstract Draft}
+\author{Sean Richardson and Liz Stanhop}
+\maketitle
+
+\section{Abstract}
+
+\hspace{\parindent} Given some object, such as a drum, there exist a spectrum
+of fundamental frequencies determined by physics. However, if the drum was in a
+neighboring room and you could only listen to these frequencies, is it possible
+to deduce the drum's shape? In other words, ``Can you hear the shape of a
+drum?''. In this research project, we ask a similar question but for abstract
+mathematical objects. The vibrational frequencies for abstract objects are
+defined with the eigenvalue solutions of the Laplace operator on the wave form.
+The list of solutions $\lambda_1, \lambda_2, \dots$ is called the Laplace
+Spectra where $\sqrt{\lambda_i}$ is a valid fundamental frequency. 
+
+The abstract shapes we study are called \emph{orbifolds}. An orbifold a normal multidimensional surface that is allowed to have some ``trouble spots'', which are tied to the symmetries allowed in $n$ dimensional space. Formally, an orbifold is a generalization of a manifold such that it can have local structure of $\mathbb{R}^n/G$ where $G$ is a group of isometries.
+
+I now present our research question: given the Laplace Spectra of some unknown orbifold $\mathcal{O}$, what properties of $\mathcal{O}$ are determined?
+
+Our result requires the new definition of \emph{local orientability}. An orbifold $\mathcal{O}$ is \emph{locally non-orientable} if there exists a short Orientation-reversing path on $\mathcal{O}$. If no such path exists, $\mathcal{O}$ is \emph{locally orientable}.
+
+We found that it is possible to hear the locally orientability of an orbifold. Formally, there exists no locally orientable orbifold and locally non-orientable orbifold with the same Laplace Spectra.
+
+\section{Notes}
+\begin{itemize}
+    \item Where can I cut down?
+    \item Is ``wave form'' the right way to describe $\psi(\mathbf{x})$? [from $u(t,\mathbf{x}) = A(t)\psi({\mathbf{x}})$]
+\end{itemize}
+
+\end{document}
+

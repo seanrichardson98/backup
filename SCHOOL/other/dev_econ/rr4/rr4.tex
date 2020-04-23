@@ -1,0 +1,51 @@
+\documentclass[12pt]{amsart}
+
+\usepackage[margin=1in]{geometry}
+\newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+
+
+\begin{document}
+\title{Reading Review 4}
+\author{Sean Richardson, Economic Development}
+\maketitle
+
+In this reading review I will discuss Roland Chapter 4. The chapter begins
+in pointing out the economic growth of China and India. The importance of
+looking economic growth in developing countries serves as a motivation for
+the more technical contents. To begin the analysis of economic growth,
+Roland first introduces factors of production --- primarily labor $L_t$ and
+capital $K_t$. Then, the production function $F$ takes in the factors of
+production as inputs and returns the value of outputs in the economy $Y_t$. A
+specific example is the Cobb-Douglas production function:
+\begin{equation}
+    Y_t = A_t K_t^\alpha L_t^{1-\alpha} \ \ \ \ \ \ \ 0 \leq \alpha \leq 1
+    \tag{Cobb-Douglas}
+\end{equation}
+The chapter than analyzes various aspects of this equation.
+
+Firstly, I would like to point out the well known mathematical relation
+(assuming continuous second derivatives)
+\begin{equation*}
+    \pder{}{L_t}\left(\pder{Y_t}{K_t}\right) = 
+    \pder{}{K_t}\left(\pder{Y_t}{L_t}\right)
+\end{equation*}
+What we can take from this is that a small change in labor will affect the
+marginal change in capital a similar amount that a small change in capital
+will affect a marginal change in labor.
+Additionally, I have one concern regarding the logic leading up to the
+expression of the factor shares. The given formula for the labor shares
+relies on the value of $\pder{F}{L_t}$ and $\pder{F}{K_t}$ reaching the
+natural equilibrium of the wage rate and interest rate respectively,
+maximizing return return. However, under Cobb-Douglas
+equation with a constant return to scale variable $A_t$, I feel it is
+important to address that it is mathematically possible to adjust the
+inputs so that the partial derivatives can match these values for any of
+the given values. In fact, because the expressions of both partial
+derivatives are heavily reliant on the fraction $\frac{K_t}{L_t}$, I would
+guess that this is not true for the Cobb-Douglas equation with constant
+$A_t$. Overall, I appreciated this more mathematical approach to economics.
+It seems as though the mathematics are well thought out and there is a lot
+to learn from them.
+
+
+\end{document}

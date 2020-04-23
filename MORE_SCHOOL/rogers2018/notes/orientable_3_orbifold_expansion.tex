@@ -1,0 +1,430 @@
+\documentclass[12pt]{article} 
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newcommand{\myabs}[1]{\vert#1\vert}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section] 
+\newtheorem{proposition}[theorem]{Proposition}     
+\newtheorem{remark}[theorem]{Remark}     
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{claim}[theorem]{Claim}
+
+\DeclareMathOperator{\iso}{Iso}
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\fix}{Fix}
+\DeclareMathOperator{\area}{Area}
+
+\newcommand{\vv}{\mathbf v}
+\newcommand{\zv}{\mathbf 0}
+\newcommand{\orb}{\mathcal O}
+
+\begin{document}
+
+\title{Heat Expansion of Orientable 3-Orbifold Notes}
+\author{Liz Stanhope, Sean Richardson}
+\date{\today}
+\maketitle
+
+\section{The Orbifold Formulas}
+The general formula for the asymptotic expansion of the heat kernel of a compact manifold/orbifold is given by,
+\begin{equation}
+    \trace(K) = \sum_{j=1}^{\infty}e^{-\lambda_{j} t}\sim I_0+\sum_{N \in S(\mathcal{O})}\frac{I_N}{\myabs{\iso(N)}}
+    \label{eq:trace}
+\end{equation}
+Equation~\ref{eq:I_0} for $I_0$. Equation~\ref{eq:I_N} for $I_N$.
+\begin{equation}
+    I_0 = {(4\pi t)}^{-\dim(\mathcal{O})/2}\sum_{k=0}^{\infty}a_k(\mathcal{O})t^k
+    \label{eq:I_0}
+\end{equation}
+Equation~\ref{eq:a_first} through equation~\ref{eq:a_last} for $a_k$ terms.
+\begin{equation}
+    I_N = {(4\pi t)}^{-\dim(N)/2}\sum_{k=0}^{\infty}t^k\int_{N}b_k(N,x)dvol_N
+    \label{eq:I_N}
+\end{equation}
+Equation~\ref{eq:b1} for $b_k(N,x)$.\\
+$a_k(\mathcal{O})$ is generally given by,
+\begin{equation}
+    a_k(\mathcal{O})=\int_M u(x,x)dvol_\mathcal{O}
+    \label{eq:a_first}
+\end{equation}
+Where $u$ is some complicated thing. But some specific terms are given by,
+\begin{align}
+    a_0(\mathcal{O})&= Vol(\mathcal{O})\\
+    a_1(\mathcal{O})&= \frac{1}{6}\int_M \tau(x)dvol_M(x)
+\end{align}
+Where $\tau$ is the scalar curvature. In dimension two we can simplify $a_1(\mathcal{O})$ to,
+\begin{equation}
+    a_1(\mathcal{O})=\frac{2\pi}{3}\chi(\mathcal{O}) \text{ for } \dim(\mathcal{O}) = 2
+    \label{eq:a_last}
+\end{equation}
+Where $\chi({\mathcal{O}})$ is the orbifold Euler number.
+\begin{equation}
+    b_k(N,x)=b_k(\tilde{N},\tilde{x})
+    =\sum_{\gamma \in \iso^{\max}(\tilde{N})} b_k(\gamma,\tilde{x})
+    \label{eq:b1}
+\end{equation}
+Equation~\ref{eq:iso_max} for $\iso^{\max}(\tilde{N})$. Equation~\ref{eq:b2} for $b_k(\gamma,\tilde{x})$.
+\begin{equation}
+    \iso^{\max}(\tilde{N}) = \{\, \gamma \in \iso(\tilde{N}) \mid \tilde{N} \text{ is open in } \fix(\gamma) \,\}
+    \label{eq:iso_max}
+\end{equation}
+\begin{equation}
+b_k(\gamma,x)=\myabs{\det{B_{\gamma}(x)}}\tilde{b}_k(\gamma,x)
+\label{eq:b2}
+\end{equation}
+Equation~\ref{eq:B} for $B_{\gamma}(x)$. 
+\begin{equation}
+    B_{\gamma}(x)={(I-A_{\gamma}(x))}^{-1}
+    \label{eq:B}
+\end{equation}
+Where $I$ is the Identity matrix. Equation~\ref{eq:A} for $A_{\gamma}$.
+\begin{equation}
+    A_{\gamma} = \gamma_{\ast x}: {(T_{x}W)}^{\perp} \mapsto {(T_{x}W)}^{\perp}
+    \label{eq:A}
+\end{equation}
+Where $T_{x}W$ is the tangent space of a point in the fixed point space.
+
+
+\section{Orientable 3-orbifold heat expansion}
+
+\begin{lemma}\label{lem:sing}  A singular point in an orientable 3-orbifold has one of the following forms.  Also in this lemma introduce linear charts from C. Gordon's expository orbifold article
+\end{lemma}
+
+\begin{proof}Thurston paragraph before Prop 13.3.1 and Artin's Algebra book Theorem 9.1.  (all isometries are rotations)
+\end{proof}
+
+\subsection{Degree $0$ term}
+
+\begin{theorem}  The degree zero heat invariant of an orientable $3$-orbifold is zero.
+\end{theorem}
+
+\begin{proof}
+Let $\mathcal{O}$ be an orientable 3-orbifold. The heat expansion for $\mathcal{O}$ has the form
+$$I_0+\sum_{N \in S(\mathcal{O})}\frac{I_N}{\myabs{\iso(N)}}.$$
+Observe that in the expression for $I_0$, the coefficient $4\pi t$ is raised to the $-3/2$ power, resulting in no zero degree term in $I_0$.
+
+Now $I_N$ is given by
+$$I_N= {(4\pi t)}^{-\dim(N)/2}\sum_{k=0}^{\infty}t^k\int_{N}b_k(N,x)dvol_N.$$
+
+
+By Boileau, Maillot, and Porti ``Three-Dimensional Orbifolds and their Geometric Structures" page 31-32 we know $\mathcal{O}$ has only 1-dimensional and zero dimensional singular strata.  In the case of 1-dimensional strata the coefficient $4 \pi t$ in the expression for $I_N$ is raised to the $-1/2$ power, resulting in no zero degree term.  In the case of 0-dimensional strata, the coefficient of the sum in the expression for $I_N$ is 1.  Thus the constant term in the sum is $\int_N b_0(N,x) dvol_N$.  Since $N$ is just a point we just get $b_0(\{p\},x)$.
+
+By the notes above we know 
+ $$b_0(\{p\},x) =\sum_{\gamma \in \iso^{\max}(\tilde{N})} b_k(\gamma,\tilde{x})$$
+ where $\iso^{\max}(\tilde{N})$ is the subset of $\iso(\tilde{N})$ given in line \ref{eq:iso_max}.  By Lemma \ref{lem:sing} we know that all isometries $\gamma \in \iso(\tilde{N})$ are rotations.  In particular $\fix(\gamma)$ must be a line in $\tilde{U}$.  Because $\fix(\gamma)$ is a line $\{\tilde{p}\}$ is not open in $\fix(\gamma)$.  Thus by definition of $\iso^{\max}(\tilde{N})$, we have $\iso^{\max}(\tilde{p})$ is empty.  This implies $b_0(p,x)=\sum_{\gamma \in \iso^{\max}(\tilde{N})} b_k(\gamma,\tilde{x})=0$.
+ \end{proof}
+
+ \subsection{Degree $-\frac{1}{2}$ term}
+
+ \begin{theorem}  The degree $-\frac{1}{2}$ heat invariant of an orientable $3$-orbifold is 
+ $$ (4\pi)^{-3/2} \frac{1}{6}\int_{\mathcal{O}} \tau(x) \ dvol_{\mathcal O}+\sum_{i=1}^l \frac{1}{2\sqrt{\pi}m_i} \cdot \frac{m_i-1}{12} length(N_i).$$
+ \end{theorem}
+
+\begin{proof} Let $\mathcal{O}$ be an orientable 3-orbifold. The heat expansion for $\mathcal{O}$ has the form
+$$I_0+\sum_{N \in S(\mathcal{O})}\frac{I_N}{\myabs{\iso(N)}}.$$  
+We begin by finding the full coefficient of $t^{-1/2}$ in this expansion.
+Recall that,
+$$I_0 = {(4\pi t)}^{-\dim(\mathcal{O})/2}\sum_{k=0}^{\infty}a_k(\mathcal{O})t^k.$$
+The degree  $-\frac{1}{2}$ term of the $I_0$ expansion is $(4\pi)^{-3/2}a_1t^{-1/2}$.
+
+Again $I_N$ is given by
+$$I_N= {(4\pi t)}^{-\dim(N)/2}\sum_{k=0}^{\infty}t^k\int_{N}b_k(N,x)dvol_N.$$
+Because there only exist singular strata of dimension zero and dimension one, we only need to consider $I_N$ in these cases.  When $N$ is zero dimensional we don't see a $-\frac{1}{2}$ degree term in $I_N$.  So we focus on those $N \in S(O)$ having dimension one.  In this case the coefficient of $t^{-1/2}$ in $I_N$ is 
+$$(4\pi)^{-1/2}t^{-1/2}\int_N b_0(N, x) \ dvol_N.$$
+
+Now let $N_1, N_2, \dots, N_l$ be the list of connected components of the 1-dimensional singular set of $\mathcal{O}$. Take $m_1, m_2, \dots, m_l$ to be the orders of the corresponding isotropy groups.  So $N_1$ is fixed by a cyclic group of rotations of order $m_1$, and so on.  Note:  by Boileau, Maillot, and Porti ``Three-Dimensional Orbifolds and their Geometric Structures" page 31-32 we know the 1-dimensional singular strata in $\mathcal{O}$ must have rotational isotropy only.  With this notation the coefficient of the degree $-1/2$ term in the trace (\ref{eq:trace}) is
+$$(4\pi)^{-3/2}a_1 + \sum_{i=1}^{l} \frac{(4\pi)^{-1/2}}{|Iso(N_i)|}\int_N b_0(N, x) \ dvol_N.$$
+Recall once more that $$b_0(N, x) = \sum_{\gamma \in Iso^{max}(N_1)} b_0(\gamma,x).$$
+Write $Iso(N_i)=\{e, r_1, r_2, \dots, r_{m_i-1}\}$. Since $Fix\{e\}$ is the entire space, $e$ is not in $Iso^{max}$.  Since $Fix\{r_i\}$ is the entire line, all non-trivial rotations are in $Iso^{max}$.
+
+Now $b_0(\gamma,x)=\myabs{\det(I-A_{\gamma*})^{-1}}$.  We observe that using a linear coordinate chart (see C. Gordon's orbifold expository paper) that puts the axis of rotation on the $x$-axis, then the differentials of the elements of $Iso^{max}$ are as follows.
+$$\gamma_{ij*} = \begin{bmatrix} 1 & 0 & 0 \\ 0  & \cos(\frac{2\pi j}{m_i}) & -\sin(\frac{2\pi j}{m_i}) \\ 0 & \sin(\frac{2\pi j}{m_i}) & \cos(\frac{2\pi j}{m_i}) \end{bmatrix}$$
+
+This means $$A_{\gamma_{ij*}} = \begin{bmatrix}   \cos(\frac{2\pi j}{m_i}) & -\sin(\frac{2\pi j}{m_i}) \\ \sin(\frac{2\pi j}{m_i}) & \cos(\frac{2\pi j}{m_i}) \end{bmatrix}.$$  Thus $$\det(I-A_{\gamma_{ij*}})^{-1} = \frac{1}{4\sin^2(\frac{j\pi}{m_i})}$$ as in DGGW's computation of heat invariants for a single cone point.  Now apply Lemma 5.4 in DGGW to obtain,
+$$b_0(N_i, x) = \sum_{j=1}^{m_i-1}  \frac{1}{4\sin^2(\frac{j\pi}{m_i})} = \frac{m_i^2-1}{12}.$$
+
+
+Working our way back out of this deep dive into computation we have,
+$$\int_{N_i} b_0(N_i, x) \ dvol_{N_i} = \int_{N_i} \frac{m_i^2-1}{12} \ dvol_{N_i} = \frac{m_i^2-1}{12} \  length(N_i)$$
+
+Recalling that $a_1=\frac{1}{6}\int_{\mathcal{O}} \tau(x) \ dvol_{\mathcal O}$, we write out the full degree $-1/2$ coefficient in the heat expansion of $\mathcal{O}$.
+
+$$(4\pi)^{-3/2} a_1 + \sum_{i=1}^l \frac{1}{2\sqrt{\pi}m_i} \cdot \frac{m_i-1}{12} length(N_i) =$$
+$$ (4\pi)^{-3/2} \frac{1}{6}\int_{\mathcal{O}} \tau(x) \ dvol_{\mathcal O}+\sum_{i=1}^l \frac{1}{2\sqrt{\pi}m_i} \cdot \frac{m_i-1}{12} length(N_i)$$
+
+\end{proof}
+
+
+ \begin{corollary}  The degree $-\frac{1}{2}$ heat invariant of an flat orientable $3$-orbifold is
+ $$ \sum_{i=1}^l \frac{1}{2\sqrt{\pi}m_i} \cdot \frac{m_i-1}{12} length(N_i).$$
+  \end{corollary}
+  
+ Brainstorming:  (remember that corollary above requires flat geometry)
+ \begin{itemize}
+ \item Suppose we assume all dimension 1 singular strata have the same length.  Can we say something about the $m_i$?
+ \item Suppose we assume all of the singular strata have the same isotropy?
+ \item What if we assume same isotropy and same length of components in singular stratification?  How many such orbifolds are there?
+ \item How can we get information about the dim zero singular strata?  These never appear in isomax in the orientable case.
+ \item Suppose the singular set is a union of disjoint circles.  Could we say something within this class of orbifolds.  Does this even make sense?  (See Thurston's Borromean rings example.)  Is there a 3-orbifold whose singular set is just a circle.  If so, then is it distinguished spectrally by its heat invariants?  (So that no other orbifold could be isospectral to it.)
+ \item How can we use the fact that the 0-dim singular set is not detected by the heat invariants.  Could we construct two  3-ofds that have different 0-strata but otherwise identical heat invariants.  Then these would be isospectral and non-isometric.  OR could we strategically use Sunada's Theorem (or other methods) to create orbifolds that vary only in the 0-dim stratum.  This could give candidates of isosp non-isom orbifolds.
+ \item What about the Orbifold Theorem.  Could the geometries given there help us? (Yikes... takes decomposing the orbifold which would wreck the spectrum)
+ \item Note in a 3-orbifold the singular set is a 3-regular graph.  So the number of edges should tell us the number of vertices.
+ \end{itemize}
+
+NEXT:  Write up results for deg -1 and deg -3/2.  Also 1/2 term for general case (omit full detail on curvature term) and apply to flat case.
+
+\subsection{Degree $-1$ term}
+
+\begin{theorem}
+    The degree $-1$ heat invariant of an orientable $3$-orbifold is $0$.
+\end{theorem}
+\begin{proof}
+    Let $\mathcal{O}$ be an orientable $3$-orbifold. The heat expansion of $\mathcal{O}$ has the following form
+    \begin{equation*}
+        I_0+\sum_{N \in S(\mathcal{O})}\frac{I_N}{\myabs{\iso(N)}}
+    \end{equation*}
+    Because $\dim({\mathcal{O}})=3$, $I_0$ consists of only fractional powers of $t$. So, $I_0$ contributes nothing to the degree $-1$ term. We now consider the contribution of $I_N$ to the $-1$ term.
+    \begin{equation*}
+    I_N = {(4\pi t)}^{-\dim(N)/2}\sum_{k=0}^{\infty}t^k\int_{N}b_k(N,x)dvol_N
+    \end{equation*}
+    The orbifold $\mathcal{O}$ will have only strata of dimension $0$ and $1$ due to the lack of reflectional symmetry. Any strata $N$ with $\dim({N})=0$ and $\dim({N})=1$ will have not have a degree $-1$ term in the expansion of $I_N$. Neither $I_0$ or $I_N$ for any $N$ contribute to the degree $-1$ term for our orbifold $\mathcal{O}$, so we have a degree $-1$ term of $0$.
+\end{proof}
+
+\subsection{Degree $-\frac{3}{2}$ term}
+
+\begin{theorem}
+    The degree $\frac{-3}{2}$ heat invariant of an orientable $3$-orbifold is given by ${(4\pi)}^{-3/2} Vol(\mathcal{O})$
+\end{theorem}
+\begin{proof}
+    Let $\mathcal{O}$ be an orientable $3$-orbifold. The heat expansion of $\mathcal{O}$ is defined as
+    \begin{equation*}
+        I_0+\sum_{N \in S(\mathcal{O})}\frac{I_N}{\myabs{\iso(N)}}
+    \end{equation*}
+    Recall that $I_N$ is given by
+    \begin{equation*}
+    I_N = {(4\pi t)}^{-\dim(N)/2}\sum_{k=0}^{\infty}t^k\int_{N}b_k(N,x)dvol_N
+    \end{equation*}
+    Our orientable orbifold $\mathcal{O}$ has strata $N$ of only degree $0$ and degree $1$. Neither dimension will have a degree $\frac{-3}{2}$ term in $I_N$. So, for all $N$ in $\mathcal{O}$ the contrubution of $I_N$ to the degree $\frac{-3}{2}$ heat invariant is $0$. This simplifies the degree $\frac{-3}{2}$ heat invariant to simply the degree $\frac{-3}{2}$ term of $I_0$.
+    \begin{equation*}
+    I_0 = {(4\pi t)}^{-\dim(\mathcal{O})/2}\sum_{k=0}^{\infty}a_k(\mathcal{O})t^k
+    \end{equation*}
+    We have $\dim(\mathcal{O})=3$, so the degree $-\frac{3}{2}$ term is simply ${(4\pi)}^{-3/2} a_0$. Recall $a_0=Vol(\mathcal{O})$. In making that substitution we have that the degree $-\frac{3}{2}$ heat invariant is given by ${(4\pi)}^{-3/2} Vol(\mathcal{O})$.
+\end{proof}
+The following table gives the heat invariants of an orientable $3$-orbifold:
+\begin{center}
+\centering
+\begin{tabular}{| c | c |}
+    \hline
+    degree          & coefficient\\
+    \hline
+    $\frac{-3}{2}$  & ${(4\pi)}^{-3/2} Vol(\mathcal{O})$\\
+    $-1$            & $0$ \\
+    $\frac{-1}{2}$  & $(4\pi)^{-3/2} \frac{1}{6}\int_{\mathcal{O}} \tau(x) \ dvol_{\mathcal O}+\sum_{i=1}^l \frac{1}{2\sqrt{\pi}m_i} \cdot \frac{m_i-1}{12} length(N_i).$ \\
+    $0$             & $0$\\
+    \hline
+\end{tabular}
+\end{center}
+
+\section{Non-orientable Orbifold Case}
+
+\begin{definition}
+    A $3$-orbifold $\mathcal{O}$ is \emph{non-orientable} if it does not admit an atlas of compatibly oriented charts.  (really better to define orientable -- fewer negatives)
+\end{definition}
+
+In contrast to the manifold setting, an orbifold can fail to be orientable in two ways.  If we consider a projective plane with a single cone point (as sketched by David Webb in his heat kernel notes), we see that each chart can be oriented.  However (we suspect) there is no way to compatibly fit together these charts.  In a sense orientability is failing in a global way.  However an orbifold with a mirror locus fails to be orientable because a local chart about points in the mirror locus cannot be oriented in a way that allows the local group to act by orientation preserving maps.  So here orientability is failing in a local way.  Our claim implies that an orbifold that fails to be orientable due to this local condition cannot be isospectral to an orientable orbifold.
+
+
+
+\begin{claim}
+    A $3$-orbifold $\mathcal{O}$ that possesses an orientation reversing element in some coordinate chart's local group cannot be isospectral to a orientable orbifold.  ``We can hear the presence of a non-orientable coordinate chart." ??
+\end{claim}
+
+\begin{proof}
+    We will show that either the degree $0$ or degree $-1$ term, or both, in the heat expansion of $\mathcal{O}$ is non-zero.\\
+Recall,
+    \begin{equation*}
+    \trace(K) = \sum_{j=1}^{\infty}e^{-\lambda_{j} t}\sim I_0+\sum_{N \in S(\mathcal{O})}\frac{I_N}{\myabs{\iso(N)}}
+    \end{equation*}
+Here,
+\begin{equation*}
+    I_0 = {(4\pi t)}^{-\dim(\mathcal{O})/2}\sum_{k=0}^{\infty}a_k(\mathcal{O})t^k
+\end{equation*}
+This does not contribute to any integer degree terms.\\
+For a strata $N$ with $\dim(N) = 0$,
+\begin{equation*}
+    I_N = {(4\pi t)}^{-\dim(N)/2}\sum_{k=0}^{\infty}t^k\int_{N}b_k(N,x)dvol_N
+\end{equation*}
+This has no degree $-1$ term, but has degree zero term $\int_{N}b_0(N,x)dvol_N$.\\
+For a strata $N$ with $\dim(N) = 1$ we again get no contribution to the degree $0$ term.
+For a strata $N$ with $\dim(N) = 2$ we have,
+\begin{equation*}
+    I_N = {(4\pi t)}^{-1}\sum_{k=0}^{\infty}t^k\int_{N}b_k(N,x)dvol_N
+\end{equation*}
+The above expression has a degree $-1$ term of $\int_{N}b_0(N,x)dvol_N$ and a degree $0$ term of $\int_{N}b_1(N,x)dvol_N$.\\\\
+
+We proceed by case analysis.  The cases are based on the fact that the only linear orientation reversing isometries of Euclidean 3-space are reflections and the antipodal map.  Need to add more here.  Comes down to linear representations of local groups and their determinants.
+
+\textbf{Case1:}
+Assume $\mathcal{O}$ has a local group that contains a reflection. This $\mathcal{O}$ has a $2$-dimensional mirror face /*proof?*/\marginpar{Add proof} $N$. We compute the degree $-1$ term of $I_N$. 
+\begin{equation*}
+    b_0(N,x)=\sum_{\gamma \in \iso^{\max}(\tilde{N})} b_0(\gamma,\tilde{x})
+\end{equation*}
+Where $\iso(\tilde{N}) = \{ 1, Refl \}$ and $\iso^{\max} = \{Refl\}$\\
+The sum evaluates to
+$b_0(\tilde{N},\tilde{x}) = b_0(Refl,\tilde{x}) = \vert (I-A_{\gamma})^{-1} \vert \cdot b_0(\gamma,\tilde{x})$.\\
+We have $b_0(\gamma,\tilde{x}) = 1$ by definition and $A_{\gamma} = \begin{bmatrix} -1 \end{bmatrix}$. So, the whole sum evaluates to $b_0(N,x) = \frac{1}{2}$ \\
+Thus,
+\begin{equation*}
+    \int_{N}b_0(N,x)dvol_N(x) = \int_{N}\frac{1}{2}dvol_N(x) = \frac{1}{2}\cdot \area(N)
+\end{equation*}
+The dimension $2$ strata $N$ then contributes $(\frac{1}{2} \cdot \frac{1}{4\pi} \cdot \frac{1}{2} \cdot \area(N))t^{-1} = \frac{1}{16\pi}t^{-1}$ to the heat expansion of $\mathcal{O}$\\
+Should $\mathcal{O}$ possess other $2$ dimensional singular strata they will have the same form as above (need to justify this). Thus, they contribute only positive values to the degree $-1$ term.
+Thus, the degree $-1$ term of $\mathcal{O}$ is nonzero. This distinguishes $\mathcal{O}$ from the orientable orbifolds. Case 1 complete.\\\\
+\textbf{Case 2:}
+Suppose $\mathcal{O}$ has no $\dim(2)$ singular strata and $\mathcal{O}$ has a local group that contains the antipodal map.  Because the antipodal map fixes only one point, that point $p$ is a connected component of the zero-stratum of $O$.  We will analyze what its contribution is to the heat trace of $\mathcal{O}$.
+
+ \begin{equation*}
+    I_{\{p\}} = \sum_{k=0}^{\infty}t^k\int_{\{p\}}b_k(N,x)dvol_{\{p\}} =\sum_{k=0}^{\infty}t^k \ b_k(\{p\},p)
+    \end{equation*}
+ Now compute the zero degree term,
+ \[b_0(\{p\},p) = b_0(A,\tilde{p})\]
+where $A$ denotes the antipodal map acting on a local cover of $p$.  Note that $A$ is in isomax of $\tilde{p}$ because the fixed point set of $A$ is the full stratum $\{p\}$ itself.
+\[b_0(A,\tilde{p}) = \myabs{\det(I-A_{A*})^{-1}} \cdot 1 =  \myabs{\det(2I_{3 \times 3})^{-1}} \cdot 1 = \frac{1}{8}\]
+
+Because the isotropy group of zero-stratum $\{p\}$ has order two, from $\{p\}$ we get a contribution of $\frac{1}{16}$ to the zero degree term.  
+
+Since we have assumed $\mathcal{O}$ has no mirrors, we don't get a contribution from them to the zero degree term.  Thus we conclude the zero degree term of $\mathcal{O}$ is at least $\frac{1}{16}$, and so not equal to zero.  In particular $\mathcal{O}$ cannot be isospectral to an orientable orbifold.
+
+\end{proof}
+
+\section{Notes on crystallographic groups}
+
+Theory to support computational approach to understanding singular strata and heat invariants of quotients of $R^3$ modulo a crystallographic group.  We follow notation and definitions from ``The geometry of crystallographic groups" by Andzrej Szczepanski. (online at Watzek) 2014.
+
+\begin{definition}  A crystallographic group $\Gamma$ is a discrete subgroup of the isometries of Euclidean $n$-space $E^n$ for which the (topological) quotient $E^n/\Gamma$ is compact.
+\end{definition}
+
+\begin{proposition} \label{decomposition} Suppose $g$ is in the isometry group of $E^n$.  Then there is a translation $t$ and an element $A$ of $O(n)$ so that $g=t A$.
+\end{proposition}
+
+\begin{proof}  We first show that $g=t A$ where $A$ is an isometry of $E^n$ that fixes the origin.  After that we confirm that $A$ is orthogonal.  (hand wave at this point)
+
+Suppose $\vv \in R^n$ and define $A(\vv)=g(\vv)-g(\zv)$.  Also take $t(\vv)=\vv+h(\zv)$.  Note that  $t$ is a translation, $A$ fixes the zero vector and $t\circ A=g$.  To show that $A$ is in fact linear use commented out website here %https://math.stackexchange.com/questions/194538/showing-that-an-isometry-on-the-euclidean-plane-fixing-the-origin-is-linear
+Then need to show $A$ is orthogonal.
+\end{proof}
+
+\begin{proposition}  Let $\Gamma$ be a crystallographic group and suppose $L$ is its lattice.  Suppose $L$ is generated by the independent vectors $v_1, v_2, v_3$.  For $g\in \Gamma$ we can write $g=tA$ as in Lemma \ref{decomposition}.  Further decompose $g$ as follows:  $g=l \circ s \circ A$ where $t=l\circ s$, $l \in L$ and $s=m_1v_1+m_2v_2+m_3v_3$ with $0 < m_i < 1$.  We claim that $g$ fixes a point in $R^3$ only if $t+s \in Image(A-I)$.
+\end{proposition}
+
+\begin{remark}  
+\begin{itemize}
+\item By abuse of notation we write a translation as the vector it translates by.
+\item It is our hope that we can prove this for $s=0$ in one case, and then show if $s \neq 0$ then $g$ has no fixed points.
+\end{itemize}
+\end{remark}
+
+\section{Odd Dimensional Orbifolds}
+
+\begin{definition}
+    A chart $(\tilde{U},G_U,\pi_U)$ on some orbifold is \emph{orientable} if all elements of the group $G_U$ are orientation-preserving transformations of the open set $\tilde{U} \subset \mathbb{R}^n$. An orbifold $\mathcal{O}$ is \emph{locally orientable} if every chart on $\mathcal{O}$ is orientable. Conversely, an orbifold $\mathcal{O}$ is \emph{locally non-orientable} if there exists a single chart on $\mathcal{O}$ that is not orientable.
+\end{definition}
+
+\begin{definition}
+    Let $\mathcal{O}$ be an orbifold and let $N$ be some stratum. $N$ is a \emph{OP-stratum} iff $\dim(N)$ and $\dim(\mathcal{O})$ have opposite parity.
+\end{definition}
+
+\begin{lemma}
+    Let $\mathcal{O}$ be an orbifold and let $\gamma$ be an isometry acting on $\mathcal{O}$. Then, the expression $b_0(\gamma,x) > 0$.
+    \label{lem:b_0}
+\end{lemma}
+
+\begin{lemma} \label{lem:dim_of_fix}
+    Let $\mathcal{O}$ be an orbifold and let $\gamma$ be an isometry acting on $\mathcal{O}$. If $\gamma \in \iso^{\max}(\tilde{N})$, then $\dim(\fix(\gamma)) = \dim(N)$.
+\end{lemma}
+
+\begin{lemma} \label{lem:dim-of-ori-rev}
+    Suppose $(\tilde{U},\Gamma_u,\pi_u)$ is a coordinate chart on some orbifold $\orb$. Suppose $\gamma \in \Gamma_u$. Then, $\dim(\fix(\gamma))$ is of opposite parity to $\dim(\mathcal{O})$ if and only if $\gamma$ is orientation reversing.
+    \label{lem:ori-rev-op}
+\end{lemma}
+
+
+\begin{lemma}
+    $\orb$ is locally orientable if and only if $\orb$ has a primary OP stratum.
+\end{lemma}
+\begin{proof}
+ $(\implies)$ Suppose $\orb$ is locally nonorientable. Then, $\orb$ has a non-orientable chart $(\tilde{U},\Gamma_u,\pi_u)$. There exists some $\gamma \in \Gamma_u$ that is orientation reversing. Thus, by Lemma~\ref{DO THIS} \marginpar{need lemma}, $\fix(\gamma)$ has dimension of opposite parity to $\orb$. \marginpar{By DGGW 2.14} $\fix(\gamma)$ is stratified by $\tilde{U}-strata$,
+$$\fix(\gamma)=N_1 \sqcup N_2 \sqcup \dots \sqcup N_t$$
+where $N_i$ are the $\tilde{U}$-strata. We know at least one $N_i$, WLOG $N_1$, has $\dim(N_1) = \dim(\fix(\gamma))$. (Otherwise the finite union of the $N_i$would not fill out $\fix(\gamma)$). Because $N_1$ has full dimension in $\fix(\gamma)$, $2.14$ in DGGW implies $N_1$ is open in $\fix(\gamma)$. Hence, $\gamma \in \iso^{\max}(N_1)$. Thus $N_1$ is the required primary OP stratum.\\
+
+$(\impliedby)$ Suppose $\orb$ has primary OP stratum $N$. Since $N$ is primary, $\exists \gamma \in \iso^{\max}(\tilde{N})$. Note that $\dim(\fix(\gamma))= \dim(N)$ by Lemma~\ref{lem:dim-of-fix}. So, $\fix{\gamma}$ has dimension of opposite parity to dimension $\orb$. By Lemma~\ref{lem:dim-of-ori-rev}, this implies $\gamma$ is orientation reversing.
+\end{proof}
+
+\begin{lemma} \label{lem:deg-i}
+Let $\orb$ be an orbifold and let $i = \frac{\dim(\mathcal{O})-1}{2}-n ; n \in \mathbb{Z}, n \geq 0$. The degree $-i$ term of the heat expansion of $\orb$ is given by,
+    \begin{equation*}
+        \deg(-i)=\sum_{\substack{N \in S(\orb) \\ N \text{ is } OP}}
+        \frac{{(4\pi t)}^{-l}}{\myabs{\iso(N)}} t^{l-i} 
+        \int_N \sum_{\gamma \in \iso^{\max}(\tilde{N})} 
+        b_{l-i}(\gamma,x)dvol
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}
+    The heat expansion is given by,
+    \begin{equation*}
+        I_0+\sum_{N \in S(\orb)}\frac{I_N}{\myabs{\iso(N)}}
+    \end{equation*}
+    Expand,
+   \begin{equation*}
+        {(4\pi t)}^{-\dim(\orb)/2}\sum_{k=0}^{\infty}a_k t^k
+        + \sum_{N \in S(\orb)}\frac{{(4\pi t)}^{-\dim(N)/2}}{\myabs{\iso(N)}}
+        \sum_{k=0}^{\infty}t^k \int_N b_k(N,x) dvol
+   \end{equation*}
+   We now focus on some term of the expansion of degree $-i$ where $i = \frac{\dim(\mathcal{O})-1}{2}-n; n \in \mathbb{Z}, n \geq 0$. To simplify the notation, we let $j = \frac{\dim(\orb)}{2}$ and $l = \frac{\dim(N)}{2}$ for some stratum $N$.
+   \begin{equation*}
+       \deg(-i) = 
+        {(4\pi t)}^{-j}a_{j-i} t^{j-i}
+        + \sum_{N \in S(\orb)}\frac{{(4\pi t)}^{-l}}{\myabs{\iso(N)}}
+        t^{l-i}\int_N b_{l-i}(N,x) dvol
+   \end{equation*}
+   Note that we allow $k = j-i$ on the left term. This implies $(j-i) \in \mathbb{Z} \implies [ \frac{\dim(\orb)}{2}-(\frac{\dim(\mathcal{O})-1}{2}-n)] \in \mathbb{Z} \implies (n+\frac{1}{2}) \in \mathbb{Z}$ which is impossible. So, there exists no $j$ such that $j-i$ contributes to $\deg(-i)$, allowing us to eliminate the left term.\\
+   On the right, we allow $k = l-i$. Similarly, this implies $(l-i) \in \mathbb{Z} \implies [\frac{\dim(N)}{2} - (\frac{\dim(\orb)-1}{2})-n] \in \mathbb{Z} \implies (\frac{\dim(N) - \dim(\orb) +1}{2} + n) \in \mathbb{Z}$. This expression holds iff $N$ is an OP-stratum. So, we can adjust our expression.
+    \begin{equation*}
+        \deg(-i)=\sum_{\substack{N \in S(\orb) \\ N \text{ is } OP}}
+        \frac{{(4\pi t)}^{-l}}{\myabs{\iso(N)}} t^{l-i} 
+        \int_N \sum_{\gamma \in \iso^{\max}(\tilde{N})} 
+        b_{l-i}(\gamma,x)dvol
+    \end{equation*}
+
+\end{proof}
+
+\begin{theorem}  We can hear local orientability.
+\end{theorem}
+
+\begin{proof}
+    Let $\orb$ be an orbifold. Let $k \in \mathbb{Z}$, $k \geq 0$. Let $i = \frac{\dim(\orb)-1}{2}-k$ and let $l = \frac{\dim(N)}{2}$. Then, by Lemma~\ref{lem:deg-i}, the degree $-i$ term of the heat expansion of $\orb$ is given as follows,
+    \begin{equation} \label{eq:main-eq}
+        \deg(-i)=\sum_{\substack{N \in S(\orb) \\ N \text{ is } OP}}
+        \frac{{(4\pi t)}^{-l}}{\myabs{\iso(N)}} t^{l-i} 
+        \int_N \sum_{\gamma \in \iso^{\max}(\tilde{N})} 
+        b_{l-i}(\gamma,x)dvol
+    \end{equation}
+
+    If $\orb$ is locally orientable, then by Lemma~\ref{DO THIS} there exist no primary OP-strata. So, $\deg(-i)=0$ for all $i$ in the orientable case.
+
+    If $\orb$ is locally non-orientable, then by Lemma~\ref{DO THIS} there exists at least one primary OP-strata. Let $A$ be the set of all primary OP strata and let $B \subseteq A$ be the subset such that each $b \in B$ has maximal dimension $d$ in $A$. Letting $i = \frac{d}{2}$, we claim that only elements of $B$ contribute to $\deg(\frac{d}{2})$. Note that $l-i=k$. Since $k \in \mathbb{Z}_{\geq 0}$, we know $l-i \geq 0$ for all $i$. Taking $i = \frac{d}{2}$,
+$$l-\frac{d}{2} \geq 0 \implies 2l \geq d \implies \dim(N) \geq d$$
+By choice of $d$, this implies $\dim(N)=d$, for all $N$ contributing to $\deg(-\frac{d}{2})$ establishing our claim.
+
+    Because elements of $B$ contribute to $\deg(-\frac{d}{2})$, and all $b \in B$ are primary, the right-most sum in Equation~\ref{eq:main-eq} is over a non-empty set. We now compute the inside of this sum,
+$b_{l-i}(\gamma,x)=b_{\dim(N)/2-d/2}$. Because $d = \dim(N)$, this expression simplifies to $b_0(\gamma,x)$. By Lemma~\ref{lem:b_0}, this is $> 0$. We now have non-empty sum over strictly positive elements, so the some is strictly greater than $0$. This implies that $\deg(-\frac{d}{2}) > 0$ 
+
+\end{proof}
+\marginpar{Change deg() notation!!}
+\end{document}

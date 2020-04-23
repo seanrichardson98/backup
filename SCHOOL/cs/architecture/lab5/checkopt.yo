@@ -1,0 +1,54 @@
+                            | # begin execution at address zero
+0x000:                      |         .pos    0
+0x000: 30f4f80f000000000000 |         irmovq  stack, %rsp     # set stack to 0xFF8, grow to lower addresses
+0x00a: 804800000000000000   |         call    main            # start main
+0x013: 00                   |         halt                    # done
+                            | 
+0x018:                      |         .align  8
+0x018:                      | count:
+0x018: 0500000000000000     |         .quad   0x05
+0x020:                      | array:
+0x020: 0100000000000000     |         .quad   0x01
+0x028: 0300000000000000     |         .quad   0x03
+0x030: 0400000000000000     |         .quad   0x04
+0x038: 0900000000000000     |         .quad   0x09
+0x040: 0a00000000000000     |         .quad   0x0A
+                            | 
+0x048:                      | main:
+0x048: 30f72000000000000000 |         irmovq  array, %rdi
+0x052: 30f01800000000000000 |         irmovq  count, %rax
+0x05c: 50600000000000000000 |         mrmovq  (%rax), %rsi
+0x066: 807000000000000000   |         call    check
+0x06f: 90                   |         ret
+                            | 
+                            | # int check(long *data, long count)
+                            | # optimized check of the sort order
+                            | # data in %rdi, count in %rsi
+0x070:                      | check:
+0x070: 30f80800000000000000 |         irmovq  $8, %r8         # constant 8
+0x07a: 6066                 |         addq    %rsi, %rsi      # 2*count
+0x07c: 2069                 |         rrmovq  %rsi, %r9
+0x07e: 6099                 |         addq    %r9, %r9        # 4*count
+0x080: 6096                 |         addq    %r9, %rsi       # 8*count = sizeof(long)*count
+0x082: 6186                 |         subq    %r8, %rsi       # sizeof(long)*(count - 1)
+0x084: 6076                 |         addq    %rdi, %rsi      # data + sizeof(long)*(count - 1)
+0x086:                      | loop:
+0x086: 2061                 |         rrmovq  %rsi, %rcx
+0x088: 6171                 |         subq    %rdi, %rcx      # data + sizeof(long)*(count - 1) - p
+0x08a: 71bd00000000000000   |         jle     good            # p >= data + sizeof(long)*(count - 1)
+0x093: 50c70800000000000000 |         mrmovq  0x8(%rdi), %r12 # a[i + 1]
+0x09d: 50170000000000000000 |         mrmovq  (%rdi), %rcx    # a[i]
+0x0a7: 61c1                 |         subq    %r12, %rcx      # a[i] - a[i + 1]
+0x0a9: 76c800000000000000   |         jg      bad             # a[i] > a[i + 1]
+0x0b2: 6087                 |         addq    %r8, %rdi       # ++a
+0x0b4: 708600000000000000   |         jmp     loop            # next iteration
+0x0bd:                      | good:
+0x0bd: 30f00100000000000000 |         irmovq  $1, %rax        # a[i] < a[i + 1] for all i's: return true
+0x0c7: 90                   |         ret
+0x0c8:                      | bad:
+0x0c8: 30f00000000000000000 |         irmovq  $0, %rax        # a[i] > a[i + 1] for some i: return false
+0x0d2: 90                   |         ret
+                            | 
+                            | # stack starts here
+0xff8:                      |         .pos    0xFF8
+0xff8:                      | stack:
