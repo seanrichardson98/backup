@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/doerd/Desktop/RESEARCH/k_theory/notes'
+let g:netrw_dirhist_2='/home/doerd/Desktop/SCHOOL/physics/advanced_lab/catflip/writeup'
+let g:netrw_dirhist_3='/home/doerd/Desktop/PROJECTS/apathetic_creator_physics/external'
+let g:netrw_dirhist_4='/home/doerd/Desktop/PROJECTS/apathetic_creator_physics'
